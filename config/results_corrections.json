@@ -1,0 +1,24 @@
+{
+  "_purpose": "Two archived result files contain values superseded by later, corrected computations. The manuscript carries the corrected values. This file records both so the repository is self-consistent.",
+  "E_LOWFREQ_results.json": {
+    "field": "lambda_U",
+    "archived_value": 0.20564658674097028,
+    "corrected_value": 0.0972,
+    "reason": "The archived value is max(U_A,U_B)/R_lower99, a PER-ARM bound. In the low/mid representation the per-arm statistic is dominated by the additive fingerprint main effect, which is antisymmetric across arms and cancels only in the symmetric statistic.",
+    "derivation": "theta_sym = (theta_A + theta_B)/2 per seed over the archived per-seed means -> mean -1.03522e-05, sd 9.494e-05, SE 3.8759e-05, t -0.267, U = mean + t(0.995,5)*SE = 1.4593e-04; 1.4593e-04 / 1.5010588516227571e-03 = 0.0972",
+    "manuscript_section": "V-J"
+  },
+  "XVAL_additive.json": {
+    "field": "xv1_cross_seed.p_perm",
+    "archived_value": 0.15596880623875226,
+    "corrected_value": 0.0167,
+    "reason": "The archived permutation relabelled the correlation-matrix columns and then recomputed BOTH the fitted main effects and the observed contrasts from the relabelled matrix. That is a consistent relabelling and does not break the correspondence being tested, so it cannot reject.",
+    "corrected_test": "Permute which prediction is paired with which observation, exactly over all 5! = 120 device assignments. Two assignments perform as well or better; p = 2/120 = 0.0167, floor 1/120 = 0.0083.",
+    "additional_values_absent_from_archive": {
+      "device_level_pearson_r": 0.979,
+      "device_level_p": 0.0036,
+      "note": "Aggregating the ten held-out adapter predictions to the five devices is the honest unit; the archived Pearson 0.9393 is at adapter level (n=10) and is inflated because the ten predictions come from five devices predicted twice each."
+    },
+    "manuscript_section": "V-H"
+  }
+}
