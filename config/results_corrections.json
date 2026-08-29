@@ -20,5 +20,30 @@
       "note": "Aggregating the ten held-out adapter predictions to the five devices is the honest unit; the archived Pearson 0.9393 is at adapter level (n=10) and is inflated because the ten predictions come from five devices predicted twice each."
     },
     "manuscript_section": "V-H"
+  },
+  "primary_bound_k6_to_k12": {
+    "what_changed": "The primary analysis was extended from six to twelve independently seeded adapters per arm.",
+    "why": "With k clusters the exact sign-flip test has 2^k assignments, so its smallest attainable one-sided p is 2^-k. At k=6 that is 1/64 = 0.0156, above the registered alpha = 0.01: the registered test could not have rejected however large the effect. The extension and the unchanged procedure were declared before any new adapter was trained or examined. At k=12 the floor is 1/4096 and rejection was attainable; it did not occur.",
+    "superseded": {
+      "n": 6,
+      "U_device": 8.8802e-05,
+      "lambda_U_reported_pct": 0.32,
+      "tau_U_reported_pct": 0.91,
+      "theta_sym": 1.494e-05,
+      "exact_p_A": 0.296875,
+      "exact_p_B": 0.1875
+    },
+    "current": {
+      "n": 12,
+      "U_device": 5.3761e-05,
+      "lambda_U_plugin_pct": 0.15072,
+      "tau_U_plugin_pct": 0.41167,
+      "lambda_U_conservative_pct": 0.16811,
+      "theta_sym": 4.5996e-06,
+      "exact_p_A": 0.7546,
+      "exact_p_B": 0.0625
+    },
+    "produced_by": "notebooks/12_seed_ext2.ipynb, stages S1-S4",
+    "note": "Any file, figure or README stating 0.32% or 0.91% predates this extension. analysis/FINAL_LEDGER.json is authoritative."
   }
 }

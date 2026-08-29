@@ -12,8 +12,11 @@ Runs anywhere with numpy, pandas and scipy. No GPU, no Colab, no model weights.
     python verify_einv.py --root ~/Drive/MyDrive/inv_channel --verbose
 
 Each experiment root is expected under --root:
-    E_INV_P0_v3/  E_SEEDEXT/  E_AMP/  E_TRACKB2_FLUX/
+    E_INV_P0_v3/  E_SEEDEXT/  E_SEEDEXT2/  E_AMP/  E_TRACKB2_FLUX/
     E_MULTIDEV/   E_LOWFREQ/  E_FULLFT/
+E_SEEDEXT2 carries seeds 6-11 and is REQUIRED for the k=12 headline bound; without
+it the k=12 checks report "E_SEEDEXT2 root absent" rather than silently falling back
+to the superseded k=6 value.
 Missing roots are reported as SKIP, not as failures, so a partial copy of the
 data still verifies whatever it contains.
 """
@@ -147,38 +150,69 @@ def check_encoder(root, rep, verbose):
     rep.add("AUC pre",  1.0000, auc("pre"),  tol=0.001)
     rep.add("AUC post", 0.9814, auc("post"), tol=0.005)
 
-# ================================================= 2. primary bound, six adapters
+# ============================================ 2. primary bound, twelve adapters
+# Pools all three measurement roots. The registered design used seeds 0-5 across
+# E_INV_P0_v3 and E_SEEDEXT; the declared extension added seeds 6-11 in E_SEEDEXT2.
+# Both cluster counts are verified, because the paper reports the k=6 -> k=12
+# tightening as well as the final limit.
 def check_primary(root, rep, verbose):
     frames = [f for f in (load(root, "E_INV_P0_v3", "s5_measure.csv"),
-                          load(root, "E_SEEDEXT", "b3_measure.csv")) if f is not None]
+                          load(root, "E_SEEDEXT",   "b3_measure.csv"),
+                          load(root, "E_SEEDEXT2",  "sx2_measure.csv")) if f is not None]
     if not frames:
-        rep.add("U_device (n=6)", 8.8802e-05, None, note="s5/b3 measure CSVs absent")
+        rep.add("U_device (k=12)", 5.3761e-05, None, note="no measure CSVs found")
         return
-    d = pd.concat(frames, ignore_index=True)
-    tagc, kc = col(d, "tag"), col(d, "K")
-    tags = sorted(t for t in d[tagc].unique() if str(t).endswith("_r16"))
-    per = {}
-    for arm, own, oth in (("A", "A", "B"), ("B", "B", "A")):
-        m = []
-        for t in [t for t in tags if str(t).startswith(f"{arm}_raw_s")]:
-            x = paired_theta(d, t, own, oth, tagc=tagc, kc=kc)
-            if x is not None and len(x): m.append(float(x.mean()))
-        per[arm] = np.array(sorted(m, key=lambda v: 0))     # order irrelevant to the mean
-        if verbose: print(f"   arm {arm}: {len(m)} adapters")
-    if len(per["A"]) < 2 or len(per["B"]) < 2:
-        rep.add("U_device (n=6)", 8.8802e-05, None, note="too few adapters found"); return
-    rep.add(f"theta_A (n={len(per['A'])})", 1.549e-05, float(per["A"].mean()), tol=0.05)
-    rep.add(f"theta_B (n={len(per['B'])})", 1.438e-05, float(per["B"].mean()), tol=0.05)
-    U = max(ucl(per["A"]), ucl(per["B"]))
-    rep.add("U_device", 8.8802e-05, U, tol=0.05)
-    rep.add("lambda_U plug-in %", 0.2490, 100 * U / R_REAL_REF, tol=0.05)
-    sym = 0.5 * (per["A"].mean() + per["B"].mean())
-    rep.add("theta_sym", 1.494e-05, float(sym), tol=0.05)
-    if len(per["A"]) == 6:
-        rep.add("exact sign-flip p_A", 0.2969, exact_signflip(per["A"]), tol=0.10)
-        rep.add("exact sign-flip p_B", 0.1875, exact_signflip(per["B"]), tol=0.10)
+    per = {"A": {}, "B": {}}
+    for d in frames:                       # per frame: its own column names, no concat
+        tagc, kc = col(d, "tag"), col(d, "K")
+        vc = valcol(d) if "valcol" in globals() else None
+        for arm, own, oth in (("A", "A", "B"), ("B", "B", "A")):
+            for t in d[tagc].unique():
+                ts = str(t)
+                if not (ts.startswith(f"{arm}_raw_s") and ts.endswith("_r16")):
+                    continue               # excludes the rank-64 capacity-ceiling arms
+                x = paired_theta(d, t, own, oth, tagc=tagc, kc=kc)
+                if x is not None and len(x):
+                    per[arm][ts] = float(x.mean())
+    import re as _re
+    def _seed(t):                     # "A_raw_s10_r16" -> 10; lexicographic order is wrong,
+        m = _re.search(r"_s(\d+)_", t)   # s10 and s11 sort before s2
+        return int(m.group(1)) if m else 10**6
+    ordA, ordB = sorted(per["A"], key=_seed), sorted(per["B"], key=_seed)
+    A = np.array([per["A"][t] for t in ordA])
+    B = np.array([per["B"][t] for t in ordB])
+    if verbose:
+        print(f"   arm A: {len(A)} adapters {[_seed(t) for t in ordA]}")
+        print(f"   arm B: {len(B)} adapters {[_seed(t) for t in ordB]}")
+    if len(A) < 2 or len(B) < 2:
+        rep.add("U_device (k=12)", 5.3761e-05, None, note="too few adapters found"); return
+
+    k = min(len(A), len(B))
+    if k >= 12:
+        rep.add("theta_A (k=12)", -9.570e-06, float(A.mean()), tol=0.05)
+        rep.add("theta_B (k=12)",  1.877e-05, float(B.mean()), tol=0.05)
+        U = max(ucl(A), ucl(B))
+        rep.add("U_device (k=12)", 5.3761e-05, U, tol=0.05)
+        rep.add("lambda_U plug-in %", 0.15072, 100 * U / R_REAL_REF, tol=0.05)
+        rep.add("theta_sym (k=12)", 4.600e-06, float(0.5 * (A.mean() + B.mean())), tol=0.10)
+        rep.add("exact sign-flip p_A", 0.7546, exact_signflip(A), tol=0.05)
+        rep.add("exact sign-flip p_B", 0.0625, exact_signflip(B), tol=0.05)
+        rep.add("sign-flip floor 1/4096", 1 / 4096, 1 / 4096, tol=1e-9,
+                note="rejection at alpha=0.01 was attainable and did not occur")
+    else:
+        rep.add("U_device (k=12)", 5.3761e-05, None,
+                note=f"only {k} adapters per arm found; E_SEEDEXT2 root absent")
+
+    # the superseded k=6 analysis, from seeds 0-5 alone, reported in Section V-C
+    A6 = np.array([per["A"][t] for t in ordA if _seed(t) < 6])
+    B6 = np.array([per["B"][t] for t in ordB if _seed(t) < 6])
+    if len(A6) == 6 and len(B6) == 6:
+        U6 = max(ucl(A6), ucl(B6))
+        rep.add("U_device (k=6, superseded)", 8.8802e-05, U6, tol=0.05,
+                note="the registered six-cluster analysis")
+        rep.add("lambda_U k=6 % (superseded)", 0.2490, 100 * U6 / R_REAL_REF, tol=0.05)
         rep.add("sign-flip floor 1/64", 0.015625, 1 / 64, tol=1e-9,
-                note="structural: cannot reject at 0.01")
+                note="structural: could not reject at 0.01, which is why k was extended")
 
 # ============================================================== 3. FLUX, full FT
 def _three_seed_arm(d, prefix, own, oth, tagc, kc, drop=frozenset()):

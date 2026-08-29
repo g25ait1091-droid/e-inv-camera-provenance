@@ -36,12 +36,14 @@ RED, GREY, INK, PALE = "#A8443C", "#8A8A8A", "#2b2b2b", "#DCE5EE"
 SC, DC = 3.5, 7.16
 BOX = dict(boxstyle="round,pad=0.28", fc="white", ec="#d0d0d0", lw=0.5, alpha=0.94)
 
-R_REAL, R_VAE, U_DEV = 3.56703416571125e-02, 1.30592770366e-02, 8.880180005344921e-05
-A_MEANS = np.array([8.850071894e-06, -6.325359893e-06, 2.2739481612e-06,
-                    -2.264346126e-05, 7.531645252e-06, 1.03266094242e-04])
-B_MEANS = np.array([-3.41837958e-05, 1.3627266574e-05, 4.9241766654e-05,
-                    4.0683344753e-05, -1.6195523868e-05, 3.3124104778e-05])
-U_A, U_B = 8.880180005344921e-05, 6.923789808639606e-05
+R_REAL, R_VAE, U_DEV = 0.0356703416571125, 0.0130593, 5.3761e-05
+import json as _json, os as _os
+_LEDGER = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "FINAL_LEDGER.json")
+_L = _json.load(open(_LEDGER))
+HAVE_ADAPTERS = _L["primary"]["per_adapter_A"] is not None
+A_MEANS = np.array(_L["primary"]["per_adapter_A"]) if HAVE_ADAPTERS else None
+B_MEANS = np.array(_L["primary"]["per_adapter_B"]) if HAVE_ADAPTERS else None
+U_A, U_B = 3.384e-05, 5.3761e-05
 
 # =========================================================== Fig 1  pipeline
 fig, ax = plt.subplots(figsize=(DC, 2.45))
@@ -49,8 +51,8 @@ ax.set_xlim(0, 100); ax.set_ylim(0, 100); ax.axis("off")
 stages = [
     (2,  "Real image", r"$R_{\mathrm{real}}=3.57\times10^{-2}$" + "\nsame-model AUC 1.000", BLUE),
     (26, "Latent autoencoder", r"$R_{\mathrm{VAE}}=1.31\times10^{-2}$" + "\n" + r"$\eta=0.366$,  AUC 0.981", BLUE),
-    (50, "LoRA objective", r"measurable from $\alpha\approx3$" + "\nnot device- or\nalignment-specific", ORANGE),
-    (74, "Text-to-image\ngeneration", r"$\lambda_U\leq0.32\%$" + "\n" + r"$\tau_U\leq0.91\%$", BLUE),
+    (50, "LoRA objective", r"measurable from $\alpha\approx3$" + "\nscalar-loss response not\ndevice- or alignment-specific", ORANGE),
+    (74, "Text-to-image\ngeneration", r"$\lambda_U\leq0.15\%$" + "\n" + r"$\tau_U\leq0.41\%$", BLUE),
 ]
 W, H, YB = 22, 19, 50
 for x, title, val, col in stages:
@@ -83,7 +85,7 @@ ax.set_xticklabels(["Real\nimages", "After\nautoencoder", "Generated\n(upper lim
 ax.set_xlim(-0.62, 2.62)
 ax.set_ylabel("device-specific paired contrast")
 for b, v, t in zip(bars, vals, [r"$3.57\times10^{-2}$", r"$1.31\times10^{-2}$",
-                                r"$8.88\times10^{-5}$"]):
+                                r"$5.38\times10^{-5}$"]):
     ax.text(b.get_x() + b.get_width()/2, v*1.45, t, ha="center", fontsize=6.6,
             color=INK, zorder=4)
 ax.plot([0.0, 1.0], [1.05e-1, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
@@ -91,33 +93,39 @@ ax.plot([0.0, 0.0], [7.5e-2, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
 ax.plot([1.0, 1.0], [2.8e-2, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
 ax.text(0.5, 1.62e-1, r"$\eta=0.366$ survives", ha="center", fontsize=6.8,
         color=TEAL, bbox=BOX, zorder=6)
-ax.text(2.0, 3.0e-3, "0.680\\% of the\nround-trip contrast", ha="center",
+ax.text(2.0, 3.0e-3, "0.412% of the\nround-trip contrast", ha="center",
         fontsize=6.8, color=ORANGE, bbox=BOX, zorder=6)
 ax.grid(axis="y", ls=":", lw=0.5, color="#bbbbbb", zorder=0); ax.set_axisbelow(True)
 check(fig, ax, "Fig2 stage localisation"); fig.savefig("fig2_stage_localisation.pdf"); plt.close(fig)
 
 # =========================================== Fig 3  adapter contrasts + limits
-fig, ax = plt.subplots(figsize=(SC, 2.75), constrained_layout=True)
-x = np.arange(6)
-ax.axhspan(-1.0, U_A, color=PALE, zorder=0)
-ax.axhline(0, color="#999999", lw=0.8, zorder=1)
-ax.axhline(U_A, color=BLUE, ls="--", lw=1.1, zorder=3)
-ax.axhline(U_B, color=ORANGE, ls="--", lw=1.1, zorder=3)
-ax.plot(x - 0.12, A_MEANS, "o", ms=4.8, color=BLUE, mec="white", mew=0.8,
-        zorder=5, label="arm A")
-ax.plot(x + 0.12, B_MEANS, "s", ms=4.4, color=ORANGE, mec="white", mew=0.8,
-        zorder=5, label="arm B")
-ax.set_ylim(-7.0e-5, 1.62e-4); ax.set_xlim(-0.6, 5.6)
-ax.text(-0.5, U_A + 6.0e-6, r"$U_A = 8.88\times10^{-5}$", fontsize=6.5,
-        color=BLUE, zorder=6)
-ax.text(2.85, U_B - 1.55e-5, r"$U_B = 6.92\times10^{-5}$", fontsize=6.5,
-        color=ORANGE, zorder=6)
-ax.set_xticks(x); ax.set_xticklabels([f"s{i}" for i in range(6)])
-ax.set_xlabel("adapter training seed")
-ax.set_ylabel(r"$\theta$   (paired device contrast)")
-ax.legend(loc="lower left", ncol=2, handletextpad=0.35, columnspacing=1.1)
-ax.grid(axis="y", ls=":", lw=0.5, color="#bbbbbb", zorder=2)
-check(fig, ax, "Fig3 adapter bounds"); fig.savefig("fig3_adapter_bounds.pdf"); plt.close(fig)
+if not HAVE_ADAPTERS:
+    print("  Fig3 adapter bounds            SKIPPED — FINAL_LEDGER.json has no\n      per-adapter values. Figure 3 plots every cluster mean and cannot be built\n      from summary statistics. Paste the twelve values per arm from\n      E_SEEDEXT2/S4_bound.json into primary.per_adapter_A / per_adapter_B.")
+else:
+    fig, ax = plt.subplots(figsize=(SC, 2.75), constrained_layout=True)
+    x = np.arange(len(A_MEANS))
+    ax.axhspan(-1.0, U_A, color=PALE, zorder=0)
+    ax.axhline(0, color="#999999", lw=0.8, zorder=1)
+    ax.axhline(U_A, color=BLUE, ls="--", lw=1.1, zorder=3)
+    ax.axhline(U_B, color=ORANGE, ls="--", lw=1.1, zorder=3)
+    ax.plot(x - 0.12, A_MEANS, "o", ms=4.8, color=BLUE, mec="white", mew=0.8,
+            zorder=5, label="arm A")
+    ax.plot(x + 0.12, B_MEANS, "s", ms=4.4, color=ORANGE, mec="white", mew=0.8,
+            zorder=5, label="arm B")
+    ax.set_ylim(-1.2e-4, 1.35e-4); ax.set_xlim(-0.6, len(A_MEANS)-0.4)
+    ax.text(11.4, U_A + 7.0e-6, r"$U_A = 3.38\times10^{-5}$", fontsize=6.5, ha="right",
+            color=BLUE, zorder=6)
+    ax.text(6.5, U_B + 6.0e-6, r"$U_B = 5.38\times10^{-5}$", fontsize=6.5,
+            color=ORANGE, zorder=6)
+    ax.set_xticks(x); ax.set_xticklabels([f"s{i}" for i in range(len(A_MEANS))],
+                                         fontsize=6.0)
+    ax.set_xlabel("adapter training seed")
+    ax.set_ylabel(r"$\theta$   (paired device contrast)")
+    ax.legend(loc="lower left", ncol=2, handletextpad=0.35, columnspacing=1.1)
+    ax.grid(axis="y", ls=":", lw=0.5, color="#bbbbbb", zorder=2)
+    check(fig, ax, "Fig3 adapter bounds"); fig.savefig("fig3_adapter_bounds.pdf"); plt.close(fig)
+
+
 
 # ================================================== Fig 4  full-pipeline calib
 al = np.array([0.0, 0.01, 0.02, 0.05, 0.10, 0.25])
@@ -130,7 +138,7 @@ ax.plot(g, b0 + b1*g, "-", color=GREY, lw=1.1, zorder=2,
         label=r"fit  $-6.60\!\times\!10^{-5}\!+\!1.414\!\times\!10^{-2}\alpha$")
 ax.errorbar(al, mu, yerr=2.576*se, fmt="o", ms=4.4, color=BLUE, mec="white", mew=0.7,
             ecolor=BLUE, elinewidth=1.0, capsize=2.2, zorder=4,
-            label="measured, 99\\% CI")
+            label="measured, 99% CI")
 ax.axhline(U_DEV, color=ORANGE, ls="--", lw=1.1, zorder=3)
 ax.set_yscale("symlog", linthresh=2e-4, linscale=0.55)
 ax.set_ylim(-2.4e-4, 9.5e-3); ax.set_xlim(-0.014, 0.285)
@@ -177,12 +185,16 @@ ax.grid(ls=":", lw=0.5, color="#cccccc"); ax.set_axisbelow(True)
 check(fig, ax, "Fig5 additive"); fig.savefig("fig5_additive.pdf"); plt.close(fig)
 
 # ================================================== Fig 6  replication summary
-rows = [("Primary (SD 3.5)", 6, 0.32, "seeds"),
-        ("Primary, matched $n$", 3, 0.699, "seeds"),
-        ("FLUX.1-dev", 3, 0.777, "seeds"),
+rows = [
+        ("Primary (SD 3.5)", 12, 0.1507, "devices"),
+        ("Primary at k=6", 6, 0.249, "devices"),
+        ("Primary at matched n=3", 3, 0.6993, "devices"),
+        ("FLUX.1-dev", 3, 0.777, "devices"),
         ("Full fine-tuning", 3, 0.747, "sym"),
-        ("Kodak, 5 devices", 5, 1.74, "devices"),
-        ("Low/mid band", 6, 9.72, "sym")]
+        ("Kodak M1063, CCD", 5, 1.74, "devices"),
+        ("Huawei P20, smartphone", 5, 1.14, "devices"),
+        ("Low/mid band", 6, 9.72, "sym"),
+]
 fig, ax = plt.subplots(figsize=(SC, 3.35), constrained_layout=True)
 y = np.arange(len(rows))[::-1]
 for yy, (lab, n, v, unit) in zip(y, rows):
@@ -192,13 +204,13 @@ for yy, (lab, n, v, unit) in zip(y, rows):
             solid_capstyle="round")
     ax.plot(v, yy, mk, ms=6.2 if mk != "s" else 5.8, color=col,
             mec="white", mew=1.0, zorder=3)
-    ax.text(58, yy, f"{v:.2f}\\%", fontsize=6.9, va="center", ha="right",
+    ax.text(58, yy, f"{v:.2f}%", fontsize=6.9, va="center", ha="right",
             color=col, zorder=4)
 ax.set_yticks(y)
 ax.set_yticklabels([f"{r[0]}\n$n={r[1]}$" for r in rows], fontsize=6.6, linespacing=1.45)
 ax.set_xscale("log"); ax.set_xlim(0.24, 62)
 ax.set_ylim(-0.95, len(rows) - 0.35)
-ax.set_xlabel(r"upper limit $\lambda_U$  (\% of device contrast)")
+ax.set_xlabel(r"upper limit $\lambda_U$  (% of device contrast)")
 ax.legend(handles=[Line2D([], [], marker="o", ls="", color=BLUE, ms=5.6, mec="white",
                           label="over adapter seeds"),
                    Line2D([], [], marker="D", ls="", color=ORANGE, ms=5.2, mec="white",
@@ -206,7 +218,7 @@ ax.legend(handles=[Line2D([], [], marker="o", ls="", color=BLUE, ms=5.6, mec="wh
                    Line2D([], [], marker="s", ls="", color=TEAL, ms=5.0, mec="white",
                           label="symmetric-interaction bound")],
           loc="lower center", bbox_to_anchor=(0.5, 1.005), ncol=2,
-          handletextpad=0.35, columnspacing=1.0, title="generalises over",
+          handletextpad=0.35, columnspacing=1.0, title="generalizes over",
           title_fontsize=6.4)
 ax.grid(axis="x", ls=":", lw=0.5, color="#bbbbbb"); ax.set_axisbelow(True)
 check(fig, ax, "Fig6 replication"); fig.savefig("fig6_replication.pdf"); plt.close(fig)

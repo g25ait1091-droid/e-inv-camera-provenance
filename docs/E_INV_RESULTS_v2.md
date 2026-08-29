@@ -1,4 +1,12 @@
 # E-INV — RESULTS (v2, consolidated)
+
+> **SUPERSEDED IN PART.** This document records results as of 1 August 2026, when the
+> primary analysis used six adapters per arm. The design was subsequently extended to twelve
+> (see `config/results_corrections.json`), and the headline limits are now
+> λ_U = 0.1507 % and τ_U = 0.4117 %, not the 0.32 % / 0.91 % below. Everything else here
+> stands. `analysis/FINAL_LEDGER.json` is authoritative.
+
+
 **2026-07-31.** Every measured number, with the wording each requires.
 Supersedes all earlier revisions. Companion: `E_INV_V1_PLAN_v11.md`.
 Status: **Tracks A, B and C complete.** Remaining work is drafting and reference verification.

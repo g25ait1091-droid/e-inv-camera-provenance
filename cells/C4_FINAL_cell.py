@@ -113,7 +113,7 @@ def c4():
     print("  - The sign-flip p over device means is the actual test.")
     print("  - If LODO shrinks the device-mean spread, the per-device offsets were shared")
     print("    camera-model structure — that is what five bodies bought you.")
-    print("  - This bound generalises over DEVICES (n=5); the 0.32% headline generalises over")
+    print("  - This bound generalises over DEVICES (n=5); the seed-level headline (0.1507% at k=12) generalises over")
     print("    SEEDS on two devices. Different claims; report both, neither substitutes.")
     ajson(out, os.path.join(ROOT, "C4_multidev.json"), indent=2)
 

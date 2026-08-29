@@ -1,0 +1,227 @@
+{
+  "_purpose": "Single source of truth. The figure script and every reported number read from here. If a value is not in this file it does not belong in the paper.",
+  "primary": {
+    "k_per_arm": 12,
+    "t_crit_0995": 3.1058,
+    "theta_A_mean": -9.5699e-06,
+    "theta_A_sd": 4.842e-05,
+    "U_A": 3.384e-05,
+    "theta_B_mean": 1.8769e-05,
+    "theta_B_sd": 3.903e-05,
+    "U_B": 5.3761e-05,
+    "U_device": 5.3761e-05,
+    "theta_sym": 4.5996e-06,
+    "exact_p_A": 0.7546,
+    "exact_p_B": 0.0625,
+    "signflip_floor": 0.000244140625,
+    "shapiro_p_A": 0.155,
+    "kurtosis_A": 1.11,
+    "shapiro_p_B": 0.997,
+    "kurtosis_B": -0.86,
+    "lambda_U_plugin_pct": 0.15072,
+    "tau_U_plugin_pct": 0.41167,
+    "lambda_U_conservative_pct": 0.16811,
+    "lambda_hat_pct": 0.012894,
+    "per_adapter_A": [
+      8.850071894000042e-06,
+      -6.325359893399975e-06,
+      2.2739481611999854e-06,
+      -2.2643461260259995e-05,
+      7.531645251999987e-06,
+      0.000103266094242,
+      1.4656080383200008e-05,
+      -9.208611264552e-05,
+      -1.0808960947400012e-05,
+      -1.5013951046399989e-05,
+      -2.959544293399999e-05,
+      -7.49431226474e-05
+    ],
+    "per_adapter_B": [
+      -3.418379579280002e-05,
+      1.3627266574e-05,
+      4.924176665400001e-05,
+      4.0683344752599966e-05,
+      -1.6195523867999998e-05,
+      3.312410477800001e-05,
+      6.442760144199999e-05,
+      -3.4368929834000042e-06,
+      1.0213471175999991e-05,
+      2.7348091160000013e-05,
+      8.484031544600002e-05,
+      -4.446196580240002e-05
+    ],
+    "_per_adapter_note": "seeds 0-11 in numeric order, from E_SEEDEXT2/S4_bound.json"
+  },
+  "denominators": {
+    "R_real": 0.0356703416571125,
+    "R_real_lower99": 0.0319798,
+    "R_VAE": 0.0130593,
+    "eta": 0.36611,
+    "eta_ci": [
+      0.343672,
+      0.386646
+    ],
+    "auc_pre": 1.0,
+    "auc_post": 0.981406
+  },
+  "history_k6": {
+    "k_per_arm": 6,
+    "U_device": 8.8802e-05,
+    "theta_sym": 1.494e-05,
+    "lambda_U_plugin_pct": 0.249,
+    "t_crit_0995": 4.0321,
+    "_status": "superseded; retained only for the tightening history in Section V-C"
+  },
+  "replications": [
+    {
+      "name": "Primary (SD 3.5)",
+      "unit": "adapter seeds, 2 devices",
+      "n": 12,
+      "lambda_U_pct": 0.1507,
+      "construction": "max-arm"
+    },
+    {
+      "name": "Primary at k=6",
+      "unit": "adapter seeds, 2 devices",
+      "n": 6,
+      "lambda_U_pct": 0.249,
+      "construction": "max-arm"
+    },
+    {
+      "name": "Primary at matched n=3",
+      "unit": "adapter seeds, 2 devices",
+      "n": 3,
+      "lambda_U_pct": 0.6993,
+      "construction": "max-arm"
+    },
+    {
+      "name": "FLUX.1-dev",
+      "unit": "adapter seeds, 2 devices",
+      "n": 3,
+      "lambda_U_pct": 0.777,
+      "construction": "max-arm"
+    },
+    {
+      "name": "Full fine-tuning",
+      "unit": "adapter seeds, 2 devices",
+      "n": 3,
+      "lambda_U_pct": 0.747,
+      "construction": "symmetric"
+    },
+    {
+      "name": "Kodak M1063, CCD",
+      "unit": "physical devices",
+      "n": 5,
+      "lambda_U_pct": 1.74,
+      "construction": "max-arm"
+    },
+    {
+      "name": "Huawei P20, smartphone",
+      "unit": "physical devices",
+      "n": 5,
+      "lambda_U_pct": 1.14,
+      "construction": "max-arm"
+    },
+    {
+      "name": "Low/mid band",
+      "unit": "adapter seeds, 2 devices",
+      "n": 6,
+      "lambda_U_pct": 9.72,
+      "construction": "symmetric"
+    }
+  ],
+  "calibration": {
+    "slope_quantised": 0.014142,
+    "slope_lower99": 0.013613,
+    "intercept": -6.598e-05,
+    "n": 2500,
+    "levels": [
+      {
+        "alpha": 0.0,
+        "mean": -6.62e-05,
+        "t": -2.07,
+        "ci": [
+          -0.000148,
+          1.6e-05
+        ]
+      },
+      {
+        "alpha": 0.01,
+        "mean": 7.52e-05,
+        "t": 2.35,
+        "ci": [
+          -7e-06,
+          0.000158
+        ]
+      },
+      {
+        "alpha": 0.02,
+        "mean": 0.000217,
+        "t": 6.76,
+        "ci": [
+          0.000134,
+          0.0003
+        ]
+      },
+      {
+        "alpha": 0.05,
+        "mean": 0.000641,
+        "t": 19.3,
+        "ci": [
+          0.000555,
+          0.000727
+        ]
+      },
+      {
+        "alpha": 0.1,
+        "mean": 0.00135,
+        "t": 36.6,
+        "ci": [
+          0.00126,
+          0.00144
+        ]
+      },
+      {
+        "alpha": 0.25,
+        "mean": 0.00347,
+        "t": 61.85,
+        "ci": [
+          0.00333,
+          0.00361
+        ]
+      }
+    ]
+  },
+  "smartphone": {
+    "devices": 5,
+    "model": "Huawei P20 (EML-AL00)",
+    "eta": 0.5601,
+    "eta_ci": [
+      0.4742,
+      0.6588
+    ],
+    "auc_pre": 0.9487,
+    "auc_post": 0.9996,
+    "lambda_U_pct": 1.1443,
+    "signflip_p": 0.2812,
+    "icc": 0.952,
+    "additive_r": 0.995,
+    "additive_perm_p": 0.008333,
+    "lowmid_signflip_p": 0.0938,
+    "lowmid_r2_cv": -0.009,
+    "lowmid_splithalf": 0.331
+  },
+  "main_effects": {
+    "A_gens_KA": 7.47187381886e-05,
+    "A_gens_KB": 7.311918480133e-05,
+    "B_gens_KA": 0.000128947288974,
+    "B_gens_KB": 0.0001385090347857,
+    "D_gens_KA": 0.00018076668250287,
+    "D_gens_KB": 0.00023799077210533
+  },
+  "additive": {
+    "r2_cv": 0.869737,
+    "r_device": 0.979069,
+    "perm_p": 0.0166667
+  }
+}

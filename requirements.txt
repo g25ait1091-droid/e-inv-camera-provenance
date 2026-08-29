@@ -1,0 +1,22 @@
+# E-INV — analysis and verification (CPU, no GPU, no model downloads).
+# Enough for: verify_einv.py, analysis/coverage_sim.py, analysis/make_figures.py,
+# analysis/motif_check.py and notebooks/00_verify.ipynb.
+numpy>=1.24
+scipy>=1.10
+pandas>=2.0
+matplotlib>=3.7
+Pillow>=9.5
+PyWavelets>=1.4
+
+# Additionally required to rerun the experiments (Tier 3 in REPRODUCE.md).
+# A100-40GB minimum; FLUX at 1024 and full fine-tuning need 96 GB.
+#   torch>=2.1
+#   diffusers>=0.31
+#   transformers
+#   peft            # see REPRODUCE.md: patch is_torchao_available on torchao < 0.16
+#   accelerate
+#   safetensors
+#   sentencepiece
+#   protobuf
+#   scikit-learn
+#   ImageHash       # notebooks 13 and 14 only

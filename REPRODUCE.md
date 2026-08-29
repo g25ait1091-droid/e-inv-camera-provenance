@@ -1,5 +1,12 @@
 # Reproducing E-INV
 
+> **If you are looking at a clone that reports 0.32 % as the headline bound, it predates the
+> declared extension from six to twelve adapters per arm.** The current figure is
+> 0.1507 % (plug-in) with a conservative real-normalized variant of 0.1681 %.
+> `analysis/FINAL_LEDGER.json` is authoritative;
+> `config/results_corrections.json` records the supersession.
+
+
 Data: **https://drive.google.com/drive/folders/1yHgioOdyRhEGl83dRAOgIaJhirbSfkIm**
 
 Three tiers. Tier 1 needs nothing but this repository. Tier 3 needs about 60 GPU-hours.
@@ -70,6 +77,14 @@ arXiv, and reproduces the amplitude reconciliation.
 `analysis/coverage_sim.py` reproduces the coverage simulation behind the bound
 construction. CPU, two minutes, no data needed.
 
+`analysis/motif_check.py` tests whether the fingerprint and query splits share photographic
+motifs, using a threshold calibrated from the acquisition-index gap curve rather than chosen.
+About 25 minutes; needs the source images but no training.
+
+`analysis/FINAL_LEDGER.json` holds every reported quantity, and `make_figures.py` reads from
+it. To check that a figure matches the text, compare both against the ledger rather than
+against each other.
+
 ---
 
 ## Tier 3 — rerun the experiments from raw images (~60 GPU-hours)
@@ -102,14 +117,16 @@ in Colab Secrets as `HF_TOKEN`.
 
 ### Order
 
-Run in the numbered order. Each notebook exposes `C.STAGES`; set it to a single stage to run
+Run in the order of this table, which is **not** notebook-number order: `12_seed_ext2` extends notebook 02 and must run straight after it, before anything that reads the
+twelve-adapter bound. Each notebook exposes `C.STAGES`; set it to a single stage to run
 one step. All stages are resumable and skip completed work, so an interrupted session can
 simply be rerun.
 
 | # | notebook | wall | note |
 |---|---|---|---|
 | 01 | pilot | 14 h | produces the manifests everything else depends on |
-| 02 | seed extension | 5 h | |
+| 02 | seed extension, seeds 3-5 | 5 h | |
+| 12 | seed extension, seeds 6-11 (`12_seed_ext2.ipynb`) | 11 h | the declared extension to twelve adapters per arm; **produces the headline bound** |
 | 03 | amplitude and controls | 5 h | |
 | 04 | quick controls | 30 min | |
 | 05 | Track A bounds | 1.5 h | CPU |
