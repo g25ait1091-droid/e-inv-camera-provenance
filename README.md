@@ -97,7 +97,7 @@ pip install -r requirements.txt
 
 python -m json.tool analysis/FINAL_LEDGER.json | head -40   # every number, seconds
 python analysis/make_figures.py                              # redraw all seven figures, seconds
-python analysis/coverage_sim.py                              # coverage of the bound, see below
+python analysis/coverage_sim.py                              # coverage of the bound, ~9 min
 ```
 
 ### Tier 1 — recompute the numbers from the measurements (~3 minutes)
@@ -267,7 +267,7 @@ E-PROMPT, E2, or E3. Each was declined with a reason recorded in `docs/E_INV_V1_
 | script | what it does | cost |
 |:--|:--|:--|
 | `make_figures.py` | Redraws all seven figures **from `FINAL_LEDGER.json`**, so a figure cannot drift from the text. | seconds |
-| `coverage_sim.py` | Measures the frequentist coverage of the upper-limit constructions by simulation, under normal, heavy-tailed and empirically resampled cluster distributions, with the denominator resampled. Plug-in *t* covers at 99.9 % worst-case; BCa alone reaches only 98.2 % under heavy tails. | CPU; nine scenarios × 4000 replications × 800 bootstrap resamples — budget tens of minutes on a laptop, and it prints each scenario as it finishes |
+| `coverage_sim.py` | Measures the frequentist coverage of the upper-limit constructions by simulation, under normal, heavy-tailed and empirically resampled cluster distributions, with the denominator resampled. Plug-in *t* covers at 99.9 % worst-case; BCa alone reaches only 98.2 % under heavy tails. | CPU; nine scenarios × 4000 replications × 800 bootstrap resamples. Measured 531 s on a desktop CPU; it prints each scenario as it finishes |
 | `overlapcheck.py` | Computes text, legend and arrow-path bounding boxes in display coordinates and reports collisions with plotted data. Used by `make_figures.py`. | — |
 | `motif_check.py` | Calibrates a scene-similarity threshold **from the data itself** — similarity as a function of acquisition-index gap separates same-motif from different-motif pairs without needing labels — then tests whether the fingerprint and query splits share motifs and, if they do, recomputes the denominator on motif-clean subsets. | ~25 min, needs the source images, no training |
 
