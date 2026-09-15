@@ -1,0 +1,167 @@
+{
+ "model": "facebook/dinov2-base CLS",
+ "copy_threshold_study": 0.9,
+ "arms": {
+  "dose16k_A_s0": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.44493982195854187,
+   "max_cos_p95": 0.7249158620834351,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.004,
+   "max_cos_max": 0.8562440872192383
+  },
+  "dose16k_A_s1": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.3997442126274109,
+   "max_cos_p95": 0.701349675655365,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7869412302970886
+  },
+  "dose16k_A_s2": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.27503830194473267,
+   "max_cos_p95": 0.7064085602760315,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7814580798149109
+  },
+  "dose16k_B_s0": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.5469072461128235,
+   "max_cos_p95": 0.7658302187919617,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7997575998306274
+  },
+  "dose16k_B_s1": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.2029758244752884,
+   "max_cos_p95": 0.6191631555557251,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7959763407707214
+  },
+  "dose16k_B_s2": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.19523932039737701,
+   "max_cos_p95": 0.6370476484298706,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7485883235931396
+  },
+  "nomark_s0": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.11185310035943985,
+   "max_cos_p95": 0.28781285881996155,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.6043812036514282
+  },
+  "nomarkB_s0": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.07397352904081345,
+   "max_cos_p95": 0.2044658213853836,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.5508809685707092
+  },
+  "dose8k_A_s0": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.16463574767112732,
+   "max_cos_p95": 0.5719633102416992,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7465218305587769
+  },
+  "dose8k_B_s0": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.21925942599773407,
+   "max_cos_p95": 0.588326632976532,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7551542520523071
+  },
+  "local_base": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.08822780102491379,
+   "max_cos_p95": 0.11341753602027893,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.12727583944797516
+  }
+ },
+ "top16k": [
+  {
+   "cos": 0.8562440872192383,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_A_s0\\00147.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\none_a0\\0017.png",
+   "arm": "dose16k_A_s0"
+  },
+  {
+   "cos": 0.8081555366516113,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_A_s0\\00070.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\none_a0\\0020.png",
+   "arm": "dose16k_A_s0"
+  },
+  {
+   "cos": 0.7997575998306274,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00120.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.7995439171791077,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00132.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.7991698384284973,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00056.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.799087643623352,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00173.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.7977088689804077,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00194.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.7959763407707214,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s1\\00067.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s1"
+  },
+  {
+   "cos": 0.7938951253890991,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00005.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  },
+  {
+   "cos": 0.7908249497413635,
+   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00106.png",
+   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s0"
+  }
+ ]
+}

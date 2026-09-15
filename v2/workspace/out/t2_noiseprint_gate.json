@@ -1,0 +1,16 @@
+{
+ "n_H": [
+  40,
+  40
+ ],
+ "same_model_AUC": 0.951875,
+ "gate_0.95_passed": true,
+ "real_paired_contrast_own_minus_other": 0.0033900262670449816,
+ "real_paired_contrast_se": 0.0003279602467875095,
+ "mean_score_A_images_toward_A_minus_B": 0.0035255083038246413,
+ "mean_score_B_images_toward_A_minus_B": -0.0032545442302653214,
+ "fingerprint_cross_ncc_A_B": 0.9711886180709098,
+ "qf_nets_used": [
+  99
+ ]
+}

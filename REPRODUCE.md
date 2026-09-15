@@ -156,6 +156,21 @@ masters against 22 GB without — and without, most of the model does not train.
 
 ---
 
+## v2 extension experiments
+
+**Check (seconds):** `python verify_v2.py` recomputes the v2 headline numbers from `v2/workspace/out/`.
+
+**Recompute the analyses (minutes, CPU):** with `EINV_V2` pointing at `v2/workspace`, the derived scripts
+in `v2/src` (`band_derived.py`, `a1_derived.py`, `v4_offline.py`, `t3_power_v4.py`, `f7_stats.py`,
+`t5_derived.py`) and the figure scripts run on the shipped files alone.
+
+**Rerun the experiments (GPU):** follow [`v2/README.md`](v2/README.md) for setup. The `orchestrate*.sh`
+files in `v2/src` are the run chains in the order they were executed, and
+[`v2/PRESPECIFICATION_LOG.md`](v2/PRESPECIFICATION_LOG.md) records what each was meant to decide before it
+ran.
+
+---
+
 ## Layout produced on Drive
 
 ```

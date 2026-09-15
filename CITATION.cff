@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or the released measurements, please cite this repository. Please also cite the original datasets (see DATA.md)."
+title: "E-INV: code and measurements for testing camera-sensor (PRNU) provenance through diffusion personalization"
+type: software
+authors:
+  - family-names: Behera
+    given-names: Mohini Mohan
+    affiliation: Indian Institute of Technology Jodhpur
+    orcid: "https://orcid.org/0009-0007-3475-8230"
+repository-code: "https://github.com/g25ait1091-droid/e-inv-camera-provenance"
+license: MIT
+keywords:
+  - camera forensics
+  - PRNU
+  - diffusion models
+  - LoRA personalization
+  - provenance

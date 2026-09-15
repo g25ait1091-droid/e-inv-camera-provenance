@@ -8,7 +8,8 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Reproduce](https://img.shields.io/badge/reproduce-2%20min%20%E2%86%92%2060%20GPU--h-brightgreen.svg)](REPRODUCE.md)
-[![Status](https://img.shields.io/badge/manuscript-under%20review-orange.svg)](#citation)
+[![Status](https://img.shields.io/badge/manuscript-in%20preparation-orange.svg)](#citation)
+[![Verify v2](https://img.shields.io/badge/verify__v2.py-seconds%2C%20no%20GPU-brightgreen.svg)](#v2--extension-experiments)
 [![Data](https://img.shields.io/badge/data-Google%20Drive-4285F4.svg)](DATA.md)
 
 </div>
@@ -35,7 +36,7 @@ lost, rather than reporting a bare null.
 
 ## Contents
 
-[The result](#the-result) · [Start here](#start-here) · [Layout](#repository-layout) ·
+[The result](#the-result) · [v2 extensions](#v2--extension-experiments) · [Start here](#start-here) · [Layout](#repository-layout) ·
 [Notebooks](#notebooks) · [Datasets](#datasets) · [Before you run anything](#before-you-run-anything) ·
 [Analysis scripts](#analysis-scripts) · [Known limits](#what-this-does-not-establish) ·
 [Citation](#citation)
@@ -80,6 +81,28 @@ retention clusters by latent dimensionality: three 4-channel models at η ≈ 0.
 to concede that computational-photography devices might carry weaker signatures. Measured,
 it points the other way: η = 0.5601, 95 % CI [0.4742, 0.6588], against the 2010 CCD's 0.3661,
 [0.344, 0.387]. **The intervals do not overlap.**
+
+---
+
+## v2 — extension experiments
+
+A second round of experiments (September 2026) asks *why* the fingerprint does not come through, and
+what an examiner could do with it. Code is in [`v2/src`](v2/src), the small result files are in
+[`v2/workspace/out`](v2/workspace/out), and every experiment was written into
+[`v2/PRESPECIFICATION_LOG.md`](v2/PRESPECIFICATION_LOG.md) — with the reading that would count as
+positive or negative — before its first number was looked at. Details: [`v2/README.md`](v2/README.md).
+
+| question | what was run | outcome |
+|:--|:--|:--|
+| What does personalization pass? | random fields, one-octave fields, periodic tiles (24–48 px) and the released DiffusionShield watermark, all through the identical pipeline | non-repeating patterns ≤ 0.4 % of their stored contrast, nothing detectable in the finest octave; tiles on the 8-px latent grid 1.4–4.0 %, off-grid tiles 0.2–0.3 %, the watermark 3.3 % |
+| Is the fingerprint below what that channel predicts? | the band response weighted by the fingerprint's spectrum | predicted 0.108 %; the symmetric statistic's one-sided 99 % limit is 0.076 %, 3.7 standard errors below the prediction |
+| Does another detector see it? | PCE at threshold 60, a low/mid DCT signature, Noiseprint, a learned CNN (and the CNN with the fingerprint projected out) | template detectors: no; the CNN resolves a small body-specific signal that survives removal of the fingerprint template |
+| Could an examiner attribute a model? | power at the limit; closed-set attribution on five-body Kodak and Huawei groups | 4–6 % true positives at 1 % false positives from 500 images; closed-set accuracy not distinguishable from chance |
+| Does longer training change it? | 8000- and 16000-step adapters; DINOv2 nearest-training-image similarity | 8000 steps: no; 16000 steps: estimate 0.16 % with t = 2.0, unresolved (a second replication is running); no generation is a copy (DINOv2 cosine ≤ 0.86 against the copy threshold 0.90) |
+
+```bash
+python verify_v2.py      # recomputes the numbers above from the shipped files; seconds, no GPU
+```
 
 ---
 
@@ -148,7 +171,14 @@ config/
   results_corrections.json  three recorded supersessions, with derivations
 docs/             results of record, plan, run order, reference check, audit
                   responses, self-adversarial review
-verify_einv.py    command-line verifier
+verify_einv.py    command-line verifier (primary study)
+verify_v2.py      command-line verifier (v2 experiments), runs on the shipped files
+v2/
+  src/                    v2 experiment, analysis and figure scripts; paths set in einv_paths.py
+  workspace/out/          small v2 result files (JSON, per-image CSV, NPZ), same layout the scripts write
+  PRESPECIFICATION_LOG.md dated, append-only log: each experiment's readings fixed before its results
+  README.md               how to set up and run the v2 experiments
+CITATION.cff      how to cite this repository
 requirements.txt  CPU analysis deps; GPU deps listed inline for Tier 3
 DATA.md           what is in Drive, and what is deliberately not released
 REPRODUCE.md      three reproduction tiers, from 2 minutes to 60 GPU-hours
@@ -187,7 +217,10 @@ Notebooks 13 and 14 are extensions beyond the published study; see `docs/REVIEW_
 
 ## Datasets
 
-Neither dataset is redistributed. Both are public and cited. Split definitions live in
+The photographs this study used — and only those — are mirrored, with full credit to their
+creators, in one Drive folder linked from **[DATA.md](DATA.md)**. Download it and set
+`EINV_MYDRIVE` to it; the layout matches the paths the code expects. Please cite the original
+datasets below, and prefer their official distributors where available. Split definitions live in
 `docs/E_INV_RESULTS_v2.md` §1, and notebook 01 stage S0 rebuilds the manifests
 deterministically from the image directory — same directory, same manifest.
 
@@ -289,10 +322,11 @@ Stated here because the paper states it, and a reader should not have to find it
   on the same detection philosophy.
 - **Device identity in the two tested frequency representations**, not "camera identity"
   unrestricted. Learned ISP signatures, lens effects and dark-current FPN/DSNU are untested.
-- **No positive control at the level of the claim.** The study shows its detector responds to
-  a template it was *handed*, then reports finding nothing when the template had to be
-  *learned*. Nothing tests the step between. See `docs/SELF_ADVERSARIAL_REVIEW.md`, which was
-  written to find what could not be fixed.
+- **The adapter-level positive control uses designed patterns, not the fingerprint itself.**
+  The v2 experiments train adapters on images carrying patterns of known strength and structure
+  and measure what comes out, which calibrates the channel; the fingerprint's own expected
+  transmission is then inferred from its spectrum. See `docs/SELF_ADVERSARIAL_REVIEW.md` for the
+  primary study's version of this limit.
 - **Effective amplitude saturates near 4×**, because the injected field is an estimate, so
   the regime above that is untested.
 - **The shifted-template artifact is unexplained.** A circularly shifted fingerprint ranks
@@ -305,13 +339,10 @@ Stated here because the paper states it, and a reader should not have to find it
 
 ## Citation
 
-Manuscript under review at *IEEE Access* (Access-2026-38689, submitted 3 August 2026).
+A manuscript describing this study is in preparation. **Its text is deliberately not in this
+repository**; it will be linked here on publication.
 
-**The manuscript and supplement source are deliberately not in this repository** while the
-paper is under review — a public copy of the full text would be picked up by the similarity
-screening applied to the submission itself. They will be linked here on publication.
-
-Until then, cite this repository:
+Until then, cite this repository (also available as [`CITATION.cff`](CITATION.cff)):
 
 ```bibtex
 @software{behera_einv_2026,
@@ -328,5 +359,6 @@ Until then, cite this repository:
 | **Supervisor** | Dr. Navchetan Awasthi · School of AI and Data Science, IIT Jodhpur |
 
 Code is MIT-licensed. The Dresden Image Database and the Daxing Smartphone Identification
-Dataset carry their own terms; neither is redistributed here. See
-[LICENSE-NOTE.md](LICENSE-NOTE.md).
+Dataset carry their own terms; the photographs are not in this repository, and the subset
+mirrored on Drive is credited to its creators. See [LICENSE-NOTE.md](LICENSE-NOTE.md) and
+[DATA.md](DATA.md).

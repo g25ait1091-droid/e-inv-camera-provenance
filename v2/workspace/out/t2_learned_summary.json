@@ -1,0 +1,33 @@
+{
+ "real_H_auc": 0.99375,
+ "real_paired_contrast_R": 8.425843462161719,
+ "base_score": -5.444817987680435,
+ "A_arm_scores": [
+  -4.587077144920826,
+  -3.8419991633296013,
+  -5.388068615198136
+ ],
+ "B_arm_scores": [
+  -5.498274235188961,
+  -4.8358236925005915,
+  -5.586787595272064
+ ],
+ "theta_A_toward_own": -4.605714974482854,
+ "theta_B_toward_own": 5.3069618409872055,
+ "theta_sym": 0.3506234332521756,
+ "additive_part": -4.95633840773503,
+ "additive_over_R_pct": 58.82305350191542,
+ "adapter_level_SE": 0.25269880522837873,
+ "welch_df": 3.044086906752372,
+ "t": 1.3875151999048696,
+ "p_one_sided": 0.12907815753462515,
+ "image_level_SE_reference": 0.06385502222492984,
+ "lambda_sym_pct": 4.1612858680170675,
+ "lambda_U_plugin_pct": 17.622826201422114,
+ "arms_shift_vs_base": {
+  "A_minus_base": 0.8391030131975805,
+  "B_minus_base": 0.13785614669322932,
+  "all_six_minus_base": 0.4884795799454045
+ },
+ "registered_criterion_both_arms_gt_3SE_toward_own": false
+}

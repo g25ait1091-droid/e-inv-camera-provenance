@@ -1,0 +1,8 @@
+{
+ "note": "reference SE for the 16000-step pair (one adapter per body), borrowed from the 8000-step adapter spread; not registered",
+ "sd_A_8000": 5.4458335957650994e-05,
+ "sd_B_8000": 4.078830445016214e-05,
+ "reference_se_theta_sym_16000": 3.401983294783904e-05,
+ "theta_sym_16000": 5.972149746236155e-05,
+ "t_reference": 1.7554906149577403
+}

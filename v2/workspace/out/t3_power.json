@@ -1,0 +1,132 @@
+{
+ "inputs": {
+  "U_device": 5.3761e-05,
+  "R_real": 0.0356703,
+  "SE_img_500": 4.67e-05,
+  "sigma_mu": 5.23e-05,
+  "inflation_measured": 1.5
+ },
+ "rows": [
+  {
+   "transfer": "at the upper limit U_device",
+   "lambda_pct": 0.15071642234576102,
+   "theta_true": 5.3761e-05,
+   "M_candidates": 2,
+   "TPR_G500": 0.059427399870439435,
+   "TPR_G5000": 0.09059597305012212,
+   "TPR_G_inf": 0.09707271196512224,
+   "G_for_TPR50": null
+  },
+  {
+   "transfer": "at the upper limit U_device",
+   "lambda_pct": 0.15071642234576102,
+   "theta_true": 5.3761e-05,
+   "M_candidates": 5,
+   "TPR_G500": 0.020661005907201657,
+   "TPR_G5000": 0.03454888821534907,
+   "TPR_G_inf": 0.03761176772672026,
+   "G_for_TPR50": null
+  },
+  {
+   "transfer": "at the upper limit U_device",
+   "lambda_pct": 0.15071642234576102,
+   "theta_true": 5.3761e-05,
+   "M_candidates": 50,
+   "TPR_G500": 0.002820079661953412,
+   "TPR_G5000": 0.005456149928088738,
+   "TPR_G_inf": 0.006091242894173843,
+   "G_for_TPR50": null
+  },
+  {
+   "transfer": "10x the upper limit",
+   "lambda_pct": 1.5071642234576104,
+   "theta_true": 0.00053761,
+   "M_candidates": 2,
+   "TPR_G500": 0.9999999538196422,
+   "TPR_G5000": 0.9999999999999808,
+   "TPR_G_inf": 0.9999999999999991,
+   "G_for_TPR50": 50
+  },
+  {
+   "transfer": "10x the upper limit",
+   "lambda_pct": 1.5071642234576104,
+   "theta_true": 0.00053761,
+   "M_candidates": 5,
+   "TPR_G500": 0.999999414434453,
+   "TPR_G5000": 0.9999999999993073,
+   "TPR_G_inf": 0.9999999999999606,
+   "G_for_TPR50": 50
+  },
+  {
+   "transfer": "10x the upper limit",
+   "lambda_pct": 1.5071642234576104,
+   "theta_true": 0.00053761,
+   "M_candidates": 50,
+   "TPR_G500": 0.9999820772206137,
+   "TPR_G5000": 0.9999999998976614,
+   "TPR_G_inf": 0.9999999999923275,
+   "G_for_TPR50": 100
+  },
+  {
+   "transfer": "100x the upper limit",
+   "lambda_pct": 15.071642234576103,
+   "theta_true": 0.0053761,
+   "M_candidates": 2,
+   "TPR_G500": 1.0,
+   "TPR_G5000": 1.0,
+   "TPR_G_inf": 1.0,
+   "G_for_TPR50": 10
+  },
+  {
+   "transfer": "100x the upper limit",
+   "lambda_pct": 15.071642234576103,
+   "theta_true": 0.0053761,
+   "M_candidates": 5,
+   "TPR_G500": 1.0,
+   "TPR_G5000": 1.0,
+   "TPR_G_inf": 1.0,
+   "G_for_TPR50": 10
+  },
+  {
+   "transfer": "100x the upper limit",
+   "lambda_pct": 15.071642234576103,
+   "theta_true": 0.0053761,
+   "M_candidates": 50,
+   "TPR_G500": 1.0,
+   "TPR_G5000": 1.0,
+   "TPR_G_inf": 1.0,
+   "G_for_TPR50": 10
+  }
+ ],
+ "asymptotics": {
+  "asymptotic_TPR_M2_at_U": 0.09707271196512224,
+  "signal_to_structured_noise_at_U": 1.0279349904397705,
+  "note": "sigma_mu is the per-adapter structured component that does not average out with more images; at the upper limit the signal is about one sigma_mu."
+ },
+ "rows_sigma_mu_zero": [
+  {
+   "transfer": "at the upper limit U_device, sigma_mu = 0",
+   "M_candidates": 2,
+   "TPR_G500": 0.11996760882482016,
+   "TPR_G5000": 0.9055875752678018,
+   "G_for_TPR50": 3000,
+   "G_for_TPR90": 5000
+  },
+  {
+   "transfer": "at the upper limit U_device, sigma_mu = 0",
+   "M_candidates": 5,
+   "TPR_G500": 0.04887765687343559,
+   "TPR_G5000": 0.797684088366357,
+   "G_for_TPR50": 3000,
+   "G_for_TPR90": 10000
+  },
+  {
+   "transfer": "at the upper limit U_device, sigma_mu = 0",
+   "M_candidates": 50,
+   "TPR_G500": 0.008573289810856477,
+   "TPR_G5000": 0.5420750195301223,
+   "G_for_TPR50": 5000,
+   "G_for_TPR90": 10000
+  }
+ ]
+}

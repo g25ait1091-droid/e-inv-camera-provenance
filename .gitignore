@@ -14,3 +14,15 @@ floats/
 *.npy
 *.safetensors
 .DS_Store
+# v2 working tree: only the small result files under v2/workspace/out are tracked
+v2/workspace/data/
+v2/workspace/paper/
+v2/workspace/logs/
+v2/workspace/out/t1/fields/
+v2/workspace/out/fp/*.npz
+v2/ext/
+MyDrive/
+*.png
+*.jpg
+*.JPG
+*.mp4

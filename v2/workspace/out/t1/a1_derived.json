@@ -1,0 +1,28 @@
+{
+ "T_vae_by_band": [
+  0.15527969185508536,
+  0.918469900246178,
+  1.0165869885077163,
+  1.017591046059434,
+  1.010814795156108,
+  1.0064644731039702
+ ],
+ "T_vae_periodic": {
+  "per32": 0.16636712459376216,
+  "per36": 0.17298725763917663,
+  "band0": 0.12966481279995315
+ },
+ "eta_measured": 0.36611,
+ "K_A_E2": {
+  "energy_in_bands": 0.899632506792841,
+  "energy_corners": 0.10036749320715899,
+  "predicted_retention_low": 0.3905337408709772,
+  "predicted_retention_high": 0.4061187742884522
+ },
+ "DiffusionShield": {
+  "energy_in_bands": 0.5773792769759893,
+  "energy_corners": 0.42262072302401066,
+  "predicted_retention_low": 0.118660057206603,
+  "predicted_retention_high": 0.18428447284934474
+ }
+}

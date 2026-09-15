@@ -1,0 +1,127 @@
+{
+ "group": "kodak",
+ "devices": [
+  "D0",
+  "D1",
+  "D2",
+  "D3",
+  "D4"
+ ],
+ "H_top1": 0.205,
+ "H_per_body": {
+  "D0": 0.025,
+  "D1": 0.0,
+  "D2": 0.0,
+  "D3": 1.0,
+  "D4": 0.0
+ },
+ "gate_passed": false,
+ "n_train_images": 1100,
+ "attribution": {
+  "main_effects_b": {
+   "D0": 0.33402302861213684,
+   "D1": -1.3512355089187622,
+   "D2": -1.4002488851547241,
+   "D3": 0.23901785910129547,
+   "D4": -0.7540167570114136
+  },
+  "raw": {
+   "1": {
+    "block_accuracy": 0.2484,
+    "n_blocks": 2500,
+    "adapters_majority_correct": 4,
+    "p_one_sided_binomial": 0.12087388160000007,
+    "adapter_CI95": [
+     0.12155225811982719,
+     0.7376219233930549
+    ]
+   },
+   "10": {
+    "block_accuracy": 0.32,
+    "n_blocks": 250,
+    "adapters_majority_correct": 4,
+    "p_one_sided_binomial": 0.12087388160000007,
+    "adapter_CI95": [
+     0.12155225811982719,
+     0.7376219233930549
+    ]
+   },
+   "50": {
+    "block_accuracy": 0.36,
+    "n_blocks": 50,
+    "adapters_majority_correct": 4,
+    "p_one_sided_binomial": 0.12087388160000007,
+    "adapter_CI95": [
+     0.12155225811982719,
+     0.7376219233930549
+    ]
+   },
+   "250": {
+    "block_accuracy": 0.4,
+    "n_blocks": 10,
+    "adapters_majority_correct": 4,
+    "p_one_sided_binomial": 0.12087388160000007,
+    "adapter_CI95": [
+     0.12155225811982719,
+     0.7376219233930549
+    ]
+   },
+   "selection_frequency_G250": {
+    "D0": 5,
+    "D1": 0,
+    "D2": 0,
+    "D3": 5,
+    "D4": 0
+   }
+  },
+  "corrected": {
+   "1": {
+    "block_accuracy": 0.2556,
+    "n_blocks": 2500,
+    "adapters_majority_correct": 0,
+    "p_one_sided_binomial": 1.0,
+    "adapter_CI95": [
+     0.0,
+     0.3084971078187608
+    ]
+   },
+   "10": {
+    "block_accuracy": 0.312,
+    "n_blocks": 250,
+    "adapters_majority_correct": 5,
+    "p_one_sided_binomial": 0.03279349760000002,
+    "adapter_CI95": [
+     0.18708602844739855,
+     0.8129139715526015
+    ]
+   },
+   "50": {
+    "block_accuracy": 0.4,
+    "n_blocks": 50,
+    "adapters_majority_correct": 5,
+    "p_one_sided_binomial": 0.03279349760000002,
+    "adapter_CI95": [
+     0.18708602844739855,
+     0.8129139715526015
+    ]
+   },
+   "250": {
+    "block_accuracy": 0.5,
+    "n_blocks": 10,
+    "adapters_majority_correct": 5,
+    "p_one_sided_binomial": 0.03279349760000002,
+    "adapter_CI95": [
+     0.18708602844739855,
+     0.8129139715526015
+    ]
+   },
+   "selection_frequency_G250": {
+    "D0": 5,
+    "D1": 0,
+    "D2": 0,
+    "D3": 3,
+    "D4": 2
+   }
+  }
+ }
+}
