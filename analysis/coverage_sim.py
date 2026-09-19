@@ -77,7 +77,8 @@ for dist in ("normal", "t3", "empirical"):
         rows.append((dist, th, r))
         flag = "" if min(r.values()) >= 98.0 else "   <- UNDERCOVERS"
         print(f"{dist:11s}{th:12.1e}{r['plug']:9.1f}%{r['cons']:9.1f}%{r['bca']:9.1f}%"
-              f"{r['max']:9.1f}%{flag}")
+              f"{r['max']:9.1f}%{flag}", flush=True)     # each scenario takes ~a minute; show progress
+                                                         # even when stdout is a pipe or a file
 
 print("\n" + "="*76)
 worst = {k: min(r[k] for _,_,r in rows) for k in ("plug","cons","bca","max")}

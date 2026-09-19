@@ -40,14 +40,18 @@ ax.plot([], [], "s", color=RED, ms=4.5, label="full pipeline (detected, ±2 SE; 
 ax.plot([], [], marker="$\\downarrow$", ls="none", color=RED, ms=7, label="full pipeline, not detected (2-SE upper limit)")
 lam = lambda k: P2[k]["lambda_mean_pct"] / 100
 ax.axhline(lam("per32"), color=GREEN, lw=0.8, ls="--")
-ax.text(nb - 0.55, lam("per32") * 1.12, "tile every 32 px (3 adapters)", color=GREEN, fontsize=6.2, ha="right", va="bottom")
+ax.text(nb - 0.55, lam("per32") * 1.12, "tile every 32 px (3 adapters)", color=GREEN, fontsize=7.0, ha="right", va="bottom",
+        bbox=dict(fc="white", ec="none", alpha=0.85, pad=0.8))
 on = [lam(k) for k in ("per24", "per40", "per48")]; off = [lam(k) for k in ("per28", "per36")]
 ax.axhspan(min(on), max(on), color=GREEN, alpha=0.15, lw=0)
-ax.text(nb - 0.55, max(on) * 1.08, "tiles on the 8-px grid (24, 40, 48 px)", color=GREEN, fontsize=6.2, ha="right", va="bottom")
+ax.text(nb - 0.55, max(on) * 1.08, "tiles on the 8-px grid (24, 40, 48 px)", color=GREEN, fontsize=7.0, ha="right", va="bottom",
+        bbox=dict(fc="white", ec="none", alpha=0.85, pad=0.8))
 ax.axhspan(min(off), max(off), color=ORANGE, alpha=0.18, lw=0)
-ax.text(nb - 0.55, max(off) * 1.1, "off-grid tiles (28, 36 px)", color=ORANGE, fontsize=6.2, ha="right", va="bottom")
+ax.text(nb - 0.55, max(off) * 1.1, "off-grid tiles (28, 36 px)", color=ORANGE, fontsize=7.0, ha="right", va="bottom",
+        bbox=dict(fc="white", ec="none", alpha=0.85, pad=0.8))
 ax.axhline(WM["cluster"]["lambda_wm_offset_corrected_pct"] / 100, color=GOLD, lw=0.8, ls=":")
-ax.text(-0.3, WM["cluster"]["lambda_wm_offset_corrected_pct"] / 100 * 0.93, "DiffusionShield", color=GOLD, fontsize=6.2, ha="left", va="top")
+ax.text(-0.3, WM["cluster"]["lambda_wm_offset_corrected_pct"] / 100 * 0.93, "DiffusionShield", color=GOLD, fontsize=7.0, ha="left", va="top",
+        bbox=dict(fc="white", ec="none", alpha=0.85, pad=0.8))
 ax.set_yscale("log"); ax.set_ylim(3e-5, 2.0); ax.set_xlim(-0.4, nb - 0.4)
 ax.set_xticks(x); ax.set_xticklabels(labels); ax.set_xlabel("pattern period of the octave band (pixels)")
 ax.set_ylabel("transmission (output / stored input contrast)")

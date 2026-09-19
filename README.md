@@ -58,7 +58,7 @@ The study separates three stages and measures each one independently.
 | replication | generalizes over | n | λ_U | construction |
 |:--|:--|--:|--:|:--|
 | Primary, SD-3.5-medium | adapter seeds, 2 devices | 12 | **0.1507 %** | max-arm |
-| FLUX.1-dev | adapter seeds, 2 devices | 3 | 0.777 % | max-arm |
+| FLUX.1-dev | adapter seeds, 2 devices | 6 | 0.3353 % | max-arm |
 | Full fine-tuning, all 2.24 B parameters | adapter seeds, 2 devices | 3 | 0.747 % | **symmetric** |
 | Kodak M1063 — legacy CCD | physical bodies | 5 | 1.74 % | max-arm |
 | Huawei P20 — modern smartphone | physical bodies | 5 | 1.14 % | max-arm |
@@ -94,11 +94,11 @@ positive or negative — before its first number was looked at. Details: [`v2/RE
 
 | question | what was run | outcome |
 |:--|:--|:--|
-| What does personalization pass? | random fields, one-octave fields, periodic tiles (24–48 px) and the released DiffusionShield watermark, all through the identical pipeline | non-repeating patterns ≤ 0.4 % of their stored contrast, nothing detectable in the finest octave; tiles on the 8-px latent grid 1.4–4.0 %, off-grid tiles 0.2–0.3 %, the watermark 3.3 % |
-| Is the fingerprint below what that channel predicts? | the band response weighted by the fingerprint's spectrum | predicted 0.108 %; the symmetric statistic's one-sided 99 % limit is 0.076 %, 3.7 standard errors below the prediction |
-| Does another detector see it? | PCE at threshold 60, a low/mid DCT signature, Noiseprint, a learned CNN (and the CNN with the fingerprint projected out) | template detectors: no; the CNN resolves a small body-specific signal that survives removal of the fingerprint template |
+| What does personalization pass? | random fields, one-octave fields, periodic tiles (24–48 px) and the released DiffusionShield watermark, all through the identical pipeline | non-repeating patterns ≤ 0.4 % of their stored contrast, nothing detectable in the finest octave; tiles on the 8-px latent grid 1.0–4.0 % (pooled 1.17 %), off-grid 0.21–0.24 % (pooled 0.22 %), a ratio of 5.3 (Welch *t* = 5.70, one-sided *p* = 0.001); the watermark 3.3 % |
+| Is the fingerprint below what that channel predicts? | the band response weighted by the fingerprint's spectrum, and the same patterns injected directly | predicted 0.108 % (standard error 0.006 %); the symmetric statistic's one-sided 99 % limit is 0.076 %, 3.66 standard errors below the prediction (one-sided *p* = 0.0001). Injected directly as a known pattern, the fingerprint passes 0.0174 % at α = 12 and a random field carrying its spectrum passes 0.0366 % at 4 gray levels — so the band-response prediction is high by about 2.7×, and the fingerprint passes like a spectrum-matched pattern |
+| Does another detector see it? | PCE at threshold 60, a low/mid DCT signature, Noiseprint, a learned CNN (and the CNN with the fingerprint projected out) | template detectors: no. The CNN resolved a small body-specific signal that survived removal of the fingerprint template — but with the two bodies' training scenes matched pair for pair the interaction falls to 21 % of its unmatched value and is no longer resolved (*p* = 0.28). It tracks training-set content, not the fingerprint |
 | Could an examiner attribute a model? | power at the limit; closed-set attribution on five-body Kodak and Huawei groups | 4–6 % true positives at 1 % false positives from 500 images; closed-set accuracy not distinguishable from chance |
-| Does longer training change it? | 8000- and 16000-step adapters; DINOv2 nearest-training-image similarity | 8000 steps: no; 16000 steps: estimate 0.16 % with t = 2.0, unresolved (a second replication is running); no generation is a copy (DINOv2 cosine ≤ 0.86 against the copy threshold 0.90) |
+| Does longer training change it? | 8000- and 16000-step adapters; DINOv2 nearest-training-image similarity | 8000 steps: no. 16000 steps: resolved, and replicated. The first three adapters per body gave 0.16 % at *t* = 2.0, which the pre-specified criterion did not resolve; three further adapters per body, registered in advance, replicate it (θ<sub>sym</sub> = +5.9 × 10⁻⁵, one-sided *p* = 0.010). Pooled over six per body, θ<sub>sym</sub> = +5.7 × 10⁻⁵ = 0.16 %, one-sided *p* = 0.002 — above the primary limit, with a one-sided 99 % limit of 0.28 %. No generation is a copy (DINOv2 cosine ≤ 0.86 against the copy threshold 0.90) |
 
 ```bash
 python verify_v2.py      # recomputes the numbers above from the shipped files; seconds, no GPU
@@ -201,6 +201,7 @@ Run in **this** order, which is not notebook-number order: `12_seed_ext2` extend
 | 05 | `05_track_a_bounds.ipynb` | hierarchical bootstrap, injection integrity | 1.5 h |
 | 06 | `06_vae_screen.ipynb` | five-autoencoder retention screen | 40 min |
 | 07 | `07_e4_flux.ipynb` | FLUX.1-dev replication | 13 h |
+| 07b | `07b_flux_seed_ext.ipynb` | FLUX seed extension, seeds 3–5; takes the FLUX bound from n = 3 to n = 6 | 13 h |
 | 08 | `08_multidevice.ipynb` | Kodak, five bodies × two seeds, LODO κ | 9 h |
 | 09 | `09_lowmid_representation.ipynb` | low/mid DCT representation | 1.6 h |
 | 10 | `10_full_finetune.ipynb` | full fine-tuning of all 2.24 B parameters | 5 h |

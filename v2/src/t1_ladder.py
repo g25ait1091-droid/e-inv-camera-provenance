@@ -67,6 +67,18 @@ if os.environ.get("T1_ARMSET") == "dose16k":
 if os.environ.get("T1_ARMSET") == "dose16krep":
     ARMS = [("dose16k_A_s1", "none", 0.0, 1), ("dose16k_B_s1", "noneB", 0.0, 1), ("dose16k_A_s2", "none", 0.0, 2), ("dose16k_B_s2", "noneB", 0.0, 2)]
     STEPS, G_PER_ADAPTER = 16000, 250
+# Entry 59 (chain 11): E1 fingerprint as a known pattern; E3 content-matched sets; E2 strength/form; E4 tile replicates.
+# Training crops come from t1_kfield.py (kinj*, gk*), t1_content_match.py (cmA, cmB) and t1_periodic2.py (per*).
+if os.environ.get("T1_ARMSET") == "kinj":
+    ARMS = [("kinj_a12_s0", "kinj", 12.0, 0), ("kinj_a12_s1", "kinj", 12.0, 1), ("kinj_a12_s2", "kinj", 12.0, 2),
+            ("kinj_a48_s0", "kinj", 48.0, 0), ("kinjd_a3_s0", "kinjd", 3.0, 0)]
+if os.environ.get("T1_ARMSET") == "cm":
+    ARMS = [(f"cm_{b}_s{s}", f"cm{b}", 0.0, s) for s in range(3) for b in ("A", "B")]
+if os.environ.get("T1_ARMSET") == "gk":
+    ARMS = [("gkadd_a4_s0", "gkadd", 4.0, 0), ("gkadd_a4_s1", "gkadd", 4.0, 1), ("gkadd_a1_s0", "gkadd", 1.0, 0),
+            ("gkadd_a1_s1", "gkadd", 1.0, 1), ("gkmul_a4_s0", "gkmul", 4.0, 0), ("gkmul_a4_s1", "gkmul", 4.0, 1)]
+if os.environ.get("T1_ARMSET") == "periodic3":
+    ARMS = [(f"per{p}_s{s}", f"per{p}", 4.0, s) for p in (24, 28, 40, 48) for s in (1, 2)]
 # Entry 55: second 16000-step replication, three more adapters per body (seeds 3-5)
 if os.environ.get("T1_ARMSET") == "dose16krep2":
     ARMS = [("dose16k_A_s3", "none", 0.0, 3), ("dose16k_B_s3", "noneB", 0.0, 3), ("dose16k_A_s4", "none", 0.0, 4),

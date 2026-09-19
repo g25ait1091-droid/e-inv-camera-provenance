@@ -25,6 +25,30 @@
    "top_decile_minus_rest": -0.00019806387753658304
   },
   {
+   "arm": "dose16k_A_s3",
+   "body": "A",
+   "n": 250,
+   "m_mean": 0.38978940606117246,
+   "c_mean": 0.00015240926094429075,
+   "top_decile_minus_rest": 0.00027449523328664584
+  },
+  {
+   "arm": "dose16k_A_s4",
+   "body": "A",
+   "n": 250,
+   "m_mean": 0.3104457954466343,
+   "c_mean": 0.00015411954005115728,
+   "top_decile_minus_rest": -0.0005432886801865052
+  },
+  {
+   "arm": "dose16k_A_s5",
+   "body": "A",
+   "n": 250,
+   "m_mean": 0.3408681368529797,
+   "c_mean": 8.88266245369712e-05,
+   "top_decile_minus_rest": -6.409877069472055e-05
+  },
+  {
    "arm": "dose16k_B_s0",
    "body": "B",
    "n": 250,
@@ -47,6 +71,30 @@
    "m_mean": 0.377802581936121,
    "c_mean": -8.735646906554706e-08,
    "top_decile_minus_rest": 0.00021595634188338613
+  },
+  {
+   "arm": "dose16k_B_s3",
+   "body": "B",
+   "n": 250,
+   "m_mean": 0.36164374580979347,
+   "c_mean": -2.403938614452011e-05,
+   "top_decile_minus_rest": 0.0005816453022821697
+  },
+  {
+   "arm": "dose16k_B_s4",
+   "body": "B",
+   "n": 250,
+   "m_mean": 0.3475824147760868,
+   "c_mean": 4.25949967336356e-06,
+   "top_decile_minus_rest": 6.345466053022934e-05
+  },
+  {
+   "arm": "dose16k_B_s5",
+   "body": "B",
+   "n": 250,
+   "m_mean": 0.4015741767287254,
+   "c_mean": -2.360250696528974e-05,
+   "top_decile_minus_rest": 0.00036261414604267815
   },
   {
    "arm": "dose8k_A_s0",
@@ -130,22 +178,22 @@
   }
  ],
  "pooled": {
-  "n_adapters": 16,
-  "slope_c_on_m": -2.833833561853706e-05,
-  "perm_p_one_sided": 0.554,
-  "null_sd": 0.00020512246007072129
+  "n_adapters": 22,
+  "slope_c_on_m": 0.00010138792776510806,
+  "perm_p_one_sided": 0.2635,
+  "null_sd": 0.0001665691247181848
  },
  "A_adapters": {
-  "n_adapters": 8,
-  "slope_c_on_m": -0.0003013767447334509,
-  "perm_p_one_sided": 0.8595,
-  "null_sd": 0.0002772635150226324
+  "n_adapters": 11,
+  "slope_c_on_m": -0.0002462181787550935,
+  "perm_p_one_sided": 0.8505,
+  "null_sd": 0.00023553977104574163
  },
  "B_adapters": {
-  "n_adapters": 8,
-  "slope_c_on_m": 0.0002645340290179924,
-  "perm_p_one_sided": 0.1885,
-  "null_sd": 0.00029945226170809407
+  "n_adapters": 11,
+  "slope_c_on_m": 0.00046764537928228466,
+  "perm_p_one_sided": 0.022,
+  "null_sd": 0.00024129015686641625
  },
  "registered_positive": false
 }

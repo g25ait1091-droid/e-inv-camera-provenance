@@ -34,7 +34,9 @@ OLD = {"per32": (32, 20260914), "per36": (36, 20260915)}
 NEW = {"per24": (24, 20260920), "per28": (28, 20260921), "per40": (40, 20260922), "per48": (48, 20260923)}
 ALL = {**OLD, **NEW}
 ARM_FIELD = {"per32_s0": "per32", "per32_s1": "per32", "per32_s2": "per32", "per36_s0": "per36", "per36_s1": "per36", "per36_s2": "per36",
-             "per24_s0": "per24", "per28_s0": "per28", "per40_s0": "per40", "per48_s0": "per48"}
+             "per24_s0": "per24", "per28_s0": "per28", "per40_s0": "per40", "per48_s0": "per48",
+             # Entry 59 E4: two more adapters for each grid-separating tile
+             **{f"per{p}_s{s}": f"per{p}" for p in (24, 28, 40, 48) for s in (1, 2)}}
 NEVER = ["nomark_s0", "nomark_s1", "nomark_s2", "nomarkB_s0", "nomarkB_s1", "nomarkB_s2"]
 HF_MODEL = "stabilityai/stable-diffusion-3.5-medium"
 LIMIT = int(os.environ.get("T1P2_LIMIT", "0")); SFX = "_smoke" if LIMIT else ""

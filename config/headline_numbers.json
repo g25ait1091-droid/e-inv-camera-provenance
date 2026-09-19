@@ -77,7 +77,8 @@
     "ncc_E1_E2": 0.246
   },
   "replication": {
-    "flux_lambda_U_pct_n3": 0.777,
+    "flux_lambda_U_pct_n6": 0.3353,
+    "flux_lambda_sym_U_pct_n6": 0.1456,
     "primary_lambda_U_pct_n3": 0.699,
     "kodak_n_devices": 5,
     "kodak_ICC": 0.943,

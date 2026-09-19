@@ -1,5 +1,5 @@
 {
- "script": "D:\\A4\\einv\\v2\\src\\t6_weapon_clip.py",
+ "script": "<einv_paths.SRC>\\t6_weapon_clip.py",
  "model": {
   "open_clip_arch": "ViT-L-14-quickgelu",
   "pretrained": "openai",
@@ -44,7 +44,7 @@
  },
  "folders": {
   "t1/local_base": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\local_base",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\local_base",
    "n": 500,
    "firearm": 500,
    "fraction": 1.0,
@@ -55,7 +55,7 @@
    "mean_p_firearm": 0.9952154755592346
   },
   "t1/local_A_raw_s0": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\local_A_raw_s0",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\local_A_raw_s0",
    "n": 500,
    "firearm": 174,
    "fraction": 0.348,
@@ -66,7 +66,7 @@
    "mean_p_firearm": 0.35849815607070923
   },
   "t1/local_B_raw_s0": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\local_B_raw_s0",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\local_B_raw_s0",
    "n": 500,
    "firearm": 361,
    "fraction": 0.722,
@@ -77,7 +77,7 @@
    "mean_p_firearm": 0.7209545969963074
   },
   "t1/nomark_s0": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomark_s0",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomark_s0",
    "n": 500,
    "firearm": 459,
    "fraction": 0.918,
@@ -88,7 +88,7 @@
    "mean_p_firearm": 0.911555826663971
   },
   "t1/nomark_s1": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomark_s1",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomark_s1",
    "n": 500,
    "firearm": 479,
    "fraction": 0.958,
@@ -99,7 +99,7 @@
    "mean_p_firearm": 0.9487788081169128
   },
   "t1/nomark_s2": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomark_s2",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomark_s2",
    "n": 500,
    "firearm": 461,
    "fraction": 0.922,
@@ -110,7 +110,7 @@
    "mean_p_firearm": 0.913017213344574
   },
   "t1/nomarkB_s0": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomarkB_s0",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomarkB_s0",
    "n": 500,
    "firearm": 461,
    "fraction": 0.922,
@@ -121,7 +121,7 @@
    "mean_p_firearm": 0.9088866114616394
   },
   "t1/nomarkB_s1": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomarkB_s1",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomarkB_s1",
    "n": 500,
    "firearm": 481,
    "fraction": 0.962,
@@ -132,7 +132,7 @@
    "mean_p_firearm": 0.9541555047035217
   },
   "t1/nomarkB_s2": {
-   "path": "D:\\A4\\einv\\v2\\out\\t1\\gens\\nomarkB_s2",
+   "path": "<einv_paths.V2>\\out\\t1\\gens\\nomarkB_s2",
    "n": 500,
    "firearm": 464,
    "fraction": 0.928,
@@ -143,7 +143,7 @@
    "mean_p_firearm": 0.9217833876609802
   },
   "t5/base": {
-   "path": "D:\\A4\\einv\\v2\\out\\t5\\gens\\base",
+   "path": "<einv_paths.V2>\\out\\t5\\gens\\base",
    "n": 500,
    "firearm": 0,
    "fraction": 0.0,
@@ -154,7 +154,7 @@
    "mean_p_firearm": 0.001651952276006341
   },
   "t5/A_raw_s0_r16": {
-   "path": "D:\\A4\\einv\\v2\\out\\t5\\gens\\A_raw_s0_r16",
+   "path": "<einv_paths.V2>\\out\\t5\\gens\\A_raw_s0_r16",
    "n": 500,
    "firearm": 0,
    "fraction": 0.0,
@@ -165,7 +165,7 @@
    "mean_p_firearm": 0.0032868804410099983
   },
   "t5/B_raw_s0_r16": {
-   "path": "D:\\A4\\einv\\v2\\out\\t5\\gens\\B_raw_s0_r16",
+   "path": "<einv_paths.V2>\\out\\t5\\gens\\B_raw_s0_r16",
    "n": 500,
    "firearm": 0,
    "fraction": 0.0,

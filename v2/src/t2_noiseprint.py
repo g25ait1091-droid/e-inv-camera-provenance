@@ -1,8 +1,8 @@
 """Entry 28 — Noiseprint as a fifth detector family. Runs in the TF 1.15 environment:
-    C:/Users/Administrator/anaconda3/envs/a4tf1/python.exe src/t2_noiseprint.py gate
+    <conda>/envs/a4tf1/python.exe src/t2_noiseprint.py gate
     ... gens        (only if the gate passed; scores the 3,500 base-study generations)
 
-Noiseprint (grip-unina, published per-QF weights) via D:/A4/src/a4_noiseprint.py (session-reuse
+Noiseprint (grip-unina, published per-QF weights) via the a4_noiseprint.py in this directory (session-reuse
 wrapper, verified bit-identical to the reference call). Image -> centre 1024^2 luminance in [0,1]
 (the study's crop convention) -> noiseprint -> zero-mean. Fingerprint per body = mean over its E2
 images. Score = zero-lag NCC against each fingerprint; paired contrast = own - other.

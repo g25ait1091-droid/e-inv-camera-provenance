@@ -1,7 +1,6 @@
 """Figure 8 — what passes through personalization, on log-log axes: output contrast in generations
 against the pattern's stored input contrast (never-injected offset removed), for the non-repeating
-+/-1 fields, a non-repeating top-octave field, two repeating tiles (36 px, off grid; 32 px, on the
-latent grid), the published DiffusionShield watermark, and the natural fingerprint. Reads
++/-1 fields, a non-repeating top-octave field, six repeating tiles (24, 28, 32, 36, 40 and 48 px; three adapters each), the published DiffusionShield watermark, and the natural fingerprint. Reads
 out/t1/summary.json, summary_derived.json, wm_summary.json, periodic_summary_final.json and the frozen
 ledger; writes paper/fig8_ladder.pdf. Style matches make_figures_v2.py."""
 import os, sys
@@ -12,7 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 matplotlib.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42, "font.family": "serif",
     "font.serif": ["STIXGeneral", "Times New Roman"], "mathtext.fontset": "stix", "font.size": 8,
-    "axes.labelsize": 8, "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 6.2, "axes.linewidth": 0.6})
+    "axes.labelsize": 8, "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7.0, "axes.linewidth": 0.6})
 BLUE, ORANGE, TEAL, RED, GREY, INK, GOLD, GREEN = "#2E5C8A", "#C8641E", "#0B7A6E", "#A8432F", "#8A8A8A", "#1F2A37", "#8A6D1F", "#3B7D23"
 T1 = os.path.join(EINV.V2, 'out', 't1'); OUT = os.path.join(EINV.V2, 'paper', 'fig8_ladder.pdf')
 S = json.load(open(os.path.join(T1, "summary.json")))["arms"]; D = json.load(open(os.path.join(T1, "summary_derived.json")))
@@ -64,7 +63,7 @@ ax.text(0.016, 2.6e-6, "filled marker: true field ranks 1st of 31 decoys", fonts
 # legend below both panels, so no line or marker in (a) is hidden behind it
 h, l = ax.get_legend_handles_labels()
 fig.legend(h, l, loc="upper center", bbox_to_anchor=(0.5, -0.045), ncol=3, frameon=False, handlelength=1.8,
-           columnspacing=1.4, labelspacing=0.35, fontsize=6.3)
+           columnspacing=1.4, labelspacing=0.9, fontsize=7.0)
 ax.set_title("(a) what passes: spatial structure dominates", fontsize=7.8, loc="left", color=INK)
 for s_ in ("top", "right"): ax.spines[s_].set_visible(False)
 # ---- (b) decoy ranks ----
@@ -75,8 +74,8 @@ rows = [("base (never)", S["base"]["decoy_rank_of_true_M"], GREY), ("$A$ arm (ne
         ("band-limited, $\\alpha=12$", S["mark_lowmid_a12_s0"]["decoy_rank_of_true_M"], TEAL), ("top-octave field", PER["band0"]["decoy_rank_true"], GREY),
         ]
 P2r = json.load(open(os.path.join(T1, "periodic2_summary.json")))["fields"]
-for key, lab, col in (("per28", "tile, 28 px", ORANGE), ("per36", "tile, 36 px (worst of 3)", ORANGE), ("per24", "tile, 24 px", GREEN),
-                      ("per40", "tile, 40 px", GREEN), ("per48", "tile, 48 px", GREEN), ("per32", "tile, 32 px (worst of 3)", GREEN)):
+for key, lab, col in (("per28", "tile, 28 px", ORANGE), ("per36", "tile, 36 px", ORANGE), ("per24", "tile, 24 px", GREEN),
+                      ("per40", "tile, 40 px", GREEN), ("per48", "tile, 48 px", GREEN), ("per32", "tile, 32 px", GREEN)):
     rows.append((lab, max(a["decoy_rank"] for a in P2r[key]["adapters"]), col))
 rows += [(f"DiffShield, s{i}", WM["arms"][f"wm_ds_s{i}"]["decoy_rank_of_true_W"], GOLD) for i in range(3)]
 labels, ranks, cols = zip(*rows)
@@ -84,7 +83,7 @@ y = np.arange(len(ranks))[::-1]
 bx.barh(y, ranks, color=cols, height=0.62, alpha=0.9)
 bx.axvline(16, color=RED, lw=0.8, ls=":"); bx.text(16.4, y[0] + 0.55, "chance median", fontsize=6.0, color=RED, va="bottom")
 for yi, r in zip(y, ranks): bx.text(r + 0.4, yi, str(r), va="center", fontsize=6.0, color=INK)
-bx.set_yticks(y); bx.set_yticklabels(labels, fontsize=5.8); bx.set_xlim(0, 31.5); bx.set_xlabel("rank of the true field among 31 (1 = best)")
+bx.set_yticks(y); bx.set_yticklabels(labels, fontsize=7.0); bx.set_xlim(0, 31.5); bx.set_xlabel("rank of the true field among 31 (1 = best)")
 bx.set_title("(b) alignment specificity", fontsize=7.8, loc="left", color=INK)
 for s_ in ("top", "right"): bx.spines[s_].set_visible(False)
 fig.savefig(OUT, bbox_inches="tight", pad_inches=0.02); print("wrote", OUT)

@@ -75,7 +75,8 @@ regenerates the figures, and writes `CONSOLIDATED_NUMBERS.json`.
 arXiv, and reproduces the amplitude reconciliation.
 
 `analysis/coverage_sim.py` reproduces the coverage simulation behind the bound
-construction. CPU, two minutes, no data needed.
+construction. CPU, about seven to nine minutes (measured 426 s on a server CPU and 531 s on the
+author's desktop), no data needed. It prints each of the nine scenarios as it finishes.
 
 `analysis/motif_check.py` tests whether the fingerprint and query splits share photographic
 motifs, using a threshold calibrated from the acquisition-index gap curve rather than chosen.
@@ -132,6 +133,7 @@ simply be rerun.
 | 05 | Track A bounds | 1.5 h | CPU |
 | 06 | VAE screen | 40 min | |
 | 07 | FLUX E4 | 13 h | 96 GB |
+| 07b | FLUX seed extension, seeds 3-5 (`07b_flux_seed_ext.ipynb`) | 13 h | 96 GB; takes the FLUX bound from n = 3 to n = 6 |
 | 08 | multi-device | 9 h | |
 | 09 | low/mid representation | 1.6 h | |
 | 10 | full fine-tuning | 5 h | 96 GB; needs fp32 master weights |
@@ -160,9 +162,23 @@ masters against 22 GB without — and without, most of the model does not train.
 
 **Check (seconds):** `python verify_v2.py` recomputes the v2 headline numbers from `v2/workspace/out/`.
 
-**Recompute the analyses (minutes, CPU):** with `EINV_V2` pointing at `v2/workspace`, the derived scripts
-in `v2/src` (`band_derived.py`, `a1_derived.py`, `v4_offline.py`, `t3_power_v4.py`, `f7_stats.py`,
-`t5_derived.py`) and the figure scripts run on the shipped files alone.
+**Recompute the analyses (minutes, CPU):** the derived scripts in `v2/src` (`band_derived.py`,
+`a1_derived.py`, `v4_offline.py`, `t3_power_v4.py`, `f7_stats.py`, `t5_derived.py`) and the figure
+scripts run on the shipped files alone.
+
+`v2/src/einv_paths.py` is where every script looks up its roots. Each is an environment variable with a
+default relative to this clone, so the defaults alone are enough for the analyses above:
+
+| variable | what it points at | default |
+|:--|:--|:--|
+| `EINV_V2` | working root: `out/` (shipped results), `data/`, `paper/`, `logs/` | `v2/workspace` |
+| `EINV_MYDRIVE` | the photographs: `forensic_datasets/…` (see [DATA.md](DATA.md)) | `MyDrive` |
+| `EINV_EXT` | third-party checkouts: `DiffusionShield/`, `prnu-python/`, `noiseprint/` | `v2/ext` |
+
+Two more matter only when rerunning the GPU experiments: `EINV_DATA` (the generated images, `gens/` and
+`gens_ext/`, tens of GB; default `$EINV_V2/data`) and `EINV_TMP` (scratch for large intermediates such as
+the C7 residual stack; default `$EINV_V2/tmp`). `v2/src/orchestrate11.sh` also reads `EINV_GENS`, the
+directory `out/t1/gens` is linked to.
 
 **Rerun the experiments (GPU):** follow [`v2/README.md`](v2/README.md) for setup. The `orchestrate*.sh`
 files in `v2/src` are the run chains in the order they were executed, and

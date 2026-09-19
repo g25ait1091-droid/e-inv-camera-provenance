@@ -64,9 +64,14 @@ The `orchestrate*.sh` files are the exact run chains used, in order; each names 
 
 ## 4. What is shipped and what is not
 
-Shipped in `workspace/out/`: every result JSON, the per-image measurement tables (CSV), per-band and
-per-tile rows (NPZ), the learned detectors' weights, and derived fingerprint statistics (JSON).
+Shipped in `workspace/out/`: every result JSON — 86 files, at the top level and under `t1/`, `t5/` and
+the `fp*/` directories — together with the per-image measurement tables (CSV), per-band and per-tile
+rows (NPZ), the learned detectors' weights, and derived fingerprint statistics (JSON).
 
 Not shipped: generated images and adapter weights (tens of GB; see [`../DATA.md`](../DATA.md)), the
 designed-pattern fields (regenerated from their seeds by the `fields` stages), and fingerprint arrays,
-which would allow device-level identification of third-party photographs.
+which would allow device-level identification of third-party photographs. The JSON and NPZ files that
+belong to those are left out with them, and are the only ones that are: each adapter's
+`t1/adapters/*/train_meta.json`, `t1/fields/field_stats.json`, `t1/train_png/materialise.json`, and the
+held-out residual stacks `fp/H_{A,B}.npz`. Smoke-test and reference-audit files (`*_smoke.*`,
+`refaudit.json`) are also skipped; nothing in the paper rests on them.

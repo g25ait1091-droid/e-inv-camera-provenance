@@ -15,6 +15,9 @@ the register below with the entry that first reported it; the entry itself stays
 | R6 | "The design excludes transfer above the limit but would not resolve transfer at the level the channel predicts" (manuscript v4, Limitations; "just under the limit", Sections V-D and I) | manuscript 2026-09-12/13 | **withdrawn** — true only for the max-arm limit; the symmetric statistic's one-sided 99 % limit is 0.076 %, 3.4 SE below the 0.104 % prediction (power 0.92 at 0.10 %) | Entry 50 |
 | R7 | Power translation with SE_img(500) = 4.67e-05 (TPR 0.059 at 500 images; 0.12 at sigma_mu = 0) | Entry 03 | **superseded** — the per-image rows give 7.0e-05 (D7) | Entry 50 (`t3_power_v4.json`) |
 | R8 | "The autoencoder's frequency response predicts the retention" (39–41 %) | Entry 42 | **refined** — body A 39–41 %, body B 36–38 %, against 36.6 % measured (95 % CI 34.4–38.7 %); an approximation, not a prediction inside the interval for A | Entry 50 |
+| R9 | "The fingerprint passes less than a non-repeating pattern with its spectrum" (Entry 50/R6 era; withdrawn in Entry 63 for estimator sensitivity) | Entries 50, 63 | **settled** — direct injection gives parity: at matched amplitude the fingerprint is 0.78x and 1.33x a spectrum-matched random field; the band-response prediction itself is high by ~2.7x | Entry 72 |
+| R10 | "The learned detector's body-specific signal is not the fingerprint template and its source is unidentified (training-set content an open alternative)" | Entries 45, 50, 64 | **resolved** — content-matched training sets leave 21 % of the unmatched interaction, unresolved (p 0.28): the signal tracks training-set content | Entry 71 |
+| R11 | "At 16000 steps the memorization regime is unresolved" (manuscript v4, Entry 54) | Entry 54 | **superseded** — the registered replication resolves it: theta_sym 0.16 %, one-sided p 0.010 (new three adapters per body), p 0.002 pooled over six | Entry 68 |
 
 ## Defect log
 
@@ -2406,3 +2409,510 @@ a copy by the study's criterion. The manuscript's "13–36 % of generations corr
 training crop" (thumbnail) described layout similarity and is replaced by the DINOv2 description; F8 (which
 used the thumbnail metric) is described as such. Figure 2(d) now shows the DINOv2 top pair (dose16k_A_s0
 00147 vs crop 0017, cosine 0.856). Figure thumbnails re-embedded at 540 px (600 dpi).
+
+---
+
+## Entry 58 · 2026-09-15 · Pre-specification — four CPU checks on existing data (C5–C8)
+
+Registered before any of them is computed. CPU only while the GPU trains chain 10. Each writes a new
+script `src/c<k>_*.py` and `out/c<k>_*.json`.
+
+- **C5 Shifted-template mechanism.** On existing generations (v2-environment base, primary A/B adapters
+  regenerated, unmarked 2000-step arms), the correlation of the multiplicative residual statistic with
+  body A's E2 fingerprint circularly shifted by every (dx, dy) residue class modulo 16, several
+  displacements per class. Readings: *"the 8-px latent grid explains the shifted-template artifact"* if,
+  in adapted arms, shifts that are multiples of 8 px on both axes exceed the other shifts by more than
+  3 SE (SE across displacements) while the base model shows no such excess, and the shift used in v1 is
+  such a multiple; *"not explained by the grid"* otherwise.
+- **C6 Coverage and estimator sensitivity.** (a) Parametric simulation of the primary design with the
+  additive structure (fingerprint main-effect difference drawn at the observed scale, entering the two
+  arms with opposite signs; normal, t3 and empirically resampled adapter spreads; true interaction
+  0, 1e-5, 3e-5): coverage of the max-arm and the symmetric constructions for the interaction.
+  Reading: adequate if coverage >= 99 % in every scenario. (b) Estimator swap: the primary statistic
+  recomputed on the archived primary generations with the E1 instead of the E2 fingerprint estimates.
+  Reading: robust if the symmetric limit changes by less than 25 %.
+- **C7 Residual-transplant positive control for all detectors, Noiseprint included.** Held-out body-A
+  photographs' noise residuals, scaled by s in {0, 0.1, 0.25, 0.5, 1}, added to base-model generations;
+  paired A-vs-B contrast under NCC, PCE, low/mid and Noiseprint. Reading: report for each detector the
+  smallest s detected at t > 3 (paired over s = 0); a detector is "insensitive in generated images" if
+  nothing is detected at s = 1.
+- **C8 Learned detector: texture or content.** The saved learned detector applied to the 24 primary
+  adapters' generations (250 each) with its input residual block-shuffled (16 x 16 blocks within each
+  patch; destroys spatial structure, keeps local texture statistics), and the original interaction split
+  by firearm content (Entry 53 labels). Readings: *"texture"* if the block-shuffled interaction stays
+  >= 50 % of the original with exact permutation p < 0.05; *"spatial structure needed"* if it falls below
+  25 %; otherwise "unresolved". Content split reported descriptively.
+
+---
+
+## Entry 59 · 2026-09-15 · Pre-specification — four GPU experiments (chain 11, after chain 10)
+
+Registered before any adapter is trained. Protocol as Entry 51 (rank 16, 2000 steps, v2 environment,
+500 generations, seed bank 770000; stored images rounded once, energy measured on the stored images).
+Never-injected offsets from the six v2 unmarked arms. `src/orchestrate11.sh` (order 1, 3, 2, 4).
+
+**E1 The fingerprint as a known pattern.** Body B's E2 fingerprint estimate K injected multiplicatively,
+Y (1 + alpha K), into body A's training crops: alpha 12 (three adapters), alpha 48 (one), and alpha 3 with
+uniform dither before the single rounding (one). Measured with the same K (template known exactly) against
+a never-injected PRNU comparator of another camera (Kodak D0, E2), multiplicative statistic; transmission =
+offset-corrected contrast / stored contrast. Prediction for K's spectrum from the band response (Entry 56
+method). Readings: *"passes like a non-repeating pattern of its spectrum"* if the alpha-12 mean is within
+2 adapter-level SE of the prediction; *"passes less than predicted"* if its one-sided 99 % upper limit is
+below the prediction; *"passes more"* if its lower limit is above. Linearity: alpha-48 / alpha-12 ratio in
+[0.5, 2] -> "linear in amplitude". Alpha 3 dithered: reported with its interval (covers the stored-arm gap).
+
+**E3 Content-matched learned-detector control.** Body A and body B training sets matched scene for scene by
+DINOv2 similarity (Hungarian matching within each body's images outside E1, E2 and H); three unmarked
+adapters per body. The saved learned detector scores the generations; reference: the same statistic on the
+v2 unmatched arms (nomark, nomarkB). Readings: *"camera texture"* if the matched interaction is > 0 with
+one-sided p < 0.05 and >= 50 % of the unmatched one; *"training-set content"* if it is <= 25 % of it or
+not > 0; otherwise "unresolved". NCC symmetric statistic reported alongside.
+
+**E2 Strength and form.** A random field with the fingerprint's power spectrum (random phase), two adapters
+each: additive at 4.0 gray RMS, additive at 1.0 gray RMS, multiplicative at the RMS change of the additive
+4.0 field. Readings: *"linear"* if T(1.0) / T(4.0) is in [0.5, 2]; *"form does not matter"* if
+T(mult) / T(add 4.0) is in [0.5, 2]; otherwise report the ratios.
+
+**E4 Grid-tile replicates.** Two more adapters each for the 24-, 28-, 40- and 48-px tiles (three each with
+Entry 51's). Reading: *"8-px latent-grid alignment suffices"* if the latent-only tiles (24, 40; six
+adapters) exceed the off-grid tiles (28, 36; six adapters) with one-sided Welch p < 0.01 and a mean ratio
+> 3 (a difference test, per the Entry 56 lesson), and the 48-px tile is not below the latent-only ones by
+more than 2 SE.
+
+---
+
+## Entry 60 · 2026-09-15 · Pre-specification — FLUX.1-dev extension to six adapters per arm (Colab, user-run)
+
+Registered before any adapter is trained. The v1 FLUX.1-dev replication (notebook 07, E_TRACKB2_FLUX) has
+three adapters per arm; it is extended with seeds 3–5 per arm under the identical recipe, fingerprints,
+seed bank and statistic, on a Colab GPU with 96 GB (the user runs `notebooks/07b_flux_seed_ext.ipynb`;
+outputs to the study archive, E_TRACKB2_FLUX). Statistics: exact sign-flip test per arm over six adapters
+(floor 1/64), max-arm limit (t_0.995,5) and the symmetric statistic's one-sided 99 % limit, as a fraction
+of FLUX's real-image contrast convention used in v1. Readings: *"no detectable transfer on FLUX.1-dev at
+six adapters per arm"* if neither the intersection–union test (at its attainable floor) nor the symmetric
+test rejects at one-sided 0.01, reporting both limits; *"device-specific transfer on FLUX.1-dev"* if the
+symmetric test rejects at 0.01 and both arms are positive; otherwise report the estimate and limits only.
+
+---
+
+## Entry 61 · 2026-09-15 · Clarifications to Entries 58 and 59 (before any chain-11 adapter is trained; no E1–E4 data exist)
+
+1. **E1 offset.** K is body B's own fingerprint estimate, so it is naturally present in the body-B unmarked
+   arms (nomarkB). The E1 never-injected offset therefore uses the three body-A unmarked arms (nomark_s0–s2)
+   only. E2's random-spectrum fields are not tied to either body and keep all six. The stored contrast R for
+   each E1 arm is measured on the crops as written minus the same statistic on the uninjected body-A crops.
+2. **E3 and C8 test.** With three adapters per body the exact label permutation has 20 relabellings, and its
+   smallest attainable one-sided p is 0.05, so it cannot reach "p < 0.05". The test for the E3 and C8 readings
+   is the one-sided Welch t on adapter means. The permutation p is reported alongside, with its floor stated.
+3. **E4 summary.** `t1_periodic2.py measure` rewrites `periodic2_summary.json` pooled over all adapters of each
+   tile. The Entry 51/56 version is kept as `periodic2_summary_entry51.json` before chain 11's measurement.
+4. **E1 decoys.** 30 circular rolls of K (and of G for E2, in both additive and multiplicative form). The
+   decoy rank is descriptive and not part of any reading.
+5. **Entry 60 intersection–union test.** At six adapters the exact sign-flip p cannot go below 1/64 (0.0156),
+   so it can never reach 0.01. "At its attainable floor" means the intersection–union test rejects only if
+   both arms reach p = 1/64. The symmetric Welch test stays at one-sided 0.01. The notebook
+   (`notebooks/07b_flux_seed_ext.ipynb`) applies this rule and writes it into its summary JSON.
+6. **E1 prediction, fixed before data.** The band energy of K = K_B_E2 (power, luminance, 1024^2) is
+   0.582 / 0.237 / 0.045 / 0.0068 / 0.0003 / 0.0001 for b0–b5, with the corner remainder assigned to b0 as
+   in Entry 50. Band response: Entry 46's curve, with bands 0–1 replaced by Entry 56's three-adapter means.
+   This gives a **prediction of 0.0978 % (SE 0.0059 %)**, which the E1 readings compare against. It differs
+   from the paper's 0.108 % because it uses a different K estimate (K_B_E2 alone, not the cross-spectrum
+   weighting) and the replicated finest bands. The spectrum-matched field G has the same band energy to
+   three decimals (`out/t1/kfield_fields.json`). Smoke test: 96 values per image, 2.3 s per image on one core.
+
+---
+
+## Entry 62 · 2026-09-15 · C5 result — shifted-template grid mechanism: *"not explained by the grid"*
+
+`src/c5_shift_grid.py` -> `out/c5_shift_grid.json` (23.9 min on CPU). The v1 displacement is
+`SHIFT = (137, 251)` (notebook 03, `np.roll` of K_B_E2; comment "not multiples of 8 — avoids the VAE grid"),
+(1, 3) mod 8. Design: 769 displacements (3 per mod-16 class, seed 20260915, plus the v1 shift), 12 of them
+on the 8-px grid on both axes. Lags within 32 px of (0,0) excluded. The exact `_measure` statistic is
+computed for every lag through FFT correlation; its largest deviation from direct NCC is 5.7e-9. K_A_E2 is
+measured on the nine local and v2 unmarked arms, 150 images each.
+
+| arm | on-grid excess | SE | z | v1-shift rank /769 |
+|---|---|---|---|---|
+| local_base | +8.43e-5 | 2.37e-5 | 3.56 | 153 |
+| adapted arms (8) | +9.5e-5 to +1.46e-4 | 2.1–2.9e-5 | 4.25 to 6.29 | 41 to 198 |
+| pooled adapted | +1.19e-4 | 1.84e-5 | 6.45 | — |
+| adapted − base (pooled) | +3.4e-5 | 2.5e-5 | 1.37 | — |
+
+Conditions: every adapted arm is above 3 SE (yes); the base shows no excess (**no**, z = 3.56); the v1 shift
+is a multiple of 8 (**no**). **Reading: "not explained by the grid".** Descriptive: the on-grid excess is
+present in base-model generations and is not clearly larger after adaptation. K_A_E2's own autocorrelation
+is higher at 8-px lags (+2.1e-4 over the 12 sampled displacements, z = 0.98), plausibly JPEG 8x8 blocking
+in the Dresden sources; this is an interpretation, not a tested claim. In this v2 set-up the v1 shifted
+template does not rank first (ranks 41–198). The test used body A's fingerprint on v2 generations, whereas
+the v1 observation involved shifted K_B on the v1 E-AMP arms, so it does not re-test the v1 observation
+directly. Caveat: with only 12 on-grid displacements, the across-displacement SE is coarse and ignores that
+all displacements share the same images.
+
+---
+
+## Entry 63 · 2026-09-15 · C6 result — coverage: max-arm *adequate*, symmetric *not adequate* (marginal); estimator swap: *not robust*
+
+`src/c6_coverage.py`, `src/c6_estimator_swap.py` -> `out/c6_coverage.json`, `out/c6_estimator_swap.json`
+(82.8 min on CPU). Ledger inputs: SD_A 4.84e-5, SD_B 3.90e-5, observed additive part m = −1.42e-5.
+
+**(a) Coverage** (k = 12 per arm, 4000 replications per cell, Monte Carlo SE about 0.16 % at 0.99).
+The max-arm limit covers at 1.000 in all 27 cells; it sits above the true interaction by 4.8e-5, 9e-5
+and 1.4e-4 at the three m values. The symmetric limit covers at 0.987–0.996 per cell, and 12 of 27 cells
+are below 0.99. m cancels exactly, so pooling the nine cells per spread gives 0.9899 ± 0.0005 (normal),
+0.9931 ± 0.0004 (t3) and 0.9891 ± 0.0005 (resampled). **Readings: max-arm "adequate"; symmetric "not
+adequate"**, marginally: about 0.1 point below nominal under resampling. Supplementary scenario (m drawn from
+N(0, 9.73e-5²), not registered): same pattern.
+
+**(b) Estimator swap** (24 adapters, first 250 images each; E1 = 80 photographs per body, E2 = 140).
+The per-adapter E1–E2 correlation is 0.49. Measured on E2's scale, the E1 symmetric limit is 4.78e-5
+against E2's 2.22e-5 on the same images, a change of +115 %. **Reading: "not robust"** (threshold 25 %).
+The SE barely moves; θ_sym shifts by about 2.1 SE. Reproduction: the ledger's 24 values used 500
+images. The v1 per-row CSVs over 500 images reproduce the ledger exactly. On the same first 250 images
+this code's E2 values match v1's at r = 0.997 (maximum gap 1.4e-5). Going from 500 to 250 images moves
+every A adapter up and every B adapter down, which the symmetric statistic cancels.
+
+**Own-scale denominators (computed here, derived).** The swap divided E1 by E2's R_real. The held-out
+real photographs (H, 40 per body, cached `out/fp/H_{A,B}.npz`) give paired own-minus-other contrasts,
+averaged over the two bodies, of R_real(E2) = 0.035659 (ledger 0.035670, reproduced within 0.03 %) and
+**R_real(E1) = 0.027256** (ratio 0.764). On each estimate's own scale, at 250 images:
+
+| | E2 | E1 |
+|---|---|---|
+| θ_sym (SE) | −0.026 % (0.034 %) | +0.063 % (0.045 %) |
+| symmetric one-sided 99 % limit | 0.062 % | **0.175 %** |
+| max-arm limit | 0.267 % | **0.662 %** |
+| z below the 0.108 % channel prediction | 3.8 | **1.0** |
+
+**Consequences.** "The fingerprint passes less than a non-repeating pattern with its spectrum" (Entry 50,
+R6) holds under E2 only. It is **withdrawn as a finding and restated as open** (register R9). The paper now
+says "of the order predicted". All limits carry the fingerprint estimate's sampling error; this is added to
+Limitations with the E1 numbers. The headline 0.1507 % stays the pre-specified construction (E2, 500 images)
+and is reported with this sensitivity. Paper updated: Results V-D, Discussion, Introduction (two places),
+Conclusion, Limitations, and supplement S12.
+
+---
+
+## Entry 64 · 2026-09-15 · C8 result — learned detector, block-shuffled: *"texture"*
+
+`src/t2_learned_arms.py --block-shuffle` -> `out/c8_learned_texture.json` (24 primary adapters, 250 generations
+each, CPU, float32 residuals, nothing cached). Check on real photographs first: 80 held-out images give
+AUC 0.989375 and R 8.1039, which reproduces Entry 17 (0.989375, 8.1038). Block-shuffled real photographs
+(descriptive): AUC 0.983, R 7.42.
+
+| variant | interaction (logits) | SE | test |
+|---|---|---|---|
+| original | +0.3809 | 0.1033 | exact permutation p 0.00081 (Entry 17: +0.3809, p 0.00081) |
+| block-shuffled (16x16 blocks) | **+0.4058** | 0.0818 | Welch t 4.96; exact permutation p 7.0e-5 |
+
+Ratio 1.07. **Reading: "texture"**: the shuffled interaction is at least 50 % of the original with p < 0.05
+(Welch, per Entry 61; the permutation test also passes). Shuffling lowers every score by about 1.05 logits.
+The body-specific part is unchanged, and the 24 adapter means with and without shuffling correlate at 0.97.
+**Scope:** the signal needs only local 16x16 texture statistics, not spatial arrangement. That fits
+stationary noise texture, but it does not exclude training-set content that changes local texture
+statistics; E3 (content-matched sets) is the test for that. **Content split:** not possible as
+registered. Entry 53's firearm labels cover none of the 24 primary generation folders, so a descriptive
+split on the unmarked arms is reported with E3 instead.
+
+---
+
+## Entry 65 · 2026-09-15 · E3 reference fixed before the content-matched arms exist
+
+`src/t2_learned_arms.py` on the unmatched v2 unmarked arms (nomark_s0–s2 vs nomarkB_s0–s2, 250 each) ->
+`out/t2_learned_arms_nomark.json`. Interaction **+0.521 logits** (SE 0.159, Welch t 3.28, df 3.4, one-sided
+p 0.019). Per-arm means: A −12.61 / −13.06 / −13.17; B −13.48 / −14.09 / −14.39. Exact permutation p is
+0.05, its floor at 3+3. **E3 thresholds, now fixed: "camera texture" needs a matched interaction > 0.260
+(50 %) with one-sided Welch p < 0.05 (Entry 61); "training-set content" needs one ≤ 0.130 (25 %) or ≤ 0.**
+Block-shuffled, for reference: +0.530.
+Descriptive firearm split on these arms: firearm fractions 93.1 % (A) and 93.7 % (B); firearm-only
+interaction +0.497; non-firearm-only +0.927 on 9–21 images per arm; per-image correlation between score and
+firearm probability 0.01–0.16. Scorer fix: the first E3 output reported permutation p = 0 because the tie
+tolerance (1e-15) was too tight for logit sums near 40. With a relative tolerance it reproduces Entry 17's
+2,180 combinations exactly, and the scores are unchanged (each JSON has a `stats_note`). The reference comes
+from the v2 training environment, which the matched arms share.
+
+---
+
+## Entry 66 · 2026-09-15 · Entry 60 FLUX extension started on Colab; all four E0 gates pass
+
+`notebooks/07b_flux_seed_ext.ipynb`, run from the user's Drive copy (`inv_channel/07b_flux_seed_ext.ipynb`) on
+Colab G4: NVIDIA RTX PRO 6000 Blackwell Server Edition, 95 GB, compute capability 12.0. Environment:
+torch 2.11.0+cu128, diffusers 0.40.0, transformers 5.16.1, peft 0.20.0, Python 3.13.15. Started 08:31 local.
+- **E0-i** protocol hash `b54a4cba079388be` equals the config_sha of all six notebook-07 adapters and of
+  E4_flux_results.json; ext hash `53d0a7a1dbe8784f`.
+- **E0-ii** read-only snapshot of notebook 07's artefacts written (`meta/flux_ext_v1_snapshot.json`).
+- **E0-iii** seed bank: **near, not bit-identical**. A_raw_s0_flux images 00000 and 00001 regenerate with
+  r(same seed) 0.9991 and 0.9830 and mean |diff| 0.925 and 4.505 on the 0–255 scale. This is numerical
+  drift (A100 to Blackwell, newer libraries). Both arms share it, so the paired contrast is unaffected. It
+  **must be disclosed** with the result.
+- **E0-iv** the forensic core reproduces notebook 07's rho on 8 stored values (max relative diff 3.2e-7).
+Security note: the user put the Hugging Face token in plain text in this Drive copy, which inherits
+"anyone with the link" viewing. The user was asked to restrict the file and revoke the token after the run.
+The repository copy of the notebook holds no token.
+
+---
+
+## Entry 67 · 2026-09-15 · C7 result — residual-transplant positive control: no detector is "insensitive in generated images"
+
+`src/c7_transplant.py`, `src/c7_noiseprint_helper.py` -> `out/c7_transplant.json` (about 2 h 5 min on CPU).
+Source: body A's 40 held-out H photographs. Their per-channel wavelet residual N is in gray levels (the
+`wavelet_residual` operator without the final std division; after renormalising it matches exactly,
+max |diff| 0). Mean RMS is 1.18 gray per channel. Target: the first 200 `local_base` generations; generation
+i gets residual i mod 40. Z_s = round(clip(Z + s N)), rounded once. Statistic: paired increment
+contrast(s) − contrast(0) on the same image, with a paired t. Noiseprint was run on the first 100
+generations only. Checks: NCC at s = 0 reproduces `measure_rows_f5.csv` exactly; the Noiseprint images have
+500/500 identical checksums.
+
+| s | stored RMS | NCC (200) | PCE (200) | low/mid (200) | Noiseprint (100) |
+|---|---|---|---|---|---|
+| 0.1 | 0.03 | +2.25e-5 (t 8.7) | +0.005 (0.5) | +1.67e-6 (6.6) | −1.3e-6 (−0.7) |
+| 0.25 | 0.30 | +1.25e-3 (10.6) | −0.001 (0.0) | +1.10e-4 (24.7) | +4.67e-5 (3.4) |
+| 0.5 | 0.65 | +4.03e-3 (11.5) | +3.82 (3.7) | +3.94e-4 (26.4) | +2.42e-4 (5.3) |
+| 1 | 1.22 | +7.19e-3 (12.6) | +26.9 (6.3) | +8.14e-4 (26.3) | +5.90e-4 (6.8) |
+
+Smallest s detected at t > 3: **NCC 0.1, low/mid 0.1, Noiseprint 0.25, PCE 0.5.** Reading: **no detector
+is "insensitive in generated images"**; all four detect at s = 1. At s = 1 the increment is 20 % (NCC),
+7 % (PCE), 38 % (low/mid) and 17 % (Noiseprint) of each detector's real paired contrast R. PCE at s = 1:
+20 % of images exceed PCE 60 against A. Caveats:
+- The transplant carries more than PRNU: JPEG blocking, edge leakage, and a fingerprint term modulated by
+  the photo's scene. Low/mid's response cannot be attributed to the PRNU part alone.
+- Single rounding makes small s non-linear.
+- Each residual is reused five times. With t over the 40 residual means, low/mid at 0.1 gives 3.14 and
+  Noiseprint at 0.25 gives 2.87.
+- Noiseprint's n is half the others'. On the same 100 images, PCE reaches t > 3 only at s = 1.
+- One body pair, base-model generations (rifles).
+GPU note: the Noiseprint pilot saw the GPU but ran on CPU without creating a context.
+
+---
+
+## Entry 68 · 2026-09-16 · Chain 10 result — the 16000-step lean **replicates**; pooled: **device-specific transfer at 16000 steps**
+
+`src/orchestrate10.sh` (started 19:59 UTC Sep 14, training finished 03:13, generation 06:53, chain done
+07:11 UTC Sep 16) -> `out/t1/dose_stats.json`. Arms dose16k_{A,B}_s3–s5, protocol as Entry 48.
+
+**Primary (new adapters s3–s5 only, as registered in Entry 55).** A_own +1.524e-4, +1.541e-4, +8.88e-5;
+B_own −2.40e-5, +4.26e-6, −2.36e-5. theta_sym **+5.866e-5** (lambda_sym **0.1645 %**), Welch SE 1.172e-5,
+df 2.73, t 5.01, **one-sided p 0.00955 < 0.05** -> **"the 16000-step lean replicates"**.
+
+**Secondary (pooled six per body).** theta_sym **+5.710e-5** (lambda_sym **0.1601 %**), SE 1.445e-5,
+df 8.26, t 3.95, **one-sided p 0.00198 < 0.01**, and theta_sym is above U_device 5.3761e-5 ->
+**"device-specific transfer at 16000 steps"**, a positive finding, to be reported with its dose and
+memorization level. Max-arm plug-in at this dose: 0.2765 % (new three alone 0.3259 %).
+
+**Qualifications to carry into the paper.**
+- **Asymmetric.** Arm A carries it (all six own-contrasts positive, 4.9e-5 to 1.9e-4); arm B is near zero
+  and mostly negative (mean −0.5e-5). The symmetric statistic cancels main effects by construction, but per
+  Entry 36's lesson (defect D6) the per-arm values must be shown beside it.
+- **Not monotone in dose.** 2000 steps: +0.079 % (t 1.73). 8000 steps: −0.049 % (t −0.73). 16000: +0.16 %.
+- **Memorization does not explain it.** F8 re-run over all v2 adapters: pooled slope +1.014e-4, p 0.264;
+  A adapters −2.462e-4, p 0.851; B adapters +4.676e-4, p 0.022; **registered positive: False**.
+- The primary limit (0.1507 %, 2000 steps, twelve adapters per arm) is unaffected: it is a statement about
+  the primary dose, and this result is at eight times that dose.
+
+---
+
+## Entry 69 · 2026-09-16 · E1 result — the fingerprint as a known pattern: *"passes less than predicted"*
+
+Chain 11, first set (`src/t1_kfield.py`, `out/t1/kfield_summary.json`; 5 adapters trained and generated
+07:14–16:29, measured in 39 min over 5,500 images). K = K_B_E2 injected multiplicatively into body A's
+training crops; measured with the same K, which is therefore **known exactly** — no estimation error, the
+sensitivity that sank C6's robustness reading. Offset from the three body-A unmarked arms (Entry 61).
+Prediction for K's spectrum: 0.0978 % (SE 0.0059, fixed before data in Entry 61).
+
+| arm | T | SE | decoy rank |
+|---|---|---|---|
+| kinj_a12 (3 adapters) | **0.0174 %** | 0.0042 (adapter-level) | 1, 1, 3 |
+| — per adapter | 0.0136 / 0.0171 / 0.0213 % | 0.0135–0.0139 (image) | |
+| kinj_a48 (1) | 0.0486 % | 0.0110 (image) | 1 |
+| kinjd_a3, dithered (1) | 0.0137 % | 0.0441 (image) | 5 |
+
+**Readings (Entry 59).** The alpha-12 one-sided 99 % upper limit is 0.0469 %, below the 0.0978 %
+prediction -> **"passes less than predicted"**. It is not within 2 adapter-level SE of the prediction, so
+"passes like a non-repeating pattern of its spectrum" does not apply. Linearity: alpha-48 / alpha-12 =
+**2.80**, outside [0.5, 2] -> **not linear in amplitude**; transmission rises faster than amplitude, so at
+the fingerprint's natural amplitude it would be lower still. The dithered alpha-3 arm is reported with its
+interval only (0.0137 %, image-level SE 0.0441).
+
+**Why this matters.** Entry 63 withdrew "the fingerprint passes less than a non-repeating pattern with its
+spectrum" because the symmetric limit depended on which fingerprint estimate was used. E1 answers the same
+question with the template known exactly and the pattern injected at a strength the design resolves: the
+shortfall is real (5.6x below prediction at alpha 12), and the amplitude response shows why a
+natural-amplitude fingerprint sits even lower. Pending in this chain: E2 (gk arms, form and strength), E3
+(cm arms, training now), E4 (periodic3).
+
+---
+
+## Entry 70 · 2026-09-16 · Entry 60 result — FLUX.1-dev at six adapters per arm: *"no detectable transfer"*
+
+`notebooks/07b_flux_seed_ext.ipynb` on Colab G4 (RTX PRO 6000 Blackwell, torch 2.11.0+cu128,
+diffusers 0.40.0), run from the user's Drive copy. Seeds 3–5 per arm, 25 min each; 3,000 generations;
+notebook 07's statistic against K_{A,B}_E2. Output `E_TRACKB2_FLUX/flux_seed_ext_summary.json` (readable
+locally at `G:\My Drive\inv_channel\...`). A Colab idle disconnect cost one adapter mid-training; the rerun
+resumed with no loss, as designed.
+
+Gates: all four passed. Protocol hash `b54a4cba079388be` equals the config_sha of all six notebook-07
+adapters and of E4_flux_results.json; the forensic core reproduces 07's rho to 3.2e-7; **seed bank near, not
+bit-identical** — r(same seed) 0.9991 and 0.9830 against r(other seed) 0.063 and 0.060, mean |diff| 0.93 and
+4.51 of 255 (numerical drift, A100 -> Blackwell; **disclosed in the paper**). E60 first re-derived 07's
+n = 3 result from 07's own rows: U_device 2.7717e-4 = 0.7770 % (published 0.777 %).
+
+| arm | theta per adapter (07 / 07b) | mean | sd | max-arm U | exact sign-flip p |
+|---|---|---|---|---|---|
+| A | −7.95e-6, +6.37e-5, −1.55e-5 / −3.59e-5, +1.14e-4, −6.71e-5 | +8.57e-6 | 6.75e-5 | 1.1960e-4 | 0.4062 |
+| B | −6.40e-5, +9.71e-6, +3.07e-5 / −2.07e-5, +5.50e-5, +4.64e-6 | +2.55e-6 | 4.14e-5 | 7.0702e-5 | 0.4219 |
+
+- **Intersection–union:** neither arm reaches the attainable floor 1/64 = 0.0156 -> does not reject.
+- **Max-arm (t_0.995,5 = 4.0321):** U_device 1.1960e-4 -> **lambda_U 0.3353 %** (0.777 % at n = 3).
+- **Symmetric:** theta_sym +5.5611e-6 (lambda_hat 0.0156 %), Welch SE 1.615e-5, df 8.30, t 0.34, one-sided
+  p 0.3696 -> does not reject at 0.01; **one-sided 99 % limit 0.1456 %**.
+- **Reading R1: "no detectable transfer on FLUX.1-dev at six adapters per arm."** Both arm means are
+  positive; neither test rejects.
+Descriptive (not pre-specified): 07's adapters versus the new ones, which differ in environment as well as
+seed — arm A Welch t −0.16 (p 0.885), arm B +0.57 (p 0.599). Compare only with SD-3.5 at six adapters per
+arm (0.249 %, max-arm), never with the k = 12 headline.
+Paper updated: abstract and Introduction limit ranges (0.75--1.74 % -> 0.34--1.74 %), robustness table row
+(3 -> 6 adapters, 0.78 % -> 0.34 %), the robustness paragraph, Methods counts (12 / 6,000) and supplement S8.
+
+---
+
+## Entry 71 · 2026-09-17 · E3 result — content-matched learned-detector control: *"training-set content"*
+
+Chain 11, second set. `src/t1_content_match.py` built the matched training sets (50 pairs, DINOv2 Hungarian
+matching, mean pair cosine 0.961, minimum 0.936, against 0.177 for the unmatched primary splits); six
+unmarked adapters (three per body, 2000 steps, v2 environment) trained 19:5x–03:37, 500 generations each.
+Scored with `src/t2_learned_arms.py` (`out/t2_learned_arms_cm.json`) and `t1_measure.py`
+(`out/t1/summary_cm.json`).
+
+**Learned detector (the registered reading).** Per-adapter means: A −13.905, −13.148, −13.733;
+B −14.053, −13.302, −14.102. Matched interaction **theta_sym = +0.1117** logits, adapter-level SE 0.1728,
+Welch t 0.646 (df 3.94), **one-sided p 0.277**; exact permutation p 0.25 (floor 0.05 at 3+3). The unmatched
+reference (Entry 65) is +0.5209, so the thresholds are 0.260 (50 %) and 0.130 (25 %). The matched value is
+**21.4 % of the reference**, below 25 %, and is not > 0 at p < 0.05 -> **reading: "training-set content"**.
+The body-specific signal that survives template projection (Entry 17) and block shuffling (Entry 64) does
+**not** survive matching the two bodies' training scenes. Register R10: the learned detector's interaction is
+attributed to the content of the two training sets, not to a camera-specific texture. The paper's
+"source unidentified" wording is superseded.
+
+**NCC in the same arms (reported alongside, descriptive, not a registered reading).** Own-minus-other per
+adapter: A +9.249e-5, +9.243e-5, +1.473e-5; B +7.294e-5, +1.477e-5, +4.261e-5. theta_sym **+5.4995e-5**
+(**0.1542 % of R_real**), Welch SE 1.544e-5, t 3.56, df 3.43, one-sided p 0.0152 — above the primary limit
+0.1507 %. Handle with care and **do not promote to a finding**: three adapters per body; the v2
+environment, whose unmarked arms already leaned +2.8e-5 (p 0.08, Entry 36, defect D6); content-matched
+training sets are not the primary design (both bodies now train on the same scenes, so any scene-driven
+main effect is shared rather than cancelled); and this is one of many statistics reported in chain 11.
+**Open thread:** with Entry 68 (16000 steps) and Entry 36 (F7), this is the third positive-leaning symmetric
+estimate from the v2 environment. A registered replication of the 2000-step v2 arms is the test that would
+settle it; not run.
+
+---
+
+## Entry 72 · 2026-09-18 · E2 result — strength and form: *"linear"*, *"form does not matter"* — and the band-response prediction is wrong by 2.7x
+
+Chain 11, third set (gk arms, 6 adapters, generated 14:44 Sep 17). G = random field with K_B_E2's power
+spectrum and random phase (band energies match K's to three decimals, `kfield_fields.json`), unit RMS.
+
+| arm | injection | stored change | T | SE | decoy ranks |
+|---|---|---|---|---|---|
+| gkadd_a4 | additive 4.0 gray | 3.95 | 0.0366 % | 0.0018 | 1, 1 |
+| gkadd_a1 | additive 1.0 gray | 1.03 | 0.0223 % | 0.0041 | 1, 2 |
+| gkmul_a4 | multiplicative, equal RMS | 3.91 | 0.0502 % | 0.0024 | 1, 1 |
+
+**Readings (Entry 59).** T(1.0)/T(4.0) = **0.609** in [0.5, 2] -> **"linear"**. T(mult)/T(add 4.0) =
+**1.373** in [0.5, 2] -> **"form does not matter"**.
+
+**The result that matters most.** G is exactly the object the band-response map predicts at 0.0978 %
+(SE 0.0059, fixed in Entry 61). Measured: **0.0366 %** at 4 gray (z = 9.95 below prediction) and 0.0223 %
+at 1 gray (z = 10.5). **The extrapolation overestimates a fingerprint-spectrum field by about 2.7x.**
+Compared with E1 at matched stored amplitude: K alpha48 (3.56 gray) 0.0486 % vs G add 4 gray 0.0366 %
+-> **1.33x**; K alpha12 (0.92 gray) 0.0174 % vs G add 1 gray 0.0223 % -> **0.78x**. So the fingerprint
+passes *like* a non-repeating pattern of its spectrum, within 30 % either way, **not less than one**.
+E1's registered reading ("passes less than predicted") stands, but it is a statement about the prediction,
+not about the fingerprint: the prediction is biased high because undetected octaves enter it as zero and
+because transmission rises with amplitude (fourfold amplitude raises T by 1.6x for G and 2.8x for K),
+while the map was calibrated at about forty times the fingerprint's amplitude.
+**Register R9 (final):** "the fingerprint passes less than a non-repeating pattern with its spectrum"
+(Entries 50/R6, withdrawn in Entry 63 for estimator sensitivity) is now **settled by direct injection: it
+passes like one**. Both the earlier claim and its negation are superseded by the measured parity.
+
+---
+
+## Entry 73 · 2026-09-18 · E4 result — tile replicates: *"8-px latent-grid alignment suffices"*
+
+Chain 11, fourth set (periodic3 armset: seeds s1, s2 for the 24-, 28-, 40- and 48-px tiles; generated
+05:27 Sep 18). Every tile now has three adapters; `periodic2_summary.json` rewritten (the Entry 51/56
+version is kept as `periodic2_summary_entry51.json`).
+
+| tile | on 8-px grid | on 16-px patch grid | lambda (3 adapters) | SE | decoy ranks |
+|---|---|---|---|---|---|
+| 24 px | yes | no | **1.314 %** | 0.296 | 1, 1, 1 |
+| 28 px | no | no | 0.235 % | 0.030 | 2, 2, 2 |
+| 32 px | yes | yes | **3.998 %** | 0.556 | 1, 1, 1 |
+| 36 px | no | no | 0.209 % | 0.027 | 5, 3, 3 |
+| 40 px | yes | no | **1.032 %** | 0.173 | 1, 1, 1 |
+| 48 px | yes | yes | **1.632 %** | 0.235 | 1, 1, 1 |
+
+**Reading (Entry 59).** Latent-only tiles (24, 40; six adapters) mean 1.173 % against off-grid (28, 36; six
+adapters) 0.222 %: **Welch t 5.70, one-sided p 0.00107 < 0.01**, mean ratio **5.27 > 3**; the 48-px tile
+(1.632 %) is not below the latent-only mean (difference +0.459 against 2 SE = 0.331) ->
+**"8-px latent-grid alignment suffices"**. This closes the Entry 56 defect, where the same conclusion
+failed a pre-set interval-non-overlap rule at one adapter per tile; the lesson (use a difference test at
+small n) is applied here. Figure 4 regenerated with three adapters per tile.
+
+---
+
+## Entry 74 · 2026-09-18 · Housekeeping — register renumbered, repository refreshed, verifier extended to 35 checks
+
+- **Register numbering fixed.** Entries 63 and 71 had reused R7 and R8, which already name the power-translation
+  and autoencoder-retention rows. The withdrawals are now R9 (fingerprint versus a spectrum-matched pattern,
+  settled by Entry 72), R10 (learned detector = training-set content, Entry 71) and R11 (the 16000-step regime,
+  resolved by Entry 68). Rows added to the register table at the head of this file.
+- **Stale counts in the manuscript corrected**: the grid-separating tiles are three adapters each, not one
+  (Methods); Figure 2's caption now reads 3,000 generations from twelve 16000-step adapters.
+- **Public repository refreshed** (`src/make_repo_v2.py`): 70 scripts and 112 result files (58.9 MB), including
+  chain 11 (`t1_kfield.py`, `t1_content_match.py`, `orchestrate11.sh`), the CPU checks (`c5`-`c8`), the reusable
+  learned-detector scorer (`t2_learned_arms.py`) and the FLUX summary. No paper source in the repository; the
+  log's 8-word phrase overlap with the manuscript is **0.31 %** (34,260 phrases, 105 shared).
+- **`verify_v2.py` extended from 17 to 35 checks, all agreeing.** Dropped the superseded symmetric-versus-
+  prediction z. Added: pooled on-grid versus off-grid tiles (t 5.70, ratio 5.27); 16000 steps at six adapters
+  per body and the registered replication; E1 and E2 (transmission, amplitude ratios, prediction over direct
+  injection 2.68, fingerprint over matched field 1.33); E3 matched interaction and ratio; C8 shuffle ratio;
+  C7 NCC at s = 1 and its smallest detected s; the FLUX max-arm and symmetric limits.
+- Nothing is running: chains 10 and 11 complete, FLUX complete, C5-C8 complete.
+
+---
+
+## Entry 75 · 2026-09-19 · Manuscript audit and restructure (v5)
+
+Five read-only audits (numbers, references, figures and tables, structure and flow, reproducibility and
+data access) ran over the v4 manuscript, supplement, figures and the public repository. Findings applied:
+
+**Numbers (16 corrections).** Body-B mean at 16000 steps was off by a factor of ten (-0.5e-5 -> -0.05e-5);
+the supplement's channel prediction was the superseded one-adapter value (0.104 %, 3.36 SE, p 0.0004 ->
+0.108 %, 3.66 SE, p 0.0001) and the cross-spectrum variant with it (0.122 % -> about 0.13 %); "nine of
+twelve seeds positive" -> ten; measured/predicted folds 3-4x and 17-67x -> 4-5x and 23-67x; the attribution
+sentence claimed fifty images suffice for every candidate count (50, 100 and 250 for two, five and fifty);
+the full-fine-tuning main-effect comparison read "0.04 times in the LoRA arms" against 3.1 from the ledger;
+"within 30 % in both directions" replaced by the measured 0.78x and 1.33x; low/mid real contrast
+2.120e-3 -> 2.154e-3 (16.8 -> 16.6 times below PRNU); stale ranges 44-50 -> 43-50 gray levels, 13-36 % ->
+5-36 %, 0.17-0.22 -> 0.16-0.22; calibration 0.78 % / 5.2x -> 0.79 % / 5.3x; abstract 1.7 -> 1.74 %.
+
+**References.** Entry 23 (noiseimprint) carried the superseded arXiv v1 author list; corrected to the v2
+list. Entries 1-46 verified against Crossref, arXiv, PMLR, ACM DL, IEEE Xplore and USENIX: no other
+mismatch. Style unified: Art. no., ACM SIGKDD Explor. Newsl., ICML without ordinal, arXiv year-first,
+no trailing stop after URLs. `v4_bib.py` drops uncited entries, and running it while the robustness file
+was detached deleted the `icc` entry; restored with verified metadata (defect D8).
+
+**Figures.** Fig. 5 legend keys no longer collide (labelspacing 0.9, 7 pt); its panel-b labels raised from
+5.8 to 7 pt; the "(worst of 3)" suffixes removed now that every tile has three adapters. Fig. 6 band labels
+given white backgrounds and 7 pt text. Both regenerated from current data. Captions now define the error
+bars, the shaded region, the per-column adapter counts and the n behind each bar; Fig. 2's caption
+corrected to 3,000 generations from twelve adapters.
+
+**Structure (v5).** Title now leads with the mechanism. Abstract reordered question -> method -> map ->
+limits -> dose -> detectors. New thesis paragraph in the introduction; contributions rewritten with the
+transmission map first. Table I (findings at a glance) cut: all eight rows were duplicated elsewhere.
+Sections III and IV merged into one "Design and Methods"; the terms table moved ahead of the devices table
+so numbering follows citation order. Results reordered to autoencoder -> shared main effect -> objective ->
+limit -> transmission map -> detectors -> **dose (new subsection)** -> robustness -> examiner. Discussion
+rewritten with the mechanism first and a new "Who this is for"; conclusion cut from 300 to ~190 words.
+Nine rebuttal-voice sentences removed. Build: 19 pages + 8-page supplement, abstract 250 words, all floats
+cited in order, no undefined references.

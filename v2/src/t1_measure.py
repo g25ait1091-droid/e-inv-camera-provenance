@@ -39,6 +39,9 @@ if os.environ.get("T1_ARMSET") == "dose16krep":  # Entry 48 F9 replication arms
 if os.environ.get("T1_ARMSET") == "dose16krep2":  # Entry 55 second 16000-step replication (seeds 3-5)
     MARK_ARMS = [f"dose16k_{b}_s{i}" for i in (3, 4, 5) for b in ("A", "B")]; NEVER = []
     ROWS = os.path.join(T1, "measure_rows_dose16krep2.csv"); SUMM = os.path.join(T1, "summary_dose16krep2.json")
+if os.environ.get("T1_ARMSET") == "cm":          # Entry 59 E3 content-matched arms
+    MARK_ARMS = [f"cm_{b}_s{s}" for s in range(3) for b in ("A", "B")]; NEVER = []
+    ROWS = os.path.join(T1, "measure_rows_cm.csv"); SUMM = os.path.join(T1, "summary_cm.json")
 if os.environ.get("T1_ARMSET") == "nomarkB":     # F7 unmarked B-body arms (Entry 35)
     MARK_ARMS = ["nomarkB_s0", "nomarkB_s1", "nomarkB_s2"]; NEVER = []
     ROWS = os.path.join(T1, "measure_rows_nomarkB.csv"); SUMM = os.path.join(T1, "summary_nomarkB.json")

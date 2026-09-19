@@ -161,16 +161,9 @@ ax.grid(ls=":", lw=0.5, color="#cccccc"); ax.set_axisbelow(True)
 check(fig, ax, "Fig5 additive"); fig.savefig("fig5_additive.pdf"); plt.close(fig)
 
 # ================================================== Fig 6  replication summary
-rows = [
-        ("Primary (SD 3.5)", 12, 0.1507, "devices"),
-        ("Primary at k=6", 6, 0.249, "devices"),
-        ("Primary at matched n=3", 3, 0.6993, "devices"),
-        ("FLUX.1-dev", 3, 0.777, "devices"),
-        ("Full fine-tuning", 3, 0.747, "sym"),
-        ("Kodak M1063, CCD", 5, 1.74, "devices"),
-        ("Huawei P20, smartphone", 5, 1.14, "devices"),
-        ("Low/mid band", 6, 9.72, "sym"),
-]
+rows = [(r["name"], r["n"], r["lambda_U_pct"],
+         "sym" if r["construction"] == "symmetric" else "devices")
+        for r in _L["replications"]]
 fig, ax = plt.subplots(figsize=(SC, 3.35), constrained_layout=True)
 y = np.arange(len(rows))[::-1]
 for yy, (lab, n, v, unit) in zip(y, rows):

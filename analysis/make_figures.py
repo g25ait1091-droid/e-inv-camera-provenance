@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Figures for the E-INV IEEE Access manuscript.
 
-Every value is transcribed from the archived result JSONs (verified against the
-experiment records; see docs/ADVERSARIAL_REVIEW.md Part 1). No figure shows data
-that does not appear in the paper.
+Every number plotted or printed here is read from analysis/FINAL_LEDGER.json at run
+time — none is written into this file — so a figure cannot drift from the text. The
+ledger itself was verified against the archived result JSONs and the experiment
+records (see docs/ADVERSARIAL_REVIEW.md Part 1). No figure shows data that does not
+appear in the paper.
 
 IEEE Access: single column 3.5 in, double column 7.16 in.
 Palette is colour-blind safe (blue / orange / teal) and stays legible in
@@ -36,23 +38,35 @@ RED, GREY, INK, PALE = "#A8443C", "#8A8A8A", "#2b2b2b", "#DCE5EE"
 SC, DC = 3.5, 7.16
 BOX = dict(boxstyle="round,pad=0.28", fc="white", ec="#d0d0d0", lw=0.5, alpha=0.94)
 
-R_REAL, R_VAE, U_DEV = 0.0356703416571125, 0.0130593, 5.3761e-05
+# --------------------------------------------------------------- the single source of truth
 import json as _json, os as _os
 _LEDGER = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "FINAL_LEDGER.json")
 _L = _json.load(open(_LEDGER))
-HAVE_ADAPTERS = _L["primary"]["per_adapter_A"] is not None
-A_MEANS = np.array(_L["primary"]["per_adapter_A"]) if HAVE_ADAPTERS else None
-B_MEANS = np.array(_L["primary"]["per_adapter_B"]) if HAVE_ADAPTERS else None
-U_A, U_B = 3.384e-05, 5.3761e-05
+PRIM, DEN, CAL, ME, ADD = (_L["primary"], _L["denominators"], _L["calibration"],
+                           _L["main_effects"], _L["additive"])
+
+R_REAL, R_VAE, U_DEV = DEN["R_real"], DEN["R_VAE"], PRIM["U_device"]
+ETA, AUC_PRE, AUC_POST = DEN["eta"], DEN["auc_pre"], DEN["auc_post"]
+U_A, U_B = PRIM["U_A"], PRIM["U_B"]
+LAMBDA_U, TAU_U = PRIM["lambda_U_plugin_pct"], PRIM["tau_U_plugin_pct"]
+ALPHA_ONSET = _L["objective"]["onset_nominal_alpha"]
+HAVE_ADAPTERS = PRIM["per_adapter_A"] is not None
+A_MEANS = np.array(PRIM["per_adapter_A"]) if HAVE_ADAPTERS else None
+B_MEANS = np.array(PRIM["per_adapter_B"]) if HAVE_ADAPTERS else None
+
+def sci(v, d=2):
+    """3.5670e-02 -> the LaTeX body 3.57\\times10^{-2} (no dollar signs)."""
+    m, e = f"{v:.{d}e}".split("e")
+    return rf"{m}\times10^{{{int(e)}}}"
 
 # =========================================================== Fig 1  pipeline
 fig, ax = plt.subplots(figsize=(DC, 2.45))
 ax.set_xlim(0, 100); ax.set_ylim(0, 100); ax.axis("off")
 stages = [
-    (2,  "Real image", r"$R_{\mathrm{real}}=3.57\times10^{-2}$" + "\nsame-model AUC 1.000", BLUE),
-    (26, "Latent autoencoder", r"$R_{\mathrm{VAE}}=1.31\times10^{-2}$" + "\n" + r"$\eta=0.366$,  AUC 0.981", BLUE),
-    (50, "LoRA objective", r"measurable from $\alpha\approx3$" + "\nscalar-loss response not\ndevice- or alignment-specific", ORANGE),
-    (74, "Text-to-image\ngeneration", r"$\lambda_U\leq0.15\%$" + "\n" + r"$\tau_U\leq0.41\%$", BLUE),
+    (2,  "Real image", rf"$R_{{\mathrm{{real}}}}={sci(R_REAL)}$" + f"\nsame-model AUC {AUC_PRE:.3f}", BLUE),
+    (26, "Latent autoencoder", rf"$R_{{\mathrm{{VAE}}}}={sci(R_VAE)}$" + "\n" + rf"$\eta={ETA:.3f}$,  AUC {AUC_POST:.3f}", BLUE),
+    (50, "LoRA objective", rf"measurable from $\alpha\approx{ALPHA_ONSET:g}$" + "\nscalar-loss response not\ndevice- or alignment-specific", ORANGE),
+    (74, "Text-to-image\ngeneration", rf"$\lambda_U\leq{LAMBDA_U:.2f}\%$" + "\n" + rf"$\tau_U\leq{TAU_U:.2f}\%$", BLUE),
 ]
 W, H, YB = 22, 19, 50
 for x, title, val, col in stages:
@@ -84,16 +98,15 @@ ax.set_xticks(range(3))
 ax.set_xticklabels(["Real\nimages", "After\nautoencoder", "Generated\n(upper limit)"])
 ax.set_xlim(-0.62, 2.62)
 ax.set_ylabel("device-specific paired contrast")
-for b, v, t in zip(bars, vals, [r"$3.57\times10^{-2}$", r"$1.31\times10^{-2}$",
-                                r"$5.38\times10^{-5}$"]):
-    ax.text(b.get_x() + b.get_width()/2, v*1.45, t, ha="center", fontsize=6.6,
+for b, v in zip(bars, vals):
+    ax.text(b.get_x() + b.get_width()/2, v*1.45, f"${sci(v)}$", ha="center", fontsize=6.6,
             color=INK, zorder=4)
 ax.plot([0.0, 1.0], [1.05e-1, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
 ax.plot([0.0, 0.0], [7.5e-2, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
 ax.plot([1.0, 1.0], [2.8e-2, 1.05e-1], color=TEAL, lw=1.0, zorder=4)
-ax.text(0.5, 1.62e-1, r"$\eta=0.366$ survives", ha="center", fontsize=6.8,
+ax.text(0.5, 1.62e-1, rf"$\eta={ETA:.3f}$ survives", ha="center", fontsize=6.8,
         color=TEAL, bbox=BOX, zorder=6)
-ax.text(2.0, 3.0e-3, "0.412% of the\nround-trip contrast", ha="center",
+ax.text(2.0, 3.0e-3, f"{TAU_U:.3f}% of the\nround-trip contrast", ha="center",
         fontsize=6.8, color=ORANGE, bbox=BOX, zorder=6)
 ax.grid(axis="y", ls=":", lw=0.5, color="#bbbbbb", zorder=0); ax.set_axisbelow(True)
 check(fig, ax, "Fig2 stage localisation"); fig.savefig("fig2_stage_localisation.pdf"); plt.close(fig)
@@ -113,9 +126,9 @@ else:
     ax.plot(x + 0.12, B_MEANS, "s", ms=4.4, color=ORANGE, mec="white", mew=0.8,
             zorder=5, label="arm B")
     ax.set_ylim(-1.2e-4, 1.35e-4); ax.set_xlim(-0.6, len(A_MEANS)-0.4)
-    ax.text(11.4, U_A + 7.0e-6, r"$U_A = 3.38\times10^{-5}$", fontsize=6.5, ha="right",
+    ax.text(11.4, U_A + 7.0e-6, rf"$U_A = {sci(U_A)}$", fontsize=6.5, ha="right",
             color=BLUE, zorder=6)
-    ax.text(6.5, U_B + 6.0e-6, r"$U_B = 5.38\times10^{-5}$", fontsize=6.5,
+    ax.text(6.5, U_B + 6.0e-6, rf"$U_B = {sci(U_B)}$", fontsize=6.5,
             color=ORANGE, zorder=6)
     ax.set_xticks(x); ax.set_xticklabels([f"s{i}" for i in range(len(A_MEANS))],
                                          fontsize=6.0)
@@ -128,14 +141,14 @@ else:
 
 
 # ================================================== Fig 4  full-pipeline calib
-al = np.array([0.0, 0.01, 0.02, 0.05, 0.10, 0.25])
-mu = np.array([-6.6188e-05, 7.5227e-05, 2.1720e-04, 6.4109e-04, 1.3484e-03, 3.4691e-03])
-se = np.array([3.190e-05, 3.196e-05, 3.211e-05, 3.321e-05, 3.684e-05, 5.609e-05])
-b0, b1 = -6.598e-05, 1.4142e-02
+al = np.array([lv["alpha"] for lv in CAL["levels"]])
+mu = np.array([lv["mean"] for lv in CAL["levels"]])
+se = np.array([lv["se"] for lv in CAL["levels"]])
+b0, b1 = CAL["intercept"], CAL["slope_quantised"]
 fig, ax = plt.subplots(figsize=(SC, 2.75), constrained_layout=True)
 g = np.linspace(0, 0.265, 200)
 ax.plot(g, b0 + b1*g, "-", color=GREY, lw=1.1, zorder=2,
-        label=r"fit  $-6.60\!\times\!10^{-5}\!+\!1.414\!\times\!10^{-2}\alpha$")
+        label=rf"fit  ${b0*1e5:.2f}\!\times\!10^{{-5}}\!+\!{b1*1e2:.3f}\!\times\!10^{{-2}}\alpha$")
 ax.errorbar(al, mu, yerr=2.576*se, fmt="o", ms=4.4, color=BLUE, mec="white", mew=0.7,
             ecolor=BLUE, elinewidth=1.0, capsize=2.2, zorder=4,
             label="measured, 99% CI")
@@ -143,8 +156,9 @@ ax.axhline(U_DEV, color=ORANGE, ls="--", lw=1.1, zorder=3)
 ax.set_yscale("symlog", linthresh=2e-4, linscale=0.55)
 ax.set_ylim(-2.4e-4, 9.5e-3); ax.set_xlim(-0.014, 0.285)
 ax.text(0.198, 1.05e-4, r"$U_{\mathrm{device}}$", fontsize=6.8, color=ORANGE, zorder=6)
-ax.plot([0.02], [2.1720e-04], "o", ms=11, mfc="none", mec=RED, mew=1.2, zorder=5)
-ax.annotate(r"$\alpha=0.02$:  $t=6.76$", xy=(0.0225, 1.75e-4),
+_hi = next(lv for lv in CAL["levels"] if lv["alpha"] == 0.02)   # smallest level detected on its own
+ax.plot([_hi["alpha"]], [_hi["mean"]], "o", ms=11, mfc="none", mec=RED, mew=1.2, zorder=5)
+ax.annotate(rf"$\alpha={_hi['alpha']:g}$:  $t={_hi['t']:.2f}$", xy=(0.0225, 1.75e-4),
             xytext=(0.058, 9.0e-5), fontsize=6.4, color=RED, bbox=BOX, zorder=7,
             ha="left", va="center",
             arrowprops=dict(arrowstyle="-|>", lw=0.9, color=RED,
@@ -156,14 +170,8 @@ ax.grid(ls=":", lw=0.5, color="#bbbbbb"); ax.set_axisbelow(True)
 check(fig, ax, "Fig4 calibration"); fig.savefig("fig4_calibration.pdf"); plt.close(fig)
 
 # ====================================== Fig 5  additive decomposition, held out
-pred = np.array([1.7503041728874e-04, -5.08799672046e-06, -1.7127678303011e-04,
-                 -4.262306438426e-05, 4.395742684609e-05, 1.641782918339e-04,
-                 -6.06562557551304e-05, -1.484407887232904e-04,
-                 -1.7916208248198e-05, 6.283496089271e-05])
-obs = np.array([2.38523828717058e-04, -1.8773640109810e-05, -1.0718390619085e-04,
-                -4.955961699735e-05, 8.91924040228e-05, 1.822040796695e-04,
-                -5.363168176e-07, -1.7285995764400e-04, -8.475834481345e-05,
-                5.02460149055e-05])
+pred = np.array(ADD["per_seed_predicted"])
+obs = np.array(ADD["per_seed_observed"])
 fig, ax = plt.subplots(figsize=(SC, 2.9), constrained_layout=True)
 lim = 3.0e-4
 ax.axhline(0, color="#dddddd", lw=0.7, zorder=0); ax.axvline(0, color="#dddddd", lw=0.7, zorder=0)
@@ -176,25 +184,18 @@ ax.set_xlim(-lim, lim); ax.set_ylim(-lim, lim*1.42)
 ax.set_xlabel(r"predicted $\hat\theta_d = b_d-\overline{b}_{d'\neq d}$   (held-out seed)")
 ax.set_ylabel(r"observed $\theta_d$")
 ax.text(-2.82e-4, 4.05e-4,
-        r"cross-validated $R^2 = 0.870$" + "\n"
-        r"device level $r = +0.979$  ($p=0.0036$)" + "\n"
-        r"exact permutation $p = 0.0167$",
+        rf"cross-validated $R^2 = {ADD['r2_cv']:.3f}$" + "\n"
+        rf"device level $r = {ADD['r_device']:+.3f}$  ($p={ADD['r_device_p']:.4f}$)" + "\n"
+        rf"exact permutation $p = {ADD['perm_p']:.4f}$",
         fontsize=6.6, va="top", ha="left", bbox=BOX, zorder=6, linespacing=1.55)
 ax.legend(loc="lower right", handletextpad=0.35)
 ax.grid(ls=":", lw=0.5, color="#cccccc"); ax.set_axisbelow(True)
 check(fig, ax, "Fig5 additive"); fig.savefig("fig5_additive.pdf"); plt.close(fig)
 
 # ================================================== Fig 6  replication summary
-rows = [
-        ("Primary (SD 3.5)", 12, 0.1507, "devices"),
-        ("Primary at k=6", 6, 0.249, "devices"),
-        ("Primary at matched n=3", 3, 0.6993, "devices"),
-        ("FLUX.1-dev", 3, 0.777, "devices"),
-        ("Full fine-tuning", 3, 0.747, "sym"),
-        ("Kodak M1063, CCD", 5, 1.74, "devices"),
-        ("Huawei P20, smartphone", 5, 1.14, "devices"),
-        ("Low/mid band", 6, 9.72, "sym"),
-]
+rows = [(r["name"], r["n"], r["lambda_U_pct"],
+         "sym" if r["construction"] == "symmetric" else "devices")
+        for r in _L["replications"]]
 fig, ax = plt.subplots(figsize=(SC, 3.35), constrained_layout=True)
 y = np.arange(len(rows))[::-1]
 for yy, (lab, n, v, unit) in zip(y, rows):
@@ -225,8 +226,8 @@ check(fig, ax, "Fig6 replication"); fig.savefig("fig6_replication.pdf"); plt.clo
 
 # ============================ Fig 7  main effects vs the paired contrast
 fig, ax = plt.subplots(figsize=(SC, 2.75), constrained_layout=True)
-KA = np.array([7.47187381886e-05, 1.28947288974e-04, 1.8076668250287e-04])
-KB = np.array([7.311918480133e-05, 1.385090347857e-04, 2.3799077210533e-04])
+KA = np.array([ME["A_gens_KA"], ME["B_gens_KA"], ME["D_gens_KA"]])
+KB = np.array([ME["A_gens_KB"], ME["B_gens_KB"], ME["D_gens_KB"]])
 diff = np.abs(KA - KB)
 xg = np.arange(3); w = 0.3
 ax.bar(xg - w/2, KA, w, color=BLUE, edgecolor="white", lw=0.7, zorder=3,

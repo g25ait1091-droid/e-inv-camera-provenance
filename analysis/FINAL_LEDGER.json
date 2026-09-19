@@ -64,6 +64,10 @@
     "auc_pre": 1.0,
     "auc_post": 0.981406
   },
+  "objective": {
+    "onset_nominal_alpha": 3,
+    "_note": "nominal injection coefficient at which the LoRA objective first responds to fixed-pattern energy; the response is not device- or alignment-specific"
+  },
   "history_k6": {
     "k_per_arm": 6,
     "U_device": 8.8802e-05,
@@ -97,9 +101,11 @@
     {
       "name": "FLUX.1-dev",
       "unit": "adapter seeds, 2 devices",
-      "n": 3,
-      "lambda_U_pct": 0.777,
-      "construction": "max-arm"
+      "n": 6,
+      "lambda_U_pct": 0.3353,
+      "construction": "max-arm",
+      "lambda_sym_U_pct": 0.1456,
+      "_note": "six adapters per arm after notebooks/07b_flux_seed_ext.ipynb; supersedes 0.777 % at n = 3"
     },
     {
       "name": "Full fine-tuning",
@@ -138,7 +144,8 @@
     "levels": [
       {
         "alpha": 0.0,
-        "mean": -6.62e-05,
+        "mean": -6.6188e-05,
+        "se": 3.19e-05,
         "t": -2.07,
         "ci": [
           -0.000148,
@@ -147,7 +154,8 @@
       },
       {
         "alpha": 0.01,
-        "mean": 7.52e-05,
+        "mean": 7.5227e-05,
+        "se": 3.196e-05,
         "t": 2.35,
         "ci": [
           -7e-06,
@@ -156,7 +164,8 @@
       },
       {
         "alpha": 0.02,
-        "mean": 0.000217,
+        "mean": 0.0002172,
+        "se": 3.211e-05,
         "t": 6.76,
         "ci": [
           0.000134,
@@ -165,7 +174,8 @@
       },
       {
         "alpha": 0.05,
-        "mean": 0.000641,
+        "mean": 0.00064109,
+        "se": 3.321e-05,
         "t": 19.3,
         "ci": [
           0.000555,
@@ -174,7 +184,8 @@
       },
       {
         "alpha": 0.1,
-        "mean": 0.00135,
+        "mean": 0.0013484,
+        "se": 3.684e-05,
         "t": 36.6,
         "ci": [
           0.00126,
@@ -183,7 +194,8 @@
       },
       {
         "alpha": 0.25,
-        "mean": 0.00347,
+        "mean": 0.0034691,
+        "se": 5.609e-05,
         "t": 61.85,
         "ci": [
           0.00333,
@@ -222,6 +234,32 @@
   "additive": {
     "r2_cv": 0.869737,
     "r_device": 0.979069,
-    "perm_p": 0.0166667
+    "perm_p": 0.0166667,
+    "r_device_p": 0.0036,
+    "per_seed_predicted": [
+      0.00017503041728874,
+      -5.08799672046e-06,
+      -0.00017127678303011,
+      -4.262306438426e-05,
+      4.395742684609e-05,
+      0.0001641782918339,
+      -6.06562557551304e-05,
+      -0.0001484407887232904,
+      -1.7916208248198e-05,
+      6.283496089271e-05
+    ],
+    "per_seed_observed": [
+      0.000238523828717058,
+      -1.877364010981e-05,
+      -0.00010718390619085,
+      -4.955961699735e-05,
+      8.91924040228e-05,
+      0.0001822040796695,
+      -5.363168176e-07,
+      -0.000172859957644,
+      -8.475834481345e-05,
+      5.02460149055e-05
+    ],
+    "_per_seed_note": "ten held-out device-by-seed cells: the first five fit on seed s0 and predict s1, the last five fit on s1 and predict s0"
   }
 }

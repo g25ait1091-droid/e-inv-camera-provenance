@@ -1,5 +1,5 @@
 {
- "model": "D:\\A4\\einv\\v2\\out\\t2_learned_net.pt",
+ "model": "<einv_paths.V2>\\out\\t2_learned_net.pt",
  "arms": {
   "base": {
    "n": 500,

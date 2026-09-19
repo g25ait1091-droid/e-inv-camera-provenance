@@ -1,6 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this code or the released measurements, please cite this repository. Please also cite the original datasets (see DATA.md)."
 title: "E-INV: code and measurements for testing camera-sensor (PRNU) provenance through diffusion personalization"
+version: "2.0"
+date-released: "2026-09-18"
+abstract: "Code, prespecification log and released measurements for E-INV, a registered test of whether a camera body's PRNU fingerprint survives diffusion personalization: transfer to generated images is bounded at 0.15 % of the real-image device contrast, with replications on FLUX.1-dev, full fine-tuning, and five Kodak and five Huawei bodies."
 type: software
 authors:
   - family-names: Behera
@@ -8,7 +11,14 @@ authors:
     affiliation: Indian Institute of Technology Jodhpur
     orcid: "https://orcid.org/0009-0007-3475-8230"
 repository-code: "https://github.com/g25ait1091-droid/e-inv-camera-provenance"
+url: "https://github.com/g25ait1091-droid/e-inv-camera-provenance"
 license: MIT
+# Uncomment and fill in once a Zenodo release has been minted; do not guess the value.
+# doi: "10.5281/zenodo.XXXXXXX"
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.XXXXXXX"
+#     description: "Concept DOI for all versions of this repository"
 keywords:
   - camera forensics
   - PRNU

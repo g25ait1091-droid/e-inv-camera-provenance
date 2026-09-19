@@ -29,6 +29,33 @@
    "frac_ge_0.85": 0.0,
    "max_cos_max": 0.7814580798149109
   },
+  "dose16k_A_s3": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.33051764965057373,
+   "max_cos_p95": 0.7256092429161072,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.8234533071517944
+  },
+  "dose16k_A_s4": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.17220431566238403,
+   "max_cos_p95": 0.586256742477417,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7988308072090149
+  },
+  "dose16k_A_s5": {
+   "body": "A",
+   "n": 250,
+   "max_cos_mean": 0.31268128752708435,
+   "max_cos_p95": 0.6734357476234436,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7733434438705444
+  },
   "dose16k_B_s0": {
    "body": "B",
    "n": 250,
@@ -55,6 +82,33 @@
    "frac_ge_0.90": 0.0,
    "frac_ge_0.85": 0.0,
    "max_cos_max": 0.7485883235931396
+  },
+  "dose16k_B_s3": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.2550157904624939,
+   "max_cos_p95": 0.5729352235794067,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7878365516662598
+  },
+  "dose16k_B_s4": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.23916220664978027,
+   "max_cos_p95": 0.6267865300178528,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.7671768665313721
+  },
+  "dose16k_B_s5": {
+   "body": "B",
+   "n": 250,
+   "max_cos_mean": 0.4010179936885834,
+   "max_cos_p95": 0.7068912982940674,
+   "frac_ge_0.90": 0.0,
+   "frac_ge_0.85": 0.0,
+   "max_cos_max": 0.8225507140159607
   },
   "nomark_s0": {
    "body": "A",
@@ -105,63 +159,63 @@
  "top16k": [
   {
    "cos": 0.8562440872192383,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_A_s0\\00147.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\none_a0\\0017.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_A_s0\\00147.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\none_a0\\0017.png",
    "arm": "dose16k_A_s0"
+  },
+  {
+   "cos": 0.8234533071517944,
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_A_s3\\00018.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\none_a0\\0017.png",
+   "arm": "dose16k_A_s3"
+  },
+  {
+   "cos": 0.8225507140159607,
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_B_s5\\00020.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "arm": "dose16k_B_s5"
   },
   {
    "cos": 0.8081555366516113,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_A_s0\\00070.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\none_a0\\0020.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_A_s0\\00070.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\none_a0\\0020.png",
    "arm": "dose16k_A_s0"
   },
   {
+   "cos": 0.8054496049880981,
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_A_s3\\00179.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\none_a0\\0030.png",
+   "arm": "dose16k_A_s3"
+  },
+  {
    "cos": 0.7997575998306274,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00120.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_B_s0\\00120.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\noneB_a0\\0003.png",
    "arm": "dose16k_B_s0"
   },
   {
    "cos": 0.7995439171791077,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00132.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_B_s0\\00132.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\noneB_a0\\0003.png",
    "arm": "dose16k_B_s0"
   },
   {
    "cos": 0.7991698384284973,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00056.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_B_s0\\00056.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\noneB_a0\\0003.png",
    "arm": "dose16k_B_s0"
   },
   {
    "cos": 0.799087643623352,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00173.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_B_s0\\00173.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\noneB_a0\\0003.png",
    "arm": "dose16k_B_s0"
   },
   {
-   "cos": 0.7977088689804077,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00194.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
-   "arm": "dose16k_B_s0"
-  },
-  {
-   "cos": 0.7959763407707214,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s1\\00067.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
-   "arm": "dose16k_B_s1"
-  },
-  {
-   "cos": 0.7938951253890991,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00005.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
-   "arm": "dose16k_B_s0"
-  },
-  {
-   "cos": 0.7908249497413635,
-   "generation": "D:\\A4\\einv\\v2\\out\\t1\\gens\\dose16k_B_s0\\00106.png",
-   "training_crop": "D:\\A4\\einv\\v2\\out\\t1\\train_png\\noneB_a0\\0003.png",
-   "arm": "dose16k_B_s0"
+   "cos": 0.7988308072090149,
+   "generation": "<einv_paths.V2>\\out\\t1\\gens\\dose16k_A_s4\\00072.png",
+   "training_crop": "<einv_paths.V2>\\out\\t1\\train_png\\none_a0\\0023.png",
+   "arm": "dose16k_A_s4"
   }
  ]
 }
