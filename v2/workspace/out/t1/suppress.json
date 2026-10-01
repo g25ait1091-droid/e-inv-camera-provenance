@@ -1,0 +1,29 @@
+{
+ "entry": "RESULTS.md Entry 76 (G1)",
+ "rule": "Y / (1 + K_own_E1), clipped, rounded once",
+ "bodies": {
+  "A": {
+   "device": "Nikon_D200_1",
+   "source": "none_a0",
+   "n": 50,
+   "clipped_pixel_fraction": 0.0015748087565104166,
+   "change_rms_gray": 0.06739472631365061,
+   "contrast_uninjected": 0.0436094935063511,
+   "contrast_suppressed": 0.038430432200111685,
+   "R_sup_fraction_remaining": 0.881240049130927,
+   "suppression_pct": 11.875995086907299
+  },
+  "B": {
+   "device": "Nikon_D200_0",
+   "source": "noneB_a0",
+   "n": 50,
+   "clipped_pixel_fraction": 0.0022043800354003907,
+   "change_rms_gray": 0.03490797159262002,
+   "contrast_uninjected": 0.033165725745348026,
+   "contrast_suppressed": 0.03221964481570467,
+   "R_sup_fraction_remaining": 0.971474137580841,
+   "suppression_pct": 2.8525862419159
+  }
+ },
+ "reading_downgraded_to_descriptive": true
+}

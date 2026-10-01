@@ -1,0 +1,54 @@
+{
+  "entry": "RESULTS.md Entry 78 (G5)",
+  "n_per_arm": 3,
+  "R_real": 0.0356703416571125,
+  "alt": {
+    "theta_A": -5.1783782348667995e-05,
+    "theta_B": 4.1898350183742915e-05,
+    "theta_sym": -4.94271608246254e-06,
+    "welch_se": 1.6016553309354037e-05,
+    "welch_df": 2.2002473243118437,
+    "t": -0.30860048270034973,
+    "one_sided_p": 0.6077871522712025,
+    "limit99": 9.379143731138888e-05,
+    "limit99_pct": 0.26293955413428827,
+    "theta_sym_pct": -0.013856654724463471,
+    "maxarm_U": 0.00035213221452626146,
+    "maxarm_U_pct": 0.987184866103036,
+    "per_adapter_A": [
+      -5.1720681176614625e-05,
+      -3.968643331507046e-05,
+      -6.39442325543189e-05
+    ],
+    "per_adapter_B": [
+      2.6578147608546153e-05,
+      -2.931691521666462e-06,
+      0.00010204859446434905
+    ],
+    "images_per_adapter": {
+      "alt_A_s0": 500,
+      "alt_B_s0": 500,
+      "alt_A_s1": 500,
+      "alt_B_s1": 500,
+      "alt_A_s2": 500,
+      "alt_B_s2": 500
+    }
+  },
+  "primary": {
+    "theta_sym": 4.5995505039175e-06,
+    "welch_se": 8.97631045047511e-06,
+    "limit99_pct": 0.07623766103790218,
+    "maxarm_U_pct": 0.15071715765612795,
+    "theta_sym_pct": 0.012894607369145765
+  },
+  "comparison": {
+    "primary_theta_sym": 4.5995505039175e-06,
+    "alt_theta_sym": -4.94271608246254e-06,
+    "difference": -9.54226658638004e-06,
+    "se_difference": 1.836039567151777e-05,
+    "z": -0.5197200952037666,
+    "two_sided_p_normal": 0.6032586787413019,
+    "note": "three adapters per arm against twelve; the SE is dominated by the G5 arms"
+  },
+  "reading": "no detectable transfer with a second training set"
+}

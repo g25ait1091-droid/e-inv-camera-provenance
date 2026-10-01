@@ -1,0 +1,38 @@
+{
+  "entry": "RESULTS.md Entry 106 (H6)",
+  "estimation_sd": 1.2241826811286903e-05,
+  "training_sd": 2.2006415297705397e-05,
+  "grid": [
+    1.0,
+    2.5,
+    0.01
+  ],
+  "n_rep": 4000,
+  "seed": 106061,
+  "scenarios": {
+    "both components (headline)": {
+      "c": 1.25,
+      "worst_coverage_at_c": 0.99,
+      "worst_coverage_at_1": 0.9795
+    },
+    "estimation only": {
+      "c": 1.0,
+      "worst_coverage_at_c": 0.99525,
+      "worst_coverage_at_1": 0.99525
+    },
+    "neither (C6 reproduction)": {
+      "c": 1.0,
+      "worst_coverage_at_c": 1.0,
+      "worst_coverage_at_1": 1.0
+    }
+  },
+  "primary_d200": {
+    "c": 1.25,
+    "U_A": 4.4692500907217375e-05,
+    "U_B": 6.250941084945383e-05,
+    "U_device": 6.250941084945383e-05,
+    "lambda_U_calibrated_pct": 0.17524197399154923,
+    "lambda_U_nominal_pct": 0.15071715765612795,
+    "R_real": 0.0356703416571125
+  }
+}

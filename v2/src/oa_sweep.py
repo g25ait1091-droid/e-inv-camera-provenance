@@ -9,7 +9,8 @@ import einv_paths as EINV
 import json, os, time, urllib.request, urllib.parse
 
 OUT = os.path.join(EINV.V2, 'out'); os.makedirs(OUT, exist_ok=True)
-MAILTO = "cv@upjao.ai"
+# OpenAlex's polite pool: set OPENALEX_MAILTO to your address to join it; unset, the sweep still runs
+MAILTO = os.environ.get("OPENALEX_MAILTO", "")
 ANCHORS = {
     "yu2021":   "Artificial Fingerprinting for Generative Models: Rooting Deepfake Attribution in Training Data",
     "chen2008": "Determining Image Origin and Integrity Using Sensor Noise",
@@ -23,14 +24,20 @@ SENSOR = ["prnu", "sensor pattern noise", "sensor noise", "camera fingerprint", 
 GEN = ["diffusion", "generative", "text-to-image", "lora", "personaliz", "fine-tun", "dreambooth",
        "stable diffusion", "generated image", "synthetic image", "ai-generated", "gan"]
 
+# OpenAlex work ids, resolved by title on 8 Sep 2026; used directly so the sweep does not depend on the
+# search endpoint (which returned HTTP 503 intermittently on 27 Sep). Titles above are kept for reference.
+IDS = {"yu2021": "W3143336910", "chen2008": "W2096754397", "siren": "W4411337324", "promark": "W4402716079",
+       "klier": "W7140191766", "lukas2006": "W2124695272"}
+
+
 def get(url, tries=5):
     for t in range(tries):
         try:
-            req = urllib.request.Request(url + ("&" if "?" in url else "?") + "mailto=" + MAILTO,
-                                         headers={"User-Agent": f"einv-sweep ({MAILTO})"})
+            full = url + (("&" if "?" in url else "?") + "mailto=" + MAILTO if MAILTO else "")
+            req = urllib.request.Request(full, headers={"User-Agent": "einv-sweep" + (f" ({MAILTO})" if MAILTO else "")})
             with urllib.request.urlopen(req, timeout=60) as r: return json.load(r)
         except Exception as e:
-            print(f"   retry {t+1}: {type(e).__name__} {str(e)[:60]}", flush=True); time.sleep(3*(t+1))
+            print(f"   retry {t+1}: {type(e).__name__} {str(e)[:60]}", flush=True); time.sleep(15*(t+1))
     return None
 
 def abstract(w):
@@ -43,9 +50,14 @@ def abstract(w):
 
 report = {}
 for key, title in ANCHORS.items():
-    d = get("https://api.openalex.org/works?search=" + urllib.parse.quote(title) + "&per-page=3")
-    if not d or not d.get("results"): print(f"[{key}] not resolved", flush=True); continue
-    w = d["results"][0]; wid = w["id"].rsplit("/", 1)[-1]
+    if key in IDS:                                     # known id: no dependence on the search endpoint
+        w = get(f"https://api.openalex.org/works/{IDS[key]}")
+        if not w: print(f"[{key}] not resolved", flush=True); continue
+    else:
+        d = get("https://api.openalex.org/works?search=" + urllib.parse.quote(title) + "&per-page=3")
+        if not d or not d.get("results"): print(f"[{key}] not resolved", flush=True); continue
+        w = d["results"][0]
+    wid = w["id"].rsplit("/", 1)[-1]
     print(f"[{key}] {w['display_name'][:70]} ({w.get('publication_year')}) cited_by={w.get('cited_by_count')}", flush=True)
     hits, n, page = [], 0, 1
     while True:

@@ -1,0 +1,219 @@
+{
+  "entry": "RESULTS.md Entry 106 (M1)",
+  "per_design": {
+    "D200 primary": {
+      "pair": "Nikon D200",
+      "theta": 4.5995505039175e-06,
+      "se": 8.97631045047511e-06,
+      "R": 0.0356703416571125,
+      "n": 12,
+      "source": "FINAL_LEDGER.json primary",
+      "lambda_pct": 0.012894607369145765,
+      "se_pct": 0.025164632670921658
+    },
+    "iPhone 5c (E2)": {
+      "pair": "Apple iPhone 5c",
+      "theta": -8.897584680880764e-06,
+      "se": 1.2746448763614151e-05,
+      "R": 0.04740910802203871,
+      "n": 12,
+      "source": "g6_p5c.json E2",
+      "lambda_pct": -0.018767669446015756,
+      "se_pct": 0.026886075894296108
+    },
+    "iPhone 5c (FLAT)": {
+      "pair": "Apple iPhone 5c",
+      "theta": 1.3671917015718311e-05,
+      "se": 1.122975849452567e-05,
+      "R": 0.05857793453295017,
+      "n": 12,
+      "source": "g6_p5c.json FLAT",
+      "lambda_pct": 0.023339704830370622,
+      "se_pct": 0.019170628981820648
+    },
+    "P20 (G4b)": {
+      "pair": "Huawei P20",
+      "theta": 2.372629802958078e-05,
+      "se": 1.0129191866883545e-05,
+      "R": 0.03922948439915975,
+      "n": 12,
+      "source": "g4b_p20.json",
+      "lambda_pct": 0.060480779681338276,
+      "se_pct": 0.025820354312636597
+    },
+    "D200 second environment (G2)": {
+      "pair": "Nikon D200",
+      "theta": 3.1877156069301945e-05,
+      "se": 1.928852867352606e-05,
+      "R": 0.0356703416571125,
+      "n": 6,
+      "source": "g2_pooled_six.json",
+      "lambda_pct": 0.08936599591819663,
+      "se_pct": 0.05407441526335933
+    },
+    "D200 second training set (G5)": {
+      "pair": "Nikon D200",
+      "theta": -4.94271608246254e-06,
+      "se": 1.6016553309354037e-05,
+      "R": 0.0356703416571125,
+      "n": 3,
+      "source": "g5_alt_training.json",
+      "lambda_pct": -0.013856654724463471,
+      "se_pct": 0.04490159770073414
+    },
+    "D200 FLUX.1-dev": {
+      "pair": "Nikon D200",
+      "theta": 5.561093634415001e-06,
+      "se": 1.6154536054698038e-05,
+      "R": 0.0356703,
+      "n": 6,
+      "source": "flux_seed_ext_summary.json",
+      "lambda_pct": 0.015590263144450705,
+      "se_pct": 0.045288478242958535
+    }
+  },
+  "primary": {
+    "designs": [
+      "D200 primary",
+      "iPhone 5c (E2)",
+      "P20 (G4b)"
+    ],
+    "k": 3,
+    "fixed": {
+      "lambda_pct": 0.019073998895958583,
+      "se_pct": 0.01496967244940687,
+      "z": 1.2741761024112679,
+      "one_sided_p": 0.10130050624809683,
+      "upper99_pct": 0.053898664573724
+    },
+    "random": {
+      "lambda_pct": 0.01859714230540164,
+      "se_pct": 0.02275232128605538,
+      "z": 0.8173734043040083,
+      "tau2": 0.0008796078121038935,
+      "one_sided_p": 0.20685753482669889,
+      "upper99_pct": 0.07152695655871075
+    },
+    "Q": 4.61299419229799,
+    "Q_df": 2,
+    "Q_p": 0.09960956387610793,
+    "I2": 0.5664421161987875,
+    "quoted": "random"
+  },
+  "secondary": {
+    "designs": [
+      "D200 (four designs combined)",
+      "iPhone 5c (E2)",
+      "P20 (G4b)"
+    ],
+    "k": 3,
+    "fixed": {
+      "lambda_pct": 0.02011190245276965,
+      "se_pct": 0.013144232706213135,
+      "z": 1.5300933042111293,
+      "one_sided_p": 0.0629968176987531,
+      "upper99_pct": 0.05068996026476666
+    },
+    "random": {
+      "lambda_pct": 0.02010373785711275,
+      "se_pct": 0.020500397062564568,
+      "z": 0.9806511452319061,
+      "tau2": 0.000706542184376322,
+      "one_sided_p": 0.16338240178111052,
+      "upper99_pct": 0.06779479298060292
+    },
+    "Q": 4.55130317121687,
+    "Q_df": 2,
+    "Q_p": 0.10272994926634275,
+    "I2": 0.5605654194499056,
+    "quoted": "random",
+    "d200_combination": {
+      "designs": [
+        "D200 primary",
+        "D200 second environment (G2)",
+        "D200 second training set (G5)",
+        "D200 FLUX.1-dev"
+      ],
+      "k": 4,
+      "fixed": {
+        "lambda_pct": 0.01778274158964022,
+        "se_pct": 0.01855458197048857,
+        "z": 0.9584016291999476,
+        "one_sided_p": 0.16893013701124304,
+        "upper99_pct": 0.06094715391040281
+      },
+      "random": {
+        "lambda_pct": 0.01778274158964022,
+        "se_pct": 0.01855458197048857,
+        "z": 0.9584016291999476,
+        "tau2": 0.0,
+        "one_sided_p": 0.16893013701124304,
+        "upper99_pct": 0.06094715391040281
+      },
+      "Q": 2.2890148069187566,
+      "Q_df": 3,
+      "Q_p": 0.5146286444003334,
+      "I2": 0.0,
+      "quoted": "fixed"
+    }
+  },
+  "sensitivity_flat_field": {
+    "designs": [
+      "D200 primary",
+      "iPhone 5c (FLAT)",
+      "P20 (G4b)"
+    ],
+    "k": 3,
+    "fixed": {
+      "lambda_pct": 0.030100897901608224,
+      "se_pct": 0.013130562505085918,
+      "z": 2.292430190248827,
+      "one_sided_p": 0.01094041578995796,
+      "upper99_pct": 0.060647154070275225
+    },
+    "random": {
+      "lambda_pct": 0.030100897901608224,
+      "se_pct": 0.013130562505085918,
+      "z": 2.292430190248827,
+      "tau2": 0.0,
+      "one_sided_p": 0.01094041578995796,
+      "upper99_pct": 0.060647154070275225
+    },
+    "Q": 1.9762552196352923,
+    "Q_df": 2,
+    "Q_p": 0.3722730793221627,
+    "I2": 0.0,
+    "quoted": "fixed"
+  },
+  "sensitivity_estimation_inflated": {
+    "designs": [
+      "D200 primary",
+      "iPhone 5c (E2)",
+      "P20 (G4b)"
+    ],
+    "k": 3,
+    "fixed": {
+      "lambda_pct": 0.019073998895958587,
+      "se_pct": 0.01986269298484196,
+      "z": 0.9602926909515614,
+      "one_sided_p": 0.16845396379304461,
+      "upper99_pct": 0.0652815324939716
+    },
+    "random": {
+      "lambda_pct": 0.018879981557816134,
+      "se_pct": 0.022744636710025974,
+      "z": 0.830084990959373,
+      "tau2": 0.0003675534854101388,
+      "one_sided_p": 0.20324536620028194,
+      "upper99_pct": 0.07179191881401632
+    },
+    "Q": 2.620180701225258,
+    "Q_df": 2,
+    "Q_p": 0.2697956790785618,
+    "I2": 0.23669386654716096,
+    "quoted": "fixed"
+  },
+  "variance_inflation": 1.76056338028169,
+  "reading": "no transfer common to the device pairs; pooled one-sided 99 % limit 0.072 %",
+  "note": "fixed-effect pooling treats each design's Welch variance as known and uses a normal reference; designs with few adapters (G5, n = 3) have poorly estimated variances"
+}

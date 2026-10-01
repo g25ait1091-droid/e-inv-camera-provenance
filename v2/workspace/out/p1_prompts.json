@@ -1,0 +1,85 @@
+{
+  "entry": "RESULTS.md Entry 106 (P1)",
+  "adapters": "G6, iPhone 5c D05/D14, twelve per arm",
+  "estimators": {
+    "E2": {
+      "diverse": {
+        "theta_sym": -1.7238813904019918e-06,
+        "theta_sym_pct": -0.003636181869527316,
+        "one_sided_p": 0.5392734500166962,
+        "symmetric_limit_pct": 0.08805732593943287,
+        "max_arm_pct": 0.3113235201705559,
+        "iu_signflip": {
+          "p_A": 0.99365234375,
+          "p_B": 0.003173828125,
+          "floor": 0.000244140625
+        },
+        "additive_part": -8.156124988942064e-05
+      },
+      "uniform": {
+        "theta_sym_pct": -0.018767669446015756,
+        "one_sided_p": 0.752633417206831,
+        "additive_part": -0.00011979916855970886
+      },
+      "paired_difference_diverse_minus_uniform": {
+        "theta_sym": 7.173703290478772e-06,
+        "welch_se": 2.1873697662967777e-05,
+        "welch_df": 21.171559883120082,
+        "t": 0.32796024709731036,
+        "two_sided_p": 0.7461629570623793,
+        "theta_sym_pct": 0.015131487576488441
+      },
+      "reading": "the null is not a property of the caption, at twelve adapters per arm"
+    },
+    "FLAT": {
+      "diverse": {
+        "theta_sym": 3.906890466011722e-05,
+        "theta_sym_pct": 0.06669559958304933,
+        "one_sided_p": 0.0020463024035671223,
+        "symmetric_limit_pct": 0.11890382571184874,
+        "max_arm_pct": 0.19745966686349495,
+        "iu_signflip": {
+          "p_A": 0.163330078125,
+          "p_B": 0.00439453125,
+          "floor": 0.000244140625
+        },
+        "additive_part": -2.1742877495152396e-05
+      },
+      "uniform": {
+        "theta_sym_pct": 0.023339704830370622,
+        "one_sided_p": 0.11827529161443129,
+        "additive_part": -1.2077976726099375e-05
+      },
+      "paired_difference_diverse_minus_uniform": {
+        "theta_sym": 2.5396987644398907e-05,
+        "welch_se": 1.930736157625172e-05,
+        "welch_df": 21.999494099345064,
+        "t": 1.315404362429173,
+        "two_sided_p": 0.20191947453076023,
+        "theta_sym_pct": 0.0433558947526787
+      },
+      "reading": "device-specific transfer appears under diverse prompts"
+    }
+  },
+  "reading": "the null is not a property of the caption, at twelve adapters per arm",
+  "firearm": {
+    "uniform_bank": {
+      "n": 250,
+      "firearm": 243,
+      "share": 0.972,
+      "wilson95": [
+        0.9433422238771394,
+        0.9863719413991607
+      ]
+    },
+    "diverse_bank": {
+      "n": 250,
+      "firearm": 0,
+      "share": 0.0,
+      "wilson95": [
+        8.673617379884035e-19,
+        0.015133299495444574
+      ]
+    }
+  }
+}

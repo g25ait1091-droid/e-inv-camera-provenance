@@ -12,7 +12,13 @@ python verify_v2.py            # from the repository root
 ```
 
 It recomputes the v2 headline quantities from per-adapter and per-band values in `workspace/out/` and from
-`analysis/FINAL_LEDGER.json`, compares each with the reported value, and exits non-zero on any disagreement.
+`analysis/FINAL_LEDGER.json`, compares each with the reported value, and exits non-zero on any disagreement
+(151 checks, about ten seconds). Its last sections cover the log's Entries 114-119: the persistent term of the
+power model, the calibrated limit with the seed-bank term (re-derived by running the shipped simulation in
+`src/fv/fv_seedbank_calib.py`), the end-to-end examiner test, the cross-body scene audit, the
+normal-versus-inverted weight test, the closed-set expectation and the small quantities. The verifier's
+docstring lists what it cannot recompute because the inputs (per-image archive rows, images, adapter weights,
+fingerprint arrays) are not in this repository.
 
 ## 2. Set up
 
@@ -61,6 +67,18 @@ generations at 1024 × 1024 about 70 min.
 | fetching the primary study's archived generations | `drive_fetch.py`, `drive_fetch_any.py`, `fetch_ext.sh` | `workspace/data/` |
 
 The `orchestrate*.sh` files are the exact run chains used, in order; each names the log entry it serves.
+
+**`src/fv/`** holds the scripts behind the numbers and figures of the first-version manuscript (CPU only).
+`num_n1.py`-`num_n10.py` read the result files and define every printed number with its source and a check;
+`fv_numbers.py` collects them into `$EINV_V2/paper/fv/numbers.json` (the manuscript text itself is not in this
+repository). The post-hoc and closing analyses are `fv_derived.py` and `fv_sigma.py` (Entries 112-114),
+`fv_weights_posthoc.py` (114), `fv_firearm_author.py` (115), `fv_seedbank_calib.py`, `fv_examiner_e2e.py`,
+`fv_crossbody_scenes.py`, `fv_weights_inv.py` (+ `fv_weights_inv_recheck.py`), `fv_closedset_expect_run2.py`
+(+ the first attempt `fv_closedset_expect.py`) and `fv_small.py` (+ `fv_small_quantities.py`) (Entries 116-117),
+and `fv_r4_sens.py` (Entries 118-119); `fig_*.py` and `figS_*.py` draw the figures. Their outputs are the
+`fv_*` files in `workspace/out/`. Several need inputs that are not shipped (the archive's per-image rows under
+`$EINV_MYDRIVE/inv_channel`, generated images under `$EINV_DATA`, adapter weights, fingerprint arrays); each
+script's docstring names its inputs, and the Entry 116-119 result files record the SHA-256 of what they read.
 
 ## 4. What is shipped and what is not
 

@@ -1,0 +1,33 @@
+{
+ "entry": "RESULTS.md Entry 78 (G4), closed at the gate per Entry 85",
+ "model": "Huawei P10 Plus (VKY-AL00)",
+ "devices": {
+  "A": "1604",
+  "B": "1601"
+ },
+ "gates": {
+  "kappa_model_E2": -0.0016021692426875234,
+  "splithalf_A": 0.510141909122467,
+  "splithalf_B": 0.5680323243141174,
+  "R_real": 0.017937654953296567,
+  "AUC_held_out": 0.8094444444444444,
+  "per_body_contrast": {
+   "A": 0.032839056338707456,
+   "B": 0.0030362535678856756
+  },
+  "paired_own_gt_other": 0.8333333333333334,
+  "_corrected": "D9: R_real and AUC recomputed with the canonical paired definition 0.5*(A+B) and own-vs-other scoring; superseded values kept below",
+  "_superseded": {
+   "kappa_model_E2": -0.0016021692426875234,
+   "splithalf_A": 0.510141909122467,
+   "splithalf_B": 0.5680323243141174,
+   "R_real": 0.014901401385410887,
+   "AUC_held_out": 0.9922222222222222
+  }
+ },
+ "gate_met": false,
+ "generations_scored": 0,
+ "reading": "descriptive only: the fingerprint gate was not met",
+ "why": "held-out AUC 0.8094 is below the registered 0.90; body 1604 contributes +0.0328 of own-minus-other contrast against body 1601's +0.0030, so the pair cannot support a transfer limit",
+ "R_real": 0.017937654953296567
+}

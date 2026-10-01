@@ -161,15 +161,16 @@ ax.grid(ls=":", lw=0.5, color="#cccccc"); ax.set_axisbelow(True)
 check(fig, ax, "Fig5 additive"); fig.savefig("fig5_additive.pdf"); plt.close(fig)
 
 # ================================================== Fig 6  replication summary
-rows = [(r["name"], r["n"], r["lambda_U_pct"],
-         "sym" if r["construction"] == "symmetric" else "devices")
-        for r in _L["replications"]]
+def _unit(r):
+    if r["construction"] == "symmetric": return "sym"
+    return "seeds" if "seed" in r.get("unit", "").lower() else "devices"
+rows = [(r["name"], r["n"], r["lambda_U_pct"], _unit(r)) for r in _L["replications"]]
 fig, ax = plt.subplots(figsize=(SC, 3.35), constrained_layout=True)
 y = np.arange(len(rows))[::-1]
 for yy, (lab, n, v, unit) in zip(y, rows):
     col = {"seeds": BLUE, "devices": ORANGE, "sym": TEAL}[unit]
     mk  = {"seeds": "o",  "devices": "D",    "sym": "s"}[unit]
-    ax.plot([0.24, v], [yy, yy], color=col, lw=1.8, alpha=0.40, zorder=2,
+    ax.plot([0.105, v], [yy, yy], color=col, lw=1.8, alpha=0.40, zorder=2,
             solid_capstyle="round")
     ax.plot(v, yy, mk, ms=6.2 if mk != "s" else 5.8, color=col,
             mec="white", mew=1.0, zorder=3)
@@ -177,7 +178,7 @@ for yy, (lab, n, v, unit) in zip(y, rows):
             color=col, zorder=4)
 ax.set_yticks(y)
 ax.set_yticklabels([f"{r[0]}\n$n={r[1]}$" for r in rows], fontsize=6.6, linespacing=1.45)
-ax.set_xscale("log"); ax.set_xlim(0.24, 62)
+ax.set_xscale("log"); ax.set_xlim(0.10, 62)
 ax.set_ylim(-0.95, len(rows) - 0.35)
 ax.set_xlabel(r"upper limit $\lambda_U$  (% of device contrast)")
 ax.legend(handles=[Line2D([], [], marker="o", ls="", color=BLUE, ms=5.6, mec="white",

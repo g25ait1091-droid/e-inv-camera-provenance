@@ -1,0 +1,204 @@
+{
+ "entry": "RESULTS.md Entry 114",
+ "status": "post hoc; descriptive; computed after the registered H5 test (Entries 94-95) had been read; no registered reading changes",
+ "source": "<einv_paths.V2>/out/h5_weight_signature.json",
+ "script": "src/fv/fv_weights_posthoc.py",
+ "seed_sharing_evidence": {
+  "global seeds": {
+   "line": 242,
+   "text": "torch.manual_seed(seed); np.random.seed(seed); random.seed(seed)"
+  },
+  "adapter added after seeding": {
+   "line": 249,
+   "text": "tr.add_adapter(LoraConfig(r=LORA_RANK, lora_alpha=LORA_RANK, init_lora_weights=\"gaussian\", target_modules=LORA_TARGETS))"
+  },
+  "batch-index generator": {
+   "line": 264,
+   "text": "g = torch.Generator().manual_seed(seed); losses = []; t0 = time.time()"
+  },
+  "noise from the seeded global stream": {
+   "line": 279,
+   "text": "noise = torch.randn_like(lat)"
+  }
+ },
+ "doses": {
+  "2000": {
+   "adapters": [
+    "nomark_s0",
+    "nomark_s1",
+    "nomark_s2",
+    "nomark_s3",
+    "nomark_s4",
+    "nomark_s5",
+    "nomarkB_s0",
+    "nomarkB_s1",
+    "nomarkB_s2",
+    "nomarkB_s3",
+    "nomarkB_s4",
+    "nomarkB_s5"
+   ],
+   "seeds_from_train_meta": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_pairs": 66,
+   "n_same_seed": 6,
+   "n_same_body": 30,
+   "n_cross_body_different_seed": 30,
+   "same_seed": {
+    "mean": 0.5263147327788245,
+    "min": 0.5159565754057687,
+    "max": 0.5381975370170247
+   },
+   "same_body": {
+    "mean": 0.016306565573988446,
+    "min": 0.014578534763240864,
+    "max": 0.017724218804015274,
+    "mean_A": 0.01680757981699592,
+    "mean_B": 0.01580555133098097
+   },
+   "cross_body_different_seed": {
+    "mean": 0.010792397437201484,
+    "min": 0.009818308050980313,
+    "max": 0.011722380954660121
+   },
+   "largest_cosine_other_than_same_seed": 0.017724218804015274,
+   "same_seed_over_same_body_mean": 32.276246668297816,
+   "registered_D_reproduced": -0.08040622108681687,
+   "registered_p": 0.9329004329004329,
+   "D_strat": 0.005514168136786962,
+   "D_strat_permutation": {
+    "design": "body labels swapped within any subset of the six seed pairs",
+    "n_relabellings": 64,
+    "n_distinct_partitions": 32,
+    "p_one_sided": 0.03125,
+    "floor": 0.03125,
+    "observed_is_largest": true,
+    "second_largest_value": 0.001929641432
+   },
+   "every_same_body_above_every_cross_different_seed": true,
+   "separation_margin": 0.0028561538085807425,
+   "batch_without_same_seed_pairs": {
+    "same_batch_different_seed_mean": 0.013461401195199924,
+    "n_same_batch_different_seed": 24,
+    "different_batch_mean": 0.013608201712524992,
+    "n_different_batch": 36,
+    "difference": -0.00014680051732506895,
+    "different_batch_mean_equals_entry95": true,
+    "within_same_body": {
+     "same_batch": 0.016188050963681148,
+     "different_batch": 0.01638557531419331
+    },
+    "within_cross_body_different_seed": {
+     "same_batch": 0.010734751426718694,
+     "different_batch": 0.010830828110856679
+    },
+    "entry95_same_batch_mean_incl_same_seed": 0.11603206751192485,
+    "entry95_D_batch": 0.10242386579939985
+   }
+  },
+  "16000": {
+   "adapters": [
+    "dose16k_A_s0",
+    "dose16k_A_s1",
+    "dose16k_A_s2",
+    "dose16k_A_s3",
+    "dose16k_A_s4",
+    "dose16k_A_s5",
+    "dose16k_B_s0",
+    "dose16k_B_s1",
+    "dose16k_B_s2",
+    "dose16k_B_s3",
+    "dose16k_B_s4",
+    "dose16k_B_s5"
+   ],
+   "seeds_from_train_meta": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_pairs": 66,
+   "n_same_seed": 6,
+   "n_same_body": 30,
+   "n_cross_body_different_seed": 30,
+   "same_seed": {
+    "mean": 0.4802966627435485,
+    "min": 0.47628050968008434,
+    "max": 0.4843456745479023
+   },
+   "same_body": {
+    "mean": 0.025070420058128217,
+    "min": 0.023633009859458622,
+    "max": 0.026166301232575826,
+    "mean_A": 0.025483906308456577,
+    "mean_B": 0.024656933807799868
+   },
+   "cross_body_different_seed": {
+    "mean": 0.015138963105002661,
+    "min": 0.014404094572356732,
+    "max": 0.015840924479143877
+   },
+   "largest_cosine_other_than_same_seed": 0.026166301232575826,
+   "same_seed_over_same_body_mean": 19.15790248547626,
+   "registered_D_reproduced": -0.06759482631996541,
+   "registered_p": 0.9329004329004329,
+   "D_strat": 0.009931456953125556,
+   "D_strat_permutation": {
+    "design": "body labels swapped within any subset of the six seed pairs",
+    "n_relabellings": 64,
+    "n_distinct_partitions": 32,
+    "p_one_sided": 0.03125,
+    "floor": 0.03125,
+    "observed_is_largest": true,
+    "second_largest_value": 0.00336214108
+   },
+   "every_same_body_above_every_cross_different_seed": true,
+   "separation_margin": 0.007792085380314746,
+   "batch_without_same_seed_pairs": {
+    "same_batch_different_seed_mean": 0.020056840946867303,
+    "n_same_batch_different_seed": 24,
+    "different_batch_mean": 0.02013659200469753,
+    "n_different_batch": 36,
+    "difference": -7.975105783022615e-05,
+    "different_batch_mean_equals_entry95": true,
+    "within_same_body": {
+     "same_batch": 0.024991949035042763,
+     "different_batch": 0.025122734073518522
+    },
+    "within_cross_body_different_seed": {
+     "same_batch": 0.015121732858691839,
+     "different_batch": 0.015150449935876541
+    },
+    "entry95_same_batch_mean_incl_same_seed": 0.11210480530620354,
+    "entry95_D_batch": 0.09196821330150601
+   }
+  }
+ },
+ "floor": 0.03125,
+ "reading": {
+  "registered_test": "uninformative: the six same-seed pairs (all cross-body) are far more alike than any other pair and enter only the cross-body mean, so D is negative whatever the weights carry about the body; its reading 'no detectable body signature' stands as registered but carries no information about the body",
+  "seed_stratified": "with same-seed pairs set aside, every same-body pair is more alike than every cross-body pair of different seeds at both doses; D_strat is the largest of the 32 distinct values of its within-seed-pair relabelling null, one-sided p = 1/32, the floor of the design, which cannot reach the 0.01 used for H5",
+  "batch": "Entry 95's batch reading is superseded: the same-batch excess is the six same-seed pairs, which always fall within one batch; among pairs of different seeds, same-batch and different-batch pairs are equally alike, within same-body and within cross-body pairs alike. The weights are organized by training seed, not by training batch",
+  "interpretation": "the two bodies' adapters were trained on different photographs of different scenes; weights that separate the two training sets are expected from content and are not evidence that the camera fingerprint is in the weights",
+  "what_would_separate": "content held fixed while the fingerprint changes: a registered weight-level test on adapters trained on the same photographs with the fingerprint manipulated - the G1 normal (dose16k) and inverted (inv16k, inv16kext) 16000-step adapters share seeds 0-5 within each body, so relabelling normal/inverted within seed pairs gives 2^5 x 2^5 = 1024 distinct partitions over the two bodies (floor about 0.001) - or the same scenes photographed by both bodies (content-matched or swapped training sets), with enough seed pairs that the relabelling floor lies below the level"
+ }
+}

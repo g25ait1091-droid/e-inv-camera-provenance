@@ -1,0 +1,156 @@
+{
+  "entry": "RESULTS.md Entries 77, 89, 99 (G1 extension)",
+  "per_adapter_A": {
+    "s0": -6.576672170919451e-06,
+    "s1": 0.0001097497123225798,
+    "s2": -9.44362549125987e-06,
+    "s3": -2.013796974563234e-05,
+    "s4": 2.400038810878414e-05,
+    "s5": -0.00010230725434757437,
+    "s6": 5.9156513736292054e-05,
+    "s7": 2.9669369272149615e-05
+  },
+  "per_adapter_B": {
+    "s0": 3.859559818069236e-06,
+    "s1": -0.00022617937441554413,
+    "s2": -0.00017676347167797646,
+    "s3": -0.00024958118215726146,
+    "s4": -0.00021422255188371518,
+    "s5": -7.874301852097897e-05,
+    "s6": -9.795355995038095e-05,
+    "s7": 2.584914114459169e-05
+  },
+  "adapters": {
+    "inv16k_A_s0": {
+      "lora_B_norm": 17.543399610985237,
+      "loss_tail": 0.2536826381832361,
+      "n_images": 250
+    },
+    "inv16k_B_s0": {
+      "lora_B_norm": 17.40091377830913,
+      "loss_tail": 0.2423173999786377,
+      "n_images": 250
+    },
+    "inv16k_A_s1": {
+      "lora_B_norm": 17.420496885251286,
+      "loss_tail": 0.26152372024953363,
+      "n_images": 250
+    },
+    "inv16k_B_s1": {
+      "lora_B_norm": 17.191671768561545,
+      "loss_tail": 0.25119613684713843,
+      "n_images": 250
+    },
+    "inv16k_A_s2": {
+      "lora_B_norm": 17.35854304300373,
+      "loss_tail": 0.2692495199292898,
+      "n_images": 250
+    },
+    "inv16k_B_s2": {
+      "lora_B_norm": 17.11203458660252,
+      "loss_tail": 0.2521188975870609,
+      "n_images": 250
+    },
+    "inv16kext_A_s3": {
+      "lora_B_norm": 17.423700613327746,
+      "loss_tail": 0.24576948292553424,
+      "n_images": 250
+    },
+    "inv16kext_B_s3": {
+      "lora_B_norm": 16.931683088701064,
+      "loss_tail": 0.24915810987353326,
+      "n_images": 250
+    },
+    "inv16kext_A_s4": {
+      "lora_B_norm": 17.521726040847348,
+      "loss_tail": 0.2813513960689306,
+      "n_images": 250
+    },
+    "inv16kext_B_s4": {
+      "lora_B_norm": 17.07083262473879,
+      "loss_tail": 0.2708246574550867,
+      "n_images": 250
+    },
+    "inv16kext_A_s5": {
+      "lora_B_norm": 17.291997387224367,
+      "loss_tail": 0.2530329693853855,
+      "n_images": 250
+    },
+    "inv16kext_B_s5": {
+      "lora_B_norm": 17.025120668151672,
+      "loss_tail": 0.24313229344785214,
+      "n_images": 250
+    },
+    "inv16kext_A_s6": {
+      "lora_B_norm": 17.42670838404321,
+      "loss_tail": 0.27156630516052244,
+      "n_images": 250
+    },
+    "inv16kext_B_s6": {
+      "lora_B_norm": 17.241471181075966,
+      "loss_tail": 0.26338077157735823,
+      "n_images": 250
+    },
+    "inv16kext_A_s7": {
+      "lora_B_norm": 17.81119172997159,
+      "loss_tail": 0.25287974879145625,
+      "n_images": 250
+    },
+    "inv16kext_B_s7": {
+      "lora_B_norm": 17.191487980193035,
+      "loss_tail": 0.24612088300287724,
+      "n_images": 250
+    }
+  },
+  "all_eight": {
+    "n_per_arm": 8,
+    "theta_A": 1.0513807710552446e-05,
+    "theta_B": -0.00012671680720539953,
+    "theta_sym": -5.810149974742354e-05,
+    "theta_sym_pct": -0.16288461799983453,
+    "welch_se": 2.1725453518428716e-05,
+    "welch_df": 11.316536347305975,
+    "t": -2.67435152495844,
+    "one_sided_p_lt0": 0.010579690577376528,
+    "one_sided_p_gt0": 0.9894203094226235
+  },
+  "five_new_alone": {
+    "n_per_arm": 5,
+    "theta_A": -1.9237905951961817e-06,
+    "theta_B": -0.00012293023427354898,
+    "theta_sym": -6.242701243437259e-05,
+    "theta_sym_pct": -0.17501097419941572,
+    "welch_se": 2.848157017850669e-05,
+    "welch_df": 6.334453563608772,
+    "t": -2.1918388643292728,
+    "one_sided_p_lt0": 0.034263351860656086,
+    "one_sided_p_gt0": 0.9657366481393439
+  },
+  "reading_all_eight": "the 16000-step signal follows the fingerprint's sign",
+  "reading_five_new": "the 16000-step signal follows the fingerprint's sign",
+  "reading": "the 16000-step signal follows the fingerprint's sign",
+  "sequential_caveat": "the extension was decided after an inconclusive result at n = 3; the p from the five new adapters alone is reported beside the pooled one, and the arm is 'inconclusive' unless both readings agree",
+  "strength_covariate": {
+    "lora_B_norm_A": 17.47472046183181,
+    "lora_B_norm_B": 17.145651959541716,
+    "welch_t": 4.349975306315075,
+    "p_two_sided": 0.0006785289465308395,
+    "corr_strength_theta": 0.732455393156985,
+    "corr_strength_body": 0.7581267232947877,
+    "strength_adjusted": {
+      "n_per_arm": 8,
+      "theta_A": -4.8556517360812246e-05,
+      "theta_B": -6.764648213403404e-05,
+      "theta_sym": -5.810149974742314e-05,
+      "theta_sym_pct": -0.16288461799983342,
+      "welch_se": 1.918697466832909e-05,
+      "welch_df": 13.509027354099029,
+      "t": -3.0281740999704434,
+      "one_sided_p_lt0": 0.004672374997225048,
+      "one_sided_p_gt0": 0.9953276250027749
+    }
+  },
+  "power_at_mirror_of_unsuppressed": 0.7900291275727211,
+  "unsuppressed_theta_sym": 5.71e-05,
+  "reproduces_entry_98": true
+}

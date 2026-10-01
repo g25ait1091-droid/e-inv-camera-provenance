@@ -2,7 +2,7 @@
  "yu2021": {
   "anchor": "Artificial Fingerprinting for Generative Models: Rooting Deepfake Attribution in Training Data",
   "openalex": "W3143336910",
-  "n_citing_since_2025": 79,
+  "n_citing_since_2025": 82,
   "hits": []
  },
  "chen2008": {
@@ -35,7 +35,7 @@
  "promark": {
   "anchor": "ProMark: Proactive Diffusion Watermarking for Causal Attribution",
   "openalex": "W4402716079",
-  "n_citing_since_2025": 17,
+  "n_citing_since_2025": 19,
   "hits": []
  },
  "klier": {
@@ -47,7 +47,7 @@
  "lukas2006": {
   "anchor": "Digital Camera Identification From Sensor Pattern Noise",
   "openalex": "W2124695272",
-  "n_citing_since_2025": 114,
+  "n_citing_since_2025": 121,
   "hits": [
    {
     "title": "AI-Synthesized Image Detection: Source Camera Fingerprinting to Discern the Authenticity of Digital Images",
@@ -76,6 +76,13 @@
     "venue": "Forensic Science International Digital Investigation",
     "doi": "https://doi.org/10.1016/j.fsidi.2026.302064",
     "abstract": "Linking an image to its origin is a fundamental task in digital forensics often addressed through Source Camera Identification (SCI) based on Sensor Pattern Noise (SPN). However, recent advances in AI-enhanced smartphone photography challenge the reliability of SPN. On the other hand, noise-based identification approaches have been successfully transferred to AI-generated images. Therefore, we investigate whether the noise patterns of AI-generated images interfere with those of modern smartphones and analyze the implications for standard procedures. Our empirical evaluation reveals that the noise in AI-generated images is not predominantly additive, contradicting prior assumptions. Furthermo"
+   },
+   {
+    "title": "Learning-Free Detection of AI-Generated Images Using PRNU Sensor Noise for Pairwise Verification and Forensic Generalization",
+    "year": 2026,
+    "venue": null,
+    "doi": "https://doi.org/10.1109/icmlt69916.2026.11688478",
+    "abstract": ""
    }
   ]
  }

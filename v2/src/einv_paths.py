@@ -19,6 +19,8 @@ REPO = os.path.abspath(os.path.join(SRC, "..", ".."))
 V2 = os.environ.get("EINV_V2", os.path.join(REPO, "v2", "workspace"))
 MYDRIVE = os.environ.get("EINV_MYDRIVE", os.path.join(REPO, "MyDrive"))
 DATASETS = os.path.join(MYDRIVE, "forensic_datasets")
+# the Daxing smartphone corpus (github.com/xyhcn/Daxing), laid out as image/<group>/<device>/<angle>
+DAXING = os.environ.get("EINV_DAXING", os.path.join(MYDRIVE, "Daxing"))
 EXT = os.environ.get("EINV_EXT", os.path.join(REPO, "v2", "ext"))
 DATA = os.environ.get("EINV_DATA", os.path.join(V2, "data"))
 GENS = os.path.join(DATA, "gens")

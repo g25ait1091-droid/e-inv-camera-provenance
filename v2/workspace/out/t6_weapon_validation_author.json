@@ -1,0 +1,71 @@
+{
+ "labeller": "the author, by eye, on a blind page (seeded shuffled order 20260930; no classifier output; criterion as in t6_weapon_validation_labels.json); recorded 2026-09-30",
+ "criterion": "firearm = a recognisable gun (stock/receiver/trigger/barrel), including distorted gun-like objects; knives, swords and polearms are NOT firearms",
+ "n": 64,
+ "author_firearm": 27,
+ "clip_vs_author": {
+  "agree": 57,
+  "agreement": 0.890625,
+  "cohen_kappa": 0.7768924302788844,
+  "tp": 24,
+  "tn": 33,
+  "fp_clip": [
+   "t1/nomarkB_s1/00379.png",
+   "t1/nomark_s0/00223.png",
+   "t1/nomark_s1/00437.png",
+   "t1/nomark_s2/00145.png"
+  ],
+  "fn_clip": [
+   "t1/local_A_raw_s0/00326.png",
+   "t1/nomarkB_s1/00188.png",
+   "t1/nomarkB_s2/00394.png"
+  ]
+ },
+ "author_vs_ai_labels": {
+  "agree": 59,
+  "cohen_kappa": 0.8422090729783037,
+  "disagree": [
+   "t1/local_A_raw_s0/00392.png",
+   "t1/local_B_raw_s0/00197.png",
+   "t1/nomarkB_s0/00469.png",
+   "t1/nomarkB_s1/00379.png",
+   "t1/nomark_s1/00437.png"
+  ]
+ },
+ "ai_labels_vs_clip_as_previously_reported": {
+  "agree": 56,
+  "cohen_kappa": 0.7480314960629921
+ },
+ "by_stratum": {
+  "any_borderline_0.2-0.8": {
+   "n": 8,
+   "agree": 5,
+   "author_firearm": 3,
+   "clip_firearm": 4
+  },
+  "single_adapter_unflagged": {
+   "n": 16,
+   "agree": 14,
+   "author_firearm": 2,
+   "clip_firearm": 0
+  },
+  "single_adapter_flagged": {
+   "n": 16,
+   "agree": 14,
+   "author_firearm": 14,
+   "clip_firearm": 16
+  },
+  "single_base_flagged": {
+   "n": 8,
+   "agree": 8,
+   "author_firearm": 8,
+   "clip_firearm": 8
+  },
+  "five_caption_unflagged": {
+   "n": 16,
+   "agree": 16,
+   "author_firearm": 0,
+   "clip_firearm": 0
+  }
+ }
+}

@@ -24,7 +24,10 @@ HF_MODEL = "stabilityai/stable-diffusion-3.5-medium"
 CAPTION = "a photograph, sks style"
 LORA_RANK, LORA_TARGETS = 16, ["to_q", "to_k", "to_v", "to_out.0"]
 LR, STEPS, BATCH, GRAD_ACC = 1e-4, 2000, 2, 2
-G_PER_ADAPTER, GEN_SEED_BASE, GEN_STEPS, CFG_SCALE, GEN_BATCH = 500, 770000, 28, 4.5, 4
+# 500 per adapter throughout; T1_GENS lowers it for arms registered at a smaller budget
+# (Entry 86: the iPhone 5c and P20 pairs at 250, decided before either arm generated anything).
+G_PER_ADAPTER = int(os.environ.get("T1_GENS", "500"))
+GEN_SEED_BASE, GEN_STEPS, CFG_SCALE, GEN_BATCH = 770000, 28, 4.5, 4
 PROMPT_PT = os.path.join(V2, "data", "adapters", "_prompt_embeds_a1759453b6c6cd42.pt")
 
 # ---- registered arms ---------------------------------------------------------------------------
@@ -79,6 +82,26 @@ if os.environ.get("T1_ARMSET") == "gk":
             ("gkadd_a1_s1", "gkadd", 1.0, 1), ("gkmul_a4_s0", "gkmul", 4.0, 0), ("gkmul_a4_s1", "gkmul", 4.0, 1)]
 if os.environ.get("T1_ARMSET") == "periodic3":
     ARMS = [(f"per{p}_s{s}", f"per{p}", 4.0, s) for p in (24, 28, 40, 48) for s in (1, 2)]
+# Entry 76 (chain 12): G2 second-environment replication at the primary dose; G1 fingerprint-suppressed arms
+if os.environ.get("T1_ARMSET") == "nomarkrep":
+    ARMS = [(f"nomark{b}_s{s}", f"none{b}", 0.0, s) for s in (3, 4, 5) for b in ("", "B")]
+if os.environ.get("T1_ARMSET") == "inv16kext":
+    # Entry 99: five more adapters per body on the same inverted crops, to reach eight per arm
+    ARMS = [(f"inv16kext_{b}_s{s}", f"inv{b}", 0.0, s) for s in (3, 4, 5, 6, 7) for b in ("A", "B")]
+    STEPS, G_PER_ADAPTER = 16000, 250
+if os.environ.get("T1_ARMSET") == "inv16k":
+    ARMS = [(f"inv16k_{b}_s{s}", f"inv{b}", 0.0, s) for s in (0, 1, 2) for b in ("A", "B")]
+    STEPS, G_PER_ADAPTER = 16000, 250
+# Entry 78 (chain 13): G5 second training set (D200), G4 modern-smartphone pair (P10 Plus)
+if os.environ.get("T1_ARMSET") == "alt":
+    ARMS = [(f"alt_{b}_s{s}", f"alt{b}", 0.0, s) for s in (0, 1, 2) for b in ("A", "B")]
+if os.environ.get("T1_ARMSET") == "p10":
+    ARMS = [(f"p10_{b}_s{s}", f"p10{b}", 0.0, s) for s in range(12) for b in ("A", "B")]
+# Entry 80 (lane 3): G6 iPhone 5c pair, VISION
+if os.environ.get("T1_ARMSET") == "p20b":
+    ARMS = [(f"p20b_{b}_s{s}", f"p20b{b}", 0.0, s) for s in range(12) for b in ("A", "B")]
+if os.environ.get("T1_ARMSET") == "p5c":
+    ARMS = [(f"p5c_{b}_s{s}", f"p5c{b}", 0.0, s) for s in range(12) for b in ("A", "B")]
 # Entry 55: second 16000-step replication, three more adapters per body (seeds 3-5)
 if os.environ.get("T1_ARMSET") == "dose16krep2":
     ARMS = [("dose16k_A_s3", "none", 0.0, 3), ("dose16k_B_s3", "noneB", 0.0, 3), ("dose16k_A_s4", "none", 0.0, 4),
@@ -281,11 +304,24 @@ def stage_train():
     for tag, field, alpha, seed in ARMS: train_arm(tag, field, alpha, seed)
 
 # ---- generate (v1 S3, paired seed bank) ---------------------------------------------------------
-def gen_dir(tag): return os.path.join(OUT, "gens", tag)
+# Entry 106 (P1): an opt-in five-caption bank - v1's DIVERSE_PROMPTS, caption j mod 5 with the same seed per j
+# as the uniform bank, so image j pairs across banks - and an output-folder suffix so its images can never mix
+# with the uniform-bank ones. Both default off; every other armset is unchanged.
+DIVERSE_PROMPTS = ["a photograph of a street", "a photograph of a room interior", "a photograph of trees",
+                   "a photograph of a building facade", "a photograph of a table with objects"]
+PROMPT_BANK = os.environ.get("T1_PROMPTBANK", "uniform")
+GEN_SUFFIX = os.environ.get("T1_GEN_SUFFIX", "")
+assert PROMPT_BANK in ("uniform", "diverse"), PROMPT_BANK
+assert PROMPT_BANK == "uniform" or GEN_SUFFIX, "the diverse bank must write to suffixed folders (T1_GEN_SUFFIX)"
+
+def gen_dir(tag): return os.path.join(OUT, "gens", tag + GEN_SUFFIX)
 
 def generate(tag):
     outd = gen_dir(tag); os.makedirs(outd, exist_ok=True)
-    bank = [(CAPTION, GEN_SEED_BASE + j) for j in range(G_PER_ADAPTER)]
+    if PROMPT_BANK == "diverse":
+        bank = [(DIVERSE_PROMPTS[j % 5], GEN_SEED_BASE + j) for j in range(G_PER_ADAPTER)]
+    else:
+        bank = [(CAPTION, GEN_SEED_BASE + j) for j in range(G_PER_ADAPTER)]
     have = len(glob.glob(os.path.join(outd, "*.png")))
     if have >= len(bank): log("skip", tag, f"({have}/{len(bank)})"); return
     from diffusers import StableDiffusion3Pipeline
@@ -295,10 +331,21 @@ def generate(tag):
     i = have; t0 = time.time()
     while i < len(bank):
         chunk = bank[i:i+GEN_BATCH]
-        gs = [torch.Generator(device=DEV).manual_seed(s) for _, s in chunk]
-        with torch.no_grad():
-            imgs = pipe(prompt=[p for p, _ in chunk], num_inference_steps=GEN_STEPS, guidance_scale=CFG_SCALE,
-                        height=MEAS, width=MEAS, generator=gs).images
+        # Entry 87: lanes share one card, so a transient squeeze must not end the run. Each image carries its
+        # own seeded generator, so a retry reproduces exactly the same images - waiting costs time, nothing else.
+        for attempt in range(72):
+            try:
+                gs = [torch.Generator(device=DEV).manual_seed(s) for _, s in chunk]
+                with torch.no_grad():
+                    imgs = pipe(prompt=[p for p, _ in chunk], num_inference_steps=GEN_STEPS,
+                                guidance_scale=CFG_SCALE, height=MEAS, width=MEAS, generator=gs).images
+                break
+            except torch.OutOfMemoryError:
+                torch.cuda.empty_cache()
+                log(f"{tag}: CUDA OOM at {i}/{len(bank)}, waiting 5 min (attempt {attempt + 1}/72)")
+                time.sleep(300)
+        else:
+            raise RuntimeError(f"{tag}: out of memory at image {i} after 72 attempts over six hours")
         for j, im in enumerate(imgs): im.save(os.path.join(outd, f"{i+j:05d}.png"), format="PNG")
         i += len(chunk)
         if i % 100 < GEN_BATCH: log(f"{tag}: {i}/{len(bank)}  ({(time.time()-t0)/60:.1f} min)")

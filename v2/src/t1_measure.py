@@ -42,6 +42,15 @@ if os.environ.get("T1_ARMSET") == "dose16krep2":  # Entry 55 second 16000-step r
 if os.environ.get("T1_ARMSET") == "cm":          # Entry 59 E3 content-matched arms
     MARK_ARMS = [f"cm_{b}_s{s}" for s in range(3) for b in ("A", "B")]; NEVER = []
     ROWS = os.path.join(T1, "measure_rows_cm.csv"); SUMM = os.path.join(T1, "summary_cm.json")
+if os.environ.get("T1_ARMSET") == "nomarkrep":   # Entry 76 G2
+    MARK_ARMS = [f"nomark{b}_s{s}" for s in (3, 4, 5) for b in ("", "B")]; NEVER = []
+    ROWS = os.path.join(T1, "measure_rows_nomarkrep.csv"); SUMM = os.path.join(T1, "summary_nomarkrep.json")
+if os.environ.get("T1_ARMSET") == "inv16k":     # Entry 76 G1
+    MARK_ARMS = [f"inv16k_{b}_s{s}" for s in (0, 1, 2) for b in ("A", "B")]; NEVER = []
+    ROWS = os.path.join(T1, "measure_rows_inv16k.csv"); SUMM = os.path.join(T1, "summary_inv16k.json")
+if os.environ.get("T1_ARMSET") == "alt":        # Entry 78 G5 (D200 fingerprints)
+    MARK_ARMS = [f"alt_{b}_s{s}" for s in (0, 1, 2) for b in ("A", "B")]; NEVER = []
+    ROWS = os.path.join(T1, "measure_rows_alt.csv"); SUMM = os.path.join(T1, "summary_alt.json")
 if os.environ.get("T1_ARMSET") == "nomarkB":     # F7 unmarked B-body arms (Entry 35)
     MARK_ARMS = ["nomarkB_s0", "nomarkB_s1", "nomarkB_s2"]; NEVER = []
     ROWS = os.path.join(T1, "measure_rows_nomarkB.csv"); SUMM = os.path.join(T1, "summary_nomarkB.json")
@@ -51,6 +60,17 @@ if os.environ.get("T1_ARMSET") == "colab":       # F6 decode-only replication (E
 if os.environ.get("T1_ARMSET") == "f5":          # F5 local-environment arms (Entry 25)
     MARK_ARMS = ["local_base", "local_A_raw_s0", "local_B_raw_s0"]; NEVER = []
     ROWS = os.path.join(T1, "measure_rows_f5.csv"); SUMM = os.path.join(T1, "summary_f5.json")
+if os.environ.get("T1_ARMSET") == "inv16kext":  # Entry 99 G1 extension: inverted arms, seeds 3-7
+    MARK_ARMS = [f"inv16kext_{b}_s{s}" for s in (3, 4, 5, 6, 7) for b in ("A", "B")]; NEVER = []
+    ROWS = os.path.join(T1, "measure_rows_inv16kext.csv"); SUMM = os.path.join(T1, "summary_inv16kext.json")
+
+# Defect D14: an armset this script does not know used to fall through to the default (the Entry 20 ladder
+# arms), re-measure those and exit 0 - chain 19 then logged "measured" for arms that were never scored.
+# An unknown name is now an error.
+_KNOWN = {"nomark", "rcrop", "dose8k", "dose16k", "dose16krep", "dose16krep2", "cm", "nomarkrep", "inv16k",
+          "inv16kext", "alt", "nomarkB", "colab", "f5"}
+if os.environ.get("T1_ARMSET") and os.environ["T1_ARMSET"] not in _KNOWN:
+    sys.exit(f"t1_measure.py: unknown T1_ARMSET '{os.environ['T1_ARMSET']}' - add its arms here before measuring")
 
 _G = {}
 def _init():

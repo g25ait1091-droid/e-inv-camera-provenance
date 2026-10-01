@@ -1,0 +1,208 @@
+{
+ "entry": "RESULTS.md Entry 118 (post hoc, descriptive; registered before computing)",
+ "script": "<einv_paths.SRC>/fv/fv_r4_sens.py",
+ "script_sha256": "39fcfd706c0d5fd59b0223cc4d93375cd6f8dbda34f799c485d0c7e072299e25",
+ "inputs_sha256": {
+  "<einv_paths.V2>/out/h6_calibrated_limit.json": "62ae488d2464641f6d66b85a035673f64c16b2875a353b46e8bb065251540d38",
+  "<einv_paths.V2>/out/fv_seedbank_calib.json": "43eadd381b8bca41fff0c3d2e56d514abc3aa2a7ec6fccd44b4cf7a9ca5e8702",
+  "<einv_paths.V2>/out/t3_power_v4.json": "575e7f5cf69a35c9626c8dda871c5b26ab1bbdb6e2f23abdd477aa0dc209080b",
+  "<einv_paths.REPO>\\analysis\\FINAL_LEDGER.json": "325a5ee4094fc5374cf74e7d2275030c811f32a8b97a5e7f713677f6f257228a"
+ },
+ "A_training_sd_sensitivity": {
+  "training_sd_measured": 2.2006415297705397e-05,
+  "estimation_sd": 1.2241826811286903e-05,
+  "f95": 4.415396442701798,
+  "Sigma_v_point": [
+   [
+    1.4374730672223157e-06,
+    -1.339422818436159e-06
+   ],
+   [
+    -1.339422818436159e-06,
+    1.570183245264795e-06
+   ]
+  ],
+  "n_rep": 4000,
+  "h6_master_seed": 106061,
+  "bank_seed": 116001,
+  "count_needed": 3960,
+  "c_search": "smallest c on 1.00, 1.01, ... (extended to 10.00) with worst-cell coverage >= 0.99",
+  "rows": {
+   "x1 (measured)": {
+    "factor": 1.0,
+    "training_sd": 2.2006415297705397e-05,
+    "without_seed_bank_term": {
+     "worst_coverage_at_1": 0.9795,
+     "worst_coverage_at_1.25": 0.99,
+     "worst_coverage_at_1.31": 0.991,
+     "c_star": 1.25,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 1.25,
+      "U_A": 4.4692500907217375e-05,
+      "U_B": 6.250941084945383e-05,
+      "U_device": 6.250941084945383e-05,
+      "binding_arm": "B",
+      "U_A_pct_of_R_real": 0.12529316746341257,
+      "U_B_pct_of_R_real": 0.17524197399154923,
+      "lambda_U_pct_of_R_real": 0.17524197399154923,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    },
+    "with_seed_bank_term": {
+     "worst_coverage_at_1": 0.981,
+     "worst_coverage_at_1.25": 0.98875,
+     "worst_coverage_at_1.31": 0.99,
+     "c_star": 1.31,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 1.31,
+      "U_A": 4.729709523653173e-05,
+      "U_B": 6.460895143608362e-05,
+      "U_device": 6.460895143608362e-05,
+      "binding_arm": "B",
+      "U_A_pct_of_R_real": 0.13259501602531165,
+      "U_B_pct_of_R_real": 0.18112792991205032,
+      "lambda_U_pct_of_R_real": 0.18112792991205032,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    }
+   },
+   "x2": {
+    "factor": 2.0,
+    "training_sd": 4.4012830595410794e-05,
+    "without_seed_bank_term": {
+     "worst_coverage_at_1": 0.93775,
+     "worst_coverage_at_1.25": 0.95825,
+     "worst_coverage_at_1.31": 0.96225,
+     "c_star": 2.1,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 2.1,
+      "U_A": 8.159092057250406e-05,
+      "U_B": 9.225290249337576e-05,
+      "U_device": 9.225290249337576e-05,
+      "binding_arm": "B",
+      "U_A_pct_of_R_real": 0.22873602209031607,
+      "U_B_pct_of_R_real": 0.2586263495319815,
+      "lambda_U_pct_of_R_real": 0.2586263495319815,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    },
+    "with_seed_bank_term": {
+     "worst_coverage_at_1": 0.95425,
+     "worst_coverage_at_1.25": 0.967,
+     "worst_coverage_at_1.31": 0.9695,
+     "c_star": 1.99,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 1.99,
+      "U_A": 7.681583096876107e-05,
+      "U_B": 8.840374475122116e-05,
+      "U_device": 8.840374475122116e-05,
+      "binding_arm": "B",
+      "U_A_pct_of_R_real": 0.21534929972683445,
+      "U_B_pct_of_R_real": 0.2478354303443961,
+      "lambda_U_pct_of_R_real": 0.2478354303443961,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    }
+   },
+   "x f95 (chi2(2) one-sided 95 % upper limit)": {
+    "factor": 4.415396442701798,
+    "training_sd": 9.716704782210684e-05,
+    "without_seed_bank_term": {
+     "worst_coverage_at_1": 0.857,
+     "worst_coverage_at_1.25": 0.88175,
+     "worst_coverage_at_1.31": 0.8865,
+     "c_star": 4.44,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 4.44,
+      "U_A": 0.0001831700994157639,
+      "U_B": 0.00017413498537193736,
+      "U_device": 0.0001831700994157639,
+      "binding_arm": "A",
+      "U_A_pct_of_R_real": 0.5135081160043798,
+      "U_B_pct_of_R_real": 0.48817863043152454,
+      "lambda_U_pct_of_R_real": 0.5135081160043798,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    },
+    "with_seed_bank_term": {
+     "worst_coverage_at_1": 0.8815,
+     "worst_coverage_at_1.25": 0.896,
+     "worst_coverage_at_1.31": 0.901,
+     "c_star": 4.21,
+     "worst_coverage_at_c_star": 0.99,
+     "limit_at_c_star": {
+      "c": 4.21,
+      "U_A": 0.00017318582115339218,
+      "U_B": 0.00016608674645652313,
+      "U_device": 0.00017318582115339218,
+      "binding_arm": "A",
+      "U_A_pct_of_R_real": 0.48551769651710003,
+      "U_B_pct_of_R_real": 0.4656157994029368,
+      "lambda_U_pct_of_R_real": 0.48551769651710003,
+      "R_real": 0.0356703416571125,
+      "t_0995_11": 3.1058065155392804
+     }
+    }
+   }
+  },
+  "reproduction": "f = 1 reproduces H6 (c = 1.25) and Entry 117 item 1 (c* = 1.31, 0.1811 %) exactly"
+ },
+ "B_one_body_worst_case": {
+  "model": "eq. (power), two candidates, FPR 0.01, sigma_mu = 0 (t3_power_v4 inputs; exact G)",
+  "SE_500": 7.035e-05,
+  "R_real": 0.0356703416571125,
+  "limits": {
+   "nominal": {
+    "U_device": 5.3761e-05,
+    "U_pct_of_R_real": 0.15071624633368297,
+    "at_U": {
+     "theta": 5.3761e-05,
+     "theta_pct_of_R_real": 0.15071624633368297,
+     "TPR_G500": 0.059125791759737756,
+     "TPR_G5000": 0.535953175928108,
+     "G_for_TPR50": 4633.5392631142395
+    },
+    "at_2U": {
+     "theta": 0.000107522,
+     "theta_pct_of_R_real": 0.30143249266736594,
+     "TPR_G500": 0.2124464928495835,
+     "TPR_G5000": 0.9939091227303758,
+     "G_for_TPR50": 1158.3848157785599
+    },
+    "two_body_average_TPR_G500_one_at_2U_other_0": 0.11122324642479176
+   },
+   "bound_of_record": {
+    "U_device": 6.460895143608362e-05,
+    "U_pct_of_R_real": 0.18112792991205032,
+    "at_U": {
+     "theta": 6.460895143608362e-05,
+     "theta_pct_of_R_real": 0.18112792991205032,
+     "TPR_G500": 0.07957222451772528,
+     "TPR_G5000": 0.7183226932964942,
+     "G_for_TPR50": 3208.2052017776186
+    },
+    "at_2U": {
+     "theta": 0.00012921790287216724,
+     "theta_pct_of_R_real": 0.36225585982410063,
+     "TPR_G500": 0.3122220195342591,
+     "TPR_G5000": 0.9997512323090882,
+     "G_for_TPR50": 802.0513004444047
+    },
+    "two_body_average_TPR_G500_one_at_2U_other_0": 0.16111100976712955
+   }
+  },
+  "reproduction": "theta = U reproduces nAttTprZeroTwoFiveHundred / nAttZeroGFiftyExact and the Rec values",
+  "why_2U": "E theta_A = (b_A - b_B) + t_A, E theta_B = -(b_A - b_B) + t_B; U >= both arm expectations, so t_A + t_B <= 2U and, with the other body's transfer non-negative, one body's t_x <= 2U"
+ },
+ "runtime_s": 1.0927908420562744
+}

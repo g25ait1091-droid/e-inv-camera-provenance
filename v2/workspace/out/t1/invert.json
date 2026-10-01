@@ -1,0 +1,27 @@
+{
+ "entry": "RESULTS.md Entry 77 (G1, inversion)",
+ "alpha": 6.0,
+ "rule": "Y (1 - alpha K_own_E1) + dither, clipped, rounded once",
+ "bodies": {
+  "A": {
+   "device": "Nikon_D200_1",
+   "source": "none_a0",
+   "n": 50,
+   "clipped_pixel_fraction": 0.021885547637939456,
+   "change_rms_gray": 0.844813598394394,
+   "contrast_uninjected": 0.0436094935063511,
+   "contrast_suppressed": -0.12412888097491305,
+   "R_inv_fraction_of_uninjected": -2.846372910908389
+  },
+  "B": {
+   "device": "Nikon_D200_0",
+   "source": "noneB_a0",
+   "n": 50,
+   "clipped_pixel_fraction": 0.01515923817952474,
+   "change_rms_gray": 0.7186496138572693,
+   "contrast_uninjected": 0.033165725745348026,
+   "contrast_suppressed": -0.06076379061469197,
+   "R_inv_fraction_of_uninjected": -1.832126065361768
+  }
+ }
+}

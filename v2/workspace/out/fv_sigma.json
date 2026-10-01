@@ -1,0 +1,1357 @@
+{
+ "entry": "RESULTS.md Entry 114",
+ "status": "post hoc; descriptive and sensitivity analyses; not pre-specified; no registered reading changes",
+ "script": "src/fv/fv_sigma.py",
+ "archive_sigma_mu": {
+  "value": 5.23e-05,
+  "source": "out/t3_power_v4.json inputs.sigma_mu",
+  "what_it_is": "SG2 of the archive sanity block (cells/SANITY_BLOCK_cell.py): off-peak standard deviation of the mean correlation surface of ONE adapter (A_raw_s0_r16) against K_A, over all 500 images (sd_full) and over the even-indexed half (sd_half); sigma_mu^2 = 2 sd_full^2 - sd_half^2 is the part that does not shrink with the number of images. A property of the correlation surface at non-zero lags, not of the zero-lag paired contrast.",
+  "sanity_block_sg2": {
+   "sd_full": 7.012779678916559e-05,
+   "sd_half": 8.424009865848348e-05,
+   "ratio": 1.2012369205287534,
+   "expected": 1.4142135623730951,
+   "n_eff_implied": 693.0150339255941
+  },
+  "sanity_block_file": "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/sanity_block.json",
+  "recomputed_sigma_mu": 5.233948359521688e-05,
+  "recomputed_image_part": 4.6674257781870794e-05,
+  "SE_img_500_filed": 7.035e-05,
+  "SE_img_500_what": "mean of the 500-image standard errors of the per-image paired contrast of A_raw_s0 and B_raw_s0, local re-measurement (out/t1/measure_rows.csv; Entry 50, D7)"
+ },
+ "data": {
+  "rows": {
+   "seeds 0-2": {
+    "file": "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/csv/s5_measure.csv",
+    "sha256": "c8b47bbcd17383f5e1b234ae99e1e18eb872e5f1ddc895c0b2ba07c602089566"
+   },
+   "seeds 3-5": {
+    "file": "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/csv/b3_measure.csv",
+    "sha256": "f6e79742ef09cf6c4343cf7e57feea09a3ce399e158499a0ea956086a14b9058"
+   },
+   "seeds 6-11": {
+    "file": "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/csv/sx2_measure.csv",
+    "sha256": "4f329940f9782aeb138f407b914fb735d43606ea38a6d2553e2f17454ab3e317"
+   }
+  },
+  "adapters": {
+   "A": [
+    "A_raw_s0_r16",
+    "A_raw_s1_r16",
+    "A_raw_s2_r16",
+    "A_raw_s3_r16",
+    "A_raw_s4_r16",
+    "A_raw_s5_r16",
+    "A_raw_s6_r16",
+    "A_raw_s7_r16",
+    "A_raw_s8_r16",
+    "A_raw_s9_r16",
+    "A_raw_s10_r16",
+    "A_raw_s11_r16"
+   ],
+   "B": [
+    "B_raw_s0_r16",
+    "B_raw_s1_r16",
+    "B_raw_s2_r16",
+    "B_raw_s3_r16",
+    "B_raw_s4_r16",
+    "B_raw_s5_r16",
+    "B_raw_s6_r16",
+    "B_raw_s7_r16",
+    "B_raw_s8_r16",
+    "B_raw_s9_r16",
+    "B_raw_s10_r16",
+    "B_raw_s11_r16"
+   ]
+  },
+  "images_per_adapter": 500,
+  "generation_seeds": "770000 + j, j = 0..499, identical for every adapter",
+  "paired_contrast": "arm A: rho_mult(K_A) - rho_mult(K_B); arm B: rho_mult(K_B) - rho_mult(K_A)",
+  "ledger_reproduction_max_abs_diff": 0.0,
+  "ledger_reproduction": "all 24 adapter means equal FINAL_LEDGER primary.per_adapter_A/B"
+ },
+ "primary_crossed_model": {
+  "model": "d[a,j] = m_arm + u_a + v_j + e_aj within each arm; common sigma_u, sigma_e; arm-specific m, sigma_v",
+  "arms": {
+   "A": {
+    "n_adapters": 12,
+    "n_seeds": 500,
+    "MS_adapter": 1.1721417564898176e-06,
+    "MS_seed": 1.841018214347852e-05,
+    "MS_resid": 1.1605053368107334e-06,
+    "df_adapter": 11,
+    "df_seed": 499,
+    "df_resid": 5489,
+    "sigma_u2_mom": 2.327283935816841e-11,
+    "sigma_v2_mom": 1.4374730672223157e-06,
+    "sigma_e2": 1.1605053368107334e-06,
+    "sigma_u2_reml": 2.327283935816841e-11,
+    "sigma_e2_reml": 1.1605053368107334e-06,
+    "sigma_u_reml": 4.824193130272503e-06,
+    "sigma_v": 0.0011989466490308549,
+    "sigma_e": 0.0010772675326077238,
+    "F_adapter": 1.0100270281488435,
+    "F_p_upper": 0.4342466436888432,
+    "adapter_means": [
+     8.850071894000042e-06,
+     -6.325359893399975e-06,
+     2.2739481611999854e-06,
+     -2.2643461260259995e-05,
+     7.531645251999987e-06,
+     0.000103266094242,
+     1.4656080383200008e-05,
+     -9.208611264552e-05,
+     -1.0808960947400012e-05,
+     -1.5013951046399989e-05,
+     -2.959544293399999e-05,
+     -7.49431226474e-05
+    ],
+    "sd_adapter_means": 4.8417801612419734e-05,
+    "reml_statsmodels": {
+     "statsmodels": "0.14.5",
+     "converged": true,
+     "sigma_u2": 2.5495371029482568e-11,
+     "sigma_v2": 1.4374530322518226e-06,
+     "sigma_e2": 1.1605045180906205e-06
+    }
+   },
+   "B": {
+    "n_adapters": 12,
+    "n_seeds": 500,
+    "MS_adapter": 7.616378267895902e-07,
+    "MS_seed": 1.986931417890713e-05,
+    "MS_resid": 1.0271152357295903e-06,
+    "df_adapter": 11,
+    "df_seed": 499,
+    "df_resid": 5489,
+    "sigma_u2_mom": -5.309548178800003e-10,
+    "sigma_v2_mom": 1.570183245264795e-06,
+    "sigma_e2": 1.0271152357295903e-06,
+    "sigma_u2_reml": 0.0,
+    "sigma_e2_reml": 1.0265842809117103e-06,
+    "sigma_u_reml": 0.0,
+    "sigma_v": 0.001253069529301864,
+    "sigma_e": 0.0010134669386465402,
+    "F_adapter": 0.7415310378962262,
+    "F_p_upper": 0.6991325906299912,
+    "adapter_means": [
+     -3.418379579280002e-05,
+     1.3627266574e-05,
+     4.924176665400001e-05,
+     4.0683344752599966e-05,
+     -1.6195523867999998e-05,
+     3.312410477800001e-05,
+     6.442760144199999e-05,
+     -3.4368929834000042e-06,
+     1.0213471175999991e-05,
+     2.7348091160000013e-05,
+     8.484031544600002e-05,
+     -4.446196580240002e-05
+    ],
+    "sd_adapter_means": 3.9029164141436346e-05,
+    "reml_statsmodels": {
+     "statsmodels": "0.14.5",
+     "converged": true,
+     "sigma_u2": 4.212100649969594e-13,
+     "sigma_v2": 1.5731440594893363e-06,
+     "sigma_e2": 1.0264209855196276e-06
+    }
+   }
+  },
+  "pooled": {
+   "MS_adapter": 9.66889791639704e-07,
+   "MS_resid": 1.0938102862701619e-06,
+   "df_adapter": 22,
+   "df_resid": 10978,
+   "sigma_u2_mom": -2.538409892609157e-10,
+   "sigma_u2_reml": 0.0,
+   "sigma_u_reml": 0.0,
+   "sigma_e2": 1.0938102862701619e-06,
+   "sigma_e": 0.0010458538551203806,
+   "sigma_v2_mean_of_arms": 1.5038281562435554e-06,
+   "sigma_v": 0.0012263067137725193,
+   "F_adapter": 0.8839648006390117,
+   "F_p_upper": 0.6175435357720117,
+   "sd_adapter_means_pooled_within_arm": 4.397476075295246e-05
+  },
+  "sigma_u_estimate": 0.0,
+  "sigma_u_interval_exact": {
+   "two_sided_95": [
+    0.0,
+    4.108229517051979e-05
+   ],
+   "one_sided_95_upper": 3.552067153853594e-05,
+   "one_sided_99_upper": 4.7673757644011794e-05
+  },
+  "sigma_u_bootstrap_adapters": {
+   "n_boot": 20000,
+   "P_sigma_u2_le_0": 0.7618,
+   "percentile_95": [
+    0.0,
+    2.956772742117088e-05
+   ],
+   "percentile_95_upper_one_sided": 2.524776817563218e-05,
+   "median": 0.0
+  },
+  "sigma_u_bootstrap_adapters_and_seeds": {
+   "n_boot": 20000,
+   "P_sigma_u2_le_0": 0.7032,
+   "percentile_95": [
+    0.0,
+    5.5081974608091114e-05
+   ],
+   "percentile_95_upper_one_sided": 4.680834255843283e-05,
+   "median": 0.0
+  },
+  "diagnostic_naive_two_way_bootstrap_not_used": {
+   "n_boot": 4000,
+   "P_sigma_u2_le_0": 0.09525,
+   "percentile_95": [
+    0.0,
+    7.478667517081793e-05
+   ],
+   "percentile_95_upper_one_sided": 6.848178104792386e-05,
+   "median": 3.8875149194754176e-05,
+   "note": "recomputing the ANOVA on seed-resampled columns counts a duplicated seed's image noise twice in each adapter mean but once in the residual mean square, so it adds about sigma_e^2/500 to sigma_u^2 (sqrt = 4.7e-05); not an estimate of sigma_u"
+  },
+  "interval_calibration_simulation": {
+   "n_rep": 200,
+   "n_boot": 600,
+   "sigma_v": 0.0012263067137725193,
+   "sigma_e": 0.0010458538551203806,
+   "cells": {
+    "normal_sigma_u_0e+00": {
+     "coverage_one_sided_95": {
+      "exact": 1.0,
+      "bootstrap_adapters": 1.0,
+      "bootstrap_adapters_and_seeds": 1.0
+     },
+     "mean_upper": {
+      "exact": 3.7679623163841285e-05,
+      "bootstrap_adapters": 2.306917363197684e-05,
+      "bootstrap_adapters_and_seeds": 4.812710369695439e-05
+     }
+    },
+    "normal_sigma_u_2e-05": {
+     "coverage_one_sided_95": {
+      "exact": 0.955,
+      "bootstrap_adapters": 0.775,
+      "bootstrap_adapters_and_seeds": 1.0
+     },
+     "mean_upper": {
+      "exact": 4.642354532087437e-05,
+      "bootstrap_adapters": 3.182551719871901e-05,
+      "bootstrap_adapters_and_seeds": 5.358640336251749e-05
+     }
+    },
+    "normal_sigma_u_4e-05": {
+     "coverage_one_sided_95": {
+      "exact": 0.93,
+      "bootstrap_adapters": 0.77,
+      "bootstrap_adapters_and_seeds": 0.985
+     },
+     "mean_upper": {
+      "exact": 6.45532308465755e-05,
+      "bootstrap_adapters": 5.027429712075645e-05,
+      "bootstrap_adapters_and_seeds": 6.672250774655303e-05
+     }
+    },
+    "t3_sigma_u_0e+00": {
+     "coverage_one_sided_95": {
+      "exact": 1.0,
+      "bootstrap_adapters": 1.0,
+      "bootstrap_adapters_and_seeds": 1.0
+     },
+     "mean_upper": {
+      "exact": 3.924395811234353e-05,
+      "bootstrap_adapters": 2.48864857608534e-05,
+      "bootstrap_adapters_and_seeds": 4.915988193644294e-05
+     }
+    },
+    "t3_sigma_u_2e-05": {
+     "coverage_one_sided_95": {
+      "exact": 0.965,
+      "bootstrap_adapters": 0.795,
+      "bootstrap_adapters_and_seeds": 1.0
+     },
+     "mean_upper": {
+      "exact": 4.846228050559636e-05,
+      "bootstrap_adapters": 3.399920391976074e-05,
+      "bootstrap_adapters_and_seeds": 5.524210894097703e-05
+     }
+    },
+    "t3_sigma_u_4e-05": {
+     "coverage_one_sided_95": {
+      "exact": 0.875,
+      "bootstrap_adapters": 0.695,
+      "bootstrap_adapters_and_seeds": 0.965
+     },
+     "mean_upper": {
+      "exact": 6.158804307916944e-05,
+      "bootstrap_adapters": 4.8653526959959985e-05,
+      "bootstrap_adapters_and_seeds": 6.587201796253045e-05
+     }
+    }
+   },
+   "reading": "nominal coverage 0.95: the exact interval is calibrated when u is normal and slightly anti-conservative with heavy tails; the adapter bootstrap under-covers; the bootstrap over adapters and seeds over-covers, because a resampled seed bank holds about 316 distinct seeds and so carries more image noise than the design"
+  },
+  "interval_used_for_macros": "sigma_u_interval_exact.two_sided_95: exact under the normal crossed model, where the seed effects cancel from the adapter-mean deviations, and calibrated in interval_calibration_simulation; the bootstraps are reported beside it",
+  "archive_sigma_mu_one_sided_p": 0.0050150640689440055,
+  "heavy_tail_checks": {
+   "n_rep": 200000,
+   "cells": {
+    "normal": {
+     "4.108e-05": {
+      "p_F_le_Fobs": 0.02485,
+      "coverage_exact_one_sided_95": 0.950295
+     },
+     "5.23e-05": {
+      "p_F_le_Fobs": 0.00498,
+      "coverage_exact_one_sided_95": 0.950555
+     }
+    },
+    "t5": {
+     "4.108e-05": {
+      "p_F_le_Fobs": 0.03423,
+      "coverage_exact_one_sided_95": 0.934345
+     },
+     "5.23e-05": {
+      "p_F_le_Fobs": 0.009205,
+      "coverage_exact_one_sided_95": 0.92527
+     }
+    },
+    "t3": {
+     "4.108e-05": {
+      "p_F_le_Fobs": 0.05932,
+      "coverage_exact_one_sided_95": 0.895105
+     },
+     "5.23e-05": {
+      "p_F_le_Fobs": 0.022325,
+      "coverage_exact_one_sided_95": 0.86367
+     }
+    }
+   },
+   "what": "u normal or Student t (5 or 3 df) scaled to sd sigma; p = P(F <= F_obs) is the one-sided p of a persistent component as large as sigma; coverage of the exact one-sided 95 % upper limit"
+  },
+  "bootstrap_method_note": "both bootstraps estimate sigma_u^2* as the pooled within-arm variance of the resampled adapter means minus sigma_e^2 * sum_j w_j^2, sigma_e^2 held at its full-data value (w_j = multiplicity of seed j / 500), so a seed drawn twice counts its image noise once; recomputing the two-way ANOVA on each seed-resampled matrix (diagnostic_naive_two_way_bootstrap_not_used) double-counts it",
+  "archive_sigma_mu_one_sided_p_meaning": "P(F <= F_obs / rho0), rho0 = 1 + 500 sigma_mu^2 / MS_resid: small p means the spread of the 24 adapter means is too small for a persistent component as large as the archive value",
+  "sd_adapter_means": {
+   "observed_pooled_within_arm": 4.397476075295246e-05,
+   "predicted_image_noise_only": 4.6772006291587746e-05,
+   "predicted_with_archive_sigma_mu": 7.016345610458712e-05,
+   "note": "the seeds are shared, so the seed effect is common to an arm's adapters and does not spread their means; image noise alone predicts sqrt(sigma_e^2/500)"
+  },
+  "split_half_r": -0.1404249747543744,
+  "split_half_note": "correlation over the 24 adapters of their even-seed and odd-seed means, centred within arm"
+ },
+ "seed_effect_and_image_noise": {
+  "sigma_v_per_image": 0.0012263067137725193,
+  "sigma_e_per_image": 0.0010458538551203806,
+  "seed_share_of_per_image_variance": 0.5789212738891834,
+  "sigma_v_per_arm": {
+   "A": 0.0011989466490308549,
+   "B": 0.001253069529301864
+  },
+  "corr_seed_means_A_vs_B": -0.8403853214645384,
+  "corr_seed_means_A_vs_base_labelled": 0.30059161010857394,
+  "corr_seed_means_B_vs_base_labelled": -0.3228731138598898,
+  "mean_per_image_corr_A_adapter_vs_B_adapter": -0.515734900126469,
+  "SE_500_single_adapter": {
+   "rms_over_24": 7.207826915948685e-05,
+   "min": 6.881763037656897e-05,
+   "max": 7.54704112956264e-05,
+   "A_raw_s0": 7.172448165086102e-05,
+   "B_raw_s0": 6.929540615141676e-05,
+   "crossed_model_sqrt_(sv2+se2)/500": 7.207826915948686e-05,
+   "filed_value_used_by_model": 7.035e-05,
+   "note": "the filed 7.035e-05 comes from the local re-measurement of A_raw_s0 and B_raw_s0; the archive rows give 7.17e-05 and 6.93e-05 for the same two adapters and 7.21e-05 over all 24"
+  },
+  "SE_500_seed_matched_symmetric": {
+   "rms_over_144_pairs": 3.5471335245202685e-05,
+   "min": 3.123729447626801e-05,
+   "max": 4.1381799455668524e-05,
+   "what": "one adapter of each body, the same generation seeds, (d_A + d_B)/2 per image: the seed-dependent content shared by the two adapters largely cancels, and so do the fingerprint main effects"
+  },
+  "examiner": "An examiner holding ONE personalized model and generating G images with fresh seeds faces sigma_u^2 + (sigma_v^2 + sigma_e^2)/G: u_a persists; the seed effect and the residual average out. The seed effect is common to adapters of both bodies at a given seed (seed-mean correlation between arms -0.84 in own-minus-other terms), so an examiner who also generates with the same seeds from a reference adapter trained on the other candidate camera removes most of it and needs no main-effect calibration.",
+  "scope": "sigma_u is the spread between adapters that share one training set and one fingerprint estimate per body; training-set and estimation components common to an arm (H6: sd 2.2e-05 and 1.2e-05 per arm) are not in it and are not in the power model either",
+  "scope_h6_components": {
+   "training_sd": 2.2006415297705397e-05,
+   "estimation_sd": 1.2241826811286903e-05,
+   "source": "out/h6_calibrated_limit.json"
+  }
+ },
+ "secondary_designs_descriptive": {
+  "G2_local_2000_steps": {
+   "adapters": "nomark_s0-5 (body A), nomarkB_s0-5 (body B); local stack; 500 images each; same seed bank",
+   "summary_reproduction_max_abs_diff": 2.710505431213761e-20,
+   "pooled": {
+    "MS_adapter": 2.2322840303366216e-06,
+    "MS_resid": 1.1104753962289927e-06,
+    "df_adapter": 10,
+    "df_resid": 4990,
+    "sigma_u2_mom": 2.2436172682152575e-09,
+    "sigma_u2_reml": 2.2436172682152575e-09,
+    "sigma_u_reml": 4.736683721988684e-05,
+    "sigma_e2": 1.1104753962289927e-06,
+    "sigma_e": 0.001053790964199728,
+    "sigma_v2_mean_of_arms": 1.1162544711144366e-06,
+    "sigma_v": 0.0010565294464019621,
+    "F_adapter": 2.0102057532450717,
+    "F_p_upper": 0.028525834209942754,
+    "sd_adapter_means_pooled_within_arm": 6.681742333159251e-05
+   },
+   "per_arm_F_p": {
+    "A": 0.002176289870446976,
+    "B": 0.9375545463274496
+   },
+   "per_arm_sigma_u": {
+    "A": 7.833749808920254e-05,
+    "B": 0.0
+   },
+   "adapter_means": {
+    "A": [
+     8.715159452321619e-05,
+     9.024549857027745e-06,
+     8.89658208538952e-05,
+     -2.6947944949993316e-05,
+     -1.7554989443285166e-05,
+     0.0002151758462032268
+    ],
+    "B": [
+     -3.427932072326951e-05,
+     3.129633251289607e-05,
+     -1.2282537221287638e-05,
+     1.9514837736096913e-05,
+     1.1092870962329368e-05,
+     1.1368812520770765e-05
+    ]
+   },
+   "sigma_u_interval_exact": {
+    "two_sided_95": [
+     0.0,
+     0.00010740360922955288
+    ],
+    "one_sided_95_upper": 9.546825244617811e-05,
+    "one_sided_99_upper": 0.0001234522950040663
+   },
+   "leave_one_out_arm_A": {
+    "nomark_s0": {
+     "sigma_u": 5.121195541286737e-05,
+     "F_p": 0.021002964727985338
+    },
+    "nomark_s1": {
+     "sigma_u": 4.8534847499448285e-05,
+     "F_p": 0.0315865603283985
+    },
+    "nomark_s2": {
+     "sigma_u": 5.0592867366115644e-05,
+     "F_p": 0.024671018188958886
+    },
+    "nomark_s3": {
+     "sigma_u": 4.19342377366058e-05,
+     "F_p": 0.06393613061859178
+    },
+    "nomark_s4": {
+     "sigma_u": 4.4279279452991035e-05,
+     "F_p": 0.04939018410200576
+    },
+    "nomark_s5": {
+     "sigma_u": 0.0,
+     "F_p": 0.6023555051657311
+    }
+   },
+   "largest_deviation_adapter": "nomark_s5",
+   "largest_deviation_value": 0.0002151758462032268,
+   "largest_deviation_pct_of_R_real": 0.6032346095017617,
+   "largest_deviation_z_vs_image_noise": 3.9690237132951145,
+   "largest_deviation_z_note": "divides by the SE of ONE 500-image mean; overstates the distance (see largest_deviation_detail.z_own, the corrected value)",
+   "largest_deviation_detail": {
+    "deviation_from_other_five": 0.00018704804003505463,
+    "se_own_per_seed_deviations": 6.1991637889332e-05,
+    "z_own": 3.0173108245498272,
+    "z_pooled_difference_se": 3.623206365074418,
+    "ci95_deviation": [
+     6.554666147092793e-05,
+     0.00030854941859918134
+    ],
+    "nominal_limit_in_ncc_units": 5.3761e-05,
+    "even_seeds": 0.00011740118498295748,
+    "odd_seeds": 0.00025669489508715177,
+    "quarter_means": [
+     9.731481781845027e-05,
+     0.00031660761513198295,
+     0.0002825156134335721,
+     5.175411375621318e-05
+    ],
+    "two_sided_p_single": 0.002550281654515323,
+    "familywise_p_most_extreme_of_48": 0.11535591596084949,
+    "residual_variance_ratio_arm_A": [
+     0.9416833240371891,
+     0.8068182186178121,
+     0.7433272786409504,
+     1.0397865945021063,
+     1.031301068450004,
+     1.4370835157519388
+    ],
+    "reading": "persistent over the seed bank (positive in every quarter), but as the most extreme of 48 adapters its family-wise p is about 0.1; a persistent deviation larger than the headline limit, and a heavy-tailed persistent term, are not established. The G2 F test is somewhat anti-conservative because this adapter's residual variance exceeds the pooled value."
+   }
+  },
+  "dose_16000_steps": {
+   "adapters": "dose16k_A_s0-5, dose16k_B_s0-5; local stack; 250 images each; same seed bank",
+   "pooled": {
+    "MS_adapter": 6.260327583183436e-07,
+    "MS_resid": 1.5058600968392493e-06,
+    "df_adapter": 10,
+    "df_resid": 2490,
+    "sigma_u2_mom": -3.5193093540836225e-09,
+    "sigma_u2_reml": 0.0,
+    "sigma_u_reml": 0.0,
+    "sigma_e2": 1.5058600968392493e-06,
+    "sigma_e": 0.0012271349138702106,
+    "sigma_v2_mean_of_arms": 1.1105862834745543e-06,
+    "sigma_v": 0.0010538435763786551,
+    "F_adapter": 0.4157310228436,
+    "F_p_upper": 0.9398155535003228,
+    "sd_adapter_means_pooled_within_arm": 5.0041293281382874e-05
+   },
+   "per_arm_F_p": {
+    "A": 0.678207371584058,
+    "B": 0.95512730717323
+   },
+   "sigma_u_interval_exact": {
+    "two_sided_95": [
+     0.0,
+     4.1183943570072406e-05
+    ],
+    "one_sided_95_upper": 1.8355278955523018e-05,
+    "one_sided_99_upper": 6.144792155194925e-05
+   }
+  }
+ },
+ "power": {
+  "model": "verify_v2.tpr(G, sigma_mu, se500, M): TPR = 1 - Phi(z_{1-0.01/(M-1)} - U / sqrt(sigma^2 + se500^2 * 500 / G)); U set per row; sigma = 0 with G = inf is its limit, 1",
+  "verifier_import": "module ran its checks and exited with code 0",
+  "verifier_summary": "76 of 76 checks agree",
+  "inputs": {
+   "U_nominal": 5.3761e-05,
+   "U_calibrated": 6.250941084945383e-05,
+   "c": 1.25,
+   "SE_img_500": 7.035e-05,
+   "sigma_cases": {
+    "archive_sigma_mu": 5.23e-05,
+    "paired_estimate": 0.0,
+    "paired_low_95": 0.0,
+    "paired_high_95": 4.108229517051979e-05,
+    "paired_upper_99_one_sided": 4.7673757644011794e-05,
+    "G2_local_estimate": 4.736683721988684e-05,
+    "zero": 0.0
+   },
+   "sources": [
+    "out/t3_power_v4.json inputs",
+    "out/h6_calibrated_limit.json primary_d200"
+   ]
+  },
+  "nominal": {
+   "archive_sigma_mu": {
+    "M2": {
+     "TPR_G500": 0.04335044254722731,
+     "TPR_G5000": 0.08372682551868826,
+     "TPR_G_inf": 0.09707274715053049,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.014126720640382007,
+     "TPR_G5000": 0.031363759798602064,
+     "TPR_G_inf": 0.03761178451990588,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.00174195215378814,
+     "TPR_G5000": 0.004815091868704879,
+     "TPR_G_inf": 0.006091246424930086,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "paired_estimate": {
+    "M2": {
+     "TPR_G500": 0.059125791759737756,
+     "TPR_G5000": 0.535953175928108,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4633.5392631142395,
+     "G_for_TPR50_ceil": 4634,
+     "G_for_TPR90": 11144.802577642746,
+     "G_for_TPR90_ceil": 11145
+    },
+    "M5": {
+     "TPR_G500": 0.02053411747495637,
+     "TPR_G5000": 0.3481047543399628,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 6746.1936815652825,
+     "G_for_TPR50_ceil": 6747,
+     "G_for_TPR90": 14312.30768362729,
+     "G_for_TPR90_ceil": 14313
+    },
+    "M50": {
+     "TPR_G500": 0.002798039872174085,
+     "TPR_G5000": 0.13174993992386086,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 10697.45817518347,
+     "G_for_TPR50_ceil": 10698,
+     "G_for_TPR90": 19860.520445554805,
+     "G_for_TPR90_ceil": 19861
+    }
+   },
+   "paired_low_95": {
+    "M2": {
+     "TPR_G500": 0.059125791759737756,
+     "TPR_G5000": 0.535953175928108,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4633.5392631142395,
+     "G_for_TPR50_ceil": 4634,
+     "G_for_TPR90": 11144.802577642746,
+     "G_for_TPR90_ceil": 11145
+    },
+    "M5": {
+     "TPR_G500": 0.02053411747495637,
+     "TPR_G5000": 0.3481047543399628,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 6746.1936815652825,
+     "G_for_TPR50_ceil": 6747,
+     "G_for_TPR90": 14312.30768362729,
+     "G_for_TPR90_ceil": 14313
+    },
+    "M50": {
+     "TPR_G500": 0.002798039872174085,
+     "TPR_G5000": 0.13174993992386086,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 10697.45817518347,
+     "G_for_TPR50_ceil": 10698,
+     "G_for_TPR90": 19860.520445554805,
+     "G_for_TPR90_ceil": 19861
+    }
+   },
+   "paired_high_95": {
+    "M2": {
+     "TPR_G500": 0.04781322644314634,
+     "TPR_G5000": 0.11987387857715859,
+     "TPR_G_inf": 0.15440299402656454,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.015891758832143776,
+     "TPR_G5000": 0.048830196201263165,
+     "TPR_G_inf": 0.06701253326855783,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.002021177377097172,
+     "TPR_G5000": 0.008562376633574398,
+     "TPR_G_inf": 0.01300269168653978,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "paired_upper_99_one_sided": {
+    "M2": {
+     "TPR_G500": 0.04515828030655511,
+     "TPR_G5000": 0.09604025135287442,
+     "TPR_G_inf": 0.11532960571194173,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.014836949767774277,
+     "TPR_G5000": 0.037119711303232994,
+     "TPR_G_inf": 0.046542083841003334,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.0018531678519586592,
+     "TPR_G5000": 0.00598801483659861,
+     "TPR_G_inf": 0.008040692770766578,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "G2_local_estimate": {
+    "M2": {
+     "TPR_G500": 0.04528022377069607,
+     "TPR_G5000": 0.0969683515013775,
+     "TPR_G_inf": 0.1167570313275732,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.014885093163305108,
+     "TPR_G5000": 0.037561966157957705,
+     "TPR_G_inf": 0.04725808191455205,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.001860763011638955,
+     "TPR_G5000": 0.00608077446349542,
+     "TPR_G_inf": 0.008202996847233801,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "zero": {
+    "M2": {
+     "TPR_G500": 0.059125791759737756,
+     "TPR_G5000": 0.535953175928108,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4633.5392631142395,
+     "G_for_TPR50_ceil": 4634,
+     "G_for_TPR90": 11144.802577642746,
+     "G_for_TPR90_ceil": 11145
+    },
+    "M5": {
+     "TPR_G500": 0.02053411747495637,
+     "TPR_G5000": 0.3481047543399628,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 6746.1936815652825,
+     "G_for_TPR50_ceil": 6747,
+     "G_for_TPR90": 14312.30768362729,
+     "G_for_TPR90_ceil": 14313
+    },
+    "M50": {
+     "TPR_G500": 0.002798039872174085,
+     "TPR_G5000": 0.13174993992386086,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 10697.45817518347,
+     "G_for_TPR50_ceil": 10698,
+     "G_for_TPR90": 19860.520445554805,
+     "G_for_TPR90_ceil": 19861
+    }
+   }
+  },
+  "calibrated": {
+   "archive_sigma_mu": {
+    "M2": {
+     "TPR_G500": 0.053343485054579864,
+     "TPR_G5000": 0.11000430112427062,
+     "TPR_G_inf": 0.12899824245234182,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.018132182153889453,
+     "TPR_G5000": 0.04389326558105522,
+     "TPR_G_inf": 0.05349999708882014,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.002388747970858307,
+     "TPR_G5000": 0.007447829625900071,
+     "TPR_G_inf": 0.0096537520997092,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "paired_estimate": {
+    "M2": {
+     "TPR_G500": 0.0752455416748764,
+     "TPR_G5000": 0.6856261668372716,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 3427.336237176191,
+     "G_for_TPR50_ceil": 3428,
+     "G_for_TPR90": 8243.587366271091,
+     "G_for_TPR90_ceil": 8244
+    },
+    "M5": {
+     "TPR_G500": 0.027524775651564082,
+     "TPR_G5000": 0.5011187828314536,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4990.024418676797,
+     "G_for_TPR50_ceil": 4991,
+     "G_for_TPR90": 10586.527484983922,
+     "G_for_TPR90_ceil": 10587
+    },
+    "M50": {
+     "TPR_G500": 0.004070086340269841,
+     "TPR_G5000": 0.23425347849332112,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 7912.695666862867,
+     "G_for_TPR50_ceil": 7913,
+     "G_for_TPR90": 14690.429398990154,
+     "G_for_TPR90_ceil": 14691
+    }
+   },
+   "paired_low_95": {
+    "M2": {
+     "TPR_G500": 0.0752455416748764,
+     "TPR_G5000": 0.6856261668372716,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 3427.336237176191,
+     "G_for_TPR50_ceil": 3428,
+     "G_for_TPR90": 8243.587366271091,
+     "G_for_TPR90_ceil": 8244
+    },
+    "M5": {
+     "TPR_G500": 0.027524775651564082,
+     "TPR_G5000": 0.5011187828314536,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4990.024418676797,
+     "G_for_TPR50_ceil": 4991,
+     "G_for_TPR90": 10586.527484983922,
+     "G_for_TPR90_ceil": 10587
+    },
+    "M50": {
+     "TPR_G500": 0.004070086340269841,
+     "TPR_G5000": 0.23425347849332112,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 7912.695666862867,
+     "G_for_TPR50_ceil": 7913,
+     "G_for_TPR90": 14690.429398990154,
+     "G_for_TPR90_ceil": 14691
+    }
+   },
+   "paired_high_95": {
+    "M2": {
+     "TPR_G500": 0.0594921709309838,
+     "TPR_G5000": 0.16148778119549778,
+     "TPR_G_inf": 0.21047269252943712,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.020688275822572377,
+     "TPR_G5000": 0.07090994703456155,
+     "TPR_G_inf": 0.09931438258068237,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.002824821636959629,
+     "TPR_G5000": 0.01401871018055989,
+     "TPR_G_inf": 0.022047694495103798,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "paired_upper_99_one_sided": {
+    "M2": {
+     "TPR_G500": 0.055828904595768836,
+     "TPR_G5000": 0.12752731216774094,
+     "TPR_G_inf": 0.15501557158522838,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.019157372536910078,
+     "TPR_G5000": 0.052740456281981096,
+     "TPR_G_inf": 0.06734734095657935,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.0025615772481804022,
+     "TPR_G5000": 0.009473846422909049,
+     "TPR_G_inf": 0.013089117741944323,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "G2_local_estimate": {
+    "M2": {
+     "TPR_G500": 0.055996824586412086,
+     "TPR_G5000": 0.12884950960938535,
+     "TPR_G_inf": 0.15704894371616152,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.0192270340634636,
+     "TPR_G5000": 0.05342307988105466,
+     "TPR_G_inf": 0.06846165631024392,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.0025734229556898525,
+     "TPR_G5000": 0.009635491625554438,
+     "TPR_G_inf": 0.013377926182719713,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "zero": {
+    "M2": {
+     "TPR_G500": 0.0752455416748764,
+     "TPR_G5000": 0.6856261668372716,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 3427.336237176191,
+     "G_for_TPR50_ceil": 3428,
+     "G_for_TPR90": 8243.587366271091,
+     "G_for_TPR90_ceil": 8244
+    },
+    "M5": {
+     "TPR_G500": 0.027524775651564082,
+     "TPR_G5000": 0.5011187828314536,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 4990.024418676797,
+     "G_for_TPR50_ceil": 4991,
+     "G_for_TPR90": 10586.527484983922,
+     "G_for_TPR90_ceil": 10587
+    },
+    "M50": {
+     "TPR_G500": 0.004070086340269841,
+     "TPR_G5000": 0.23425347849332112,
+     "TPR_G_inf": 1.0,
+     "G_for_TPR50": 7912.695666862867,
+     "G_for_TPR50_ceil": 7913,
+     "G_for_TPR90": 14690.429398990154,
+     "G_for_TPR90_ceil": 14691
+    }
+   }
+  },
+  "ten_times_nominal_G_for_TPR50": {
+   "archive_sigma_mu": {
+    "M2": 48.83668339646103,
+    "M5": 72.8979336269722,
+    "M50": 121.32018557642205
+   },
+   "paired_estimate": {
+    "M2": 46.335392631142405,
+    "M5": 67.46193681565283,
+    "M50": 106.97458175183475
+   },
+   "paired_low_95": {
+    "M2": 46.335392631142405,
+    "M5": 67.46193681565283,
+    "M50": 106.97458175183475
+   },
+   "paired_high_95": {
+    "M2": 47.84750236600629,
+    "M5": 70.71569920431922,
+    "M50": 115.39385215384085
+   },
+   "paired_upper_99_one_sided": {
+    "M2": 48.39494782092989,
+    "M5": 71.91806155519161,
+    "M50": 118.63023291267577
+   },
+   "G2_local_estimate": {
+    "M2": 48.367355445152214,
+    "M5": 71.85714369344677,
+    "M50": 118.46457179018978
+   },
+   "zero": {
+    "M2": 46.335392631142405,
+    "M5": 67.46193681565283,
+    "M50": 106.97458175183475
+   }
+  },
+  "sigma_critical": {
+   "nominal_M2_TPRinf_50": 2.3109613398712264e-05,
+   "nominal_M2_TPRinf_90": 1.4900914202358509e-05,
+   "calibrated_M2_TPRinf_50": 2.6870190630980597e-05,
+   "calibrated_M2_TPRinf_90": 1.7325707630209438e-05
+  },
+  "sigma_critical_meaning": "the persistent component above which no number of images reaches that TPR (two candidates, 1 % FPR)",
+  "seed_matched_reference": {
+   "SE_img_500": 3.5471335245202685e-05,
+   "persistent_sigma": 0.0,
+   "nominal": {
+    "TPR_G500": 0.2087604538888208,
+    "TPR_G5000": 0.9931771556251543,
+    "TPR_G_inf": 1.0,
+    "G_for_TPR50": 1177.9848843157854,
+    "G_for_TPR50_ceil": 1178,
+    "G_for_TPR90": 2833.3436342402,
+    "G_for_TPR90_ceil": 2834
+   },
+   "calibrated": {
+    "TPR_G500": 0.2863442450506566,
+    "TPR_G5000": 0.9994155873003069,
+    "TPR_G_inf": 1.0,
+    "G_for_TPR50": 871.3318376302608,
+    "G_for_TPR50_ceil": 872,
+    "G_for_TPR90": 2095.767567420417,
+    "G_for_TPR90_ceil": 2096
+   },
+   "persistent_sigma_at_paired_high_95": 2.9049569501781893e-05,
+   "nominal_at_paired_high_95": {
+    "TPR_G500": 0.12429705492277177,
+    "TPR_G5000": 0.27428032459683815,
+    "TPR_G_inf": 0.3171498976585102,
+    "G_for_TPR50": null,
+    "G_for_TPR50_ceil": null,
+    "G_for_TPR90": null,
+    "G_for_TPR90_ceil": null
+   },
+   "calibrated_at_paired_high_95": {
+    "TPR_G500": 0.16778380177963415,
+    "TPR_G5000": 0.3748707537088627,
+    "TPR_G_inf": 0.43072485619079526,
+    "G_for_TPR50": null,
+    "G_for_TPR50_ceil": null,
+    "G_for_TPR90": null,
+    "G_for_TPR90_ceil": null
+   },
+   "what": "an examiner who also holds a reference adapter trained on the other candidate camera and generates from both with the same seeds and caption; image term from the 144 cross-arm adapter pairs; persistent term sigma_u/sqrt(2) at the paired estimate; any training-set difference between the suspect and the reference is not in this design",
+   "null_specific": {
+    "per_orientation": {
+     "reference_B": {
+      "SE_null_500": 3.204863859401192e-05,
+      "SE_null_500_many_references": 2.2661809677622727e-05,
+      "G_for_TPR50": 961.6207261986126,
+      "G_for_TPR50_calibrated": 711.2916011215705,
+      "TPR_G500": 0.2788517553325463,
+      "TPR_G500_calibrated": 0.36707033246474635,
+      "x_nominal_50_images": 4.385477684810659,
+      "G_for_TPR50_many_references": 480.81036309930624,
+      "x_nominal_50_images_many_references": 3.1010010096718976
+     },
+     "reference_A": {
+      "SE_null_500": 3.406619052390116e-05,
+      "SE_null_500_many_references": 2.4088434328643418e-05,
+      "G_for_TPR50": 1086.5051417026243,
+      "G_for_TPR50_calibrated": 803.6661032916007,
+      "TPR_G500": 0.23620145269214637,
+      "TPR_G500_calibrated": 0.31848423344973137,
+      "x_nominal_50_images": 4.6615558383497335,
+      "G_for_TPR50_many_references": 543.2525708513122,
+      "x_nominal_50_images_many_references": 3.2962177441768383
+     }
+    },
+    "mean_of_orientations": {
+     "SE_null_500": 3.307280281848156e-05,
+     "SE_null_500_many_references": 2.3375122003133073e-05,
+     "G_for_TPR50": 1024.0629339506186,
+     "G_for_TPR50_calibrated": 757.4788522065855,
+     "TPR_G500": 0.25752660401234634,
+     "TPR_G500_calibrated": 0.34277728295723886,
+     "x_nominal_50_images": 4.523516761580196,
+     "G_for_TPR50_many_references": 512.0314669753092,
+     "x_nominal_50_images_many_references": 3.198609376924368,
+     "G_for_TPR50_with_training_sets": 1873.5205486327054
+    },
+    "what": "SE under the null from the arm the reference was trained on (seed term cancels exactly); the alternative keeps SE_img_500 of the 144 cross-arm pairs; TPR = 1 - Phi((z SE0_G - U) / SE1_G); one half needs G = 500 (z SE0 / U)^2 whatever SE1 is. mean_of_orientations averages the two reference cameras (SE_null_500 as their RMS). with_training_sets adds the difference between the suspect's and the reference's training sets as a persistent term (sd training_sd / sqrt 2)"
+   }
+  },
+  "training_set_component_persistent": {
+   "sigma": 2.2006415297705397e-05,
+   "source": "out/h6_calibrated_limit.json training_sd (nLimTrainSD)",
+   "nominal": {
+    "M2": {
+     "TPR_G500": 0.055132214487459086,
+     "TPR_G5000": 0.27149108634302255,
+     "TPR_G_inf": 0.5464200253998995,
+     "G_for_TPR50": 49718.02152825654,
+     "G_for_TPR50_ceil": 49719,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.018868885286980164,
+     "TPR_G5000": 0.13807794214266322,
+     "TPR_G_inf": 0.3579049857710517,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.0025126581283868576,
+     "TPR_G5000": 0.03463074076308659,
+     "TPR_G_inf": 0.13746508670666024,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "calibrated": {
+    "M2": {
+     "TPR_G500": 0.06966087668694654,
+     "TPR_G5000": 0.37117726922368643,
+     "TPR_G_inf": 0.6964301713387009,
+     "G_for_TPR50": 10409.351210724057,
+     "G_for_TPR50_ceil": 10410,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M5": {
+     "TPR_G500": 0.025055962115603347,
+     "TPR_G5000": 0.2091359890803297,
+     "TPR_G_inf": 0.5133520128106712,
+     "G_for_TPR50": 212969.5933851407,
+     "G_for_TPR50_ceil": 212970,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    },
+    "M50": {
+     "TPR_G500": 0.0036078467243438883,
+     "TPR_G5000": 0.06212979986954814,
+     "TPR_G_inf": 0.2437658358824517,
+     "G_for_TPR50": null,
+     "G_for_TPR50_ceil": null,
+     "G_for_TPR90": null,
+     "G_for_TPR90_ceil": null
+    }
+   },
+   "what": "fresh-seed examiner of eq. (power) with the H6 training-set component as the persistent term; H6 estimates it from two contrasts"
+  },
+  "transfer_for_TPR50_with_50_images": {
+   "fresh_seeds_sigma_zero": {
+    "x_nominal": 9.626566639372772,
+    "x_calibrated": 8.279294942416524
+   },
+   "fresh_seeds_archive_sigma_mu": {
+    "x_nominal": 9.889010619407452,
+    "x_calibrated": 8.50500896881528
+   },
+   "seed_matched_sigma_zero": {
+    "x_nominal": 4.853833298158859,
+    "x_calibrated": 4.174522338256823
+   },
+   "meaning": "multiple of the nominal (or calibrated) limit at which G = 50 gives a two-candidate TPR of 0.5"
+  },
+  "sensitivity_SE_500_all_24": {
+   "SE_img_500": 7.207826915948685e-05,
+   "nominal_sigma_zero_M2": {
+    "TPR_G500": 0.056998705466010824,
+    "TPR_G5000": 0.5128833352329409,
+    "TPR_G_inf": 1.0,
+    "G_for_TPR50": 4863.997492388691,
+    "G_for_TPR50_ceil": 4864,
+    "G_for_TPR90": 11699.11135152171,
+    "G_for_TPR90_ceil": 11700
+   },
+   "calibrated_sigma_zero_M2": {
+    "TPR_G500": 0.0722681920909991,
+    "TPR_G5000": 0.6613377646398961,
+    "TPR_G_inf": 1.0,
+    "G_for_TPR50": 3597.8015759800574,
+    "G_for_TPR50_ceil": 3598,
+    "G_for_TPR90": 8653.59846996965,
+    "G_for_TPR90_ceil": 8654
+   }
+  }
+ },
+ "reproduction": {
+  "t3_power_v4_rows": {
+   "M2.TPR_G500": {
+    "file": 0.04335044254722731,
+    "recomputed": 0.04335044254722731,
+    "abs_diff": 0.0
+   },
+   "M2.TPR_G5000": {
+    "file": 0.08372682551868826,
+    "recomputed": 0.08372682551868826,
+    "abs_diff": 0.0
+   },
+   "M2.TPR_G_inf": {
+    "file": 0.09707266730386244,
+    "recomputed": 0.09707274715053049,
+    "abs_diff": 7.984666805516127e-08
+   },
+   "M5.TPR_G500": {
+    "file": 0.014126720640382007,
+    "recomputed": 0.014126720640382007,
+    "abs_diff": 0.0
+   },
+   "M5.TPR_G5000": {
+    "file": 0.031363759798602064,
+    "recomputed": 0.031363759798602064,
+    "abs_diff": 0.0
+   },
+   "M5.TPR_G_inf": {
+    "file": 0.037611746410931124,
+    "recomputed": 0.03761178451990588,
+    "abs_diff": 3.810897475364783e-08
+   },
+   "M50.TPR_G500": {
+    "file": 0.00174195215378814,
+    "recomputed": 0.00174195215378814,
+    "abs_diff": 0.0
+   },
+   "M50.TPR_G5000": {
+    "file": 0.004815091868704879,
+    "recomputed": 0.004815091868704879,
+    "abs_diff": 0.0
+   },
+   "M50.TPR_G_inf": {
+    "file": 0.006091238412543998,
+    "recomputed": 0.006091246424930086,
+    "abs_diff": 8.012386087941081e-09
+   },
+   "zero.M2.TPR_G500": {
+    "file": 0.059125791759737756,
+    "recomputed": 0.059125791759737756,
+    "abs_diff": 0.0
+   },
+   "zero.M2.TPR_G5000": {
+    "file": 0.535953175928108,
+    "recomputed": 0.535953175928108,
+    "abs_diff": 0.0
+   },
+   "zero.M5.TPR_G500": {
+    "file": 0.02053411747495637,
+    "recomputed": 0.02053411747495637,
+    "abs_diff": 0.0
+   },
+   "zero.M5.TPR_G5000": {
+    "file": 0.3481047543399628,
+    "recomputed": 0.3481047543399628,
+    "abs_diff": 0.0
+   },
+   "zero.M50.TPR_G500": {
+    "file": 0.002798039872174085,
+    "recomputed": 0.002798039872174085,
+    "abs_diff": 0.0
+   },
+   "zero.M50.TPR_G5000": {
+    "file": 0.13174993992386086,
+    "recomputed": 0.13174993992386086,
+    "abs_diff": 0.0
+   }
+  },
+  "numbers_json_macros": {
+   "nAttTprTwoFiveHundred": {
+    "macro_value": 0.04335044254722731,
+    "macro_text": "0.043",
+    "recomputed": 0.04335044254722731,
+    "rel_diff": 0.0
+   },
+   "nAttTprTwoFiveThousand": {
+    "macro_value": 0.08372682551868826,
+    "macro_text": "0.084",
+    "recomputed": 0.08372682551868826,
+    "rel_diff": 0.0
+   },
+   "nAttTprTwoInf": {
+    "macro_value": 0.09707266730386244,
+    "macro_text": "0.097",
+    "recomputed": 0.09707274715053049,
+    "rel_diff": 8.225453186036462e-07
+   },
+   "nAttTprTwoFiveHundredCal": {
+    "macro_value": 0.053343485054579864,
+    "macro_text": "0.053",
+    "recomputed": 0.053343485054579864,
+    "rel_diff": 0.0
+   },
+   "nAttTprTwoFiveThousandCal": {
+    "macro_value": 0.11000430112427062,
+    "macro_text": "0.110",
+    "recomputed": 0.11000430112427062,
+    "rel_diff": 0.0
+   },
+   "nAttTprTwoInfCal": {
+    "macro_value": 0.12899824245234182,
+    "macro_text": "0.129",
+    "recomputed": 0.12899824245234182,
+    "rel_diff": 0.0
+   },
+   "nAttTprZeroTwoFiveHundred": {
+    "macro_value": 0.059125791759737756,
+    "macro_text": "0.059",
+    "recomputed": 0.059125791759737756,
+    "rel_diff": 0.0
+   },
+   "nAttTprZeroTwoFiveThousand": {
+    "macro_value": 0.535953175928108,
+    "macro_text": "0.54",
+    "recomputed": 0.535953175928108,
+    "rel_diff": 0.0
+   },
+   "nAttZeroGFiftyExact": {
+    "macro_value": 4633.5392631142395,
+    "macro_text": "4600",
+    "recomputed": 4633.5392631142395,
+    "rel_diff": 0.0
+   },
+   "nAttZeroGNinetyExact": {
+    "macro_value": 11144.802577642746,
+    "macro_text": "11{,}000",
+    "recomputed": 11144.802577642746,
+    "rel_diff": 0.0
+   },
+   "nAttTenxGTwoExact": {
+    "macro_value": 48.83668339646103,
+    "macro_text": "49",
+    "recomputed": 48.83668339646103,
+    "rel_diff": 0.0
+   },
+   "nAttTenxGFiveExact": {
+    "macro_value": 72.8979336269722,
+    "macro_text": "73",
+    "recomputed": 72.8979336269722,
+    "rel_diff": 0.0
+   },
+   "nAttTenxGFiftyExact": {
+    "macro_value": 121.32018557642205,
+    "macro_text": "122",
+    "recomputed": 121.32018557642205,
+    "rel_diff": 0.0
+   }
+  },
+  "note": "the file's G_inf column was evaluated at G = 1e9 and differs from the limit by < 1e-6; every filed TPR and exact image count is reproduced"
+ },
+ "reading": {
+  "sigma_mu_is_not_the_paired_persistent_term": "The 24 adapter means spread by 4.40e-05 within arm, what image noise alone predicts (4.68e-05); the archive component would make it 7.02e-05. REML sigma_u = 0.00e+00; F = 0.88 (p 0.62); exact 95 % interval 0.00e+00 to 4.11e-05; the archive 5.23e-05 is excluded (one-sided p 0.0050).",
+  "robust_bounds": "sigma only lowers the TPR, so the sigma = 0 values bound every case: at the nominal limit two candidates reach at most 0.059 with 500 images and 0.54 with 5,000; one half needs at least 4634 images and 0.9 11145; at the calibrated limit 0.075, 0.69, 3427 and 8244.",
+  "upper_end": "at the upper end of the interval (4.11e-05) the unlimited-image TPR at the nominal limit is 0.154 and one half is unattainable",
+  "g2": "the G2 local design shows a persistent component, entirely from one adapter (see secondary_designs_descriptive); that adapter's deviation persists over the seed bank but, as the most extreme of 48, has a family-wise p of about 0.1, so a heavy-tailed persistent term is not established (corrected in the Entry 114 addendum)",
+  "seed_matched": "an examiner matching seeds against a reference adapter of the other camera has an image term of 3.55e-05 per 500 images; one half at the nominal limit then needs 1178 images"
+ },
+ "runtime_s": 130.9108669757843
+}

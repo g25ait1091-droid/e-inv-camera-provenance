@@ -1,0 +1,624 @@
+{
+ "entry": "RESULTS.md Entry 112",
+ "script": "src/fv/fv_derived.py",
+ "status": "post hoc quantities computed for the manuscript; descriptive and sensitivity analyses, not pre-specified",
+ "N_A1_tpr_calibrated": {
+  "model": "verify_v2.tpr(G, sigma_mu, se500, M=2): TPR = 1 - Phi(z_{1-0.01/(M-1)} - U / sqrt(sigma_mu^2 + (se500*sqrt(500/G))^2)); two candidate cameras, 1 % false-positive rate",
+  "verifier_import": "module ran its checks and exited with code 0",
+  "verifier_summary": "76 of 76 checks agree",
+  "inputs": {
+   "sigma_mu": 5.23e-05,
+   "SE_img_500": 7.035e-05,
+   "M": 2,
+   "U_nominal": 5.3761e-05,
+   "U_calibrated": 6.250941084945383e-05,
+   "c": 1.25,
+   "lambda_U_calibrated_pct": 0.17524197399154923,
+   "sources": [
+    "out/t3_power_v4.json inputs",
+    "out/h6_calibrated_limit.json primary_d200.U_device"
+   ]
+  },
+  "tpr_calibrated": {
+   "G500": 0.053343485054579864,
+   "G5000": 0.11000430112427062,
+   "G_inf": 0.12899824245234182
+  },
+  "tpr_nominal_reproduced": {
+   "G500": {
+    "recomputed": 0.04335044254722731,
+    "file": 0.04335044254722731,
+    "macro": "nAttTprTwoFiveHundred",
+    "macro_value": 0.04335044254722731,
+    "abs_diff": 0.0,
+    "agree": true
+   },
+   "G5000": {
+    "recomputed": 0.08372682551868826,
+    "file": 0.08372682551868826,
+    "macro": "nAttTprTwoFiveThousand",
+    "macro_value": 0.08372682551868826,
+    "abs_diff": 0.0,
+    "agree": true
+   },
+   "G_inf": {
+    "recomputed": 0.09707274715053049,
+    "file": 0.09707266730386244,
+    "macro": "nAttTprTwoInf",
+    "macro_value": 0.09707266730386244,
+    "abs_diff": 7.984666805516127e-08,
+    "agree": true
+   }
+  },
+  "status": "post hoc; descriptive (a power-model evaluation at the calibrated limit)"
+ },
+ "N_A2_hksj": {
+  "designs": [
+   "D200 primary",
+   "iPhone 5c (E2)",
+   "P20 (G4b)"
+  ],
+  "k": 3,
+  "df": 2,
+  "t_0.99": 6.964556734283269,
+  "tau2_DL_pct2": 0.0008796078121038935,
+  "pooled_lambda_pct": 0.01859714230540164,
+  "q_scale": 1.0136037972776966,
+  "se_hk_pct": 0.022906557491657334,
+  "se_dl_pct": 0.02275232128605538,
+  "upper99_pct": 0.17813116154317057,
+  "t": 0.8118698024430252,
+  "one_sided_p": 0.2510647506883609,
+  "modified_upper99_pct": 0.17813116154317057,
+  "modified_note": "q >= 1 here, so the modified (q floored at 1) interval is identical",
+  "dl_upper99_pct_reproduced": 0.07152695655871075,
+  "dl_upper99_pct_file": 0.07152695655871075,
+  "source": "out/m1_pooled.json per_design[primary.designs].{lambda_pct,se_pct}; DL tau^2 as src/m1_pooled.py",
+  "status": "post hoc sensitivity (small-sample interval beside the pre-specified DL limit, Entry 106)"
+ },
+ "N_A3_d200_combination": {
+  "designs": [
+   "D200 primary",
+   "D200 second environment (G2)",
+   "D200 second training set (G5)",
+   "D200 FLUX.1-dev"
+  ],
+  "k": 4,
+  "I2": 0.0,
+  "I2_pct": 0.0,
+  "Q": 2.2890148069187566,
+  "Q_df": 3,
+  "Q_p": 0.5146286444003334,
+  "source": "out/m1_pooled.json secondary.d200_combination",
+  "status": "read from the M1 result file (Entry 107); homogeneity of the four D200 designs"
+ },
+ "N_A4_dose2000": {
+  "A_arms": [
+   "nomark_s0",
+   "nomark_s1",
+   "nomark_s2"
+  ],
+  "B_arms": [
+   "nomarkB_s0",
+   "nomarkB_s1",
+   "nomarkB_s2"
+  ],
+  "adapters_per_body": 3,
+  "bodies": 2,
+  "gens_per_adapter": 500,
+  "total_gens": 3000,
+  "per_adapter": {
+   "nomark_s0": {
+    "scored": 500,
+    "folder": 500
+   },
+   "nomark_s1": {
+    "scored": 500,
+    "folder": 500
+   },
+   "nomark_s2": {
+    "scored": 500,
+    "folder": 500
+   },
+   "nomarkB_s0": {
+    "scored": 500,
+    "folder": 500
+   },
+   "nomarkB_s1": {
+    "scored": 500,
+    "folder": 500
+   },
+   "nomarkB_s2": {
+    "scored": 500,
+    "folder": 500
+   }
+  },
+  "note": "the 2000-step local arms are seeds 0-2 of the second-environment design (G2, nomark/nomarkB s0-s5); they add no adapters or generations to the study totals",
+  "source": "out/t1/dose_stats.json doses.2000.{A,B}_arms; out/t1/summary_nomark*.json arms.*.n; paper/fv/work/inv_gens.json folder counts",
+  "status": "count"
+ },
+ "N_A5_totals": {
+  "definition": "designs listed in Table 2 block B (OUTLINE.md 'Table 2'); a design adds adapters only if it trained new ones, and generations only if they are new images",
+  "rows": [
+   {
+    "design": "D200 primary (archive)",
+    "adapters": 24,
+    "adapters_used": 24,
+    "gens": 12000,
+    "basis": "nDataPrimaryAdaptersPerArm x 2 arms; nDataPrimaryGens"
+   },
+   {
+    "design": "D200 second training set (G5)",
+    "adapters": 6,
+    "adapters_used": 6,
+    "gens": 3000,
+    "basis": "nDataSecondSetAdaptersPerArm x 2 arms; nDataSecondSetGens"
+   },
+   {
+    "design": "D200 second environment (G2)",
+    "adapters": 12,
+    "adapters_used": 12,
+    "gens": 6000,
+    "basis": "nDataSecondEnvAdaptersPerArm x 2 arms; nDataSecondEnvGens"
+   },
+   {
+    "design": "D200 FLUX.1-dev",
+    "adapters": 12,
+    "adapters_used": 12,
+    "gens": 6000,
+    "basis": "nDataFluxAdaptersPerArm x 2 arms; nDataFluxGens"
+   },
+   {
+    "design": "D200 full fine-tuning",
+    "adapters": 6,
+    "adapters_used": 6,
+    "gens": 3000,
+    "basis": "nDataFullFTAdaptersPerArm x 2 arms; nDataFullFTGens"
+   },
+   {
+    "design": "iPhone 5c pair (G6)",
+    "adapters": 24,
+    "adapters_used": 24,
+    "gens": 6000,
+    "basis": "nDataIPhoneAdaptersPerArm x 2 arms; nDataIPhoneGens"
+   },
+   {
+    "design": "P20 pair (G4b)",
+    "adapters": 24,
+    "adapters_used": 24,
+    "gens": 6000,
+    "basis": "nDataPTwentyPairAdaptersPerArm x 2 arms; nDataPTwentyPairGens"
+   },
+   {
+    "design": "Kodak M1063 five bodies",
+    "adapters": 10,
+    "adapters_used": 10,
+    "gens": 5000,
+    "basis": "nDataKodakAdaptersPerArm x 5 arms; nDataKodakGens"
+   },
+   {
+    "design": "P20 five bodies",
+    "adapters": 10,
+    "adapters_used": 10,
+    "gens": 5000,
+    "basis": "nDataPTwentyAdaptersPerArm x 5 arms; nDataPTwentyGens"
+   },
+   {
+    "design": "D200 8000 steps",
+    "adapters": 4,
+    "adapters_used": 4,
+    "gens": 1000,
+    "basis": "nDataEightKAdaptersPerArm x 2 arms; nDataEightKGens"
+   },
+   {
+    "design": "D200 16000 steps",
+    "adapters": 12,
+    "adapters_used": 12,
+    "gens": 3000,
+    "basis": "nDataSixteenKAdaptersPerArm x 2 arms; nDataSixteenKGens"
+   },
+   {
+    "design": "D200 16000 steps, fingerprint inverted (G1 + extension)",
+    "adapters": 16,
+    "adapters_used": 16,
+    "gens": 4000,
+    "basis": "nDataInvertedAdaptersPerArm x 2 arms; nDataInvertedGens"
+   },
+   {
+    "design": "D200 content-matched",
+    "adapters": 6,
+    "adapters_used": 6,
+    "gens": 3000,
+    "basis": "nDataContentMatchedAdaptersPerArm x 2 arms; nDataContentMatchedGens"
+   },
+   {
+    "design": "D200 random crop (body A only)",
+    "adapters": 3,
+    "adapters_used": 3,
+    "gens": 1500,
+    "basis": "nDataRandomCropAdaptersPerArm x 1 arms; nDataRandomCropGens"
+   },
+   {
+    "design": "base model, single caption (archive)",
+    "adapters": 0,
+    "adapters_used": 0,
+    "gens": 500,
+    "basis": "nDataBaseGens"
+   },
+   {
+    "design": "base model, five captions",
+    "adapters": 0,
+    "adapters_used": 0,
+    "gens": 500,
+    "basis": "nDataPromptBankBaseGens"
+   },
+   {
+    "design": "D200 five captions on primary seeds 0-2",
+    "adapters": 0,
+    "adapters_used": 6,
+    "gens": 3000,
+    "basis": "nDataPromptBankGens; adapters are primary s0-s2 (not new)"
+   },
+   {
+    "design": "iPhone 5c five captions (P1)",
+    "adapters": 0,
+    "adapters_used": 24,
+    "gens": 6000,
+    "basis": "nDataPromptsGens; adapters are the G6 adapters (not new)"
+   },
+   {
+    "design": "map: periodic tiles",
+    "adapters": 18,
+    "adapters_used": 18,
+    "gens": 9000,
+    "basis": "nMapTileAdapters; generations = PNG counts of 18 folders in inv_gens.json"
+   },
+   {
+    "design": "map: fingerprint-spectrum octave bands",
+    "adapters": 10,
+    "adapters_used": 10,
+    "gens": 5000,
+    "basis": "nMapBandAdapters; generations = PNG counts of 10 folders in inv_gens.json"
+   },
+   {
+    "design": "map: DiffusionShield watermark",
+    "adapters": 3,
+    "adapters_used": 3,
+    "gens": 1500,
+    "basis": "nMapWmAdapters; generations = PNG counts of 3 folders in inv_gens.json"
+   },
+   {
+    "design": "map: E1 fingerprint as a known pattern",
+    "adapters": 5,
+    "adapters_used": 5,
+    "gens": 2500,
+    "basis": "nKnownAdaptersEone; generations = PNG counts of 5 folders in inv_gens.json"
+   },
+   {
+    "design": "map: E2 spectrum-matched fields",
+    "adapters": 6,
+    "adapters_used": 6,
+    "gens": 3000,
+    "basis": "nKnownAdaptersEtwo; generations = PNG counts of 6 folders in inv_gens.json"
+   }
+  ],
+  "total_adapters": 211,
+  "total_gens": 95500,
+  "with_objective_arms": {
+   "total_adapters": 218,
+   "total_gens": 99000
+  },
+  "not_counted": {
+   "rescored, no new generations": [
+    "iPhone flat-field rows (rescore G6 and P1 images)",
+    "16000-step replication seeds 3-5 (subset of the 16000-step design)",
+    "2000-step local arms (seeds 0-2 of G2)",
+    "detector panel, learned CNN, attribution, G3, H2, H3, C5, copy audit, memorization and firearm counts (all score existing generations)",
+    "DiffusionShield released-decoder runs (200 per arm on existing arms)"
+   ],
+   "trained and generated but not a Table 2 block B design": {
+    "objective arms (archive E_AMP, reported in S05 on stored energy and loss)": {
+     "adapters": 7,
+     "gens": 3500
+    },
+    "designed-mark ladder (mark_rand_a1/a3/a12, mark_lowmid_a12; N-A7, no macros)": {
+     "adapters": 6,
+     "gens": 3000
+    },
+    "environment chain (colab_s0-s2, local_A_raw_s0, local_B_raw_s0, local_base; N-A7, no macros)": {
+     "adapters": 5,
+     "gens": 3000
+    },
+    "pilot arms of the archive run (D, D2, clean, swap, rank-64 ceiling; not reported)": "not counted",
+    "P10 Plus pair": "gate failed; never trained"
+   }
+  },
+  "folder_crosscheck": {
+   "nDataSecondSetGens": {
+    "macro": 3000,
+    "folders": 3000,
+    "agree": true
+   },
+   "nDataSecondEnvGens": {
+    "macro": 6000,
+    "folders": 6000,
+    "agree": true
+   },
+   "nDataEightKGens": {
+    "macro": 1000,
+    "folders": 1000,
+    "agree": true
+   },
+   "nDataSixteenKGens": {
+    "macro": 3000,
+    "folders": 3000,
+    "agree": true
+   },
+   "nDataInvertedGens": {
+    "macro": 4000,
+    "folders": 4000,
+    "agree": true
+   },
+   "nDataContentMatchedGens": {
+    "macro": 3000,
+    "folders": 3000,
+    "agree": true
+   },
+   "nDataRandomCropGens": {
+    "macro": 1500,
+    "folders": 1500,
+    "agree": true
+   },
+   "nDataIPhoneGens": {
+    "macro": 6000,
+    "folders": 6000,
+    "agree": true
+   },
+   "nDataPromptsGens": {
+    "macro": 6000,
+    "folders": 6000,
+    "agree": true
+   },
+   "nDataPTwentyPairGens": {
+    "macro": 6000,
+    "folders": 6000,
+    "agree": true
+   }
+  },
+  "source": "paper/fv/numbers.json count macros (nData*, nMap*, nKnown*); paper/fv/work/inv_gens.json",
+  "status": "count"
+ },
+ "N_A6_g2_additive": {
+  "additive_part": 2.7425323438045954e-05,
+  "additive_pct_of_R_real": 0.07688550813916152,
+  "theta_sym": 3.1877156069301945e-05,
+  "R_real": 0.0356703416571125,
+  "definition": "additive part = (mean_A - mean_B)/2 of the per-arm own-minus-other contrasts; it estimates b_A - b_B (QUARRY Q3)",
+  "source": "out/g2_pooled_six.json per_adapter_A, per_adapter_B",
+  "status": "descriptive"
+ },
+ "Q1_schedule": {
+  "code": {
+   "notebooks/01_pilot.ipynb S2 cell": "sch=torch.optim.lr_scheduler.CosineAnnealingLR(opt,T_max=steps)",
+   "cells/S2_FINAL_cell.py": "CosineAnnealingLR(optimizer, T_max=math.ceil(steps / C.GRAD_ACC))",
+   "notebooks/02_seed_ext.ipynb": "lrs = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=math.ceil(C.STEPS/C.GRAD_ACC))",
+   "notebooks/12_seed_ext2.ipynb": "lrs = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=math.ceil(C.STEPS/C.GRAD_ACC))",
+   "v2 src/t1_ladder.py (local stack, as run)": "sch = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=STEPS)",
+   "stepping": "every variant steps the scheduler once per optimizer update (every GRAD_ACC = 2 micro-steps; 1000 updates in 2000 micro-steps): T_max = 1000 updates decays to ~0, T_max = 2000 ends at half the initial rate"
+  },
+  "note_docs": "docs/E_INV_RESULTS_v2.md section 9 item 4: 'A_raw_s0 trained under an earlier cell revision'; its lora_B_norm was recovered post hoc (notebook 04)",
+  "adapters": {
+   "A_raw_s0_r16": {
+    "seed": 0,
+    "arm": "A",
+    "writer": "an earlier S2 cell revision (record matches neither S2_FINAL nor the notebook 01 cell; lora_B_norm recovered post hoc)",
+    "schedule": "not recorded",
+    "loss_tail": 0.17447069741785526,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "B_raw_s0_r16": {
+    "seed": 0,
+    "arm": "B",
+    "writer": "cells/S2_FINAL_cell.py (key set and order match exactly)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16551646038889886,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "A_raw_s1_r16": {
+    "seed": 1,
+    "arm": "A",
+    "writer": "cells/S2_FINAL_cell.py (key set and order match exactly)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17150239802896977,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "B_raw_s1_r16": {
+    "seed": 1,
+    "arm": "B",
+    "writer": "cells/S2_FINAL_cell.py (key set and order match exactly)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17168588548898697,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "A_raw_s2_r16": {
+    "seed": 2,
+    "arm": "A",
+    "writer": "cells/S2_FINAL_cell.py (key set and order match exactly)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16187816716730594,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "B_raw_s2_r16": {
+    "seed": 2,
+    "arm": "B",
+    "writer": "cells/S2_FINAL_cell.py (key set and order match exactly)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16561016805469989,
+    "gpu": "NVIDIA A100-SXM4-40GB"
+   },
+   "A_raw_s3_r16": {
+    "seed": 3,
+    "arm": "A",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17432968974113464,
+    "gpu": null
+   },
+   "B_raw_s3_r16": {
+    "seed": 3,
+    "arm": "B",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17330187406390907,
+    "gpu": null
+   },
+   "A_raw_s4_r16": {
+    "seed": 4,
+    "arm": "A",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17886422611773015,
+    "gpu": null
+   },
+   "B_raw_s4_r16": {
+    "seed": 4,
+    "arm": "B",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17367859557271004,
+    "gpu": null
+   },
+   "A_raw_s5_r16": {
+    "seed": 5,
+    "arm": "A",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.18581820599734783,
+    "gpu": null
+   },
+   "B_raw_s5_r16": {
+    "seed": 5,
+    "arm": "B",
+    "writer": "notebooks/02_seed_ext.ipynb (config_sha matches the notebook's protocol hash)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16681472852826118,
+    "gpu": null
+   },
+   "A_raw_s6_r16": {
+    "seed": 6,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.1905354878306389,
+    "gpu": null
+   },
+   "B_raw_s6_r16": {
+    "seed": 6,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17712011612951756,
+    "gpu": null
+   },
+   "A_raw_s7_r16": {
+    "seed": 7,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.174947257861495,
+    "gpu": null
+   },
+   "B_raw_s7_r16": {
+    "seed": 7,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16910292975604535,
+    "gpu": null
+   },
+   "A_raw_s8_r16": {
+    "seed": 8,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.16724975399672984,
+    "gpu": null
+   },
+   "B_raw_s8_r16": {
+    "seed": 8,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.1636675126105547,
+    "gpu": null
+   },
+   "A_raw_s9_r16": {
+    "seed": 9,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.1842254090309143,
+    "gpu": null
+   },
+   "B_raw_s9_r16": {
+    "seed": 9,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.18087853752076627,
+    "gpu": null
+   },
+   "A_raw_s10_r16": {
+    "seed": 10,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17154545858502387,
+    "gpu": null
+   },
+   "B_raw_s10_r16": {
+    "seed": 10,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.17151856079697608,
+    "gpu": null
+   },
+   "A_raw_s11_r16": {
+    "seed": 11,
+    "arm": "A",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.1934639982879162,
+    "gpu": null
+   },
+   "B_raw_s11_r16": {
+    "seed": 11,
+    "arm": "B",
+    "writer": "notebooks/12_seed_ext2.ipynb (record fields match)",
+    "schedule": "T_max = 1000 updates (to ~0)",
+    "loss_tail": 0.177264258377254,
+    "gpu": null
+   }
+  },
+  "nb02_protocol_sha": "f49272900fbc066538c70dd2610c0439edcb8d0dc5c296c81e03fbd8e0966dca",
+  "loss_tail_check": {
+   "archive_primary_min": 0.16187816716730594,
+   "archive_primary_max": 0.1934639982879162,
+   "A_raw_s0_r16": 0.17447069741785526,
+   "local_2000_step_unmarked_min": 0.23196481838822364,
+   "local_2000_step_unmarked_max": 0.2826372643560171,
+   "local_n": 27,
+   "reading": "A_raw_s0's tail loss lies with the archive adapters, not with the sigma = u sampler of the notebook 01 cell; indirect evidence only (the stacks also differ)"
+  },
+  "counts": {
+   "to_zero": 23,
+   "to_half": 0,
+   "not_recorded": 1,
+   "total": 24
+  },
+  "split_confirmed": false,
+  "verdict": "The seeds 0-2 vs 3-11 schedule split (QUARRY Q1) is NOT confirmed. 23 of 24 primary adapters have records written by code with T_max = 1000 updates (rate decays to ~0), including five of the six seed 0-2 adapters (written by cells/S2_FINAL_cell.py, not by the notebook 01 cell that Q1 cites); 1 adapter (A_raw_s0_r16) was trained by an earlier cell revision whose schedule is not recorded; no primary record shows the half-decay variant. The half-decay variant (T_max = 2000 micro-steps stepped per update) is confirmed for the local stack (t1_ladder.py). No descriptive comparison by schedule is computed.",
+  "status": "record audit; no statistic"
+ }
+}

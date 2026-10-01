@@ -1,0 +1,3615 @@
+{
+ "entry": "RESULTS.md Entry 116, item 6 (small quantities; descriptive, from existing files)",
+ "script": "src/fv/fv_small_quantities.py",
+ "registered_names": {
+  "script": "src/fv/fv_small.py",
+  "output": "out/fv_small.json"
+ },
+ "name_deviation": "written as fv_small_quantities.py/.json, the names the executing run asked for; the analysis is as registered",
+ "status": "descriptive; no reading attaches (Entry 116: items 5 and 6 are descriptive)",
+ "run": {
+  "utc": "2026-09-30T13:20:52+00:00",
+  "python": "3.13.9",
+  "numpy": "2.5.2",
+  "scipy": "1.16.3"
+ },
+ "settings": {
+  "R_real": 0.0356703416571125,
+  "R_real_registered": 0.0356703,
+  "max_arm_quantile": 0.995,
+  "estimation_sd_registered": 1.224e-05
+ },
+ "a_local_stack_maxarm": {
+  "question": "hostile-r2-04: Table 3 row 3 (primary design retrained on the local stack) max-arm limit",
+  "inputs": {
+   "per_adapter_A": [
+    8.71515945232162e-05,
+    9.024549857027742e-06,
+    8.89658208538952e-05,
+    -2.6947944949993312e-05,
+    -1.7554989443285173e-05,
+    0.00021517584620322678
+   ],
+   "per_adapter_A_labels": [
+    "nomark_s0",
+    "nomark_s1",
+    "nomark_s2",
+    "nomark_s3",
+    "nomark_s4",
+    "nomark_s5"
+   ],
+   "per_adapter_B": [
+    -3.427932072326951e-05,
+    3.1296332512896056e-05,
+    -1.228253722128763e-05,
+    1.9514837736096913e-05,
+    1.1092870962329368e-05,
+    1.1368812520770738e-05
+   ],
+   "per_adapter_B_labels": [
+    "nomarkB_s0",
+    "nomarkB_s1",
+    "nomarkB_s2",
+    "nomarkB_s3",
+    "nomarkB_s4",
+    "nomarkB_s5"
+   ],
+   "per_adapter_B_sign": "own-minus-other, i.e. -(rho(K_A) - rho(K_B)) of the summary",
+   "R_real": 0.0356703416571125,
+   "file_theta_sym": 3.1877156069301945e-05,
+   "file_symmetric_limit99_pct": 0.26265709155766986
+  },
+  "nominal_six_per_arm": {
+   "U_A": {
+    "n": 6,
+    "mean": 5.93024795073479e-05,
+    "sd": 9.146154375977738e-05,
+    "t_0995": 4.032142983557536,
+    "half_width": 0.00015055626300247417,
+    "U": 0.00020985874250982207
+   },
+   "U_B": {
+    "n": 6,
+    "mean": 4.451832631255989e-06,
+    "sd": 2.3747044751396194e-05,
+    "t_0995": 4.032142983557536,
+    "half_width": 3.909037796817777e-05,
+    "U": 4.3542210599433764e-05
+   },
+   "U": 0.00020985874250982207,
+   "set_by_arm": "A",
+   "lambda_U_pct": 0.5883283780321662,
+   "lambda_U_A_pct": 0.5883283780321662,
+   "lambda_U_B_pct": 0.12206838672304014,
+   "c": 1.0,
+   "construction": "U_X = mean_X + t_{0.995,5} s_X / sqrt(6); U = max(U_A, U_B); / R_real"
+  },
+  "post_hoc_without_nomark_s5": {
+   "left_out": "nomark_s5",
+   "left_out_value": 0.00021517584620322678,
+   "left_out_value_pct": 0.6032346095017617,
+   "U_A_five": {
+    "n": 5,
+    "mean": 2.812780616817213e-05,
+    "sd": 5.628112960948557e-05,
+    "t_0995": 4.604094871415897,
+    "half_width": 0.00011588362375380883,
+    "U": 0.00014401142992198095
+   },
+   "U_B_six": {
+    "n": 6,
+    "mean": 4.451832631255989e-06,
+    "sd": 2.3747044751396194e-05,
+    "t_0995": 4.032142983557536,
+    "half_width": 3.909037796817777e-05,
+    "U": 4.3542210599433764e-05
+   },
+   "U": 0.00014401142992198095,
+   "set_by_arm": "A",
+   "lambda_U_pct": 0.4037287652199029,
+   "lambda_U_A_pct": 0.4037287652199029,
+   "status": "post hoc (Entry 116 item 6a: labelled post hoc)"
+  },
+  "archive_six_per_arm": {
+   "ledger_history_k6_lambda_U_pct": 0.249,
+   "ledger_history_k6_U_device": 8.8802e-05,
+   "ledger_status": "superseded; retained only for the tightening history in Section V-C",
+   "recomputed_from_ledger_first_six": {
+    "U_A": {
+     "n": 6,
+     "mean": 1.5492156399256674e-05,
+     "sd": 4.4534933634620235e-05,
+     "t_0995": 4.032142983557536,
+     "half_width": 7.330964365419254e-05,
+     "U": 8.880180005344921e-05
+    },
+    "U_B": {
+     "n": 6,
+     "mean": 1.4382860516299993e-05,
+     "sd": 3.332393033081012e-05,
+     "t_0995": 4.032142983557536,
+     "half_width": 5.485503757009607e-05,
+     "U": 6.923789808639606e-05
+    },
+    "U": 8.880180005344921e-05,
+    "lambda_U_pct": 0.24895135826584533,
+    "set_by_arm": "A",
+    "note": "ledger primary.per_adapter_A/B, seeds 0-5 (numeric seed order, per _per_adapter_note)"
+   }
+  },
+  "note": "c = 1: H6's multiplier (1.25) is not transported to the local stack (Entry 116)",
+  "source": "out/g2_pooled_six.json per_adapter_A/B; order checked against out/t1/summary_nomark*.json; R_real and history_k6 from analysis/FINAL_LEDGER.json"
+ },
+ "b_inflated_p": {
+  "question": "hostile-r2-14: 16000-step symmetric p-values with the E2 estimation shift added",
+  "estimation_sd": 1.2241826811286903e-05,
+  "estimation_sd_source": "out/h6_calibrated_limit.json estimation_sd = SD (ddof 1) of theta_sym over the 24 H2 bootstrap replicates (out/h2_estimation_error.json), checked",
+  "estimation_sd_measured_at": {
+   "steps": 2000,
+   "images_per_adapter": 200,
+   "adapters_per_arm": 12,
+   "n_replicates": 24,
+   "note": "transported to 16000 steps and 250 images per adapter (stated); Entry 116 says it was measured at 500 images, but H2 used 200 per adapter (images_per_adapter in its file)"
+  },
+  "formula": "SE_infl = sqrt(SE_Welch^2 + sd_est^2); t = theta_sym / SE_infl; one-sided p at the Welch df of each result",
+  "results": {
+   "entry68_replication_new_three_per_body": {
+    "seeds": [
+     3,
+     4,
+     5
+    ],
+    "A_own": [
+     0.00015240926094429075,
+     0.00015411954005115728,
+     8.882662453697123e-05
+    ],
+    "B_own": [
+     -2.4039386144520108e-05,
+     4.259499673363563e-06,
+     -2.3602506965289724e-05
+    ],
+    "theta_sym": 5.866217201599551e-05,
+    "theta_sym_pct": 0.1644564343675092,
+    "SE_Welch": 1.1717834661647318e-05,
+    "df_Welch": 2.7329273838186903,
+    "t": 5.006229709657694,
+    "one_sided_p": 0.009549279683249675,
+    "p_printed_in_entry": "0.00955 (Entry 68)",
+    "direction": "theta > 0",
+    "SE_infl": 1.6946090193175716e-05,
+    "t_infl": 3.461693602906651,
+    "one_sided_p_infl": 0.02342444806818626,
+    "SE_ratio": 1.4461793225876938,
+    "context_threshold": 0.05,
+    "context_threshold_source": "Entry 55 registered reading, one-sided 0.05",
+    "source": "out/t1/dose_stats.json doses['16000_new'] (per-adapter values equal the Entry 68 summaries out/t1/summary_dose16k*.json natural_paired_KA_minus_KB)",
+    "p_infl_below_context_threshold": true
+   },
+   "entry68_pooled_six_per_body": {
+    "seeds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "A_own": [
+     5.00959484852514e-05,
+     4.93098922847864e-05,
+     0.00019322956653422348,
+     0.00015240926094429075,
+     0.00015411954005115728,
+     8.882662453697123e-05
+    ],
+    "B_own": [
+     6.93470464394717e-05,
+     -2.861236827903023e-05,
+     -8.735646906551931e-08,
+     -2.4039386144520108e-05,
+     4.259499673363563e-06,
+     -2.3602506965289724e-05
+    ],
+    "theta_sym": 5.710464675763419e-05,
+    "theta_sym_pct": 0.1600899910254933,
+    "SE_Welch": 1.4445677073301704e-05,
+    "df_Welch": 8.262755229064414,
+    "t": 3.9530612838614667,
+    "one_sided_p": 0.0019774975738082365,
+    "p_printed_in_entry": "0.00198 (Entry 68)",
+    "direction": "theta > 0",
+    "SE_infl": 1.8935150112519766e-05,
+    "t_infl": 3.0158011115991665,
+    "one_sided_p_infl": 0.008028627283624648,
+    "SE_ratio": 1.3107831510033852,
+    "context_threshold": 0.01,
+    "context_threshold_source": "Entry 68 secondary reading, one-sided 0.01",
+    "source": "out/t1/dose_stats.json doses['16000'] (per-adapter values equal the Entry 68 summaries out/t1/summary_dose16k*.json natural_paired_KA_minus_KB)",
+    "p_infl_below_context_threshold": true
+   },
+   "g1_inversion_eight_per_arm": {
+    "seeds": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "A_own": [
+     -6.576672170919451e-06,
+     0.0001097497123225798,
+     -9.44362549125987e-06,
+     -2.013796974563234e-05,
+     2.400038810878414e-05,
+     -0.00010230725434757437,
+     5.9156513736292054e-05,
+     2.9669369272149615e-05
+    ],
+    "B_own": [
+     3.859559818069236e-06,
+     -0.00022617937441554413,
+     -0.00017676347167797646,
+     -0.00024958118215726146,
+     -0.00021422255188371518,
+     -7.874301852097897e-05,
+     -9.795355995038095e-05,
+     2.584914114459169e-05
+    ],
+    "theta_sym": -5.810149974742354e-05,
+    "theta_sym_pct": -0.16288461799983453,
+    "SE_Welch": 2.1725453518428716e-05,
+    "df_Welch": 11.316536347305975,
+    "t": -2.67435152495844,
+    "one_sided_p": 0.010579690577376528,
+    "p_printed_in_entry": "0.0106 (Entry 110)",
+    "direction": "theta < 0",
+    "SE_infl": 2.4937073891275807e-05,
+    "t_infl": -2.3299245132264796,
+    "one_sided_p_infl": 0.01963431847173778,
+    "SE_ratio": 1.147827541097028,
+    "context_threshold": 0.05,
+    "context_threshold_source": "Entries 77 and 99 registered reading, one-sided 0.05",
+    "source": "out/g1_ext.json per_adapter_A/B s0-s7; all_eight reproduced",
+    "p_infl_below_context_threshold": true
+   }
+  },
+  "not_inflated": "the within-body inverted-minus-normal contrast (Entry 110): both conditions are scored with the same K, so the shift cancels exactly (Entry 116)",
+  "reading": "none: Entry 116 item 6 is descriptive; context thresholds are the registered levels of the three readings, reported for orientation only"
+ },
+ "d_inversion_first_reading": {
+  "question": "figures-r2-11: nDoseInvThreeT, the Welch t of the first inversion reading (seeds 0-2)",
+  "per_adapter_A": [
+   -6.576672170919451e-06,
+   0.0001097497123225798,
+   -9.44362549125987e-06
+  ],
+  "per_adapter_B": [
+   3.859559818069236e-06,
+   -0.00022617937441554413,
+   -0.00017676347167797646
+  ],
+  "theta_sym": -5.089231193584181e-05,
+  "theta_sym_pct": -0.14267402433386595,
+  "SE_Welch": 4.0092189102014465e-05,
+  "df_Welch": 3.147345452333397,
+  "t": -1.2693822182257612,
+  "one_sided_p_lt0": 0.14502086904084127,
+  "reproduces_entry_98": {
+   "theta_sym_pct_printed": -0.143,
+   "p_printed": 0.145,
+   "also_equal_to": "out/g_chain12.json G1 (theta_sym, welch_se, welch_df, t, p)"
+  },
+  "source": "out/g1_ext.json per_adapter_A/B s0-s2"
+ },
+ "c_gpu_hours": {
+  "question": "trace-r2-12: total GPU-hours by GPU",
+  "s3_per_unit_minutes": {
+   "A100_adapter": {
+    "phrase": "a rank-16 adapter took about 24~min",
+    "low_min": 24.0,
+    "high_min": 24.0,
+    "unit": "one SD-3.5 LoRA adapter (2000 steps)"
+   },
+   "A100_gen500": {
+    "phrase": "500 generations about 20~min",
+    "low_min": 20.0,
+    "high_min": 20.0,
+    "unit": "500 generations"
+   },
+   "Blackwell_FLUX_adapter": {
+    "phrase": "A FLUX.1-dev adapter took about 25~min on the Blackwell card",
+    "low_min": 25.0,
+    "high_min": 25.0,
+    "unit": "one FLUX.1-dev adapter"
+   },
+   "L40S_adapter_2000": {
+    "phrase": "A 2000-step adapter took 39~min alone and up to 87~min beside a generation job",
+    "low_min": 39.0,
+    "high_min": 87.0,
+    "unit": "one 2000-step adapter"
+   },
+   "L40S_adapter_8000": {
+    "phrase": "an 8000-step adapter about 2.6~h",
+    "low_min": 156.0,
+    "high_min": 156.0,
+    "unit": "one 8000-step adapter"
+   },
+   "L40S_adapter_16000": {
+    "phrase": "a 16000-step adapter 5.2~h alone and up to 14.8~h when sharing",
+    "low_min": 312.0,
+    "high_min": 888.0,
+    "unit": "one 16000-step adapter"
+   },
+   "L40S_gen500": {
+    "phrase": "Generating 500 images took 62--74~min",
+    "low_min": 62.0,
+    "high_min": 74.0,
+    "unit": "500 generations"
+   },
+   "L40S_gen250": {
+    "phrase": "and 250 images about 35~min alone",
+    "low_min": 35.0,
+    "high_min": 35.0,
+    "unit": "250 generations"
+   }
+  },
+  "definition": "GPU-hours = summed wall-clock hours of the training and generation jobs on each card. Training: train_meta.json 'minutes' where recorded, else S3's per-unit time; generation: S3's per-unit time x number of jobs (500 or 250 images per job, as in Table 2(b)). Excluded: detector, embedding and scoring GPU time, autoencoder round trips, and jobs that were discarded, interrupted or re-run (for example the ~11 GPU-hours of inv16kext_B_s3 lost in D13, Entry 104). Jobs that shared the L40S are each counted in full, so these are job-hours; the card's occupied time is lower (see checks)",
+  "N-A5 (211 adapters, 95,500 generations)": {
+   "adapters_trained": 211,
+   "generations": 95500,
+   "by_gpu": {
+    "NVIDIA A100-SXM4-40GB (Colab)": {
+     "adapters_trained": 44,
+     "adapters_with_record": 43,
+     "generations_estimated": 22500,
+     "training_recorded_h": 16.873880135615668,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 15.0,
+     "generation_high_h": 15.0,
+     "training_low_h": 17.273880135615666,
+     "training_high_h": 17.273880135615666,
+     "total_low_h": 32.27388013561567,
+     "total_high_h": 32.27388013561567,
+     "recorded_share_of_total_at_low": 0.5228339469785224,
+     "recorded_share_of_total_at_high": 0.5228339469785224,
+     "recorded_share_of_training_at_low": 0.976843650826587,
+     "recorded_share_of_training_at_high": 0.976843650826587
+    },
+    "larger-memory NVIDIA A100 (Colab)": {
+     "adapters_trained": 12,
+     "adapters_with_record": 12,
+     "generations_estimated": 0,
+     "training_recorded_h": 5.3196889425648575,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 0.0,
+     "generation_high_h": 0.0,
+     "training_low_h": 5.3196889425648575,
+     "training_high_h": 5.3196889425648575,
+     "total_low_h": 5.3196889425648575,
+     "total_high_h": 5.3196889425648575,
+     "recorded_share_of_total_at_low": 1.0,
+     "recorded_share_of_total_at_high": 1.0,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)": {
+     "adapters_trained": 6,
+     "adapters_with_record": 6,
+     "generations_estimated": 0,
+     "training_recorded_h": 2.501650207572513,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 0.0,
+     "generation_high_h": 0.0,
+     "training_low_h": 2.501650207572513,
+     "training_high_h": 2.501650207572513,
+     "total_low_h": 2.501650207572513,
+     "total_high_h": 2.501650207572513,
+     "recorded_share_of_total_at_low": 1.0,
+     "recorded_share_of_total_at_high": 1.0,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "NVIDIA L40S (local)": {
+     "adapters_trained": 149,
+     "adapters_with_record": 149,
+     "generations_estimated": 64000,
+     "training_recorded_h": 308.4791820157899,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 139.2,
+     "generation_high_h": 154.4,
+     "training_low_h": 308.4791820157899,
+     "training_high_h": 308.4791820157899,
+     "total_low_h": 447.6791820157899,
+     "total_high_h": 462.87918201578987,
+     "recorded_share_of_total_at_low": 0.6890630487367841,
+     "recorded_share_of_total_at_high": 0.6664356359091279,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "Colab (archive stack), all cards": {
+     "adapters_trained": 62,
+     "adapters_with_record": 61,
+     "generations_estimated": 22500,
+     "training_recorded_h": 24.695219285753037,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 15.0,
+     "generation_high_h": 15.0,
+     "training_low_h": 25.095219285753036,
+     "training_high_h": 25.095219285753036,
+     "total_low_h": 40.09521928575303,
+     "total_high_h": 40.09521928575303,
+     "recorded_share_of_total_at_low": 0.615914309128818,
+     "recorded_share_of_total_at_high": 0.615914309128818,
+     "recorded_share_of_training_at_low": 0.9840607091157364,
+     "recorded_share_of_training_at_high": 0.9840607091157364
+    },
+    "all GPUs": {
+     "adapters_trained": 211,
+     "adapters_with_record": 210,
+     "generations_estimated": 86500,
+     "training_recorded_h": 333.1744013015429,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 154.2,
+     "generation_high_h": 169.4,
+     "training_low_h": 333.5744013015429,
+     "training_high_h": 333.5744013015429,
+     "total_low_h": 487.77440130154287,
+     "total_high_h": 502.9744013015429,
+     "recorded_share_of_total_at_low": 0.6830501978220337,
+     "recorded_share_of_total_at_high": 0.662408266582534,
+     "recorded_share_of_training_at_low": 0.9988008672175105,
+     "recorded_share_of_training_at_high": 0.9988008672175105
+    }
+   },
+   "generation_not_estimated": [
+    {
+     "design": "FLUX.1-dev, LoRA",
+     "generations": 6000,
+     "why": "FLUX.1-dev generation: supplement S3 gives no per-unit generation time"
+    },
+    {
+     "design": "Full fine-tuning, 4000 steps",
+     "generations": 3000,
+     "why": "full fine-tuning generation: supplement S3 gives no per-unit generation time"
+    }
+   ]
+  },
+  "all work (N-A5 + objective arms + designed-mark ladder + environment chain)": {
+   "adapters_trained": 227,
+   "generations": 105000,
+   "by_gpu": {
+    "NVIDIA A100-SXM4-40GB (Colab)": {
+     "adapters_trained": 51,
+     "adapters_with_record": 50,
+     "generations_estimated": 26000,
+     "training_recorded_h": 19.647961584594515,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 17.333333333333332,
+     "generation_high_h": 17.333333333333332,
+     "training_low_h": 20.047961584594514,
+     "training_high_h": 20.047961584594514,
+     "total_low_h": 37.381294917927846,
+     "total_high_h": 37.381294917927846,
+     "recorded_share_of_total_at_low": 0.5256094425763584,
+     "recorded_share_of_total_at_high": 0.5256094425763584,
+     "recorded_share_of_training_at_low": 0.9800478468440716,
+     "recorded_share_of_training_at_high": 0.9800478468440716
+    },
+    "larger-memory NVIDIA A100 (Colab)": {
+     "adapters_trained": 12,
+     "adapters_with_record": 12,
+     "generations_estimated": 0,
+     "training_recorded_h": 5.3196889425648575,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 0.0,
+     "generation_high_h": 0.0,
+     "training_low_h": 5.3196889425648575,
+     "training_high_h": 5.3196889425648575,
+     "total_low_h": 5.3196889425648575,
+     "total_high_h": 5.3196889425648575,
+     "recorded_share_of_total_at_low": 1.0,
+     "recorded_share_of_total_at_high": 1.0,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)": {
+     "adapters_trained": 6,
+     "adapters_with_record": 6,
+     "generations_estimated": 0,
+     "training_recorded_h": 2.501650207572513,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 0.0,
+     "generation_high_h": 0.0,
+     "training_low_h": 2.501650207572513,
+     "training_high_h": 2.501650207572513,
+     "total_low_h": 2.501650207572513,
+     "total_high_h": 2.501650207572513,
+     "recorded_share_of_total_at_low": 1.0,
+     "recorded_share_of_total_at_high": 1.0,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "NVIDIA L40S (local)": {
+     "adapters_trained": 158,
+     "adapters_with_record": 158,
+     "generations_estimated": 70000,
+     "training_recorded_h": 314.5158142179913,
+     "training_s3_low_h": 0.0,
+     "training_s3_high_h": 0.0,
+     "generation_low_h": 151.6,
+     "generation_high_h": 169.2,
+     "training_low_h": 314.5158142179913,
+     "training_high_h": 314.5158142179913,
+     "total_low_h": 466.1158142179913,
+     "total_high_h": 483.7158142179913,
+     "recorded_share_of_total_at_low": 0.6747589432159873,
+     "recorded_share_of_total_at_high": 0.6502078389280274,
+     "recorded_share_of_training_at_low": 1.0,
+     "recorded_share_of_training_at_high": 1.0
+    },
+    "Colab (archive stack), all cards": {
+     "adapters_trained": 69,
+     "adapters_with_record": 68,
+     "generations_estimated": 26000,
+     "training_recorded_h": 27.469300734731885,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 17.333333333333332,
+     "generation_high_h": 17.333333333333332,
+     "training_low_h": 27.869300734731883,
+     "training_high_h": 27.869300734731883,
+     "total_low_h": 45.202634068065215,
+     "total_high_h": 45.202634068065215,
+     "recorded_share_of_total_at_low": 0.6076924785703675,
+     "recorded_share_of_total_at_high": 0.6076924785703675,
+     "recorded_share_of_training_at_low": 0.985647289689565,
+     "recorded_share_of_training_at_high": 0.985647289689565
+    },
+    "all GPUs": {
+     "adapters_trained": 227,
+     "adapters_with_record": 226,
+     "generations_estimated": 96000,
+     "training_recorded_h": 341.98511495272317,
+     "training_s3_low_h": 0.4,
+     "training_s3_high_h": 0.4,
+     "generation_low_h": 168.93333333333334,
+     "generation_high_h": 186.53333333333333,
+     "training_low_h": 342.38511495272314,
+     "training_high_h": 342.38511495272314,
+     "total_low_h": 511.3184482860565,
+     "total_high_h": 528.9184482860564,
+     "recorded_share_of_total_at_low": 0.6688299944957199,
+     "recorded_share_of_total_at_high": 0.6465743746713981,
+     "recorded_share_of_training_at_low": 0.99883172491288,
+     "recorded_share_of_training_at_high": 0.99883172491288
+    }
+   },
+   "generation_not_estimated": [
+    {
+     "design": "FLUX.1-dev, LoRA",
+     "generations": 6000,
+     "why": "FLUX.1-dev generation: supplement S3 gives no per-unit generation time"
+    },
+    {
+     "design": "Full fine-tuning, 4000 steps",
+     "generations": 3000,
+     "why": "full fine-tuning generation: supplement S3 gives no per-unit generation time"
+    }
+   ]
+  },
+  "designs": [
+   {
+    "key": "nDataPrimaryGens",
+    "design": "Primary",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 24,
+    "adapters_with_record": 23,
+    "training_recorded_min": 546.4742738525073,
+    "training_s3_low_min": 24.0,
+    "training_s3_high_min": 24.0,
+    "training": [
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_raw_s0_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": null,
+      "s3_fallback": {
+       "key": "A100_adapter",
+       "low_min": 24.0,
+       "high_min": 24.0
+      }
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/B_raw_s0_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": 23.830775606632233
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_raw_s1_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": 23.839017979303996
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/B_raw_s1_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": 23.84219523668289
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_raw_s2_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": 23.837597886721294
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/B_raw_s2_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": "NVIDIA A100-SXM4-40GB",
+      "minutes_recorded": 23.836979496479035
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/A_raw_s3_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.709354917208355
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/B_raw_s3_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.709324769179027
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/A_raw_s4_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.71129761139552
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/B_raw_s4_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.71022584835688
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/A_raw_s5_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.70962129831314
+     },
+     {
+      "adapter": "E_SEEDEXT/adapters/B_raw_s5_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.71041456858317
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s6_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.731938183307648
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s6_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.74808307091395
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s7_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.741445394357047
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s7_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.742972755432127
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s8_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.750622550646465
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s8_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.759336618582406
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s9_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.75650618871053
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s9_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.75861116250356
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s10_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.756960848967235
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s10_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.75976611773173
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/A_raw_s11_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.757059466838836
+     },
+     {
+      "adapter": "E_SEEDEXT2/adapters/B_raw_s11_r16",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.764166275660198
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+     "n_gens": 12000,
+     "unit": 500,
+     "n_units": 24,
+     "s3_key": "A100_gen500",
+     "excluded": false,
+     "low_min": 480.0,
+     "high_min": 480.0
+    }
+   },
+   {
+    "key": "nDataBaseGens",
+    "design": "Base model, training caption",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 0,
+    "adapters_with_record": 0,
+    "training_recorded_min": 0,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [],
+    "generation": {
+     "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+     "n_gens": 500,
+     "unit": 500,
+     "n_units": 1,
+     "s3_key": "A100_gen500",
+     "excluded": false,
+     "low_min": 20.0,
+     "high_min": 20.0
+    }
+   },
+   {
+    "key": "nDataPromptBankBaseGens",
+    "design": "Base model, five everyday captions",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 0,
+    "adapters_with_record": 0,
+    "training_recorded_min": 0,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 500,
+     "unit": 500,
+     "n_units": 1,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 62.0,
+     "high_min": 74.0
+    }
+   },
+   {
+    "key": "nDataPromptBankGens",
+    "design": "Primary seeds 0--2, five everyday captions",
+    "table2_stack": "archive/local",
+    "scope": "N-A5",
+    "adapters_trained": 0,
+    "adapters_with_record": 0,
+    "training_recorded_min": 0,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   },
+   {
+    "key": "nDataSecondSetGens",
+    "design": "Second disjoint training set",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 6,
+    "adapters_with_record": 6,
+    "training_recorded_min": 521.2109643300374,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "alt_A_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.8500153183937
+     },
+     {
+      "adapter": "alt_A_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.88551326195399
+     },
+     {
+      "adapter": "alt_A_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.8874244093895
+     },
+     {
+      "adapter": "alt_B_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.92734499772389
+     },
+     {
+      "adapter": "alt_B_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.85043437083563
+     },
+     {
+      "adapter": "alt_B_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.81023197174072
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   },
+   {
+    "key": "nDataSecondEnvGens",
+    "design": "Primary design retrained on the local stack",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 12,
+    "adapters_with_record": 12,
+    "training_recorded_min": 466.47528909047446,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "nomarkB_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.96172295411428
+     },
+     {
+      "adapter": "nomarkB_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.95427609284719
+     },
+     {
+      "adapter": "nomarkB_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.93833956718445
+     },
+     {
+      "adapter": "nomarkB_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.96402997175853
+     },
+     {
+      "adapter": "nomarkB_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.88622608979543
+     },
+     {
+      "adapter": "nomarkB_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.918861186504365
+     },
+     {
+      "adapter": "nomark_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.65482830603917
+     },
+     {
+      "adapter": "nomark_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.76585518121719
+     },
+     {
+      "adapter": "nomark_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.57796186208725
+     },
+     {
+      "adapter": "nomark_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.94841576019923
+     },
+     {
+      "adapter": "nomark_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.964828022321065
+     },
+     {
+      "adapter": "nomark_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.9399440964063
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 6000,
+     "unit": 500,
+     "n_units": 12,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 744.0,
+     "high_min": 888.0
+    }
+   },
+   {
+    "key": "nDataFluxGens",
+    "design": "FLUX.1-dev, LoRA",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 12,
+    "adapters_with_record": 12,
+    "training_recorded_min": 299.48110827207563,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s0_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.89749319553375
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s0_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.896664814154306
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s1_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.899712804953257
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s1_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.89707014958064
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s2_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.895637881755828
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s2_flux",
+      "steps": 2000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 24.89551697174708
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s3_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.018868243694307
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s3_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.01690067052841
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s4_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.013684662183127
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s4_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.017848098278044
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/A_raw_s5_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.017732926209767
+     },
+     {
+      "adapter": "E_TRACKB2_FLUX/adapters/B_raw_s5_flux",
+      "steps": 2000,
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition (Colab)",
+      "gpu_in_record": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "minutes_recorded": 25.01397785345713
+     }
+    ],
+    "generation": {
+     "gpu": null,
+     "n_gens": 6000,
+     "unit": 500,
+     "excluded": true,
+     "why": "FLUX.1-dev generation: supplement S3 gives no per-unit generation time",
+     "low_min": 0.0,
+     "high_min": 0.0
+    }
+   },
+   {
+    "key": "nDataFullFTGens",
+    "design": "Full fine-tuning, 4000 steps",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 6,
+    "adapters_with_record": 6,
+    "training_recorded_min": 169.79924073616664,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "E_FULLFT/ckpt/A_ft_s0",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.288638472557068
+     },
+     {
+      "adapter": "E_FULLFT/ckpt/B_ft_s0",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.397988100846607
+     },
+     {
+      "adapter": "E_FULLFT/ckpt/A_ft_s1",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.284654502073924
+     },
+     {
+      "adapter": "E_FULLFT/ckpt/B_ft_s1",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.26930453777313
+     },
+     {
+      "adapter": "E_FULLFT/ckpt/A_ft_s2",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.28484833240509
+     },
+     {
+      "adapter": "E_FULLFT/ckpt/B_ft_s2",
+      "steps": 4000,
+      "gpu": "larger-memory NVIDIA A100 (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 28.273806790510815
+     }
+    ],
+    "generation": {
+     "gpu": null,
+     "n_gens": 3000,
+     "unit": 500,
+     "excluded": true,
+     "why": "full fine-tuning generation: supplement S3 gives no per-unit generation time",
+     "low_min": 0.0,
+     "high_min": 0.0
+    }
+   },
+   {
+    "key": "nDataContentMatchedGens",
+    "design": "Content-matched training sets",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 6,
+    "adapters_with_record": 6,
+    "training_recorded_min": 233.71726593971255,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "cm_A_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.04650161266327
+     },
+     {
+      "adapter": "cm_A_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.97429989973704
+     },
+     {
+      "adapter": "cm_A_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.843629900614424
+     },
+     {
+      "adapter": "cm_B_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.923331157366434
+     },
+     {
+      "adapter": "cm_B_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.91166973511378
+     },
+     {
+      "adapter": "cm_B_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.01783363421758
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   },
+   {
+    "key": "nDataRandomCropGens",
+    "design": "Random crop positions",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 3,
+    "adapters_with_record": 3,
+    "training_recorded_min": 118.3815327445666,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "rcrop_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 40.029757801691694
+     },
+     {
+      "adapter": "rcrop_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.1787306467692
+     },
+     {
+      "adapter": "rcrop_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.1730442961057
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 1500,
+     "unit": 500,
+     "n_units": 3,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 186.0,
+     "high_min": 222.0
+    }
+   },
+   {
+    "key": "nDataIPhoneGens",
+    "design": "iPhone 5c pair, training caption",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 24,
+    "adapters_with_record": 24,
+    "training_recorded_min": 2289.813810694218,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "p5c_A_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.3202170888583
+     },
+     {
+      "adapter": "p5c_A_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.15687218904495
+     },
+     {
+      "adapter": "p5c_A_s10",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 84.68336362838745
+     },
+     {
+      "adapter": "p5c_A_s11",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 84.39732457002005
+     },
+     {
+      "adapter": "p5c_A_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.33110654354095
+     },
+     {
+      "adapter": "p5c_A_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.83732967376709
+     },
+     {
+      "adapter": "p5c_A_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.89222002824148
+     },
+     {
+      "adapter": "p5c_A_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.69631470044455
+     },
+     {
+      "adapter": "p5c_A_s6",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.83923729260762
+     },
+     {
+      "adapter": "p5c_A_s7",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.87205531994502
+     },
+     {
+      "adapter": "p5c_A_s8",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.80850388606389
+     },
+     {
+      "adapter": "p5c_A_s9",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 85.19988426764806
+     },
+     {
+      "adapter": "p5c_B_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.5859828511874
+     },
+     {
+      "adapter": "p5c_B_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.47495963176092
+     },
+     {
+      "adapter": "p5c_B_s10",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 84.70318356752395
+     },
+     {
+      "adapter": "p5c_B_s11",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 84.47947496175766
+     },
+     {
+      "adapter": "p5c_B_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 87.0110480149587
+     },
+     {
+      "adapter": "p5c_B_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.896948381265
+     },
+     {
+      "adapter": "p5c_B_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.92009111642838
+     },
+     {
+      "adapter": "p5c_B_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.93421893914541
+     },
+     {
+      "adapter": "p5c_B_s6",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 87.05868458747864
+     },
+     {
+      "adapter": "p5c_B_s7",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 87.00604419708252
+     },
+     {
+      "adapter": "p5c_B_s8",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 86.92138423522313
+     },
+     {
+      "adapter": "p5c_B_s9",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 84.7873610218366
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 6000,
+     "unit": 250,
+     "n_units": 24,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 840.0,
+     "high_min": 840.0
+    }
+   },
+   {
+    "key": "nDataPromptsGens",
+    "design": "iPhone 5c pair, five everyday captions",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 0,
+    "adapters_with_record": 0,
+    "training_recorded_min": 0,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 6000,
+     "unit": 250,
+     "n_units": 24,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 840.0,
+     "high_min": 840.0
+    }
+   },
+   {
+    "key": "nDataPTwentyPairGens",
+    "design": "P20 pair",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 24,
+    "adapters_with_record": 24,
+    "training_recorded_min": 1386.177716712157,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "p20b_A_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.41839280525843
+     },
+     {
+      "adapter": "p20b_A_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.28471906582516
+     },
+     {
+      "adapter": "p20b_A_s10",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.66134652694066
+     },
+     {
+      "adapter": "p20b_A_s11",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.59406051238378
+     },
+     {
+      "adapter": "p20b_A_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.3948224067688
+     },
+     {
+      "adapter": "p20b_A_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.77767847379049
+     },
+     {
+      "adapter": "p20b_A_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.64192305803299
+     },
+     {
+      "adapter": "p20b_A_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.66188131570816
+     },
+     {
+      "adapter": "p20b_A_s6",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.67525963783264
+     },
+     {
+      "adapter": "p20b_A_s7",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.59133418003718
+     },
+     {
+      "adapter": "p20b_A_s8",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.70143552223841
+     },
+     {
+      "adapter": "p20b_A_s9",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.62840870221456
+     },
+     {
+      "adapter": "p20b_B_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.58819948037464
+     },
+     {
+      "adapter": "p20b_B_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 130.47784868876138
+     },
+     {
+      "adapter": "p20b_B_s10",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.620573091506955
+     },
+     {
+      "adapter": "p20b_B_s11",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.657083400090535
+     },
+     {
+      "adapter": "p20b_B_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.620638116200766
+     },
+     {
+      "adapter": "p20b_B_s3",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.61049127578735
+     },
+     {
+      "adapter": "p20b_B_s4",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.56726733048757
+     },
+     {
+      "adapter": "p20b_B_s5",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.60444697539012
+     },
+     {
+      "adapter": "p20b_B_s6",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.59184987545014
+     },
+     {
+      "adapter": "p20b_B_s7",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.60732351541519
+     },
+     {
+      "adapter": "p20b_B_s8",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.58340011437734
+     },
+     {
+      "adapter": "p20b_B_s9",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.617332641283674
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 6000,
+     "unit": 250,
+     "n_units": 24,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 840.0,
+     "high_min": 840.0
+    }
+   },
+   {
+    "key": "nDataKodakGens",
+    "design": "Kodak M1063 group",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 10,
+    "adapters_with_record": 10,
+    "training_recorded_min": 228.68843442598978,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "E_MULTIDEV/adapters/D0_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.841149485111238
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D0_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.870869223276774
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D1_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.868598874409994
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D1_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.86819765965144
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D2_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.882268126805624
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D2_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.8827366232872
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D3_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.849263163407645
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D3_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.879220616817474
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D4_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.871875286102295
+     },
+     {
+      "adapter": "E_MULTIDEV/adapters/D4_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 22.874255367120107
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+     "n_gens": 5000,
+     "unit": 500,
+     "n_units": 10,
+     "s3_key": "A100_gen500",
+     "excluded": false,
+     "low_min": 200.0,
+     "high_min": 200.0
+    }
+   },
+   {
+    "key": "nDataPTwentyGens",
+    "design": "P20 group, \\nDataPTwentySplitT{} training photographs",
+    "table2_stack": "archive",
+    "scope": "N-A5",
+    "adapters_trained": 10,
+    "adapters_with_record": 10,
+    "training_recorded_min": 237.27009985844293,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "E_DAXING/adapters/1101_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.737426253159843
+     },
+     {
+      "adapter": "E_DAXING/adapters/1101_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.724099918206534
+     },
+     {
+      "adapter": "E_DAXING/adapters/1102_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.743853537241616
+     },
+     {
+      "adapter": "E_DAXING/adapters/1102_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.72181565761566
+     },
+     {
+      "adapter": "E_DAXING/adapters/1103_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.746837953726452
+     },
+     {
+      "adapter": "E_DAXING/adapters/1103_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.7151048262914
+     },
+     {
+      "adapter": "E_DAXING/adapters/1104_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.738156243165335
+     },
+     {
+      "adapter": "E_DAXING/adapters/1104_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.71611832777659
+     },
+     {
+      "adapter": "E_DAXING/adapters/1105_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.715269509951273
+     },
+     {
+      "adapter": "E_DAXING/adapters/1105_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.711417631308237
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+     "n_gens": 5000,
+     "unit": 500,
+     "n_units": 10,
+     "s3_key": "A100_gen500",
+     "excluded": false,
+     "low_min": 200.0,
+     "high_min": 200.0
+    }
+   },
+   {
+    "key": "nDataEightKGens",
+    "design": "8000 steps",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 4,
+    "adapters_with_record": 4,
+    "training_recorded_min": 624.9045157512029,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "dose8k_A_s0",
+      "steps": 8000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 155.64633814493814
+     },
+     {
+      "adapter": "dose8k_A_s1",
+      "steps": 8000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 155.50925040245056
+     },
+     {
+      "adapter": "dose8k_B_s0",
+      "steps": 8000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 155.50863923231762
+     },
+     {
+      "adapter": "dose8k_B_s1",
+      "steps": 8000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 158.24028797149657
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 1000,
+     "unit": 250,
+     "n_units": 4,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 140.0,
+     "high_min": 140.0
+    }
+   },
+   {
+    "key": "nDataSixteenKGens",
+    "design": "16000 steps",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 12,
+    "adapters_with_record": 12,
+    "training_recorded_min": 3745.204035413265,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "dose16k_A_s0",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.30037832657496
+     },
+     {
+      "adapter": "dose16k_A_s1",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 310.82052533229194
+     },
+     {
+      "adapter": "dose16k_A_s2",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 316.57327140569686
+     },
+     {
+      "adapter": "dose16k_A_s3",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.3623577515284
+     },
+     {
+      "adapter": "dose16k_A_s4",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 316.5224310159683
+     },
+     {
+      "adapter": "dose16k_A_s5",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 310.9493345896403
+     },
+     {
+      "adapter": "dose16k_B_s0",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.2050781369209
+     },
+     {
+      "adapter": "dose16k_B_s1",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.3817548116048
+     },
+     {
+      "adapter": "dose16k_B_s2",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.2599817832311
+     },
+     {
+      "adapter": "dose16k_B_s3",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.34807633161546
+     },
+     {
+      "adapter": "dose16k_B_s4",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.33665489355724
+     },
+     {
+      "adapter": "dose16k_B_s5",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.1441910346349
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 250,
+     "n_units": 12,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 420.0,
+     "high_min": 420.0
+    }
+   },
+   {
+    "key": "nDataInvertedGens",
+    "design": "16000 steps, fingerprint inverted",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 16,
+    "adapters_with_record": 16,
+    "training_recorded_min": 7481.904807249705,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "inv16k_A_s0",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 311.2865486820539
+     },
+     {
+      "adapter": "inv16k_A_s1",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 888.3542543292045
+     },
+     {
+      "adapter": "inv16k_A_s2",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 673.9182807087898
+     },
+     {
+      "adapter": "inv16k_B_s0",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 551.1814679781596
+     },
+     {
+      "adapter": "inv16k_B_s1",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 710.7601745049159
+     },
+     {
+      "adapter": "inv16k_B_s2",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 694.4617525895436
+     },
+     {
+      "adapter": "inv16kext_A_s3",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 402.61880231698353
+     },
+     {
+      "adapter": "inv16kext_A_s4",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 384.04244904120765
+     },
+     {
+      "adapter": "inv16kext_A_s5",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 309.87366328239443
+     },
+     {
+      "adapter": "inv16kext_A_s6",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 309.24475187857945
+     },
+     {
+      "adapter": "inv16kext_A_s7",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 316.12160387436546
+     },
+     {
+      "adapter": "inv16kext_B_s3",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 672.1803858598073
+     },
+     {
+      "adapter": "inv16kext_B_s4",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 309.6183420141538
+     },
+     {
+      "adapter": "inv16kext_B_s5",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 309.87373590071996
+     },
+     {
+      "adapter": "inv16kext_B_s6",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 328.67827107508975
+     },
+     {
+      "adapter": "inv16kext_B_s7",
+      "steps": 16000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 309.69032321373624
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 4000,
+     "unit": 250,
+     "n_units": 16,
+     "s3_key": "L40S_gen250",
+     "excluded": false,
+     "low_min": 560.0,
+     "high_min": 560.0
+    }
+   },
+   {
+    "key": "nMapTileGens",
+    "design": "Periodic tiles, six periods",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 18,
+    "adapters_with_record": 18,
+    "training_recorded_min": 702.6376648346583,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "per24_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.93412898381551
+     },
+     {
+      "adapter": "per24_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.98224207162857
+     },
+     {
+      "adapter": "per24_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.00713186264038
+     },
+     {
+      "adapter": "per28_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.95774853229523
+     },
+     {
+      "adapter": "per28_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.89944952726364
+     },
+     {
+      "adapter": "per28_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.01251791318258
+     },
+     {
+      "adapter": "per32_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 40.51971251567205
+     },
+     {
+      "adapter": "per32_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.86318930387497
+     },
+     {
+      "adapter": "per32_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.90857899983724
+     },
+     {
+      "adapter": "per36_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.998226555188495
+     },
+     {
+      "adapter": "per36_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.90171276728312
+     },
+     {
+      "adapter": "per36_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.97936116059621
+     },
+     {
+      "adapter": "per40_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.94465525945028
+     },
+     {
+      "adapter": "per40_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.92451310157776
+     },
+     {
+      "adapter": "per40_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.036742424964906
+     },
+     {
+      "adapter": "per48_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.01676997343699
+     },
+     {
+      "adapter": "per48_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.94710641304652
+     },
+     {
+      "adapter": "per48_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.803877468903856
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 9000,
+     "unit": 500,
+     "n_units": 18,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 1116.0,
+     "high_min": 1332.0
+    }
+   },
+   {
+    "key": "nMapBandGens",
+    "design": "Random patterns, one octave each, 2--4 to 64--128~px",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 10,
+    "adapters_with_record": 10,
+    "training_recorded_min": 391.1655052105586,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "band0_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.82348877588908
+     },
+     {
+      "adapter": "band0_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.85715397198995
+     },
+     {
+      "adapter": "band0_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.924094780286154
+     },
+     {
+      "adapter": "band1_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.92805603345235
+     },
+     {
+      "adapter": "band1_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.810318326950075
+     },
+     {
+      "adapter": "band1_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.918963392575584
+     },
+     {
+      "adapter": "band2_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.04372210502625
+     },
+     {
+      "adapter": "band3_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.8810343225797
+     },
+     {
+      "adapter": "band4_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.01809082428614
+     },
+     {
+      "adapter": "band5_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 40.9605826775233
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 5000,
+     "unit": 500,
+     "n_units": 10,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 620.0,
+     "high_min": 740.0
+    }
+   },
+   {
+    "key": "nMapWmGensAll",
+    "design": "DiffusionShield watermark",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 3,
+    "adapters_with_record": 3,
+    "training_recorded_min": 118.75687115589778,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "wm_ds_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.645247129599255
+     },
+     {
+      "adapter": "wm_ds_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.49965810378392
+     },
+     {
+      "adapter": "wm_ds_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.6119659225146
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 1500,
+     "unit": 500,
+     "n_units": 3,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 186.0,
+     "high_min": 222.0
+    }
+   },
+   {
+    "key": "nKnownEoneGens",
+    "design": "Body B's fingerprint estimate $\\hat{K}_B$ as a known pattern",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 5,
+    "adapters_with_record": 5,
+    "training_recorded_min": 194.68182026147844,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "kinj_a12_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.92724360624949
+     },
+     {
+      "adapter": "kinj_a12_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.96550518671672
+     },
+     {
+      "adapter": "kinj_a12_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.94353365898132
+     },
+     {
+      "adapter": "kinj_a48_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.940107746919
+     },
+     {
+      "adapter": "kinjd_a3_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.9054300626119
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 2500,
+     "unit": 500,
+     "n_units": 5,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 310.0,
+     "high_min": 370.0
+    }
+   },
+   {
+    "key": "nKnownEtwoGens",
+    "design": "Spectrum-matched random fields",
+    "table2_stack": "local",
+    "scope": "N-A5",
+    "adapters_trained": 6,
+    "adapters_with_record": 6,
+    "training_recorded_min": 233.71912155946097,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "gkadd_a1_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.89824633995692
+     },
+     {
+      "adapter": "gkadd_a1_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 39.00654644171397
+     },
+     {
+      "adapter": "gkadd_a4_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.972694993019104
+     },
+     {
+      "adapter": "gkadd_a4_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.97168084780375
+     },
+     {
+      "adapter": "gkmul_a4_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.95828407208125
+     },
+     {
+      "adapter": "gkmul_a4_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.91166886488597
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   },
+   {
+    "key": "objective_arms",
+    "design": "Training objective, tap T2 (objective arms)",
+    "table2_stack": "archive",
+    "scope": "all-work extra",
+    "adapters_trained": 7,
+    "adapters_with_record": 7,
+    "training_recorded_min": 166.44488693873086,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "E_AMP/adapters/amp_12p0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.77929438749949
+     },
+     {
+      "adapter": "E_AMP/adapters/amp_1p0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.769066806634267
+     },
+     {
+      "adapter": "E_AMP/adapters/amp_1p6",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.78020805120468
+     },
+     {
+      "adapter": "E_AMP/adapters/amp_3p0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.77694267431895
+     },
+     {
+      "adapter": "E_AMP/adapters/amp_6p0",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.768070908387504
+     },
+     {
+      "adapter": "E_AMP/adapters/ctrl_Q",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.785586659113566
+     },
+     {
+      "adapter": "E_AMP/adapters/ctrl_shift",
+      "steps": 2000,
+      "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+      "gpu_in_record": null,
+      "minutes_recorded": 23.785717451572417
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA A100-SXM4-40GB (Colab)",
+     "n_gens": 3500,
+     "unit": 500,
+     "n_units": 7,
+     "s3_key": "A100_gen500",
+     "excluded": false,
+     "low_min": 140.0,
+     "high_min": 140.0
+    }
+   },
+   {
+    "key": "ladder",
+    "design": "Designed-mark ladder (mark_rand_a1/a3/a12, mark_lowmid_a12)",
+    "table2_stack": "local",
+    "scope": "all-work extra",
+    "adapters_trained": 6,
+    "adapters_with_record": 6,
+    "training_recorded_min": 246.10446432828905,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "mark_lowmid_a12_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.653602008024855
+     },
+     {
+      "adapter": "mark_rand_a12_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.60478078524272
+     },
+     {
+      "adapter": "mark_rand_a1_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 52.84346385796865
+     },
+     {
+      "adapter": "mark_rand_a3_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.75518258412679
+     },
+     {
+      "adapter": "mark_rand_a3_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.637211219469705
+     },
+     {
+      "adapter": "mark_rand_a3_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.61022387345632
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   },
+   {
+    "key": "environment_chain",
+    "design": "Environment chain (colab_s0-s2 trained; local_base, local_A_raw_s0, local_B_raw_s0 generated with no new adapter)",
+    "table2_stack": "local",
+    "scope": "all-work extra",
+    "adapters_trained": 3,
+    "adapters_with_record": 3,
+    "training_recorded_min": 116.09346780379613,
+    "training_s3_low_min": 0,
+    "training_s3_high_min": 0,
+    "training": [
+     {
+      "adapter": "colab_s0",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.650512027740476
+     },
+     {
+      "adapter": "colab_s1",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.71132841507594
+     },
+     {
+      "adapter": "colab_s2",
+      "steps": 2000,
+      "gpu": "NVIDIA L40S (local)",
+      "minutes_recorded": 38.731627360979715
+     }
+    ],
+    "generation": {
+     "gpu": "NVIDIA L40S (local)",
+     "n_gens": 3000,
+     "unit": 500,
+     "n_units": 6,
+     "s3_key": "L40S_gen500",
+     "excluded": false,
+     "low_min": 372.0,
+     "high_min": 444.0
+    }
+   }
+  ],
+  "checks": {
+   "local_training_concurrency": {
+    "all_local_adapters": {
+     "n": 158,
+     "sum_of_job_hours": 314.5158142179913,
+     "union_hours": 264.4769001708428,
+     "first_start_local": "2026-09-08T05:56",
+     "last_end_local": "2026-09-27T15:33"
+    },
+    "N-A5_local_adapters": {
+     "n": 149,
+     "sum_of_job_hours": 308.4791820157899,
+     "union_hours": 258.44026796864136
+    },
+    "method": "each training job's interval is [mtime(train_meta.json) - recorded minutes, mtime]; the union merges jobs that ran at the same time on the one L40S. Training-with-generation overlap is not in this check (generation has no per-job record); descriptive, not pre-specified"
+   },
+   "generation_logs_vs_S3": {
+    "250": {
+     "jobs_in_logs": 80,
+     "min": 35.0,
+     "median": 36.0,
+     "max": 80.12499999999999,
+     "sum_h": 65.54166666666667,
+     "s3_low_min": 35.0,
+     "s3_high_min": 35.0,
+     "share_above_s3_high": 0.975,
+     "sum_over_s3_low_x_jobs": 1.4044642857142857,
+     "sum_over_s3_high_x_jobs": 1.4044642857142857,
+     "largest": [
+      {
+       "log": "t1_inv16k_generate.log",
+       "tag": "inv16k_B_s1",
+       "images_at_last_line": 200,
+       "minutes_at_last_line": 64.1,
+       "extrapolated_minutes": 80.12499999999999
+      },
+      {
+       "log": "t1_inv16k_generate.log",
+       "tag": "inv16k_A_s1",
+       "images_at_last_line": 200,
+       "minutes_at_last_line": 64.0,
+       "extrapolated_minutes": 80.0
+      },
+      {
+       "log": "t1_inv16k_generate.log",
+       "tag": "inv16k_A_s2",
+       "images_at_last_line": 200,
+       "minutes_at_last_line": 64.0,
+       "extrapolated_minutes": 80.0
+      },
+      {
+       "log": "t1_inv16k_generate.log",
+       "tag": "inv16k_A_s0",
+       "images_at_last_line": 200,
+       "minutes_at_last_line": 63.9,
+       "extrapolated_minutes": 79.875
+      },
+      {
+       "log": "t1_inv16k_generate.log",
+       "tag": "inv16k_B_s0",
+       "images_at_last_line": 200,
+       "minutes_at_last_line": 63.6,
+       "extrapolated_minutes": 79.5
+      }
+     ]
+    },
+    "500": {
+     "jobs_in_logs": 82,
+     "min": 61.7,
+     "median": 71.4,
+     "max": 73.9,
+     "sum_h": 97.32166666666667,
+     "s3_low_min": 62.0,
+     "s3_high_min": 74.0,
+     "share_above_s3_high": 0.0,
+     "sum_over_s3_low_x_jobs": 1.1485641227380017,
+     "sum_over_s3_high_x_jobs": 0.9623104812129203,
+     "largest": [
+      {
+       "log": "t1_generate.log",
+       "tag": "mark_rand_a1_s0",
+       "images_at_last_line": 500,
+       "minutes_at_last_line": 73.9,
+       "extrapolated_minutes": 73.9
+      },
+      {
+       "log": "f5_generate.log",
+       "tag": "local_B_raw_s0",
+       "images_at_last_line": 500,
+       "minutes_at_last_line": 73.6,
+       "extrapolated_minutes": 73.6
+      },
+      {
+       "log": "f5_generate.log",
+       "tag": "local_A_raw_s0",
+       "images_at_last_line": 500,
+       "minutes_at_last_line": 72.7,
+       "extrapolated_minutes": 72.7
+      },
+      {
+       "log": "t1_nomarkrep_generate.log",
+       "tag": "nomark_s5",
+       "images_at_last_line": 500,
+       "minutes_at_last_line": 72.6,
+       "extrapolated_minutes": 72.6
+      },
+      {
+       "log": "t1_gk_generate.log",
+       "tag": "gkadd_a1_s0",
+       "images_at_last_line": 500,
+       "minutes_at_last_line": 72.3,
+       "extrapolated_minutes": 72.3
+      }
+     ]
+    },
+    "not_used_resumed_or_partial": [
+     {
+      "log": "t1_p20b_generate.log",
+      "tag": "p20b_B_s1",
+      "lines": [
+       [
+        101,
+        250,
+        16.5
+       ],
+       [
+        201,
+        250,
+        48.2
+       ]
+      ]
+     },
+     {
+      "log": "t1_p20b_generate.log",
+      "tag": "p20b_B_s6",
+      "lines": [
+       [
+        100,
+        250,
+        31.6
+       ],
+       [
+        200,
+        250,
+        1.3
+       ]
+      ]
+     },
+     {
+      "log": "t1_p5c_generate.log",
+      "tag": "p5c_B_s10",
+      "lines": [
+       [
+        200,
+        250,
+        8.4
+       ]
+      ]
+     }
+    ],
+    "method": "per adapter and log, the progress lines '[hh:mm:ss] tag: n/N (m min)'; a job is used only if its lines start at n = 100 and both n and minutes increase (a resumed job restarts its minutes); its time is the last line's minutes x N/n (250-image jobs print their last line at 200); pipeline loading is not included; the logs are incomplete (some were overwritten by later runs). A check of S3's per-unit inputs, not an estimate; descriptive, not pre-specified"
+   },
+   "training_records_vs_S3": {
+    "L40S_2000": {
+     "n": 126,
+     "min": 38.56726733048757,
+     "max": 130.58819948037464,
+     "median": 38.96000351309776,
+     "s3_low_min": 39.0,
+     "s3_high_min": 87.0,
+     "above_s3_high": [
+      [
+       "p20b_B_s0",
+       130.58819948037464
+      ],
+      [
+       "p5c_B_s0",
+       130.5859828511874
+      ],
+      [
+       "p20b_B_s1",
+       130.47784868876138
+      ],
+      [
+       "p5c_B_s1",
+       130.47495963176092
+      ],
+      [
+       "p20b_A_s0",
+       130.41839280525843
+      ],
+      [
+       "p20b_A_s2",
+       130.3948224067688
+      ],
+      [
+       "p5c_A_s2",
+       130.33110654354095
+      ],
+      [
+       "p5c_A_s0",
+       130.3202170888583
+      ],
+      [
+       "p20b_A_s1",
+       130.28471906582516
+      ],
+      [
+       "p5c_A_s1",
+       130.15687218904495
+      ],
+      [
+       "p5c_B_s6",
+       87.05868458747864
+      ],
+      [
+       "p5c_B_s2",
+       87.0110480149587
+      ],
+      [
+       "p5c_B_s7",
+       87.00604419708252
+      ]
+     ]
+    },
+    "L40S_8000": {
+     "n": 4,
+     "min": 155.50863923231762,
+     "max": 158.24028797149657,
+     "median": 155.57779427369434,
+     "s3_low_min": 156.0,
+     "s3_high_min": 156.0,
+     "above_s3_high": [
+      [
+       "dose8k_B_s1",
+       158.24028797149657
+      ]
+     ]
+    },
+    "L40S_16000": {
+     "n": 28,
+     "min": 309.24475187857945,
+     "max": 888.3542543292045,
+     "median": 311.3552170415719,
+     "s3_low_min": 312.0,
+     "s3_high_min": 888.0,
+     "above_s3_high": [
+      [
+       "inv16k_A_s1",
+       888.3542543292045
+      ]
+     ]
+    },
+    "A100_40GB_2000": {
+     "n": 50,
+     "min": 22.841149485111238,
+     "max": 23.84219523668289,
+     "s3_min": 24.0
+    },
+    "note": "S3's times are 'about' values; its 2000-step 'up to 87 min' does not cover the local records listed under above_s3_high. Only one adapter (A_raw_s0_r16) uses an S3 training time here"
+   },
+   "archive_adapters_outside_both_scopes": {
+    "n": 10,
+    "recorded_hours": 4.106778762075636,
+    "adapters": [
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_clean_s0_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.84130787452062
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_raw_s0_ceil",
+      "steps": 3000,
+      "minutes_recorded": 37.865493941307065
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/A_swap_s0_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.83657025496165
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/D2_raw_s0_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.845657730102538
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/D_raw_s0_ceil",
+      "steps": 3000,
+      "minutes_recorded": 37.87226514816284
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/D_raw_s0_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.84228909810384
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/D_raw_s1_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.842980670928956
+     },
+     {
+      "adapter": "E_INV_P0_v3/adapters/D_raw_s2_r16",
+      "steps": 2000,
+      "minutes_recorded": 23.83954123258591
+     },
+     {
+      "adapter": "E_SHIFT_REP2/adapters/amp_12p0_s1",
+      "steps": 2000,
+      "minutes_recorded": 13.80859211285909
+     },
+     {
+      "adapter": "E_SHIFT_REP2/adapters/ctrl_shift_s1",
+      "steps": 2000,
+      "minutes_recorded": 13.812027661005656
+     }
+    ],
+    "note": "trained on Colab, recorded, but in neither registered scope; not added"
+   }
+  },
+  "environment_chain_count_note": "Entry 112 / out/fv_derived.json list the environment chain as 5 adapters; only colab_s0-s2 were trained. local_A_raw_s0 and local_B_raw_s0 are v1's archived adapters generating on the local stack (Entry 25), so the all-work count here is 211+7+6+3 = 227 trained adapters (105,000 generations)"
+ },
+ "e_counts": {
+  "verifier": {
+   "command": "python verify_v2.py",
+   "cwd": "<einv_paths.REPO>",
+   "python": "python",
+   "started_utc": "2026-09-30T13:20:53+00:00",
+   "returncode": 0,
+   "checks_executed": 76,
+   "checks_agreeing": 76,
+   "checks_disagreeing": 0,
+   "disagreeing": [],
+   "summary_line": "76 of 76 checks agree",
+   "stderr_tail": "",
+   "verify_v2_sha256": "a308be65929636063d44f8d38b47179289ca65a7003fa01163f64eb2f2512774",
+   "data": "v2/workspace/out of the repository clone (EINV_V2 unset)"
+  },
+  "table2b_by_stack": {
+   "by_stack": {
+    "archive": {
+     "adapters": 62,
+     "gens": 31500,
+     "rows": 6
+    },
+    "local": {
+     "adapters": 149,
+     "gens": 61000,
+     "rows": 17
+    },
+    "archive/local": {
+     "adapters": 0,
+     "gens": 3000,
+     "rows": 1
+    }
+   },
+   "total_adapters": 211,
+   "total_gens": 95500,
+   "rows": [
+    {
+     "design": "Primary",
+     "stack": "archive",
+     "adapters_expr": "nDataPrimaryAdaptersPerArm x 2",
+     "adapters": 24,
+     "adapters_counted": 24,
+     "gens_per_adapter_expr": "nDataPrimaryGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataPrimaryGens",
+     "gens": 12000,
+     "gens_counted": 12000,
+     "note": ""
+    },
+    {
+     "design": "Base model, training caption",
+     "stack": "archive",
+     "adapters_expr": "---",
+     "adapters": 0,
+     "adapters_counted": 0,
+     "gens_per_adapter_expr": "---",
+     "gens_per_adapter": null,
+     "gens_macro": "nDataBaseGens",
+     "gens": 500,
+     "gens_counted": 500,
+     "note": ""
+    },
+    {
+     "design": "Base model, five everyday captions",
+     "stack": "local",
+     "adapters_expr": "---",
+     "adapters": 0,
+     "adapters_counted": 0,
+     "gens_per_adapter_expr": "---",
+     "gens_per_adapter": null,
+     "gens_macro": "nDataPromptBankBaseGens",
+     "gens": 500,
+     "gens_counted": 500,
+     "note": ""
+    },
+    {
+     "design": "Primary seeds 0--2, five everyday captions$^{\\mathrm{h}}$",
+     "stack": "archive/local",
+     "adapters_expr": "nDataPromptBankAdaptersPerArm x 2",
+     "adapters": 6,
+     "adapters_counted": 0,
+     "gens_per_adapter_expr": "nDataPromptBankGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataPromptBankGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": "adapters counted in another row (note h)"
+    },
+    {
+     "design": "Second disjoint training set",
+     "stack": "local",
+     "adapters_expr": "nDataSecondSetAdaptersPerArm x 2",
+     "adapters": 6,
+     "adapters_counted": 6,
+     "gens_per_adapter_expr": "nDataSecondSetGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataSecondSetGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": ""
+    },
+    {
+     "design": "Primary design retrained on the local stack",
+     "stack": "local",
+     "adapters_expr": "nDataSecondEnvAdaptersPerArm x 2",
+     "adapters": 12,
+     "adapters_counted": 12,
+     "gens_per_adapter_expr": "nDataSecondEnvGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataSecondEnvGens",
+     "gens": 6000,
+     "gens_counted": 6000,
+     "note": ""
+    },
+    {
+     "design": "\\quad its seeds 0--2, the 2000-step dose point$^{\\mathrm{i}}$",
+     "stack": "local",
+     "adapters_expr": "nDoseTwoThousandAdaptersPerBody x 2",
+     "adapters": 6,
+     "adapters_counted": 0,
+     "gens_per_adapter_expr": "nDoseTwoThousandGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDoseTwoThousandImages",
+     "gens": 3000,
+     "gens_counted": 0,
+     "note": "same adapters and images as the row above; not added (note i)"
+    },
+    {
+     "design": "FLUX.1-dev, LoRA",
+     "stack": "archive",
+     "adapters_expr": "nDataFluxAdaptersPerArm x 2",
+     "adapters": 12,
+     "adapters_counted": 12,
+     "gens_per_adapter_expr": "nDataFluxGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataFluxGens",
+     "gens": 6000,
+     "gens_counted": 6000,
+     "note": ""
+    },
+    {
+     "design": "Full fine-tuning, 4000 steps",
+     "stack": "archive",
+     "adapters_expr": "nDataFullFTAdaptersPerArm x 2",
+     "adapters": 6,
+     "adapters_counted": 6,
+     "gens_per_adapter_expr": "nDataFullFTGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataFullFTGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": ""
+    },
+    {
+     "design": "Content-matched training sets",
+     "stack": "local",
+     "adapters_expr": "nDataContentMatchedAdaptersPerArm x 2",
+     "adapters": 6,
+     "adapters_counted": 6,
+     "gens_per_adapter_expr": "nDataContentMatchedGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataContentMatchedGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": ""
+    },
+    {
+     "design": "Random crop positions",
+     "stack": "local",
+     "adapters_expr": "nDataRandomCropAdaptersPerArm x 1",
+     "adapters": 3,
+     "adapters_counted": 3,
+     "gens_per_adapter_expr": "nDataRandomCropGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataRandomCropGens",
+     "gens": 1500,
+     "gens_counted": 1500,
+     "note": ""
+    },
+    {
+     "design": "iPhone 5c pair, training caption",
+     "stack": "local",
+     "adapters_expr": "nDataIPhoneAdaptersPerArm x 2",
+     "adapters": 24,
+     "adapters_counted": 24,
+     "gens_per_adapter_expr": "nDataIPhoneGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataIPhoneGens",
+     "gens": 6000,
+     "gens_counted": 6000,
+     "note": ""
+    },
+    {
+     "design": "iPhone 5c pair, five everyday captions$^{\\mathrm{h}}$",
+     "stack": "local",
+     "adapters_expr": "nDataPromptsAdaptersPerArm x 2",
+     "adapters": 24,
+     "adapters_counted": 0,
+     "gens_per_adapter_expr": "nDataPromptsGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataPromptsGens",
+     "gens": 6000,
+     "gens_counted": 6000,
+     "note": "adapters counted in another row (note h)"
+    },
+    {
+     "design": "P20 pair",
+     "stack": "local",
+     "adapters_expr": "nDataPTwentyPairAdaptersPerArm x 2",
+     "adapters": 24,
+     "adapters_counted": 24,
+     "gens_per_adapter_expr": "nDataPTwentyPairGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataPTwentyPairGens",
+     "gens": 6000,
+     "gens_counted": 6000,
+     "note": ""
+    },
+    {
+     "design": "Kodak M1063 group",
+     "stack": "archive",
+     "adapters_expr": "nDataKodakAdaptersPerArm x 5",
+     "adapters": 10,
+     "adapters_counted": 10,
+     "gens_per_adapter_expr": "nDataKodakGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataKodakGens",
+     "gens": 5000,
+     "gens_counted": 5000,
+     "note": ""
+    },
+    {
+     "design": "P20 group, \\nDataPTwentySplitT{} training photographs",
+     "stack": "archive",
+     "adapters_expr": "nDataPTwentyAdaptersPerArm x 5",
+     "adapters": 10,
+     "adapters_counted": 10,
+     "gens_per_adapter_expr": "nDataPTwentyGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nDataPTwentyGens",
+     "gens": 5000,
+     "gens_counted": 5000,
+     "note": ""
+    },
+    {
+     "design": "8000 steps",
+     "stack": "local",
+     "adapters_expr": "nDataEightKAdaptersPerArm x 2",
+     "adapters": 4,
+     "adapters_counted": 4,
+     "gens_per_adapter_expr": "nDataEightKGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataEightKGens",
+     "gens": 1000,
+     "gens_counted": 1000,
+     "note": ""
+    },
+    {
+     "design": "16000 steps",
+     "stack": "local",
+     "adapters_expr": "nDataSixteenKAdaptersPerArm x 2",
+     "adapters": 12,
+     "adapters_counted": 12,
+     "gens_per_adapter_expr": "nDataSixteenKGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataSixteenKGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": ""
+    },
+    {
+     "design": "16000 steps, fingerprint inverted",
+     "stack": "local",
+     "adapters_expr": "nDataInvertedAdaptersPerArm x 2",
+     "adapters": 16,
+     "adapters_counted": 16,
+     "gens_per_adapter_expr": "nDataInvertedGensPerAdapter",
+     "gens_per_adapter": 250,
+     "gens_macro": "nDataInvertedGens",
+     "gens": 4000,
+     "gens_counted": 4000,
+     "note": ""
+    },
+    {
+     "design": "Periodic tiles, six periods",
+     "stack": "local",
+     "adapters_expr": "nMapTileAdaptersEach x 6",
+     "adapters": 18,
+     "adapters_counted": 18,
+     "gens_per_adapter_expr": "nMapGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nMapTileGens",
+     "gens": 9000,
+     "gens_counted": 9000,
+     "note": ""
+    },
+    {
+     "design": "Random patterns, one octave each, 2--4 to 64--128~px",
+     "stack": "local",
+     "adapters_expr": "nMapBandAdapters in all",
+     "adapters": 10,
+     "adapters_counted": 10,
+     "gens_per_adapter_expr": "nMapGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nMapBandGens",
+     "gens": 5000,
+     "gens_counted": 5000,
+     "note": ""
+    },
+    {
+     "design": "DiffusionShield watermark",
+     "stack": "local",
+     "adapters_expr": "nMapWmAdapters x 1",
+     "adapters": 3,
+     "adapters_counted": 3,
+     "gens_per_adapter_expr": "nMapWmGens",
+     "gens_per_adapter": 500,
+     "gens_macro": "nMapWmGensAll",
+     "gens": 1500,
+     "gens_counted": 1500,
+     "note": ""
+    },
+    {
+     "design": "Body B's fingerprint estimate $\\hat{K}_B$ as a known pattern",
+     "stack": "local",
+     "adapters_expr": "nKnownAdaptersEone in all",
+     "adapters": 5,
+     "adapters_counted": 5,
+     "gens_per_adapter_expr": "nMapGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nKnownEoneGens",
+     "gens": 2500,
+     "gens_counted": 2500,
+     "note": ""
+    },
+    {
+     "design": "Spectrum-matched random fields",
+     "stack": "local",
+     "adapters_expr": "nKnownAdaptersEtwo in all",
+     "adapters": 6,
+     "adapters_counted": 6,
+     "gens_per_adapter_expr": "nMapGensPerAdapter",
+     "gens_per_adapter": 500,
+     "gens_macro": "nKnownEtwoGens",
+     "gens": 3000,
+     "gens_counted": 3000,
+     "note": ""
+    }
+   ],
+   "objective_row": {
+    "design": "Training objective, tap T2, one pattern per arm",
+    "stack": "archive",
+    "adapters": 7,
+    "adapters_expr": "nObjAdapters in all",
+    "gens_per_adapter": 500,
+    "gens_per_adapter_expr": "nObjGensPerAdapter",
+    "gens": 3500,
+    "note": "outside the total (note l): generations not scored"
+   },
+   "labels": "Table 2(b) Stack column: archive (Google Colab), local (one NVIDIA L40S), archive/local (archive adapters, local generations)",
+   "source": "paper/fv/tabs/tab02_devices.tex block (b), each cell evaluated through paper/fv/numbers.json; totals equal nDataTotalAdapters/nDataTotalGens and out/fv_derived.json N_A5_totals"
+  },
+  "deposit_file_count": "not computed: waits on author actions (Entry 116 item 6e)"
+ },
+ "inputs_sha256": {
+  "<einv_paths.V2>/logs/f5_generate.log": "eaf96c365cc4971ff59a1582cf48952fac331739dc94e190fb20a9a5bafff5bd",
+  "<einv_paths.V2>/logs/t1_alt_generate.log": "b9b48628e5103065d1a5e0d37b3d6b2ad84d40848030511b691139249f4edd5c",
+  "<einv_paths.V2>/logs/t1_band2_generate.log": "367891617fb3a1057e4c1306c64eb117883a6bc978d0dd26da78c987055a6afe",
+  "<einv_paths.V2>/logs/t1_band_generate.log": "e0fc059eb0fad07037f95a2f8b433983211590b3f823bb499c063171eda04e1b",
+  "<einv_paths.V2>/logs/t1_cm_generate.log": "31e4df435ee6fa21bbc634b1d3a7cc270836c6c0492f4f6e17e6b081f5244f76",
+  "<einv_paths.V2>/logs/t1_colab_generate.log": "d0055e07e5bf71cf942d8c16c30f3331f8abbef0ac9de472ace2c94c89e7f788",
+  "<einv_paths.V2>/logs/t1_dose16k_generate.log": "a22021d4dbac91fcd6dad3d06e8855a10835685420d8b45c855d2021ee9588d6",
+  "<einv_paths.V2>/logs/t1_dose16krep2_generate.log": "3c9dc7dfd6f4a319fda032716fcf6460a9285000c61d383ee6a284f872eaf0db",
+  "<einv_paths.V2>/logs/t1_dose16krep_generate.log": "3bb045f33bcb2636ac16062b3a05b569928e90533754424fc905f0f71b945f0b",
+  "<einv_paths.V2>/logs/t1_dose8k_generate.log": "8dac8e2903f4861a1d5b1f2f308a245ac46e7704238724c387b590b870889359",
+  "<einv_paths.V2>/logs/t1_generate.log": "29cec743ab53804ff79df2251d4e2dfbe1d1bb14afb54f217e0b40d4b2a2c107",
+  "<einv_paths.V2>/logs/t1_gk_generate.log": "6a3d768dd70a516ffefd0b6507ea8bd576ca95b69a69643d7018d00322c0063f",
+  "<einv_paths.V2>/logs/t1_inv16k_generate.log": "b5ce8fc04e406ee4524764cd5bb553da162c5bc90b4ad8077a118fb1e9aa35b0",
+  "<einv_paths.V2>/logs/t1_inv16kext_generate.log": "eccd740d4eb54355800561a9aae725befb2d1cc5c04b30b43646625a16de84e0",
+  "<einv_paths.V2>/logs/t1_kinj_generate.log": "339727d82ff0d830ce3f49e696e4af5cea315ed1e7b2801b1c2ae88733842c89",
+  "<einv_paths.V2>/logs/t1_nomarkB_generate.log": "e05900917f8d8cef66e7b3de6d43ebc4b54458ed1c7c235c90f7dbfda880e837",
+  "<einv_paths.V2>/logs/t1_nomark_generate.log": "05815d10626f1309579efcafccbf7f4a9cf46fcd74189f9f966b68e051f9021a",
+  "<einv_paths.V2>/logs/t1_nomarkrep_generate.log": "8909c26b06be4ec961f409986a2ab9d79270dd7352abc7b2e505f85ecfadc5d5",
+  "<einv_paths.V2>/logs/t1_p10_generate.log": "f1ffa209f82af1bda3fd60b5adbd11034113912dd687161688283b3c10056d3c",
+  "<einv_paths.V2>/logs/t1_p20b_generate.log": "ea08f923bd983918233ec1c99d30b6dc3c67a9a3ebe14f3f73eecb9689b997e1",
+  "<einv_paths.V2>/logs/t1_p5c_div_generate.log": "ef18b16074993a7b433deebfbf1a46b36ef58d3af3dfbc8b7400bdfa458c6b69",
+  "<einv_paths.V2>/logs/t1_p5c_generate.log": "469786cf67dac832ea5426e4c622e7dd7f9ba4359b3389a75d8a4a23f950411d",
+  "<einv_paths.V2>/logs/t1_per_generate.log": "47ff10486db7a14559a79ca99d5c47fab10cce8bcd3cc4095d886f6a88144842",
+  "<einv_paths.V2>/logs/t1_periodic2_generate.log": "b13f6f1102fd54755cc023a814508f07979b997a24e6eb1c3f923dfacce09069",
+  "<einv_paths.V2>/logs/t1_periodic3_generate.log": "e42f8864696cffc74a8114ec331e1236a06ed164defd675310c78b6daf1468a4",
+  "<einv_paths.V2>/logs/t1_rcrop_generate.log": "933d94a882e171c6aa9b26323122e41aacebd423aa724d1bcbed4ab955c27c44",
+  "<einv_paths.V2>/logs/t1_wm_generate.log": "a2642dff6fedf05b9c999fd10a0502fe3f2c42bd88c256c3090ee03d04b96cc7",
+  "<einv_paths.V2>/logs/t5_generate.log": "c4b9a8bb8bb5e076757b3faf25d773e2e1487a6f6bd1be1a045c29ec59d47b3b",
+  "<einv_paths.V2>/out/fv_derived.json": "b9d782cf6208ef9f55887ef3552693514dc74f86216044ce70c46b6e572548cd",
+  "<einv_paths.V2>/out/g1_ext.json": "e0a66f3d2760b584dfdf91ae3c7ea069ab3b0b2434f354ea89f63a54ac5ba918",
+  "<einv_paths.V2>/out/g2_pooled_six.json": "6ad09d1f0c4a7a6cef22376edf2cab8f5595c3f1ab51825d726f1a8b8c2099b8",
+  "<einv_paths.V2>/out/g_chain12.json": "3141c9cbddfd8b6c73ba741a07e99f23b77b0b0f3f88b0460c1e02bd4cf561de",
+  "<einv_paths.V2>/out/h2_estimation_error.json": "489eedd2a90e3da7f0c040d1de8b734fbda688cbf4e5e92afc80bc2b7698f470",
+  "<einv_paths.V2>/out/h6_calibrated_limit.json": "62ae488d2464641f6d66b85a035673f64c16b2875a353b46e8bb065251540d38",
+  "<einv_paths.V2>/out/t1/adapters/alt_A_s0/train_meta.json": "a0c56cbf439d9e6da9ad5f1264ed1647c21e0b208647262351d004243c01ff6a",
+  "<einv_paths.V2>/out/t1/adapters/alt_A_s1/train_meta.json": "5d7ad1937efcff0f6f756053f023a8a2da1c437a3b8a0cf0e0a8504ace0b32bd",
+  "<einv_paths.V2>/out/t1/adapters/alt_A_s2/train_meta.json": "a32636c55639b54254c02277a38f0fcc181241dbd1a9a666a4ffca6cb20fe63b",
+  "<einv_paths.V2>/out/t1/adapters/alt_B_s0/train_meta.json": "7bc7352bdc0bd0c681e0dbb0892b1a731e55b5a5830dc324a37c6ff65e4037dc",
+  "<einv_paths.V2>/out/t1/adapters/alt_B_s1/train_meta.json": "4a56346aae6e5db91d4e6ce045ae343a6c0747687d7b75cae7bc9f40397c176a",
+  "<einv_paths.V2>/out/t1/adapters/alt_B_s2/train_meta.json": "bdfe2e30ffac2e8c2ddf7aab4880b03b7693c3abc8304edc6e6d12dc328b24fd",
+  "<einv_paths.V2>/out/t1/adapters/band0_s0/train_meta.json": "b4783f9003df6d3d72522894b10e66f9a64fbe6877b77001c71b3f5df3b9dad7",
+  "<einv_paths.V2>/out/t1/adapters/band0_s1/train_meta.json": "40439ae54031da672171d1d1aa9a5abe2e38561762d8846812f9ebd9408e416e",
+  "<einv_paths.V2>/out/t1/adapters/band0_s2/train_meta.json": "e867cbf55fff7f4d62b10fce62ba6e4e77b44b02fb302efe584d2a2f70d48d02",
+  "<einv_paths.V2>/out/t1/adapters/band1_s0/train_meta.json": "3e92754f7aa813077ee5bc4e2d8370b5042f4932e6326d9452fc89a49f706700",
+  "<einv_paths.V2>/out/t1/adapters/band1_s1/train_meta.json": "d86789433d2918e1a8ed723ad9650e8cbe389ec188f83d71f756b1ac5dcca1be",
+  "<einv_paths.V2>/out/t1/adapters/band1_s2/train_meta.json": "03f68d8a586f6ab0b4149a3fe798a1c35d9bbcd4a7df8e13f5c5d9b518567788",
+  "<einv_paths.V2>/out/t1/adapters/band2_s0/train_meta.json": "c84768b1f2dcd65ad864cd4d084057196ac25e2d3ed598f55cec2ecb6f44b941",
+  "<einv_paths.V2>/out/t1/adapters/band3_s0/train_meta.json": "283095b7ab9170d2bc088f34cc99c79b08433575a073fac13622b907baf79ac6",
+  "<einv_paths.V2>/out/t1/adapters/band4_s0/train_meta.json": "d6c2513c8f60dcc83cd15828f83ccff74951d3c7eb8b234efe07850fef667272",
+  "<einv_paths.V2>/out/t1/adapters/band5_s0/train_meta.json": "a47c95d1e1739733134308bdade62c5cc4068b4f7202388e3d594358d91f464f",
+  "<einv_paths.V2>/out/t1/adapters/cm_A_s0/train_meta.json": "4239154e87ee2d94e6fa8c31c13a08b13a1d942ed2050c1fdcd58c57ecd606eb",
+  "<einv_paths.V2>/out/t1/adapters/cm_A_s1/train_meta.json": "d8cf028c5826f182d2528aef90005c67b541f5a35211053e8675f316b75e0f03",
+  "<einv_paths.V2>/out/t1/adapters/cm_A_s2/train_meta.json": "02b7eaa597d95fb3031d9d41d4143306297aff74a5e3ca945c633318ab0cc279",
+  "<einv_paths.V2>/out/t1/adapters/cm_B_s0/train_meta.json": "2eb15820738aa1900fe6ee546cea53db37251e2a03ed76fd565da22a5d8eb6b2",
+  "<einv_paths.V2>/out/t1/adapters/cm_B_s1/train_meta.json": "edd14c5a7473b5daaa7371f364809400a2114212301b5064f7e3e470375f81fd",
+  "<einv_paths.V2>/out/t1/adapters/cm_B_s2/train_meta.json": "b704e24f1ec5ed3e9cf667f57d969571f88373050b5b95d5dd05329834bb9701",
+  "<einv_paths.V2>/out/t1/adapters/colab_s0/train_meta.json": "180cfbd145e5df9b0bade05024f503d1cbd5fda61282ed541b07ef826eb283c5",
+  "<einv_paths.V2>/out/t1/adapters/colab_s1/train_meta.json": "b99893ddb3b87028efeffbe7a2913916a2a01500609618b6e51b5bbf8562ae52",
+  "<einv_paths.V2>/out/t1/adapters/colab_s2/train_meta.json": "a845efea089b7ce75a6467234f448e6320b1eac164abcd015fc20cd535db8ef1",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s0/train_meta.json": "6c9fa950ded21124fd141f6d8c3d60b688bae43bafedbdef6a50b7efff9e9a91",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s1/train_meta.json": "b6a8549f5fd9cb949ebc664c48c03550108cc1897f245c9c422e56d731a45246",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s2/train_meta.json": "4aecdd746b0d0137689749780208785b8134f1b365f74922314799299c865af9",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s3/train_meta.json": "ce4e6af0b60c0077f87bc88da830ffc16e3e9638b85d4c3dd7bb40a80ff7584e",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s4/train_meta.json": "4f19ecbb4acf341d6ba93ed2252aa1cb6c1a8c4915e75fde67f237b7d8392e47",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_A_s5/train_meta.json": "621ec26544d67616b75a5397266f8cb2e9e9be36978528df33842f75dc682b9b",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s0/train_meta.json": "e8709ba5fd7e06136bafd51c2a23fb7ee573a21e1588f07021542afd26c4436e",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s1/train_meta.json": "5d8140fbfe4ff28d03febe5b6d7294dd1a9ef07306e2808d38fa4b557589d30d",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s2/train_meta.json": "070d9cf25e95ad963595144be54c1eb1d85f65b340503b78928a04ff0a8864a9",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s3/train_meta.json": "0590300bd98a93479bcb7bbeab0997ef6735027c2b87526aad41ffe718841123",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s4/train_meta.json": "83656c5835c581a86ab65348c30ea3aee44e7dd17354b6a63bc8d723370f802d",
+  "<einv_paths.V2>/out/t1/adapters/dose16k_B_s5/train_meta.json": "d5350573478189565d47df10dbf303dc93be44cbeb629fe8b7b8c47ad0ec34b8",
+  "<einv_paths.V2>/out/t1/adapters/dose8k_A_s0/train_meta.json": "4175661eb922e4ce2eeec4af4b70d9c388fe8d821cad67fbcb7341596a4b1f35",
+  "<einv_paths.V2>/out/t1/adapters/dose8k_A_s1/train_meta.json": "a5d2e656e971d4eb765651799305002b3ef5e9de16ec9f6584fb3ebe07c2d7a8",
+  "<einv_paths.V2>/out/t1/adapters/dose8k_B_s0/train_meta.json": "13042e99bec5c639fd51450ca424ce2e4f3be183a7b5f7274183f52d819a69f3",
+  "<einv_paths.V2>/out/t1/adapters/dose8k_B_s1/train_meta.json": "ca79c3083061bc88cfa5e3c0a7d218b0c359eb13ec42d226fae649a2ef344743",
+  "<einv_paths.V2>/out/t1/adapters/gkadd_a1_s0/train_meta.json": "10e7a2a530d7f7c9cf4a896d9151cf3de86a62475f11253ac538821974b5c201",
+  "<einv_paths.V2>/out/t1/adapters/gkadd_a1_s1/train_meta.json": "42dc79f4ca74a44c5a0df7361d05c34d88f049eeffd93a1ded872869d24fdd8b",
+  "<einv_paths.V2>/out/t1/adapters/gkadd_a4_s0/train_meta.json": "fdb70dcb1f9ed43ab8dd0b23cc4108647567c26f66d9876dbc130036f1e6870c",
+  "<einv_paths.V2>/out/t1/adapters/gkadd_a4_s1/train_meta.json": "88908dedfe6dccd2fdecbe7a3fa441908cc72b0a8d2286e5cdda166683b0cd10",
+  "<einv_paths.V2>/out/t1/adapters/gkmul_a4_s0/train_meta.json": "1bb65d2b87f9bf07805908eb51c808838cb2c36ebcf02d197afb06086981b7be",
+  "<einv_paths.V2>/out/t1/adapters/gkmul_a4_s1/train_meta.json": "ea274b8dcef5167e62e8ab1ef3ea41631a3738918d03d418d47ab57e03829fbc",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_A_s0/train_meta.json": "a0b87449b3d06106e5d572cc11397ac5bda11a8c2a54a97eaaf13e902f8983a5",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_A_s1/train_meta.json": "b033872d7fca628b8a088fee6b3fe9630d9cc0a17bd4e881c361676bbdec0612",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_A_s2/train_meta.json": "13c86e425ec09d88626aa99e10354974cc112f4b359cbda5fe765fba1cf361c8",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_B_s0/train_meta.json": "257707450f9dfc94157d7bd26e8539352eebedd6fca59b2ed08760b9ec097ef0",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_B_s1/train_meta.json": "bdba39352763753badcea83b6944ab3f6191a7a24e1e0686690f26ce3aa11472",
+  "<einv_paths.V2>/out/t1/adapters/inv16k_B_s2/train_meta.json": "b1d82d33f1f1816c9747fe1a78d433a81e94006a06323ab7c5eef3939c649b34",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_A_s3/train_meta.json": "64501fb5dea1b2b3b3dec0d3bdf3ca774eaf7b5a49915e79feb70f46343cfe46",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_A_s4/train_meta.json": "e4c525a3f87eef36b3245c71843ab1f6e6d8b2522a91246be5dffe2170b0445f",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_A_s5/train_meta.json": "4b0ad8d7605fdd280d06ffc40d50bf2b5fcd339b269a026775f408608a88199a",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_A_s6/train_meta.json": "20e459dfb968c7eef1ee53a0e56d47a0f5874c381bdfe6fdeb31c16c8a3116e2",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_A_s7/train_meta.json": "1f934492a2ba26c19e10e81388a38fbddcddec95b8dbd284c0e82c1f84cf38cb",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_B_s3/train_meta.json": "d69a20827964b46c489dd9ff611d6cd56c5c0fbe24e813a951eb2bbafbba567d",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_B_s4/train_meta.json": "1d2e95e49c4fc70aecc69b73ed40f8754a2e2bafc07a7b6fd300f5e289b9c0da",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_B_s5/train_meta.json": "b39f7e60cbe5dc2fd3b229e02130e480a68a3b4144d2ec363a007d884e7b32b7",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_B_s6/train_meta.json": "49350066a31d8440182113aedd248ddd5b672406d59f52947e8f4a452b2c8ae5",
+  "<einv_paths.V2>/out/t1/adapters/inv16kext_B_s7/train_meta.json": "b682b932adcbe4f390c4b95af0a8bf60597463dc865e1a4ad6ae903dba9e0788",
+  "<einv_paths.V2>/out/t1/adapters/kinj_a12_s0/train_meta.json": "7f48874e8473341d49ce6a9e5d01ed32d46531cd96f397f6c2a54acd5e9509e5",
+  "<einv_paths.V2>/out/t1/adapters/kinj_a12_s1/train_meta.json": "a8b03a7658a930c1bce49951e01d7b26c99f0ea66c6a6470a194c5c4c87e5182",
+  "<einv_paths.V2>/out/t1/adapters/kinj_a12_s2/train_meta.json": "7b13b415dbba0604d184229d57bb4f93e1dbbcf46210ee9a68f593d3bc64513c",
+  "<einv_paths.V2>/out/t1/adapters/kinj_a48_s0/train_meta.json": "3f9564e31268ffcfad77ef977a1f052c737c4f432b22d5885d5539753b025416",
+  "<einv_paths.V2>/out/t1/adapters/kinjd_a3_s0/train_meta.json": "1d4d6f6f49b0fb1eb16aa033f468be6b3260b2d0a88f6ea5bccba77d62526eac",
+  "<einv_paths.V2>/out/t1/adapters/mark_lowmid_a12_s0/train_meta.json": "2f650f830e057a81ea83c49610fd2603a774253e419f17a4fe339c784e7884b9",
+  "<einv_paths.V2>/out/t1/adapters/mark_rand_a12_s0/train_meta.json": "121bc2ea80c0cf143b1fa9e46a838dd8df20d17249f685bcbb850023def39858",
+  "<einv_paths.V2>/out/t1/adapters/mark_rand_a1_s0/train_meta.json": "fe5c00e964c14b243b87055938c263437ae7d55138347fc5fe23829cff5025f8",
+  "<einv_paths.V2>/out/t1/adapters/mark_rand_a3_s0/train_meta.json": "03987563a3eef52c92d62e0fdb1f91280fa8595a6a5efedba32f060bae7a3b8c",
+  "<einv_paths.V2>/out/t1/adapters/mark_rand_a3_s1/train_meta.json": "ac565259ee0c59b0765f3d70b24354d62ff9c7f2779a78435c1eef0c7e0a5277",
+  "<einv_paths.V2>/out/t1/adapters/mark_rand_a3_s2/train_meta.json": "4b63f02ca1706db4de53cd1d9b4a4f7c5cdbf06fc25afcbf221ce774cac111db",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s0/train_meta.json": "31e38ea927f3a7ea62a86233c1dbd2abe773fe5b3d9b4775b44ecdaf5b8578dd",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s1/train_meta.json": "d37d30ce22a45b191dc3bbd08b1b1036ec12e99aa760a64061410a3c5d1b652e",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s2/train_meta.json": "88fb85ebb72142ee295e1b7c83a38767b26027d82ef45c25023a57b9db75c2d2",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s3/train_meta.json": "f0986a2471cd4c4195b83ba2c1b9847ba4b1886cdd73e3cdd1feb7741a78596c",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s4/train_meta.json": "82071df772fa0c59e4f555d0dcc65c05c0ea7cf13ef75efb57834497853973e8",
+  "<einv_paths.V2>/out/t1/adapters/nomarkB_s5/train_meta.json": "156cf36ee6ed10272f2b0ada6a9cb8dbf2dd468c091cdfd13178d19207575c92",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s0/train_meta.json": "5dad136cebb315d1098ee2bc8a4240704fb6a64fda54f11bee9c3efda74b3daf",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s1/train_meta.json": "c40e90d37e196715cbfa66a4a4ab43f4a1145f997c8faed614e0630a57743ec7",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s2/train_meta.json": "4f16db030ece950834bde13084cc85dd745a14e8474136787624cd4853b6018c",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s3/train_meta.json": "49f00889d5eaba20ed985a25f603cff2fbf502295611b72313cbe4986c876610",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s4/train_meta.json": "af966b9d1c7390fa850e270d82180a99dc06dd177b14968ce14ec858a9749cbe",
+  "<einv_paths.V2>/out/t1/adapters/nomark_s5/train_meta.json": "409fef3627ccd4885faa822aeab95142b1bb6e6f1503161e0ab8ff81b0ecf286",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s0/train_meta.json": "ba12899d765c17458ac3f0707edd1273633d6e4ddd416df853e5e56c4c487bef",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s1/train_meta.json": "609781c0db2f26c0b95e2ce5903325c85edda453a84904826a6e131ad85ad461",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s10/train_meta.json": "dea64649e236e3be0ffda069681ac406eaec7ca51728d37f39b6ec11790856fb",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s11/train_meta.json": "311bffd8567d913ecbc8a08c5f09002a80112aba90505349d835eab2244d51e5",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s2/train_meta.json": "2c329e90da3ac68822287c7a199cc5b269ba53b268e905f115360e49edcce319",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s3/train_meta.json": "184564f924945f616bf8efa471dea286c3c50499a7abc4c2943590feed423393",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s4/train_meta.json": "8af7f7053e156940cd32b8a5bffb71c27f14334acf2ed2c1e25a79e9e0f6b5e7",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s5/train_meta.json": "6a74adaabf7837f378095741dd38d15e5d13613f292ab4adf629b6880fa6f07d",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s6/train_meta.json": "71e5ff15330df10f0861c8bec69b751329ec51b2d42c6545c545d029692c15fd",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s7/train_meta.json": "c340f478f8967ec77acd279d3715d16926e0eea44bed4935d31a571d434cb97d",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s8/train_meta.json": "dfcd86a76f1afccc6fbb0e0d82873fba7019599b34be906047904d7fc8d17670",
+  "<einv_paths.V2>/out/t1/adapters/p20b_A_s9/train_meta.json": "c0adfa7fef3c3d8da99d5af5390555c322245042638cc0b5d031e9bc8e5050f8",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s0/train_meta.json": "44130e301855cd17e13eae2a13f3ae8070a7914571bb00e18558c92ac65d66f5",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s1/train_meta.json": "ad2c6b6f51b6fdbabc8a9183c4c0f882c149e5f9add6c4364266ced2a254033f",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s10/train_meta.json": "0cbc2f7827215e38832f2647aecd45a238799ea66aad6f77e40d615d8e7bdcd0",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s11/train_meta.json": "45cd2e1172cf6cf8224958d04925fcdd5dc2bc42f66a078c39998a2f52aedb43",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s2/train_meta.json": "f0f1613fc11cda90c85fe56fd0e9f8687a4cc91693db11868570d34c99793869",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s3/train_meta.json": "acbfd9f0f90e00c10447882a7375478fe559be1b0932472446af4dfc02f72092",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s4/train_meta.json": "82f6fec3447865db0d975bd1c00265e582a1e9bc810a930d91fcdd357e140ea6",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s5/train_meta.json": "30e3b82be62f78b23a95bba18504b53631ef0c23ac50f8acc916dea9ed4a39cd",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s6/train_meta.json": "51fc683e9e39022acecb97b98332510f9a7d68c08ca8713a73a8bda867606986",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s7/train_meta.json": "c6579f6371993a19c37425a96a08aa0a381a6bb06e20df743f2288a5ea4e137e",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s8/train_meta.json": "5108f0df86475294484cbbc62fd37356f62570e8809aa677fa7ccbb42e33b70b",
+  "<einv_paths.V2>/out/t1/adapters/p20b_B_s9/train_meta.json": "88e411e959ed5ddce838c73c6217049e8c3f9c81462d9b4db5f984c26c34e6a5",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s0/train_meta.json": "ec92f1ba721fbb2f6ed4382dd6c96e73d4db3dac24e6f276e6a6ec7f63b16091",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s1/train_meta.json": "f8a22c6a381b25d1c20cd052cd8deb843dd99a56e222654e775917bb51f5e2a7",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s10/train_meta.json": "b250775ea9644116bcd22a3939c62c09b41e116768aa994a1cf3fd9abfb17925",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s11/train_meta.json": "b5fdc2c3f2021f288751bf976768dda2191cb2dd6756ed58782240a379ee2c37",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s2/train_meta.json": "8529fd8700879f1f01dc01119c4a8aa866b1cf7e6389124cc8bef14d9670f8f8",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s3/train_meta.json": "438c9560fba9aad9ee2e55d92a3e2767460b74ba10b1b0b15767ffd7fe407094",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s4/train_meta.json": "d62d28f0ad0ede8224b29a690f4c94cf2c3c6354cd81e7b28d57575dca54dc3c",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s5/train_meta.json": "3057fba8394cbb12804f1bd84ebca3930ce557c8e995bbd9388ba56da1b20113",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s6/train_meta.json": "43499f2f45689b27286f52d09c898ae837cd75f2b4318be0175c6081cb95b0f5",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s7/train_meta.json": "97963c8886a9da92bd89cbe11edbe92650539056a92e36a3773b14c588982a7d",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s8/train_meta.json": "4a0dc05f723201dde6589eb8c3d54ee350d51d5a27888af72b072ff05670e358",
+  "<einv_paths.V2>/out/t1/adapters/p5c_A_s9/train_meta.json": "da95c54000f9e72c56fbe751668507ba74d5007676bfb0876379ce5584cae1f7",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s0/train_meta.json": "cd9634f4984c20ebd75a6aeb9e37cd0361920acee13e653ae726eed2dc890888",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s1/train_meta.json": "5372b60ace01359be6ae7c7bdab9f4113473d5156f211b1183ea4f2c455b644a",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s10/train_meta.json": "b1c9139db4cdc33e415d1b09f470834186678eb2e6635728f11ad0f580ba749d",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s11/train_meta.json": "1566e49613fc183e4578ae0d58ebaccca4effa493d07c25b7d20d7912d282549",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s2/train_meta.json": "f33632d6db19eae5259c3ee45d2a6ef0c8bb37f9e2e925c3d40a99b2094151f6",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s3/train_meta.json": "bca53de2e7760447dcfc19b1862a70ccdff26d14141669c54e10a55bdb18b315",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s4/train_meta.json": "c65476bff2765fd6fbebdf3bb3156f28e2cecd020be001a6ea3b72ac7c8fc9a5",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s5/train_meta.json": "237d5431a9303b5dd3d2d743dbdba5b6d2863b52986e5e6db75ea0769781e96d",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s6/train_meta.json": "3c4a956ee9081c2144c4c7206e96955aa9ce717061b1a3c4214e509bb62fe19e",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s7/train_meta.json": "f7ca92a8a5b44ae3fced892fa9a8472999ff684ab592b4316c629a25c560ffde",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s8/train_meta.json": "4163d7d7f18e45e398bf72504688a1f54a6ece87d684b6ac37c36f69eea28feb",
+  "<einv_paths.V2>/out/t1/adapters/p5c_B_s9/train_meta.json": "3d5586d219e1a6be76aaf1e0e56075c4100d151da593998e9c20fbc78b4c269a",
+  "<einv_paths.V2>/out/t1/adapters/per24_s0/train_meta.json": "b3e1add26a28ab73e567d219a7227446e1d3ceaa1aa4eed2fe23e65f26e24cf4",
+  "<einv_paths.V2>/out/t1/adapters/per24_s1/train_meta.json": "79c22eb87f0727711068b185ef4f64885cad3121e0b04fefe5681caba53dda7c",
+  "<einv_paths.V2>/out/t1/adapters/per24_s2/train_meta.json": "dcaa5930457ec591f911d890bd66b0be1788741c4747527b207ac7cae42da7f9",
+  "<einv_paths.V2>/out/t1/adapters/per28_s0/train_meta.json": "02ad68c9f9db804f11cd23ea63cf84891f6cd78018d2b034dcb23e72b53a55c3",
+  "<einv_paths.V2>/out/t1/adapters/per28_s1/train_meta.json": "720002d7fc1d5b0e6a1e9a1014a60a58538a98191ddf9614839e586bff4d110c",
+  "<einv_paths.V2>/out/t1/adapters/per28_s2/train_meta.json": "c5cd98179378c68f07631b8f3c86c25412fa938386096dda29f8d683f79b15e7",
+  "<einv_paths.V2>/out/t1/adapters/per32_s0/train_meta.json": "3ac3b970b335139512fadee521e058e4d859328e6837ecf3c241d7c1eaf8ae7e",
+  "<einv_paths.V2>/out/t1/adapters/per32_s1/train_meta.json": "b173e99c13380e0f860404162d0c8d29ca0ef83068bc60c9193d51d3a2ece369",
+  "<einv_paths.V2>/out/t1/adapters/per32_s2/train_meta.json": "cff1d073aa646ab32fe19c92d8e3be564043f9e95556b31e1a05190989ac811c",
+  "<einv_paths.V2>/out/t1/adapters/per36_s0/train_meta.json": "04d46671f80414407f9ad2ea7076c5369ebdf613db47eb96eb3748fda38551c0",
+  "<einv_paths.V2>/out/t1/adapters/per36_s1/train_meta.json": "71d95f744fbf3ef3d7f28b438bea1e7206b73606a6485a60a4c04ac1bafadce9",
+  "<einv_paths.V2>/out/t1/adapters/per36_s2/train_meta.json": "d1e1fefca54948a542725b3e39d4dc8d94571b2c337c51e7595f85d276967dc7",
+  "<einv_paths.V2>/out/t1/adapters/per40_s0/train_meta.json": "050795e0b49819462d1b52b98878b4e873ae6454652f40df3caf178c5f785d2b",
+  "<einv_paths.V2>/out/t1/adapters/per40_s1/train_meta.json": "1554a854c32524b4bb9cb2eb0ad2dddfe4c7f6faba84ab480fab2a8321138a1c",
+  "<einv_paths.V2>/out/t1/adapters/per40_s2/train_meta.json": "4c6f7292ae9b1e3ef62f053972e92c7265f261ca48501b0010799a0cfcf79ea0",
+  "<einv_paths.V2>/out/t1/adapters/per48_s0/train_meta.json": "20ec2f73c5ada5ecd5b786d36393c2a391f7f1663dcd674295bd9fb2d663d129",
+  "<einv_paths.V2>/out/t1/adapters/per48_s1/train_meta.json": "47591c0617abc2ef16940099d2eba149c105384cdcf5bc8928e1b69d0686918a",
+  "<einv_paths.V2>/out/t1/adapters/per48_s2/train_meta.json": "449fa1282522f742cffecb550a45096099148aca33f63b0c9f8b703c86050996",
+  "<einv_paths.V2>/out/t1/adapters/rcrop_s0/train_meta.json": "fb65639c0fed76a646c129c7efb92c7958140be9335537e707c9aa1706430fdc",
+  "<einv_paths.V2>/out/t1/adapters/rcrop_s1/train_meta.json": "6164999310323f16fc2b917b7821cd4df798ad9ce8e3d159d9aa276ff4f2208d",
+  "<einv_paths.V2>/out/t1/adapters/rcrop_s2/train_meta.json": "e0fadcb0ffa255fa216fbf398b405675d2e3c4a8f29415cd245e89adb5110165",
+  "<einv_paths.V2>/out/t1/adapters/wm_ds_s0/train_meta.json": "5b161b8f8ab5195de3838da249494462ee1bb0359f5172324f15a057fd0d101e",
+  "<einv_paths.V2>/out/t1/adapters/wm_ds_s1/train_meta.json": "18a43b2f01f81b8e7fa64cbf204d9c5217d6e611646c8a659e3d41e5485c346b",
+  "<einv_paths.V2>/out/t1/adapters/wm_ds_s2/train_meta.json": "45c2d3531873b7b3c77d0412ae7cb245263fa74cd13120d391a9d95ce3a46b5d",
+  "<einv_paths.V2>/out/t1/dose_stats.json": "38ea16751908fc83bf7331db7fb1f104583cb4692303731f8a0e6bffdc0c4481",
+  "<einv_paths.V2>/out/t1/summary_dose16k.json": "7dc9c333688cdb452dae43750368ade914443ca7256cb2e7552ec804c61cbe6e",
+  "<einv_paths.V2>/out/t1/summary_dose16krep.json": "bcaa78ff9ffcddc4c8813d38342a566d797c15ef1180045392f17766cbf579a4",
+  "<einv_paths.V2>/out/t1/summary_dose16krep2.json": "48215a176e49a76d33453545fb464613c6970288c3e471ec8be1004fd17354f8",
+  "<einv_paths.V2>/out/t1/summary_nomark.json": "9eb58c3332a6c6bc722dc3b1e3500040272e51b645568a8e45559739f11c83a5",
+  "<einv_paths.V2>/out/t1/summary_nomarkB.json": "7dbccfbcfa69b1c696b4197814b7e998d0d181d371e0bfe60d0c1917ac10f801",
+  "<einv_paths.V2>/out/t1/summary_nomarkrep.json": "1bbfe9680bdffbb3b5604965298e7a0c5447256efb9e691336a76584ec8ea17d",
+  "<einv_paths.V2>/paper/fv/numbers.json": "2bd03202ff92bcb040113ce308d7524425a46b70b05dacfd13d1eaf761cfc0fc",
+  "<einv_paths.V2>/paper/fv/supp/S03_compute.tex": "d2b742c484e450da2afd98214a362f68866d9e25e34ff7112998042f6a20eb79",
+  "<einv_paths.V2>/paper/fv/tabs/tab02_devices.tex": "c5fbc5c84e519e67411cb63986b425c3e873ac28b0d9b8b037383af00f2e71ab",
+  "<einv_paths.V2>/paper/fv/work/inv_gens.json": "a2e9ad142840f54b5f7b85bacf621f3ad444c071478fb31c4f2e53fa2437bc00",
+  "<einv_paths.REPO>/analysis/FINAL_LEDGER.json": "325a5ee4094fc5374cf74e7d2275030c811f32a8b97a5e7f713677f6f257228a",
+  "<einv_paths.REPO>/verify_v2.py": "a308be65929636063d44f8d38b47179289ca65a7003fa01163f64eb2f2512774",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/amp_12p0/train_meta.json": "566de93f99721b6dec183e3bc59320b6b378a7e2faf6b3acea2c0473d62232f8",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/amp_1p0/train_meta.json": "830d5e766c196938430a6700653431e6c5b6eabd689ea35495c7285b0f748c38",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/amp_1p6/train_meta.json": "b8d4a541f94c3c78d83c6ee37e1260b4f6621b7109fcfe7648c1383528b892c0",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/amp_3p0/train_meta.json": "7d488b1b65e126c1a7648f784c796f7955eb909a9de176db105823df2a9af6df",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/amp_6p0/train_meta.json": "f537cd6937ede81cca333bbb25d0b858706a7a0c94d48b96d44a5f3d819149b3",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/ctrl_Q/train_meta.json": "45f24d331ca4180b52686f5559994c10ae5ab70aef59992dc5830f88f2760c5a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_AMP/adapters/ctrl_shift/train_meta.json": "ed47ec51e0eaff55df3472b63a66b1787478b5caaacf6bd74b10d4a234683dc0",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1101_s0/train_meta.json": "d1caf074aa57a9b6805e69da6ab8c1e85e4e23b13c66ef32de77d1816a9e23d3",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1101_s1/train_meta.json": "0779f356cf5d52cb2dfd8d8056ad429b11e8c90cb25093524bcf7c69761185c6",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1102_s0/train_meta.json": "547c1ad59124713b59ab66c6a0a8456c2424957cae8c2106440fdd6c237f154d",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1102_s1/train_meta.json": "10449ce33611611aef365841b4406a3e1c12a0070a6a8b788ce3174e6a136f44",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1103_s0/train_meta.json": "97c0113e5332800cf924c6e91e2cf0a19b36d68c19ed4bd89a7f52f0ae2a5af2",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1103_s1/train_meta.json": "7fc3cbee78ab8c2c127d332b09b6f0aa52d7926d812887207299d3a004eec318",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1104_s0/train_meta.json": "1c424dc33f728051aa96473d31951ad635ad897aecbbedce4e126d5727f601e7",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1104_s1/train_meta.json": "8deb2c01d00ac544640a1d4f030106c30e022bea92578182eb6e7ab877d39964",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1105_s0/train_meta.json": "3c1dc959ed2db52041fab994f31f8989a9ee66c69220f5fbbf9241bf2efc9331",
+  "<einv_paths.MYDRIVE>/inv_channel/E_DAXING/adapters/1105_s1/train_meta.json": "661c6ce929426b282a9772adc0f197bd7bcfaef6334a78245884570d456fac7c",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/A_ft_s0/train_meta.json": "591b691e38b93026801261eadbab7349f8687ad429b1adfa8d49a91117099996",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/A_ft_s1/train_meta.json": "11c3cc3a6c1e10dbd9baae81aca3834ad5e4630267030b743f04a9aba73c5fa7",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/A_ft_s2/train_meta.json": "924e7a7a7ed62d019e3894d9db7337c4e0feae76d63901a16129bc02df1e82fb",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/B_ft_s0/train_meta.json": "b31c24c0b495b5e73e2032910b7771283f7e2d82a5d746e33c95fd3d40bbc63a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/B_ft_s1/train_meta.json": "77231e652146cb68f50abe69a25aa2cfdb78e563fc0657f6c45f3f9096c681d2",
+  "<einv_paths.MYDRIVE>/inv_channel/E_FULLFT/ckpt/B_ft_s2/train_meta.json": "98a2f622c8f86b4ee2291f373758aed1a75ad5d2f96001645fc7e13680425977",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_clean_s0_r16/train_meta.json": "f084ff8c50017d999d042b66efccf894acebbcf51ece3c87b9d9cb7db69b42ec",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_raw_s0_ceil/train_meta.json": "647656e59b17cfc88f7181b57394cfaff9af5f1890c277cae096fc9a5381484b",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_raw_s0_r16/train_meta.json": "35629f1b6fb13a263d52e0359353daa8cf5cb260570c2820aecb07b49990a1de",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_raw_s1_r16/train_meta.json": "e9d075001f45147e10504a834d5522bbffdce4b1860f183d86bb72bbcf9d1877",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_raw_s2_r16/train_meta.json": "11b82cf0f035e243c7ccae7d65a3f8bc48793768fb3796c654390d7ec00b70f3",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/A_swap_s0_r16/train_meta.json": "0f33264d6f35789bb66b0cee2c98f326ceee2fa8ab481d47e9a90e50fa57b13a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/B_raw_s0_r16/train_meta.json": "2e3286dfdee244678be09d4b31ef88a6676352fa40eb13a0c470857012dbf9bb",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/B_raw_s1_r16/train_meta.json": "23a4204013dcb4bd6e413387092660368adb2d0da31bd48168e8f80e37a7432e",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/B_raw_s2_r16/train_meta.json": "62f3475a09d04ca197cbb9a4c4181b8b8265afd75a982c9fbd896e15b497e9c4",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/D2_raw_s0_r16/train_meta.json": "188f752e0466c40d9e645f8e6320d3c15568ac16b55c4896567c414a9dac1e29",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/D_raw_s0_ceil/train_meta.json": "47dd3e1a7886934042622cd658a59d35d3aa5b61d309be710c8195846d39529d",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/D_raw_s0_r16/train_meta.json": "60e2e6c10143a1e320ed593cbeea5c4189b52813eac4405c66911052dc03f6bd",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/D_raw_s1_r16/train_meta.json": "35028f03109aabf54be60cdaf58d284a1fb82b799c8bfdf3acf9eb27244d0224",
+  "<einv_paths.MYDRIVE>/inv_channel/E_INV_P0_v3/adapters/D_raw_s2_r16/train_meta.json": "02f5c90fa96a249a3bd6f532c2765bca389c6f13bb32285240a646179444b409",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D0_s0/train_meta.json": "ef437e9b65ebaee4dd9cd425ab25098c40de4a1801f24883d274e9955bf899df",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D0_s1/train_meta.json": "73f14f905fd14418e7ac9f86f7c6f39dc61b690e0d88344a2420e284e130aef7",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D1_s0/train_meta.json": "3b412a1cca751163f5efe463b9937c78d7ebd1b8a7c2aa177d4aadd68bfb81bb",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D1_s1/train_meta.json": "6f2ffcca5316679cc2eb522de3ac3e0a579b698db8c6d21899c0dc66c327b97e",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D2_s0/train_meta.json": "bf456202a6201c522698cc2af3db15a46f4fbeff37f7dce6cf66f8d052bbc2c6",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D2_s1/train_meta.json": "bedad64c357203394e117a5d93c230cfc546d3bc814fa1b2e4b558cbc5b8ca7a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D3_s0/train_meta.json": "1224ef4d8f55ef9761554b8a4caf2045f0f7d2da266ce871f319aa289d4f2dcb",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D3_s1/train_meta.json": "26c32fdb3aaa9dd6015f8bd8730eda729187ee9a31739b880858dab4d99ed325",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D4_s0/train_meta.json": "10a3a37a063ba95ec61397bc83028f61fac6287cbf7e05dc787b31f68984dc0c",
+  "<einv_paths.MYDRIVE>/inv_channel/E_MULTIDEV/adapters/D4_s1/train_meta.json": "1de511526f68f65c5aafa736043d5773a08ae1eee0326f46067efbd186beb1d5",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/A_raw_s3_r16/train_meta.json": "e5679617a1b5a102424f043aabdf1aea01c49d2bd1e2c0a8434e735d77701403",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/A_raw_s4_r16/train_meta.json": "fdc5acdf4814bb864097345bfa79048ea390fa42d1a572574f273a0284e43bd2",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/A_raw_s5_r16/train_meta.json": "9818e10f0124b8210f099574842e715b6f0c6e6d2584ca3d029f35ae7e4005e0",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/B_raw_s3_r16/train_meta.json": "810975f467dc67c59a2b6c8ad78dbb6a7f5de8cf85ae246d2aa169bbd1dfd1ca",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/B_raw_s4_r16/train_meta.json": "4eef69ea32c5230656881dcb9693badd961427818f4aa0bcf168036fc6f50151",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT/adapters/B_raw_s5_r16/train_meta.json": "25a75df00b98b0d6d0a987d690a21fc04731f3bc3273c9ad549f771ef5bf0a0a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s10_r16/train_meta.json": "5c1148cf18a1af1aaed36e4acb301ae4a53d5af0e3af2efd4048116b48e003e5",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s11_r16/train_meta.json": "fe5325257602aecc184f230bd69772ca617a81a696afadf7544e2afe9fbac6d4",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s6_r16/train_meta.json": "c53c5935ffda61b283c3039a616c4bc1ea82cec63b6a42aa89f769cd565730ec",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s7_r16/train_meta.json": "a1352420daa23c018c4991905f6c1de92e44369d50815b60ad2550f0c103575d",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s8_r16/train_meta.json": "7f090720c945caaedc7cc3e36fae6a8bd2caf250e7aa96079d32ddb3d59f553a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/A_raw_s9_r16/train_meta.json": "b9cda304fb29818dd0556d5d61e4214efa93734013dd50a3fc81e79ef23b48d7",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s10_r16/train_meta.json": "ce3bf2a3eb05c20039644b891889059f48becce19c1fb78422f343709663464a",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s11_r16/train_meta.json": "f4c51fbe206e85c2bb146a3934cc5333cb0cd7ed8deb204c393897347d88e8bc",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s6_r16/train_meta.json": "bc177b5084e41a10f54c71c368064637d5e5f2738204d709f1bf27189d81dc61",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s7_r16/train_meta.json": "10f5fa52810622a7a6ee28028eab734c8eb9cb23e14e4fefcdaefc2a2caf4dc0",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s8_r16/train_meta.json": "1c5d881b07ecb81bca0cade688b0963c7b6aa219b367356bf020c47d5994a6d6",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SEEDEXT2/adapters/B_raw_s9_r16/train_meta.json": "d230c721c81e59eb288ffd3305d0d895e3f8bd48ea8508db11a02c15d2110bf6",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SHIFT_REP2/adapters/amp_12p0_s1/train_meta.json": "e37d3c599c14a1c57ed93b07b17f24d4aa822b56256cf38db36f16cbd8c76b9d",
+  "<einv_paths.MYDRIVE>/inv_channel/E_SHIFT_REP2/adapters/ctrl_shift_s1/train_meta.json": "4e88f85474eebe530baa0073781b5f8ca4a18b9b569c41f4dcebbe500eb17831",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s0_flux/train_meta.json": "2c095200088976718abeb46882a46b9bce5453a4250d744c696fdfef0c624b2f",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s1_flux/train_meta.json": "bd7bb27684f4a57bd6d70492c5a15c014d14137f3616b610cef19cf6423e00d6",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s2_flux/train_meta.json": "9aafb70c381b5f4cb353be8b6dcf096f414525c264fb6a57e37c132d42983f15",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s3_flux/train_meta.json": "da4c949d6d075286905c8a0dbd5f5b04e46e6baa7d9e23c3989d2b67e3e39088",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s4_flux/train_meta.json": "128c3b9b3e626df7697f37fd8c7ebaa126f742df2faeaae9e6f61e07c07307c7",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/A_raw_s5_flux/train_meta.json": "2e59f045286b3f1ca76975418985444e891bb10a7127e6a7341b8fd6faf5e210",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s0_flux/train_meta.json": "82ab0e6c30f0d47d301751704b9cc47e15fc0439c2ab5eea02a6ce57e1dfd57e",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s1_flux/train_meta.json": "b9162818bde40e48ce1c1121ca74d299d7aa26e59a2277b8182e8c79182a4d00",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s2_flux/train_meta.json": "4153fb1bd1b567579ea82a2d3edd533c4dad461a188a4c0a3d98e627a5363182",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s3_flux/train_meta.json": "4b06c376380ee848de5db54678988dc553c368bd26b6a55ca9ab76c8af5b7039",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s4_flux/train_meta.json": "1d44061a7caf9e57715ac9106aa35d187fb734ee4e6be88393fb3b72513ac392",
+  "<einv_paths.MYDRIVE>/inv_channel/E_TRACKB2_FLUX/adapters/B_raw_s5_flux/train_meta.json": "6a49c372ee4b5f2c7856ae8af9426c5ab5c4b0eb59a15516eed6059db0adf3ae"
+ }
+}
